@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<ui:define name="title">Current Positions</ui:define>
+	<ui:define name="bar">Current Positions</ui:define>
 	<ui:define name="body">
 		<h1 style="text-align:center">Edição de Perfil</h1>
 	
@@ -15,7 +16,7 @@
 	</p:toolbarGroup>
 	
 	</p:toolbar> 
-	<p:panelGrid columns="2" id="panel" style="width:100%">
+	<p:panelGrid styleClass="elementTable" columns="2" id="panel" style="width:100%">
 	
 	<p:outputLabel value="Primeiro Nome" for="firstName"></p:outputLabel>
 	<p:inputText id="firstName" size="20" maxlenght="20"></p:inputText>
@@ -59,8 +60,6 @@
 	</p:panelGrid>
 	
 	</ui:define>
-
-
 
 </ui:composition>
 	

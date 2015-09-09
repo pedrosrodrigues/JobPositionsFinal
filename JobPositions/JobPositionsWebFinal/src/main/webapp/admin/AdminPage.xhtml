@@ -13,10 +13,9 @@
 			<p:tab title="Job Positions">
 				<h:form id="frm">
 
-					<p:dataTable style="margin-top:20px; padding: 100px;"
-						value="#{searchPositionsBean.positions}" var="position" rows="10"
-						emptyMessage="No records found." paginator="true"
-						paginatorPosition="bottom"
+					<p:dataTable value="#{searchPositionsBean.positions}"
+						var="position" rows="10" emptyMessage="No records found."
+						paginator="true" paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
@@ -77,16 +76,59 @@
 					</p:dataTable>
 				</h:form>
 			</p:tab>
-			<p:tab title="New Position">	
-				Aqui cria-se nova posição ao estilo do novo user.
+			<p:tab title="New Position">
+
+				<div id="loginfrm">
+					<h:form id="newfrm">
+						<h:panelGroup>
+							<p:panelGrid columns="2">
+								<h:panelGroup>
+									<p:panelGrid columns="2">
+										<p:outputLabel value="Starting date" for="startdate" />
+										<p:outputLabel value="Ending date" for="enddate" />
+										<p:calendar id="startdate" required="true"
+											pattern="dd/MM/yyyy" readonlyInput="true" />
+										<p:calendar id="enddate" required="true"
+											pattern="dd/MM/yyyy" readonlyInput="true" />
+									</p:panelGrid>
+								</h:panelGroup>
+								
+								<p:outputLabel value="Company" for="company" />
+								<p:outputLabel value="Technical Area" for="tecarea" />
+								
+								<p:inputText id="vacancies" required="true" />
+								<p:inputText id="sla" required="true" />
+</
+								<p:selectOneMenu id="company" required="false">
+									<f:selectItem itemLabel="Please select" />
+									<f:selectItem itemLabel="Coimbra" />
+									<f:selectItem itemLabel="Lisbon" />
+									<f:selectItem itemLabel="Mozambique" />
+									<f:selectItem itemLabel="Oporto" />
+									<f:selectItem itemLabel="Southampton" />
+									<f:selectItem itemLabel="Yeovil" />
+								</p:selectOneMenu>
+
+								<p:selectOneMenu id="tecarea" required="true">
+									<f:selectItem itemLabel="Please select" />
+									<f:selectItem
+										itemLabel="Software and Security Product Assurance" />
+									<f:selectItem itemLabel="Net Development" />
+									<f:selectItem itemLabel="Java Development" />
+									<f:selectItem itemLabel="Safety Critical" />
+									<f:selectItem itemLabel="Project Management" />
+									<f:selectItem itemLabel="Integration" />
+								</p:selectOneMenu>
+
+								<p:outputLabel value="Vacancies" for="vacancies" />
+								<p:outputLabel value="SLA" for="sla" />
+
+								
+							</p:panelGrid>
+						</h:panelGroup>
+					</h:form>
+				</div>
 			</p:tab>
-
 		</p:tabView>
-
-
-
 	</ui:define>
-
-
-
 </ui:composition>

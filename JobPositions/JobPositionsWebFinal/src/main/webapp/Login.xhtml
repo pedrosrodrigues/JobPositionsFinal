@@ -8,9 +8,9 @@
 	<ui:define name="title">Login</ui:define>
 	<ui:define name="bar">Login</ui:define>
 	<ui:define name="body">
-		<div>
+		<div id="loginfrm">
 			<h:form id="frm">
-				<p:panelGrid columns="2" style="margin-top:100px; padding: 100px;" >
+				<h:panelGrid columns="2" >
 					<p:outputLabel value="Login" for="login" />
 					<p:inputText id="login" required="true" />
 					<p:outputLabel value="Password" for="senha" />
@@ -25,7 +25,7 @@
 					<p:commandButton value="Sign in!"
 						style="margin-top: 20px; width:210px"
 						 />
-				</p:panelGrid>
+				</h:panelGrid>
 				
 			</h:form>	
 			</div>	

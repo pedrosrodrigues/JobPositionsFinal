@@ -13,10 +13,9 @@
 			<p:tab title="Job Positions">
 				<h:form id="frm">
 
-					<p:dataTable
-						value="#{searchPositionsBean.positions}" var="position" rows="10"
-						emptyMessage="No records found." paginator="true"
-						paginatorPosition="bottom"
+					<p:dataTable value="#{searchPositionsBean.positions}"
+						var="position" rows="10" emptyMessage="No records found."
+						paginator="true" paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
@@ -64,7 +63,7 @@
 								</p:commandButton>
 							</p:panelGrid>
 							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade"/>
+								hideEffect="fade" />
 						</p:rowExpansion>
 					</p:dataTable>
 				</h:form>
@@ -74,8 +73,9 @@
 				</p:tab>
 
 			<p:tab title="Edit my profile">
-				<p:panelGrid id="newgrid" columns="2"
-					style="margin-top:100px; padding: 100px;">
+			<h:form id="frm1">
+				<h:panelGrid style="display:block; text-align:center" style="width:99%" id="newgrid" columns="2">
+
 					<p:outputLabel value="First Name" for="fname" />
 					<p:outputLabel value="Last Name" for="lname" />
 
@@ -112,17 +112,17 @@
 					<p:inputText id="linkin" required="true" />
 					<p:outputLabel />
 
-				</p:panelGrid>
+					<p:outputLabel value="Upload your CV" for="cv"></p:outputLabel>
+					<p:outputLabel value="PDF format, max size: 1Mb" for="cv"></p:outputLabel>
+					<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
 
-				<p:outputLabel value="Upload your CV" for="cv"></p:outputLabel>
-				<p:outputLabel value="PDF format, max size: 1Mb" for="cv"></p:outputLabel>
-				<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
-
-				<p:outputLabel value="Upload your motivation letter" for="mletter"></p:outputLabel>
-				<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"></p:outputLabel>
-				<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
-					id="mletter" />
-
+					<p:outputLabel value="Upload your motivation letter" for="mletter"></p:outputLabel>
+					<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"></p:outputLabel>
+					<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
+						id="mletter" />
+			
+				</h:panelGrid>
+				
 				<div>
 					<p:toolbar
 						style="background:#a50d12; border:none; border-radius:0px;padding:10px;">
@@ -131,6 +131,7 @@
 						</p:toolbarGroup>
 					</p:toolbar>
 				</div>
+			</h:form>
 			</p:tab>
 
 			<p:tab title="Other stuff">
