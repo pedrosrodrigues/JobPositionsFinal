@@ -20,7 +20,7 @@ public class TesteOperacoesBD {
 		trx.begin();
 
 		TestEntity ent = new TestEntity();
-		ent.setName("Filipa Pedrosa");
+		ent.setName("Filipa e Pedro");
 		ent.setNumber(23523);
 		em.persist(ent);
 
