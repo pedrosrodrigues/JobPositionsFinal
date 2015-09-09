@@ -55,6 +55,10 @@
 							<groupId>pt.uc.dei.aor.projfinal</groupId>
 							<artifactId>JobPositionsServices</artifactId>
 						</ejbModule>
+						<jarModule>
+							<groupId>org.primefaces</groupId>
+							<artifactId>primefaces</artifactId>
+						</jarModule>
 					</modules>
 				</configuration>
 			</plugin>
@@ -67,14 +71,14 @@
 					<skip>false</skip>
 					<!-- <filename>firstear.ear</filename> -->
 				</configuration>
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<phase>install</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>deploy</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <phase>install</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>deploy</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
 			</plugin>
 		</plugins>
 	</build>
