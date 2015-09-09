@@ -1,0 +1,77 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="bar">Login</ui:define>
+	<ui:define name="body">
+
+				<div>
+					<form>
+	<!-- 					<p:panelGrid columns="2">
+							<p:outputLabel value="Login" for="login" />
+							<p:inputText id="login" required="true" />
+
+							<p:outputLabel value="Password" for="senha" />
+							<p:password id="senha" required="true" feedback="true"
+								match="confirmacaoSenha" />
+
+							<p:outputLabel value="Confirm password" for="confirmacaoSenha" />
+							<p:password id="confirmacaoSenha" required="true" />
+
+							<p:outputLabel value="" />
+							<p:commandButton value="Sign in!"
+								style="margin-top: 20px; width:210px" />
+						</p:panelGrid>
+					</form>
+				</div>
+			</p:tab>
+			<p:tab title="Edit Info">	
+		Aqui edita-se!
+				</p:tab>
+
+			<p:tab title="Consultar Candidaturas">	
+		E aqui consulta-se!
+				</p:tab>
+
+			<p:tab title="Minhas Candidaturas">
+		E aqui faz-se coisas!
+				</p:tab>
+		</p:tabView> -->
+		
+		<h:body>  
+     <p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="200" collapsible="true">
+        <h:outputText value="North unit content." />
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
+        <h:outputText value="South unit content." />
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
+        <h:outputText value="West unit content." />
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
+        <h:outputText value="Right unit content." />
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+        //page code
+    </p:layoutUnit>
+ 
+</p:layout>  
+    </h:body> 
+    </form>
+    </div>
+
+	</ui:define>
+
+
+
+</ui:composition> 

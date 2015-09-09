@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+body {
+	font-size: 14px;
+	font-family: "PFDinDisplayProLight", Georgia;
+	margin: 0px;
+	font-weight: normal;
+	margin-top: 20px;
+}
+
+header {
+	padding: 5px 0px;
+	height: 160px;
+	background-color: #ffffff;
+	color: #fff;
+}
+
+header>div {
+	/* margin: 20px; */
+	
+}
+
+#conteudo {
+/* 	padding: 0px 8px;
+	margin-top: 20px;
+	margin-bottom: 20px;	 */
+}
+
+footer {
+	padding: 0px 8px;
+	color: #a59d95;
+	text-align: center;
+	font-size: 10px;
+	font-family: "PFDinDisplayProLight", Georgia;
+	
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	padding: 0px;
+	margin: 0px;
+	color: white;
+	text-transform: uppercase;
+}
+
+#login-dialog {
+	width: 290px;
+	margin: auto;
+	margin-top: 150px;
+}
+
+.grid-login {
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	margin-top: 8px;
+	padding: 10px
+}
+
+.label {
+	width: 100px;
+}
+
+.ui-panelgrid td {
+	height: 54px;
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+	height: 10px;
+	background-color: grey;
+	border-width: 1px;
+	border-style: solid;
+	border-color: inherit;
+	padding: 4px 10px;
+}
+
+.ajax-status {
+	position: fixed;
+	top: 55px;
+	right: 10px;
+	width: 35px;
+	height: 35px
+}
+
+a:hover {
+	color: #a50d12;
+	text-decoration: none;
+}
+
+a:link {
+	color: #a50d12;
+	text-decoration: none;
+}
+
+.ui-datatable thead th {
+	background: #c4c4c4;
+	height: 30px;
+	-webkit-gradient: (linear, left top, left bottom,
+		from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.3)))
+		!important;
+	text-transform: uppercase;
+}
+
+.ui-paginator.ui-paginator-bottom {
+	background: #c4c4c4;
+	height: 25px;
+	-webkit-gradient: (linear, left top, left bottom,
+		from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.3)))
+		!important;
+}
+
+.text-muted {
+	color: #a59d95;
+}
+
+.ui-growl {
+	position: relative;
+	border: 0;
+	padding: .5em 1em;
+	background: none;
+	overflow: auto;
+	zoom: 1;
+}
+
+.social-img {
+	margin:2px; 
+	margin-top:10px; 
+	width: 20px;
+	float:right;
+}
+
+.newgrid {
+	background-color: white;
+}
+
+.ui-layout-pane {
+    border: 0;
+}
+
+/* header img.cutout{
+    float:right;
+    position:absolute;
+    bottom:0;
+    right:0;
+    clear:right
+} */
+
+.system-menu {
+	border: 0px important!;
+	padding: 0px important!;
+	background:none important!;
+}
+
+.system-menu .ui-menu-parent > a .ui-menuitem-text, .system-menu > .ui-menu-list > .ui-menuitem > a .ui-menuitem-text {
+	color: #ffffff !important;	
+}
+
+.system-menu .ui-icon-triangle-1-s {
+	background:url(#{resource['images:avatar.png']})no-repeat;	
+}

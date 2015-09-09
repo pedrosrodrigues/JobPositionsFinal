@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="title">Current Positions</ui:define>
+	<ui:define name="body">
+		<h1 style="text-align:center">Edição de Perfil</h1>
+	
+	<p:toolbar>
+	<p:toolbarGroup >
+		<p:commandButton value="Gravar" id="saveButton" style="align:right"/>
+	</p:toolbarGroup>
+	
+	</p:toolbar> 
+	<p:panelGrid columns="2" id="panel" style="width:100%">
+	
+	<p:outputLabel value="Primeiro Nome" for="firstName"></p:outputLabel>
+	<p:inputText id="firstName" size="20" maxlenght="20"></p:inputText>
+		
+	<p:outputLabel value="Sobrenome" for="lastName"></p:outputLabel>
+	<p:inputText id="lastName" size="20" maxlenght="20"></p:inputText>
+	
+	<p:outputLabel value="Email" for="email"></p:outputLabel>
+	<p:inputText id="email" size="20" maxlenght="20"></p:inputText>
+	
+	<p:outputLabel value="Password" for="password"></p:outputLabel>
+	<p:password feedback="true" id="password"></p:password>
+	
+	<p:outputLabel value="Morada" for="address"></p:outputLabel>
+	<p:inputText id="address" size="50" maxlenght="50"></p:inputText>
+	
+	<p:outputLabel value="Cidade" for="city"></p:outputLabel>
+	<p:inputText id="city" size="15" maxlenght="15"></p:inputText>
+	
+	<p:outputLabel value="Telefone" for="phone"></p:outputLabel>
+	<p:inputText id="phone" size="13" maxlenght="13"></p:inputText>
+	
+	<p:outputLabel value="Telemovel" for="mobile"></p:outputLabel>
+	<p:inputText id="mobile" size="13" maxlenght="13"></p:inputText>
+	
+	<p:outputLabel value="País" for="country"></p:outputLabel>
+	<p:inputText id="country" size="20" maxlenght="20"></p:inputText>
+	
+	<p:outputLabel value="Curso" for="degree"></p:outputLabel>
+	<p:inputText id="degree" size="25" maxlenght="25"></p:inputText>
+	
+	<p:outputLabel value="Escola" for="school"></p:outputLabel>
+	<p:inputText id="school" size="20" maxlenght="20"></p:inputText>
+	
+	<p:outputLabel value="CV" for="cv"></p:outputLabel>
+	<p:fileUpload dragDropSupport="true" id="cv"/>
+	
+	<p:outputLabel value="Carta de Motivação" for="motivationLetter"></p:outputLabel>
+	<p:fileUpload dragDropSupport="true" id="motivationLetter"/>
+	
+	</p:panelGrid>
+	
+	</ui:define>
+
+
+
+</ui:composition>
+	

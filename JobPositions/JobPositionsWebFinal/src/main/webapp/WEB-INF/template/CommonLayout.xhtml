@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="title">Job Positions</ui:insert></title>
+	<h:outputStylesheet library="css" name="system.css" />
+</h:head>
+
+<h:body>
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header> <p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="205" collapsible="true">
+			<!-- 		<p:layout>
+				<p:layoutUnit position="west" size="230" > -->
+			<div style="float: left;">
+				<h:graphicImage library="images" name="logo-critical.png"
+					style="margin:10px 20px;float:left; width:110px;" />
+				<!-- 			</p:layoutUnit>
+				<p:layoutUnit position="center"  -->
+			</div>
+			<div style="float: right;">
+				<a href="https://www.facebook.com/criticalsoftware" target="_blank">
+					<p:graphicImage styleClass="social-img" library="images"
+						name="facebook.png" />
+				</a> <a href="https://plus.google.com/+criticalsoftware/posts"
+					target="_blank"> <p:graphicImage styleClass="social-img"
+						library="images" name="google.png" />
+				</a> <a href="https://www.linkedin.com/company/critical-software"
+					target="_blank"> <p:graphicImage styleClass="social-img"
+						library="images" name="linked.png" />
+				</a> <a href="https://twitter.com/CriticalSftware" target="_blank">
+					<p:graphicImage styleClass="social-img" library="images"
+						name="twiter.png" />
+				</a> <a href="https://www.youtube.com/user/criticalsoftware"
+					target="_blank"> <p:graphicImage styleClass="social-img"
+						library="images" name="youtube.png" />
+				</a>
+			</div>
+
+			<div style="float: bottom, right;">
+				<h:form style="display:inline-block;">
+				
+<!-- 				<p:menubar autoDisplay="false">
+			<p:submenu label="Cadastros">
+				<p:submenu label="Funcionário">
+					<p:menuitem value="Novo" outcome="NovoFuncionario" />
+					<p:menuitem value="Pesquisa" icon="ui-icon-search"
+						url="http://www.google.com.br" />
+				</p:submenu>
+			</p:submenu>
+		
+			<p:submenu label="Perfil">
+				<p:menuitem value="Dados pessoais" />
+				<p:separator/>
+				<p:menuitem value="Endereços" />
+				<p:menuitem value="E-mails" />
+			</p:submenu>
+			
+			<p:menuitem value="Sair" />
+		</p:menubar> -->
+					<p:menubar styleClass="system-menu">
+						<p:submenu label="">
+							<p:submenu label="New" icon="ui-icon-contact">
+								<p:menuitem value="Project" url="#" />
+
+								<p:menuitem value="Other" url="#" />
+							</p:submenu>
+							<p:menuitem value="Open" url="#" />
+							<p:separator />
+							<p:menuitem value="Quit" url="#" />
+						</p:submenu>
+					</p:menubar>
+				</h:form>
+				<!-- 	<p:menu overlay="true" trigger="img"
+        my="left top"
+        at="bottom left"
+        model="#{notificationMenu.model}" />
+<p:graphicImage id="img" /> -->
+			</div>
+			<div style="clear: both" />
+			<div>
+				<p:toolbar
+					style="background:#a50d12; border-radius:0px;height:35px; padding-top:10px;">
+					<p:toolbarGroup align="left">
+						<h1>
+							<ui:insert name="bar">JOB POSITIONS</ui:insert>
+						</h1>
+					</p:toolbarGroup>
+					<p:toolbarGroup align="right">
+						<p:inputText style="margin-right:10px" placeholder="Search" />
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="50" collapsible="true"
+			resizable="false">
+			<p:separator />
+			<footer> © 1998 - 2015 CRITICAL Software All Rights
+			Reserved. - <a href="http://www.criticalsoftware.com/pt/homepage"
+				target="_blank"> Contactos / Termos e Política de Privacidade</a> </footer>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" collapsible="true" resizable="false">
+			<div id="conteudo">
+				<ui:insert name="body" />
+			</div>
+		</p:layoutUnit>
+
+	</p:layout> </header>
+
+
+
+
+</h:body>
+
+</html>

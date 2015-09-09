@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="bar">Login</ui:define>
+	<ui:define name="body">
+		<div>
+			<h:form id="frm">
+				<p:panelGrid columns="2" style="margin-top:100px; padding: 100px;" >
+					<p:outputLabel value="Login" for="login" />
+					<p:inputText id="login" required="true" />
+					<p:outputLabel value="Password" for="senha" />
+					<p:password id="senha" required="true"
+						 feedback="true"
+						match="confirmacaoSenha" />
+
+					<p:outputLabel value="Confirm password" for="confirmacaoSenha" />
+					<p:password id="confirmacaoSenha" required="true" />
+
+					<p:outputLabel value="" />
+					<p:commandButton value="Sign in!"
+						style="margin-top: 20px; width:210px"
+						 />
+				</p:panelGrid>
+				
+			</h:form>	
+			</div>	
+	</ui:define>
+</ui:composition>

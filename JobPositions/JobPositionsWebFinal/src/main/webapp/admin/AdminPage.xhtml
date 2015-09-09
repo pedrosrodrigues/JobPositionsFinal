@@ -1,0 +1,92 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Admin Menu</ui:define>
+	<ui:define name="bar">Pedro Rodrigues</ui:define>
+	<ui:define name="body">
+
+		<p:tabView>
+			<p:tab title="Job Positions">
+				<h:form id="frm">
+
+					<p:dataTable style="margin-top:20px; padding: 100px;"
+						value="#{searchPositionsBean.positions}" var="position" rows="10"
+						emptyMessage="No records found." paginator="true"
+						paginatorPosition="bottom"
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+							style="text-align: center; width:200px"
+							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
+							<h:outputText value="Programador em Java" />
+						</p:column>
+						<p:column headerText="Location"
+							style="text-align: center; width:150px">
+							<h:outputText value="Portugal,(Coimbra)" />
+						</p:column>
+						<p:column headerText="Date"
+							style="text-align: center; width:150px">
+							<h:outputText value="19-08-2015" />
+						</p:column>
+						<p:column headerText="State"
+							style="text-align: center; width:150px">
+							<h:outputText value="Open" />
+						</p:column>
+						<p:column headerText="# Candidates"
+							style="text-align: center; width:150px">
+							<h:outputText value="37" />
+						</p:column>
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
+
+						<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
+
+								<h:outputText value="Job Code" />
+								<h:outputText value="541" />
+
+								<h:outputText value="Function" />
+								<h:outputText value="Java Engineer" />
+
+								<h:outputText value="Location" />
+								<h:outputText value="Brazil (S. Paulo)" />
+
+								<h:outputText value="# of openings" />
+								<h:outputText value="1" />
+
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="width:100%;">
+
+								<p:inputTextarea rows="10" cols="100" style="width:95%" />
+								<h:outputText value="Description" />
+								<p:commandButton value="Submit" id="ajax">
+									<p:confirm header="Job Position"
+										message="A sua candidatura foi efectuada com sucesso!" />
+								</p:commandButton>
+							</p:panelGrid>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade" />
+						</p:rowExpansion>
+					</p:dataTable>
+				</h:form>
+			</p:tab>
+			<p:tab title="New Position">	
+				Aqui cria-se nova posição ao estilo do novo user.
+			</p:tab>
+
+		</p:tabView>
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>

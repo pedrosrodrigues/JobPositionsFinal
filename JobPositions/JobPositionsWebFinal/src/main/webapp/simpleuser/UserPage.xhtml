@@ -1,0 +1,147 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">User Menu</ui:define>
+	<ui:define name="bar">Pedro Rodrigues</ui:define>
+	<ui:define name="body">
+
+		<p:tabView>
+			<p:tab title="Job Positions">
+				<h:form id="frm">
+
+					<p:dataTable
+						value="#{searchPositionsBean.positions}" var="position" rows="10"
+						emptyMessage="No records found." paginator="true"
+						paginatorPosition="bottom"
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+							style="text-align: center; width:200px"
+							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
+							<h:outputText value="Programador em Java" />
+						</p:column>
+						<p:column headerText="Location"
+							style="text-align: center; width:150px">
+							<h:outputText value="Portugal,(Coimbra)" />
+						</p:column>
+						<p:column headerText="Date"
+							style="text-align: center; width:150px">
+							<h:outputText value="19-08-2015" />
+						</p:column>
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
+
+						<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
+
+								<h:outputText value="Job Code" />
+								<h:outputText value="541" />
+
+								<h:outputText value="Function" />
+								<h:outputText value="Java Engineer" />
+
+								<h:outputText value="Location" />
+								<h:outputText value="Brazil (S. Paulo)" />
+
+								<h:outputText value="# of openings" />
+								<h:outputText value="1" />
+
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="width:100%;">
+
+								<p:inputTextarea rows="10" cols="100" style="width:95%" />
+								<h:outputText value="Description" />
+								<p:commandButton value="Submit" id="ajax">
+									<p:confirm header="Job Position"
+										message="A sua candidatura foi efectuada com sucesso!" />
+								</p:commandButton>
+							</p:panelGrid>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade"/>
+						</p:rowExpansion>
+					</p:dataTable>
+				</h:form>
+			</p:tab>
+			<p:tab title="My Applications">	
+			Aqui aparece uma tabela igual à outra (só com as do user)mas com mais uma coluna: o estado da candidatura!
+				</p:tab>
+
+			<p:tab title="Edit my profile">
+				<p:panelGrid id="newgrid" columns="2"
+					style="margin-top:100px; padding: 100px;">
+					<p:outputLabel value="First Name" for="fname" />
+					<p:outputLabel value="Last Name" for="lname" />
+
+					<p:inputText id="fname" required="true" />
+					<p:inputText id="lname" required="true" />
+
+					<p:outputLabel value="E-mail" for="email" />
+					<p:outputLabel value="Adress" for="adress" />
+
+					<p:inputText id="email" required="true" />
+					<p:inputText id="adress" required="true" />
+
+					<p:outputLabel value="City" for="city" />
+					<p:outputLabel value="Country" for="country" />
+
+					<p:inputText id="city" required="true" />
+					<p:inputText id="country" required="true" />
+
+					<p:outputLabel value="Phone" for="phone" />
+					<p:outputLabel value="Mobile" for="mobile" />
+
+					<p:inputText id="phone" required="true" />
+					<p:inputText id="mobile" required="true" />
+
+					<p:outputLabel value="Main Course" for="mcourse" />
+					<p:outputLabel value="School" for="school" />
+
+					<p:inputText id="mcourse" required="true" />
+					<p:inputText id="school" required="true" />
+
+					<p:outputLabel value="Linkedin Profile" for="linkin" />
+					<p:outputLabel />
+
+					<p:inputText id="linkin" required="true" />
+					<p:outputLabel />
+
+				</p:panelGrid>
+
+				<p:outputLabel value="Upload your CV" for="cv"></p:outputLabel>
+				<p:outputLabel value="PDF format, max size: 1Mb" for="cv"></p:outputLabel>
+				<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
+
+				<p:outputLabel value="Upload your motivation letter" for="mletter"></p:outputLabel>
+				<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"></p:outputLabel>
+				<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
+					id="mletter" />
+
+				<div>
+					<p:toolbar
+						style="background:#a50d12; border:none; border-radius:0px;padding:10px;">
+						<p:toolbarGroup align="left" style="margin-left:50px;">
+							<p:commandButton value="SAVE" />
+						</p:toolbarGroup>
+					</p:toolbar>
+				</div>
+			</p:tab>
+
+			<p:tab title="Other stuff">
+		Se houver necessidade fica, senão sai.
+				</p:tab>
+		</p:tabView>
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
