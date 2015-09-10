@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">Current Positions</ui:define>
+	<ui:define name="bar">Current Positions</ui:define>
 	<ui:define name="body">
 
 		<h:form id="frm">
@@ -58,45 +59,15 @@
 						</p:commandButton>
 					</p:panelGrid>
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Login" styleClass="ui-confirmdialog-yes"
-							action="Login?faces-redirect=true" />
-						<p:commandButton value="Registration"
+						<p:button value="Login" styleClass="ui-confirmdialog-yes"
+							outcome="Login" />
+						<p:button value="Registration"
 							styleClass="ui-confirmdialog-no"
-							action="NewUser?faces-redirect=true" />
+							outcome="EditUser" />
 					</p:confirmDialog>
 				</p:rowExpansion>
 			</p:dataTable>
 		</h:form>
 	</ui:define>
-
-
-
-</ui:composition>						<h:outputText value="Brazil (S. Paulo)" />
-
-						<h:outputText value="# of openings" />
-						<h:outputText value="1" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;">
-						<p:inputTextarea rows="10" cols="100" style="width:95%" />
-						<h:outputText value="Description" />
-						<p:commandButton value="Submit" id="ajax">
-							<p:confirm header="Job Position"
-								message="Para responder a esta, e outras ofertas de emprego, REGISTE-SE ou faça o seu LOGIN." />
-						</p:commandButton>
-					</p:panelGrid>
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Login" styleClass="ui-confirmdialog-yes"
-							action="Login?faces-redirect=true" />
-						<p:commandButton value="Registration"
-							styleClass="ui-confirmdialog-no"
-							action="NewUser?faces-redirect=true" />
-					</p:confirmDialog>
-				</p:rowExpansion>
-			</p:dataTable>
-		</h:form>
-	</ui:define>
-
-
 
 </ui:composition>

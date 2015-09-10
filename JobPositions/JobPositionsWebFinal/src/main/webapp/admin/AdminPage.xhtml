@@ -78,57 +78,118 @@
 			</p:tab>
 			<p:tab title="New Position">
 
-				<div id="loginfrm">
-					<h:form id="newfrm">
-						<h:panelGroup>
-							<p:panelGrid columns="2">
-								<h:panelGroup>
-									<p:panelGrid columns="2">
-										<p:outputLabel value="Starting date" for="startdate" />
-										<p:outputLabel value="Ending date" for="enddate" />
-										<p:calendar id="startdate" required="true"
-											pattern="dd/MM/yyyy" readonlyInput="true" />
-										<p:calendar id="enddate" required="true"
-											pattern="dd/MM/yyyy" readonlyInput="true" />
-									</p:panelGrid>
-								</h:panelGroup>
+				<div id="loginfrm" >
+					<h:form id="formRegist">
+				<p:panelGrid id="newgrid" style="background:none;" >
+				<p:row>
+						<p:column><h:outputText value="Name" /></p:column>
+						
+						<p:column>Contraseña:</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">Name</p:column>
+					</p:row>
+					<p:row>
+						<p:column><p:inputText  size="30"/></p:column>
+						<p:column><p:inputText  size="30"/></p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">Apellidos:</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2"><p:inputText size="69"/></p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">Dirección:</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2"><p:inputText size="69"/></p:column>
+					</p:row>
+					<p:row>
+						<p:column>Usuario:</p:column>
+						<p:column>Contraseña:</p:column>
+					</p:row>
+					<p:row>
+						<p:column><p:inputText  size="30"/></p:column>
+						<p:column><p:inputText value="#{usuarioBean.usuario.contrasen}" size="30"/></p:column>
+					</p:row>
+					<p:row>
+						<p:column>Fecha de Nac.:</p:column>
+						<p:column>Perfil:</p:column>
+					</p:row>
+					<p:row>
+						<p:column><p:calendar  size="30"/></p:column>
+						<p:column>
+							<p:selectOneMenu >
+								<f:selectItem itemLabel="Seleccionar Perfil" itemValue="#{null}" noSelectionOption="true" />
 								
-								<p:outputLabel value="Company" for="company" />
-								<p:outputLabel value="Technical Area" for="tecarea" />
-								
-								<p:inputText id="vacancies" required="true" />
-								<p:inputText id="sla" required="true" />
-</
-								<p:selectOneMenu id="company" required="false">
-									<f:selectItem itemLabel="Please select" />
-									<f:selectItem itemLabel="Coimbra" />
-									<f:selectItem itemLabel="Lisbon" />
-									<f:selectItem itemLabel="Mozambique" />
-									<f:selectItem itemLabel="Oporto" />
-									<f:selectItem itemLabel="Southampton" />
-									<f:selectItem itemLabel="Yeovil" />
-								</p:selectOneMenu>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+				<p:messages id="mensaje" />
+				<p:separator />
+				<h:panelGrid columns="2" cellspacing="5">
+					<p:commandButton value="Guardar"   icon="ui-icon-disk"/>
+					<p:commandButton value="Cerrar" type="button"  icon="ui-icon-close"/>
+				</h:panelGrid>
+	
+		</h:form>
 
-								<p:selectOneMenu id="tecarea" required="true">
-									<f:selectItem itemLabel="Please select" />
-									<f:selectItem
-										itemLabel="Software and Security Product Assurance" />
-									<f:selectItem itemLabel="Net Development" />
-									<f:selectItem itemLabel="Java Development" />
-									<f:selectItem itemLabel="Safety Critical" />
-									<f:selectItem itemLabel="Project Management" />
-									<f:selectItem itemLabel="Integration" />
-								</p:selectOneMenu>
 
-								<p:outputLabel value="Vacancies" for="vacancies" />
-								<p:outputLabel value="SLA" for="sla" />
 
-								
-							</p:panelGrid>
-						</h:panelGroup>
-					</h:form>
-				</div>
+								<!-- <p:panelGrid columns="2">
+									<h:panelGroup>
+										<p:panelGrid columns="2">
+											<p:outputLabel value="Starting date" for="startdate" />
+											<p:outputLabel value="Ending date" for="enddate" />
+
+											<p:calendar id="enddate" required="true" pattern="dd/MM/yyyy"
+												readonlyInput="true" />
+										</p:panelGrid>
+									</h:panelGroup>
+
+									<p:outputLabel value="Company" for="company" />
+									<p:outputLabel value="Technical Area" for="tecarea" />
+
+									<p:inputText id="vacancies" required="true" />
+									<p:inputText id="sla" required="true" />
+
+									<p:selectOneMenu id="company" required="false">
+										<f:selectItem itemLabel="Please select" />
+										<f:selectItem itemLabel="Coimbra" />
+										<f:selectItem itemLabel="Lisbon" />
+										<f:selectItem itemLabel="Mozambique" />
+										<f:selectItem itemLabel="Oporto" />
+										<f:selectItem itemLabel="Southampton" />
+										<f:selectItem itemLabel="Yeovil" />
+									</p:selectOneMenu>
+
+									<p:selectOneMenu id="tecarea" required="true">
+										<f:selectItem itemLabel="Please select" />
+										<f:selectItem
+											itemLabel="Software and Security Product Assurance" />
+										<f:selectItem itemLabel="Net Development" />
+										<f:selectItem itemLabel="Java Development" />
+										<f:selectItem itemLabel="Safety Critical" />
+										<f:selectItem itemLabel="Project Management" />
+										<f:selectItem itemLabel="Integration" />
+									</p:selectOneMenu>
+
+									<p:outputLabel value="Vacancies" for="vacancies" />
+									<p:outputLabel value="SLA" for="sla" />
+
+
+								</p:panelGrid>
+								</h:panelGroup> -->
+							</div>
 			</p:tab>
 		</p:tabView>
+
+
+
 	</ui:define>
+
+
+
 </ui:composition>

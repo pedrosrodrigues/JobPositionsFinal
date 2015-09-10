@@ -6,28 +6,32 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">Login</ui:define>
-	<ui:define name="bar">Login</ui:define>
+	<ui:define name="bar" style="margin-left:20px;">Login</ui:define>
 	<ui:define name="body">
 		<div id="loginfrm">
 			<h:form id="frm">
-				<h:panelGrid columns="2" >
-					<p:outputLabel value="Login" for="login" />
-					<p:inputText id="login" required="true" />
-					<p:outputLabel value="Password" for="senha" />
+		
+			<p:panel style="border-width: 0px;">
+				<p:messages globalOnly="true" />
+				<h:panelGrid columns="2" header="Login">
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" required="true"
+						requiredMessage="Enter your email" />
+					<p:outputLabel value="Password" for="senha"
+						requiredMessage="Enter your password" />
 					<p:password id="senha" required="true"
-						 feedback="true"
 						match="confirmacaoSenha" />
-
-					<p:outputLabel value="Confirm password" for="confirmacaoSenha" />
-					<p:password id="confirmacaoSenha" required="true" />
-
+					<p:outputLabel value="Confirm password" for="confirmPassword" />
+					<p:password id="confirmPassword" required="true" />
+						</h:panelGrid>
+						<h:panelGrid columns="1" style="text-align:right; width:100%;" >
+					<p:link style="text-align: center;" value="Forgot your password?" /> 
 					<p:outputLabel value="" />
-					<p:commandButton value="Sign in!"
-						style="margin-top: 20px; width:210px"
-						 />
+					<p:commandButton value="Login"
+						style="margin-top: 10px; width:180px" />
 				</h:panelGrid>
-				
-			</h:form>	
-			</div>	
+				</p:panel>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
