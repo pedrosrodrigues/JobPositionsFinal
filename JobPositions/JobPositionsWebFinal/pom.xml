@@ -25,6 +25,12 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>pt.uc.dei.aor.projfinal</groupId>
+			<artifactId>JobPositionsServices</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 		<!-- Mojarra (implementacao do JSF) -->
 		<dependency>
 			<groupId>javax</groupId>
