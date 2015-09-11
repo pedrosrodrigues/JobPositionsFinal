@@ -1,16 +1,12 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class CandidateEntity implements Serializable {
@@ -30,8 +26,9 @@ public class CandidateEntity implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
-	//FALTA AQUI CV E CARTA PEDRO NAO DORME ENQTO NAO DESCOBRIR
-	//private List<Application> applications = new ArrayList<>();
+
+	// FALTA AQUI CV E CARTA PEDRO NAO DORME ENQTO NAO DESCOBRIR
+	// private List<Application> applications = new ArrayList<>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +40,7 @@ public class CandidateEntity implements Serializable {
 		this.id = id;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getFirstname() {
 		return firstname;
 	}
@@ -52,7 +49,7 @@ public class CandidateEntity implements Serializable {
 		this.firstname = firstname;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getLastname() {
 		return lastname;
 	}
@@ -61,7 +58,7 @@ public class CandidateEntity implements Serializable {
 		this.lastname = lastname;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getEmail() {
 		return email;
 	}
@@ -70,7 +67,7 @@ public class CandidateEntity implements Serializable {
 		this.email = email;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getAddress() {
 		return address;
 	}
@@ -79,7 +76,7 @@ public class CandidateEntity implements Serializable {
 		this.address = address;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getCity() {
 		return city;
 	}
@@ -88,7 +85,7 @@ public class CandidateEntity implements Serializable {
 		this.city = city;
 	}
 
-	@Column(nullable = false, length =100)
+	@Column(nullable = false, length = 100)
 	public String getCountry() {
 		return country;
 	}
@@ -96,8 +93,8 @@ public class CandidateEntity implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
-	@Column(nullable = false, length =50)
+
+	@Column(nullable = false, length = 50)
 	public String getCourse() {
 		return course;
 	}
@@ -105,8 +102,8 @@ public class CandidateEntity implements Serializable {
 	public void setCourse(String course) {
 		this.course = course;
 	}
-	
-	@Column(nullable = false, length =50)
+
+	@Column(nullable = false, length = 50)
 	public String getSchool() {
 		return school;
 	}
@@ -114,8 +111,8 @@ public class CandidateEntity implements Serializable {
 	public void setSchool(String school) {
 		this.school = school;
 	}
-	
-	@Column(nullable = false, length =50)
+
+	@Column(nullable = false, length = 50)
 	public String getPassword() {
 		return password;
 	}
@@ -124,20 +121,19 @@ public class CandidateEntity implements Serializable {
 		this.password = password;
 	}
 
-
-	
-//	//CASCADE PARA QDO GRAVARMOS UM CLIENTE GRAVRARMOS TB AS SUAS CANDIDATURAS//
-//	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
-//	public List<Application> getApplications() {
-//		return applications;
-//	}
-//
-//	public void setApplications(List<Application> applications) {
-//		this.applications = applications;
-//	}
-//	
-//	
-	@Column(nullable = true, length =50)
+	// //CASCADE PARA QDO GRAVARMOS UM CLIENTE GRAVRARMOS TB AS SUAS
+	// CANDIDATURAS//
+	// @OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
+	// public List<Application> getApplications() {
+	// return applications;
+	// }
+	//
+	// public void setApplications(List<Application> applications) {
+	// this.applications = applications;
+	// }
+	//
+	//
+	@Column(nullable = true, length = 50)
 	public String getMobile() {
 		return mobile;
 	}
@@ -146,7 +142,7 @@ public class CandidateEntity implements Serializable {
 		this.mobile = mobile;
 	}
 
-	@Column(nullable = true, length =50)
+	@Column(nullable = true, length = 50)
 	public String getPhone() {
 		return phone;
 	}
@@ -155,7 +151,7 @@ public class CandidateEntity implements Serializable {
 		this.phone = phone;
 	}
 
-	@Column(nullable = true, length =100)
+	@Column(nullable = true, length = 100)
 	public String getLinkedin() {
 		return linkedin;
 	}

@@ -42,7 +42,7 @@ public class TestBean implements Serializable {
 		TestEntity ent = new TestEntity();
 		ent.setName(name);
 		ent.setNumber(number);
-		it.save(ent);
+		it.saveTest(ent);
 
 		System.out.println("name: " + this.name + " number: " + this.number);
 

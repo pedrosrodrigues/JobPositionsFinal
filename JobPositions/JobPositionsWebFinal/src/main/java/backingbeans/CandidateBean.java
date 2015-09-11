@@ -10,16 +10,15 @@ import javax.inject.Named;
 
 import entities.CandidateEntity;
 
-
 @SessionScoped
 @Named
-public class CandidateBean implements Serializable{
-	
+public class CandidateBean implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private ICandidate ic;
-	
+
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -32,8 +31,8 @@ public class CandidateBean implements Serializable{
 	private String school;
 	private String password;
 	private String linkedin;
-	
-	public void save(){
+
+	public void saveCandidate() {
 		CandidateEntity ent = new CandidateEntity();
 		ent.setAddress(address);
 		ent.setCity(city);
@@ -46,8 +45,8 @@ public class CandidateBean implements Serializable{
 		ent.setMobile(mobile);
 		ent.setPassword(password);
 		ent.setPhone(phone);
-		ent.setSchool(school);	
-		ic.save(ent);
+		ent.setSchool(school);
+		ic.saveCandidate(ent);
 		System.out.println(city);
 	}
 
@@ -147,5 +146,4 @@ public class CandidateBean implements Serializable{
 		this.linkedin = linkedin;
 	}
 
-	
 }

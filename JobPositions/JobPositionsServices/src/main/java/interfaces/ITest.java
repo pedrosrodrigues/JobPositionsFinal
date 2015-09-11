@@ -7,6 +7,6 @@ import entities.TestEntity;
 @Local
 public interface ITest {
 
-	public void save(TestEntity ent);
+	public void saveTest(TestEntity ent);
 
 }

@@ -15,12 +15,12 @@ public class TestImplementation implements ITest {
 	private TestDAO td;
 
 	@Override
-	public void save(TestEntity ent) {
+	public void saveTest(TestEntity ent) {
 		// verifica se pode salvar
 
 		// se sim entao vamos gravar isto.
 
-		td.save(ent);
+		td.saveTest(ent);
 
 	}
 

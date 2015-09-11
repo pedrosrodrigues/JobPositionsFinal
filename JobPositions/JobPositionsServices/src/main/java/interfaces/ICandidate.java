@@ -6,8 +6,7 @@ import entities.CandidateEntity;
 
 @Local
 public interface ICandidate {
-	
-	public void save(CandidateEntity ent);
-	
+
+	public void saveCandidate(CandidateEntity ent);
 
 }
