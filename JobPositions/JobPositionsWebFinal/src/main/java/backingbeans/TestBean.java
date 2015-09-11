@@ -1,12 +1,14 @@
 package backingbeans;
 
+import interfaces.ITest;
+
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import dao.TestDAO;
+import entities.TestEntity;
 
 @SessionScoped
 @Named
@@ -15,7 +17,7 @@ public class TestBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private TestDAO td;
+	private ITest it;
 
 	public String getName() {
 		return name;
@@ -37,7 +39,10 @@ public class TestBean implements Serializable {
 	private int number;
 
 	public void saveTest() {
-		// TestEntity ent = new TestEntity(this.name, this.number);
+		TestEntity ent = new TestEntity();
+		ent.setName(name);
+		ent.setNumber(number);
+		it.save(ent);
 
 		System.out.println("name: " + this.name + " number: " + this.number);
 

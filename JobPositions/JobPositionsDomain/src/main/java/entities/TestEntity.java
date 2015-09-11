@@ -17,6 +17,10 @@ public class TestEntity implements Serializable {
 	private String name;
 	private int number;
 
+	public TestEntity() {
+
+	}
+
 	@Column(nullable = false, length = 100)
 	public String getName() {
 		return name;
