@@ -82,7 +82,7 @@
 					<h:form id="formRegist">
 				<p:panelGrid id="newgrid" style="background:none;" >
 				<p:row>
-						<p:column><h:outputText value="Name" /></p:column>
+						<p:column><h:outputText value="Name"/></p:column>
 						
 						<p:column>Contraseña:</p:column>
 					</p:row>
@@ -90,7 +90,9 @@
 						<p:column colspan="2">Name</p:column>
 					</p:row>
 					<p:row>
-						<p:column><p:inputText  size="30"/></p:column>
+						<p:column><p:inputText  id="fname" required="true" size="30">
+						<p:watermark value="First Name" for="fname"></p:watermark>
+						</p:column>
 						<p:column><p:inputText  size="30"/></p:column>
 					</p:row>
 					<p:row>

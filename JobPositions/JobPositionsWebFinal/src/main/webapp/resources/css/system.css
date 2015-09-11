@@ -21,8 +21,9 @@ header>div {
 }
 
 #conteudo {
-/* 	display:table;
+	/* 	display:table;
 	margin:0; */
+	
 }
 
 footer {
@@ -36,11 +37,11 @@ footer {
 h1 {
 	font-size: 24px;
 	font-weight: 500;
-	padding: 0px;
+	padding: 10px 0px;
 	margin: 0px;
 	color: white;
 	text-transform: uppercase;
-}
+	}
 
 #login-dialog {
 	width: 290px;
@@ -155,17 +156,19 @@ a:link {
 }
 
 .system-menu .ui-icon-triangle-1-s {
-	background: url(#{ resource [ 'images:avatar.png' ]})
-no-repeat
-;
-	
-
+	background: url(#{ resource [ 'images:avatar.png' ]
 }
 
+)
+no-repeat
+
+
+;
+}
 .inputTable {
-	display:table;
+	display: table;
 	padding: 15px;
-	margin:0 auto;
+	margin: 0 auto;
 }
 
 .inputTable .ui-panelgrid .ui-panelgrid-cell {
@@ -179,35 +182,39 @@ no-repeat
 
 .inputTable .ui-widget-content {
 	border-width: 0px !important;
-    border: 0px; 
-    background: #ffffff;
-    color: #4f4f4f;
-    text-align:center;
+	border: 0px;
+	background: #ffffff;
+	color: #4f4f4f;
+	text-align: center;
 }
 
 .inputTable .ui-inputfield {
-    width: 400px;
-    margin: 0;
-    outline: medium none;
-    padding: 4px;
-    font-weight: normal;
-    background:#D9D9D9;
+	width: 400px;
+	margin: 0;
+	outline: medium none;
+	padding: 4px;
+	font-weight: normal;
+	background: #D9D9D9;
 }
 
 #loginfrm {
-	display:table;
+	display: table;
 	padding: 15px;
-	margin:0 auto;
+	margin: 0 auto;
 	border-width: 1px !important;
-	border-style:solid;
+	border-style: solid;
 	border-color: #4f4f4f;
 	background: none;
 	border-radius: 15px;
+	font-size: 14px;
+	font-family: "PFDinDisplayProLight", Georgia;
 }
 
 .className {
-    text-align: right;
+	text-align: right;
 }
-    
-    
-    
+
+#formReg td{
+	background:none;
+	
+}
