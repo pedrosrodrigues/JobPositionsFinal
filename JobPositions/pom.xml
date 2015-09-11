@@ -146,30 +146,30 @@
 				</plugin>
 
 				<!-- war plugin -skinny wars mode! -->
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 					<artifactId>maven-war-plugin</artifactId> -->
-<!-- 					<version>${war-plugin-version}</version> -->
-<!-- 					<configuration> -->
-<!-- 						<failOnMissingWebXml>false</failOnMissingWebXml> -->
-<!-- 						<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
-<!-- 						<archive> -->
-<!-- 							<manifest> -->
-<!-- 								<addClasspath>true</addClasspath> -->
-<!-- 								<classpathPrefix>lib/</classpathPrefix> -->
-<!-- 							</manifest> -->
-<!-- 						</archive> -->
-<!-- 						<webResources> -->
-<!-- 							<resource> -->
-<!-- 								<filtering>false</filtering> -->
-<!-- 								<directory>src/main/webapp</directory> -->
-<!-- 								<includes> -->
-<!-- 									<include>**/web.xml</include> -->
-<!-- 								</includes> -->
-<!-- 							</resource> -->
-<!-- 						</webResources> -->
-<!-- 					</configuration> -->
-<!-- 				</plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${war-plugin-version}</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<classpathPrefix>lib/</classpathPrefix>
+							</manifest>
+						</archive>
+						<webResources>
+							<resource>
+								<filtering>true</filtering>
+								<directory>src/main/webapp</directory>
+								<includes>
+									<include>**/web.xml</include>
+								</includes>
+							</resource>
+						</webResources>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
