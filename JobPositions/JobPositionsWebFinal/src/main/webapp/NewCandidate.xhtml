@@ -21,59 +21,73 @@
 						<p:outputLabel value="First Name" for="fname" />
 						<p:outputLabel value="Last Name" for="lname" />
 
-						<p:inputText id="fname" required="true" />
-						<p:inputText id="lname" required="true" />
+						<p:inputText id="fname" required="true" value="#{candidateBean.firstname}"/>
+						<p:inputText id="lname" required="true" value="#{candidateBean.lastname}"/>
 
 						<p:outputLabel value="E-mail" for="email" />
 						<p:outputLabel value="Adress" for="adress" />
 
-						<p:inputText id="email" required="true" />
-						<p:inputText id="adress" required="true" />
+						<p:inputText id="email" required="true" value="#{candidateBean.email}"/>
+						<p:inputText id="adress" required="true" value="#{candidateBean.address}"/>
 
 						<p:outputLabel value="City" for="city" />
 						<p:outputLabel value="Country" for="country" />
 
-						<p:inputText id="city" required="true" />
-						<p:inputText id="country" required="true" />
+						<p:inputText id="city" required="true" value="#{candidateBean.city}"/>
+						<p:inputText id="country" required="true" value="#{candidateBean.country}"/>
 
 						<p:outputLabel value="Phone" for="phone" />
 						<p:outputLabel value="Mobile" for="mobile" />
 
-						<p:inputText id="phone" required="true" />
-						<p:inputText id="mobile" required="true" />
+						<p:inputText id="phone" value="#{candidateBean.phone}"/>
+						<p:inputText id="mobile" value="#{candidateBean.mobile}"/>
 
 						<p:outputLabel value="Main Course" for="mcourse" />
 						<p:outputLabel value="School" for="school" />
 
-						<p:inputText id="mcourse" required="true" />
-						<p:inputText id="school" required="true" />
+						<p:inputText id="mcourse" required="true" value="#{candidateBean.course}"/>
+						<p:inputText id="school" required="true" value="#{candidateBean.school}"/>
+
+						<p:outputLabel value="Password" for="password" />
+						<p:outputLabel value="Confirm Password" for="confpassword" />
+
+						<p:password id="password" required="true" match="confpassword" feedback="true" value="#{candidateBean.password}"/>
+						<p:password id="confpassword" required="true" />
 
 						<p:outputLabel value="Linkedin Profile" for="linkin" />
 						<p:outputLabel />
 
-						<p:inputText id="linkin" required="true" />
+						<p:inputText id="linkin" />
 						<p:outputLabel />
-					</h:panelGrid>
-					<h:panelGrid columns="1" style="text-align:center; width:100%;">
-						<p:outputLabel value="Upload your CV" for="cv"></p:outputLabel>
-						<p:outputLabel value="PDF format, max size: 1Mb" for="cv"></p:outputLabel>
-						<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv"
-							style="width:30%;" />
 
-						<p:outputLabel value="Upload your motivation letter" for="mletter"></p:outputLabel>
-						<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"></p:outputLabel>
+
+					</h:panelGrid>
+					<h:panelGrid styleClass="super-centered" columns="1"
+						style="width:100%;">
+
+						<p:outputLabel value="Upload your CV" for="cv"
+							style="font-weight: bolder;"></p:outputLabel>
+						<p:outputLabel value="PDF format, max size: 1Mb" for="cv"
+							style="font-weight: bolder;"></p:outputLabel>
+						<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv"
+							style="width:30%;align:center;" />
+
+						<p:outputLabel value="Upload your motivation letter" for="mletter"
+							style="font-weight: bolder;"></p:outputLabel>
+						<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"
+							style="font-weight: bolder;"></p:outputLabel>
 						<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
 							id="mletter" />
 
 					</h:panelGrid>
 
-
-					<p:toolbar
+	<p:commandButton value="SAVE" action="#{candidateBean.save}" />
+					<!-- <p:toolbar
 						style="background:#a50d12; border:none; border-radius:0px;padding:10px;">
 						<p:toolbarGroup align="left" style="margin-left:50px;">
-							<p:commandButton value="SAVE" />
+							<p:commandButton value="SAVE" action="#{candidateBean.save}" />
 						</p:toolbarGroup>
-					</p:toolbar>
+					</p:toolbar> -->
 				</p:panel>
 
 			</h:form>
