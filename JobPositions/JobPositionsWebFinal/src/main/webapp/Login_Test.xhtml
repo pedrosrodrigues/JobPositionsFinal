@@ -1,0 +1,34 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Login Test</ui:define>
+	<ui:define name="bar" style="margin-left:20px;">Login Test</ui:define>
+	<ui:define name="body">
+		<div id="loginfrm">
+			<h:form id="frm">
+
+				<p:panel style="border-width: 0px;">
+					<p:messages globalOnly="true" />
+					<h:panelGrid columns="2" header="Login">
+						<p:outputLabel value="Name" for="name" />
+						<p:inputText id="name" required="true"
+							requiredMessage="Enter your name" value="#{testBean.name}" />
+						<p:outputLabel value="Number" for="number"
+							requiredMessage="Enter your number" />
+						<p:inputText id="number" required="true"
+							value="#{testBean.number}" />
+					</h:panelGrid>
+					<h:panelGrid columns="1" style="text-align:right; width:100%;">
+
+						<p:commandButton value="Login"
+							style="margin-top: 10px; width:180px" actionListener="#{testeBean.saveTest}" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
