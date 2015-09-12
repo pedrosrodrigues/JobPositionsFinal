@@ -21,37 +21,46 @@
 						<p:outputLabel value="First Name" for="fname" />
 						<p:outputLabel value="Last Name" for="lname" />
 
-						<p:inputText id="fname" required="true" value="#{candidateBean.firstname}"/>
-						<p:inputText id="lname" required="true" value="#{candidateBean.lastname}"/>
+						<p:inputText id="fname" required="true"
+							value="#{candidateBean.firstname}" />
+						<p:inputText id="lname" required="true"
+							value="#{candidateBean.lastname}" />
 
 						<p:outputLabel value="E-mail" for="email" />
 						<p:outputLabel value="Adress" for="adress" />
 
-						<p:inputText id="email" required="true" value="#{candidateBean.email}"/>
-						<p:inputText id="adress" required="true" value="#{candidateBean.address}"/>
+						<p:inputText id="email" required="true"
+							value="#{candidateBean.email}" />
+						<p:inputText id="adress" required="true"
+							value="#{candidateBean.address}" />
 
 						<p:outputLabel value="City" for="city" />
 						<p:outputLabel value="Country" for="country" />
 
-						<p:inputText id="city" required="true" value="#{candidateBean.city}"/>
-						<p:inputText id="country" required="true" value="#{candidateBean.country}"/>
+						<p:inputText id="city" required="true"
+							value="#{candidateBean.city}" />
+						<p:inputText id="country" required="true"
+							value="#{candidateBean.country}" />
 
 						<p:outputLabel value="Phone" for="phone" />
 						<p:outputLabel value="Mobile" for="mobile" />
 
-						<p:inputText id="phone" value="#{candidateBean.phone}"/>
-						<p:inputText id="mobile" value="#{candidateBean.mobile}"/>
+						<p:inputText id="phone" value="#{candidateBean.phone}" />
+						<p:inputText id="mobile" value="#{candidateBean.mobile}" />
 
 						<p:outputLabel value="Main Course" for="mcourse" />
 						<p:outputLabel value="School" for="school" />
 
-						<p:inputText id="mcourse" required="true" value="#{candidateBean.course}"/>
-						<p:inputText id="school" required="true" value="#{candidateBean.school}"/>
+						<p:inputText id="mcourse" required="true"
+							value="#{candidateBean.course}" />
+						<p:inputText id="school" required="true"
+							value="#{candidateBean.school}" />
 
 						<p:outputLabel value="Password" for="password" />
 						<p:outputLabel value="Confirm Password" for="confpassword" />
 
-						<p:password id="password" required="true" match="confpassword" feedback="true" value="#{candidateBean.password}"/>
+						<p:password id="password" required="true" match="confpassword"
+							feedback="true" value="#{candidateBean.password}" />
 						<p:password id="confpassword" required="true" />
 
 						<p:outputLabel value="Linkedin Profile" for="linkin" />
@@ -59,6 +68,7 @@
 
 						<p:inputText id="linkin" />
 						<p:outputLabel />
+
 
 
 					</h:panelGrid>
@@ -78,12 +88,10 @@
 							style="font-weight: bolder;"></p:outputLabel>
 						<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
 							id="mletter" />
-
+						<p:commandButton value="SAVE"
+							action="#{candidateBean.saveCandidate}" />
 					</h:panelGrid>
 
-	<p:commandButton value="SAVE" action="#{candidateBean.saveCandidate}" />
-					
-					
 				</p:panel>
 
 			</h:form>
