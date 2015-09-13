@@ -47,7 +47,6 @@ public class CandidateBean implements Serializable {
 		ent.setPhone(phone);
 		ent.setSchool(school);
 		ic.saveCandidate(ent);
-		System.out.println(city);
 	}
 
 	public String getFirstname() {
