@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Current Positions</ui:define>
+	<ui:define name="bar">Current Positions</ui:define>
+	<ui:define name="body">
+
+		<center>
+			<h:form id="frm">
+
+				<p:panel id="panel" header="Sign-up form">
+
+					<p:messages globalOnly="true" />
+
+					<h:panelGrid columns="1" cellpadding="5px" cellspacing="5px">
+
+						<p:outputLabel value="Name" />
+						<h:panelGrid columns="2">
+							<p:inputText id="fname" value="#{candidateBean.firstname}"
+								required="true" requiredMessage="Enter First Name">
+								<p:watermark value="First Name" for="fname" />
+							</p:inputText>
+							
+							<p:inputText id="lname" value="#{candidateBean.lastname}"
+								required="true" requiredMessage="Enter Last Name">
+								<p:watermark value="Last Name" for="lname" />
+							</p:inputText>
+							
+							<p:message for="fname" />
+							<p:message for="lname" />
+					
+						<p:outputLabel value="Email" />
+				
+							<p:inputText id="email" value="#{candidateBean.email}"
+							maxlength="100" size="100"  
+								required="true" requiredMessage="Enter Email"
+								validatorMessage="Invalid email format" label="Email">
+								<p:watermark value="First Name" for="fname" />
+								<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									
+							</p:inputText>
+							<p:message for="email" />
+							
+						</h:panelGrid>
+
+					</h:panelGrid>
+					<center>
+						<p:commandButton ajax="false" id="log" value="Submit"
+							action="#{candidateBean.saveJob}"
+							style="height:40px;width:100px;" />
+							 
+
+
+
+					</center>
+				</p:panel>
+
+			</h:form>
+		</center>
+	</ui:define>
+</ui:composition>

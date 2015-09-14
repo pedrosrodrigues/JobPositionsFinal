@@ -22,16 +22,14 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<header> <p:layout fullPage="true">
+	<header> 
+	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="205" collapsible="true">
-			<!-- 		<p:layout>
-				<p:layoutUnit position="west" size="230" > -->
+		<p:layoutUnit position="north" size="215" collapsible="true" resizable="">
 			<div style="float: left;">
 				<h:graphicImage library="images" name="logo-critical.png"
 					style="margin:10px 20px;float:left; width:110px;" />
-				<!-- 			</p:layoutUnit>
-				<p:layoutUnit position="center"  -->
+
 			</div>
 			<div style="float: right;">
 				<a href="https://www.facebook.com/criticalsoftware" target="_blank">
@@ -54,43 +52,13 @@
 
 			<div style="float: bottom, right;">
 				<h:form style="display:inline-block;">
-				
-<!-- 				<p:menubar autoDisplay="false">
-			<p:submenu label="Cadastros">
-				<p:submenu label="Funcionário">
-					<p:menuitem value="Novo" outcome="NovoFuncionario" />
-					<p:menuitem value="Pesquisa" icon="ui-icon-search"
-						url="http://www.google.com.br" />
-				</p:submenu>
-			</p:submenu>
-		
-			<p:submenu label="Perfil">
-				<p:menuitem value="Dados pessoais" />
-				<p:separator/>
-				<p:menuitem value="Endereços" />
-				<p:menuitem value="E-mails" />
-			</p:submenu>
-			
-			<p:menuitem value="Sair" />
-		</p:menubar> -->
 					<p:menubar styleClass="system-menu">
-						<p:submenu label="">
-							<p:submenu label="New" icon="ui-icon-contact">
-								<p:menuitem value="Project" url="#" />
+						<p:submenu  label="Login" outcome="Login">
 
-								<p:menuitem value="Other" url="#" />
-							</p:submenu>
-							<p:menuitem value="Open" url="#" />
-							<p:separator />
-							<p:menuitem value="Quit" url="#" />
 						</p:submenu>
 					</p:menubar>
 				</h:form>
-				<!-- 	<p:menu overlay="true" trigger="img"
-        my="left top"
-        at="bottom left"
-        model="#{notificationMenu.model}" />
-<p:graphicImage id="img" /> -->
+
 			</div>
 			<div style="clear: both" />
 			<div>
