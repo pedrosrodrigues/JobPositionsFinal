@@ -8,16 +8,14 @@
 	<ui:define name="title">Current Positions</ui:define>
 	<ui:define name="bar">Current Positions</ui:define>
 	<ui:define name="body">
-		<div id="loginfrm">
-			<h1 style="text-align: center; color: black;">Edição de Perfil</h1>
+		<div id="super-centered">
 
-			<!-- <p:panelGrid styleClass="elementTable" columns="2" id="panel" style="width:100%"> -->
 
 			<h:form id="frmEdit">
-				<!-- 		<h:panelGrid style="display:block; text-align:center; width:99%" id="newgrid" columns="2"> -->
-				<p:panel style="border-width: 0px;">
-					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="7px"
-						cellspacing="7px">
+				<p:panel id="panel" style="border-width: 0px;">
+					<p:messages globalOnly="true" />
+					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+						cellspacing="4px">
 						<p:outputLabel value="First Name" for="fname" />
 						<p:outputLabel value="Last Name" for="lname" />
 
@@ -68,35 +66,37 @@
 
 						<p:inputText id="linkin" />
 						<p:outputLabel />
-
-
-
 					</h:panelGrid>
-					<h:panelGrid styleClass="super-centered" columns="1"
-						style="width:100%;">
-
+					<div class="out">
+<div class="in">
+<h:panelGrid columns="1">
 						<p:outputLabel value="Upload your CV" for="cv"
 							style="font-weight: bolder;"></p:outputLabel>
 						<p:outputLabel value="PDF format, max size: 1Mb" for="cv"
-							style="font-weight: bolder;"></p:outputLabel>
+							/>
 						<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv"
-							style="width:30%;align:center;" />
+							/>
 
 						<p:outputLabel value="Upload your motivation letter" for="mletter"
 							style="font-weight: bolder;"></p:outputLabel>
 						<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"
-							style="font-weight: bolder;"></p:outputLabel>
+							/>
 						<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
 							id="mletter" />
+						<p:outputLabel value="" />
 						<p:commandButton value="SAVE"
 							action="#{candidateBean.saveCandidate}" />
-					</h:panelGrid>
+							</h:panelGrid>
+					</div>
+					</div>
+
 
 				</p:panel>
 
 			</h:form>
 
-			<!-- 	</p:panelGrid> -->
+
+
 		</div>
 	</ui:define>
 

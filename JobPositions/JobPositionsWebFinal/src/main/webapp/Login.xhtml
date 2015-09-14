@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">Login</ui:define>
-	<ui:define name="bar"><h2>Login</h2></ui:define>
+	<ui:define name="bar">Login</ui:define>
 	<ui:define name="body">
 		<div id="loginfrm">
 		
@@ -23,7 +23,7 @@
 					<p:outputLabel value="Password" for="j_password"
 						requiredMessage="Enter your password" />
 					<p:password id="j_password" required="true" requiredMessage="Enter your password"/>
-						<p:message for="j_email" />
+						<p:message for="j_username" />
 					<p:message for="j_password" />
 						</h:panelGrid>
 						<h:panelGrid columns="1" style="text-align:right; width:100%;" >
