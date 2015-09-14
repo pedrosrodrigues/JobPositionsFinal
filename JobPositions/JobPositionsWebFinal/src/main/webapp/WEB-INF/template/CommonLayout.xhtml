@@ -22,10 +22,10 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<header> 
-	<p:layout fullPage="true">
+	<header> <p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="215" collapsible="true" resizable="">
+		<p:layoutUnit position="north" size="215" collapsible="true"
+			resizable="">
 			<div style="float: left;">
 				<h:graphicImage library="images" name="logo-critical.png"
 					style="margin:10px 20px;float:left; width:110px;" />
@@ -52,11 +52,12 @@
 
 			<div style="float: bottom, right;">
 				<h:form style="display:inline-block;">
-					<p:menubar styleClass="system-menu">
-						<p:submenu  label="Login" outcome="Login">
 
-						</p:submenu>
-					</p:menubar>
+					<p:menuButton icon=" ui-icon-person" value="LOGIN" styleClass="system-menu" >
+						<p:menuitem value="Candidate" action="Login.xhtml?faces-redirect=true" />
+						<p:menuitem value="Worker" action="Login.xhtml?faces-redirect=true"/>
+						</p:menuButton>
+						<p:commandButton 
 				</h:form>
 
 			</div>

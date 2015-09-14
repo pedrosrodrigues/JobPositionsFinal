@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">Current Positions</ui:define>
-	<ui:define name="bar">Current Positions</ui:define>
+	<ui:define name="bar"><h2>Current Positions</h2></ui:define>
 	<ui:define name="body">
 
 		<h:form id="frm">
@@ -59,12 +59,14 @@
 						</p:commandButton>
 					</p:panelGrid>
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					
+					<h:panelGrid columns="2" >
+					<p:button value="Registration"
+							styleClass="ui-confirmdialog-yes"
+							outcome="NewCandidate" />
 						<p:button value="Login" styleClass="ui-confirmdialog-yes"
-							outcome="Login" />
-						<p:button value="Registration"
-							styleClass="ui-confirmdialog-no"
-							outcome="NewUser" />
+							outcome="Login"  />
+					
+							</h:panelGrid>
 					</p:confirmDialog>
 				</p:rowExpansion>
 			</p:dataTable>
