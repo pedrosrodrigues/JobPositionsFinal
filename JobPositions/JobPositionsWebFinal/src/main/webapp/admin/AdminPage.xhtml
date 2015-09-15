@@ -73,118 +73,107 @@
 							<p:confirmDialog global="true" showEffect="fade"
 								hideEffect="fade" />
 						</p:rowExpansion>
+
 					</p:dataTable>
 				</h:form>
 			</p:tab>
 			<p:tab title="New Position">
 
-				<div id="loginfrm" >
-					<h:form id="formRegist">
-				<p:panelGrid id="newgrid" style="background:none;" >
-				<p:row>
-						<p:column><h:outputText value="Name"/></p:column>
-						
-						<p:column>Contraseña:</p:column>
-					</p:row>
-					<p:row>
-						<p:column colspan="2">Name</p:column>
-					</p:row>
-					<p:row>
-						<p:column><p:inputText  id="fname" required="true" size="30"/>
-						<p:watermark value="First Name" for="fname"></p:watermark>
-						</p:column>
-						<p:column><p:inputText  size="30"/></p:column>
-					</p:row>
-					<p:row>
-						<p:column colspan="2">Apellidos:</p:column>
-					</p:row>
-					<p:row>
-						<p:column colspan="2"><p:inputText size="69"/></p:column>
-					</p:row>
-					<p:row>
-						<p:column colspan="2">Dirección:</p:column>
-					</p:row>
-					<p:row>
-						<p:column colspan="2"><p:inputText size="69"/></p:column>
-					</p:row>
-					<p:row>
-						<p:column>Usuario:</p:column>
-						<p:column>Contraseña:</p:column>
-					</p:row>
-					<p:row>
-						<p:column><p:inputText  size="30"/></p:column>
-						<p:column><p:inputText value="#{usuarioBean.usuario.contrasen}" size="30"/></p:column>
-					</p:row>
-					<p:row>
-						<p:column>Fecha de Nac.:</p:column>
-						<p:column>Perfil:</p:column>
-					</p:row>
-					<p:row>
-						<p:column><p:calendar  size="30"/></p:column>
-						<p:column>
-							<p:selectOneMenu >
-								<f:selectItem itemLabel="Seleccionar Perfil" itemValue="#{null}" noSelectionOption="true" />
-								
-							</p:selectOneMenu>
-						</p:column>
-					</p:row>
-				</p:panelGrid>
-				<p:messages id="mensaje" />
-				<p:separator />
-				<h:panelGrid columns="2" cellspacing="5">
-					<p:commandButton value="Guardar"   icon="ui-icon-disk"/>
-					<p:commandButton value="Cerrar" type="button"  icon="ui-icon-close"/>
-				</h:panelGrid>
-	
-		</h:form>
+				<div id="loginfrm">
 
 
+					<!-- <div id="super-centered"> -->
 
-								<!-- <p:panelGrid columns="2">
-									<h:panelGroup>
-										<p:panelGrid columns="2">
-											<p:outputLabel value="Starting date" for="startdate" />
-											<p:outputLabel value="Ending date" for="enddate" />
 
-											<p:calendar id="enddate" required="true" pattern="dd/MM/yyyy"
-												readonlyInput="true" />
-										</p:panelGrid>
-									</h:panelGroup>
-
-									<p:outputLabel value="Company" for="company" />
-									<p:outputLabel value="Technical Area" for="tecarea" />
-
-									<p:inputText id="vacancies" required="true" />
-									<p:inputText id="sla" required="true" />
-
-									<p:selectOneMenu id="company" required="false">
-										<f:selectItem itemLabel="Please select" />
-										<f:selectItem itemLabel="Coimbra" />
-										<f:selectItem itemLabel="Lisbon" />
-										<f:selectItem itemLabel="Mozambique" />
-										<f:selectItem itemLabel="Oporto" />
-										<f:selectItem itemLabel="Southampton" />
-										<f:selectItem itemLabel="Yeovil" />
-									</p:selectOneMenu>
-
-									<p:selectOneMenu id="tecarea" required="true">
-										<f:selectItem itemLabel="Please select" />
-										<f:selectItem
-											itemLabel="Software and Security Product Assurance" />
-										<f:selectItem itemLabel="Net Development" />
-										<f:selectItem itemLabel="Java Development" />
-										<f:selectItem itemLabel="Safety Critical" />
-										<f:selectItem itemLabel="Project Management" />
-										<f:selectItem itemLabel="Integration" />
-									</p:selectOneMenu>
-
-									<p:outputLabel value="Vacancies" for="vacancies" />
+					<h:form id="frmEdit">
+						<p:panel id="panel" style="border-width: 0px;">
+							<p:messages globalOnly="true" />
+							<h:panelGrid styleClass="inputTable" columns="2"
+								cellpadding="4px" cellspacing="4px">
+								<h:panelGrid columns="2">
+									<p:outputLabel value="Date (start)" for="startDate" />
+									<p:outputLabel value="Date (end)" for="endDate" />
+											<p:inputText id="startDate" required="true"
+										value="#{jobPositionBean.creationDate}" style="width:70%;"/>
+									<p:calendar id="endDate" required="true"
+										value="#{jobPositionBean.finalDate}" style="width:70%;" />
+								</h:panelGrid>
+							<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="SLA" for="sla" />
+									<p:outputLabel value="CODE" for="lname1" />
+											<p:inputText id="sla" required="true"
+										value="#{jobPositionBean.sla}" style="width:200%;" />									
+								</h:panelGrid>
 
 
-								</p:panelGrid>
-								</h:panelGroup> -->
+								<p:outputLabel value="Title" for="title" />
+								<p:outputLabel value="Adress" for="adress" />
+
+								<p:inputText id="email" required="true"
+									value="#{candidateBean.email}" />
+								<p:inputText id="adress" required="true"
+									value="#{candidateBean.address}" />
+
+								<p:outputLabel value="City" for="city" />
+								<p:outputLabel value="Country" for="country" />
+
+								<p:inputText id="city" required="true"
+									value="#{candidateBean.city}" />
+								<p:inputText id="country" required="true"
+									value="#{candidateBean.country}" />
+
+								<p:outputLabel value="Phone" for="phone" />
+								<p:outputLabel value="Mobile" for="mobile" />
+
+								<p:inputText id="phone" value="#{candidateBean.phone}" />
+								<p:inputText id="mobile" value="#{candidateBean.mobile}" />
+
+								<p:outputLabel value="Main Course" for="mcourse" />
+								<p:outputLabel value="School" for="school" />
+
+								<p:inputText id="mcourse" required="true"
+									value="#{candidateBean.course}" />
+								<p:inputText id="school" required="true"
+									value="#{candidateBean.school}" />
+
+								<p:outputLabel value="Password" for="password" />
+								<p:outputLabel value="Confirm Password" for="confpassword" />
+
+								<p:password id="password" required="true" match="confpassword"
+									feedback="true" value="#{candidateBean.password}" />
+								<p:password id="confpassword" required="true" />
+
+								<p:outputLabel value="Linkedin Profile" for="linkin" />
+								<p:outputLabel />
+
+								<p:inputText id="linkin" />
+								<p:outputLabel />
+							</h:panelGrid>
+							<div class="out">
+								<div class="in">
+									<h:panelGrid columns="1">
+										<p:outputLabel value="Upload your CV" for="cv"
+											style="font-weight: bolder;"></p:outputLabel>
+										<p:outputLabel value="PDF format, max size: 1Mb" for="cv" />
+										<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
+
+										<p:outputLabel value="Upload your motivation letter"
+											for="mletter" style="font-weight: bolder;"></p:outputLabel>
+										<p:outputLabel value="PDF format, max size: 1Mb" for="mletter" />
+										<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
+											id="mletter" />
+										<p:outputLabel value="" />
+										<p:commandButton value="SAVE"
+											action="#{candidateBean.saveCandidate}" />
+									</h:panelGrid>
+								</div>
 							</div>
+
+
+						</p:panel>
+
+					</h:form>
+				</div>
 			</p:tab>
 		</p:tabView>
 

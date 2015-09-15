@@ -120,6 +120,8 @@ public class CandidateEntity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 
 	// //CASCADE PARA QDO GRAVARMOS UM CLIENTE GRAVRARMOS TB AS SUAS
 	// CANDIDATURAS//
