@@ -34,7 +34,8 @@ public class JobEntity implements Serializable {
 	private String positionCode;
 	private String vacancies;
 	private String responsable;
-	private JobStatus jobStatus;
+	private String jobStatus;
+//	private JobStatus jobStatus;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
 	@Id
@@ -130,15 +131,17 @@ public class JobEntity implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length=20)
-	public JobStatus getJobStatus() {
-		return jobStatus;
-	}
-
-	public void setJobStatus(JobStatus jobStatus) {
-		this.jobStatus = jobStatus;
-	}
+//	@Enumerated(EnumType.STRING)
+//	@Column(nullable = false, length=20)
+//	public JobStatus getJobStatus() {
+//		return jobStatus;
+//	}
+//
+//	public void setJobStatus(JobStatus jobStatus) {
+//		this.jobStatus = jobStatus;
+//	}
+	
+	
 	
 	@Column(nullable = false, length=20)
 	public String getVacancies() {
@@ -190,6 +193,14 @@ public class JobEntity implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(String jobStatus) {
+		this.jobStatus = jobStatus;
 	}
 
 

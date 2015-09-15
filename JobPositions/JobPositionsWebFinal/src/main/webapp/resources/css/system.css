@@ -176,7 +176,6 @@ a:link {
 	display: table;
 	padding: 15px;
 	margin: 0 auto;
-	cell
 }
 
 .inputTable .ui-panelgrid .ui-panelgrid-cell {
@@ -204,6 +203,39 @@ a:link {
 	font-weight: normal;
 	background: #D9D9D9;
 }
+
+.inputTable2 {
+	display: table;
+/* 	padding: 15px; */
+	margin: 0 auto;
+}
+
+.inputTable2 .ui-panelgrid .ui-panelgrid-cell {
+	border-width: 0px !important;
+	border-style: none;
+/* 	padding: 4px 10px; */
+	background: #ffffff;
+	width: 180px;
+	height: 20px;
+}
+
+.inputTable2 .ui-widget-content {
+	border-width: 0px !important;
+	border: 0px;
+	background: #ffffff;
+	color: #4f4f4f;
+	text-align: center;
+}
+
+.inputTable2 .ui-inputfield {
+	width: 180px;
+	margin: 0;
+	outline: medium none;
+	padding: 4px;
+	font-weight: normal;
+	background: #D9D9D9;
+}
+
 
 #loginfrm {
 	display: table;

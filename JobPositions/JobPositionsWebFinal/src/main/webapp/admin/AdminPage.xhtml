@@ -90,21 +90,25 @@
 							<p:messages globalOnly="true" />
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
-								<h:panelGrid columns="2">
+								<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="Date (start)" for="startDate" />
 									<p:outputLabel value="Date (end)" for="endDate" />
-											<p:calendar id="startDate" required="true"
-										value="#{jobPositionBean.creationDate}" style="width:100px;"/>
+
+									<p:calendar id="startDate" required="true"
+										value="#{jobPositionBean.creationDate}" style="width:10%;"
+										size="10" pattern="dd/MM/yyyy" />
 									<p:calendar id="endDate" required="true"
-										value="#{jobPositionBean.finalDate}" style="width:100px;" />
+										value="#{jobPositionBean.finalDate}" style="width:10%;"
+										size="10" pattern="dd/MM/yyyy" />
 								</h:panelGrid>
-							<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
+								
+								<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="SLA" for="sla" />
 									<p:outputLabel value="CODE" for="jobposition" />
-											<p:inputText id="sla" required="true"
-										value="#{jobPositionBean.sla}" style="width:100%;" />	
-												<p:inputText id="jobposition" required="true"
-										value="#{jobPositionBean.positionCode}" style="width:100%;" />								
+									<p:inputText id="sla" required="true"
+										value="#{jobPositionBean.sla}" style="width:100%;" />
+									<p:inputText id="jobposition" required="true"
+										value="#{jobPositionBean.positionCode}" style="width:100%;" />
 								</h:panelGrid>
 
 
@@ -131,13 +135,13 @@
 									value="#{jobPositionBean.technicalArea}" />
 
 								<p:outputLabel value="Company" for="company" />
-					<p:outputLabel value="Job description" for="description" />
+								<p:outputLabel value="Job description" for="description" />
 
-								<p:inputText id="company" required="true" value="#{jobPositionBean.company}" />
-			<p:outputLabel id="description" value="#{jobPositionBean.jobDescription}"/>
+								<p:inputText id="company" required="true"
+									value="#{jobPositionBean.company}" />
+								<p:inputText id="description"
+									value="#{jobPositionBean.jobDescription}" />
 
-
-							
 							</h:panelGrid>
 							<div class="out">
 								<div class="in">

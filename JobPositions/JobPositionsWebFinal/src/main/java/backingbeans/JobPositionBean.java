@@ -31,8 +31,25 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+	public IJobPosition getIj() {
+		return ij;
+	}
+
+	public void setIj(IJobPosition ij) {
+		this.ij = ij;
+	}
+
+	public String getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(String jobStatus) {
+		this.jobStatus = jobStatus;
+	}
+
 	private String responsable;
-	private JobStatus jobStatus;
+	private String jobStatus;
+//	private JobStatus jobStatus;
 
 	public void saveJobPosition() {
 		JobEntity ent = new JobEntity();
@@ -48,6 +65,7 @@ public class JobPositionBean implements Serializable {
 		ent.setTitle(title);
 		ent.setVacancies(vacancies);
 		ent.setResponsable(responsable);
+		System.out.println("Job position criada");
 		ij.saveJob(ent);
 	}
 
@@ -123,13 +141,13 @@ public class JobPositionBean implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-	public JobStatus getJobStatus() {
-		return jobStatus;
-	}
-
-	public void setJobStatus(JobStatus jobStatus) {
-		this.jobStatus = jobStatus;
-	}
+//	public JobStatus getJobStatus() {
+//		return jobStatus;
+//	}
+//
+//	public void setJobStatus(JobStatus jobStatus) {
+//		this.jobStatus = jobStatus;
+//	}
 
 	public String getVacancies() {
 		return vacancies;
