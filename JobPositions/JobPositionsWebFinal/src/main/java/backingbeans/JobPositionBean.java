@@ -31,6 +31,7 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+	private String responsable;
 	private JobStatus jobStatus;
 
 	public void saveJobPosition() {
@@ -46,6 +47,7 @@ public class JobPositionBean implements Serializable {
 		ent.setTechnicalArea(technicalArea);
 		ent.setTitle(title);
 		ent.setVacancies(vacancies);
+		ent.setResponsable(responsable);
 		ij.saveJob(ent);
 	}
 
@@ -135,6 +137,14 @@ public class JobPositionBean implements Serializable {
 
 	public void setVacancies(String vacancies) {
 		this.vacancies = vacancies;
+	}
+
+	public String getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
 	}
 	
 	

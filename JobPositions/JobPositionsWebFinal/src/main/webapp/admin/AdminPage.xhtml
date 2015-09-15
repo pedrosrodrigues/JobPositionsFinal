@@ -93,16 +93,18 @@
 								<h:panelGrid columns="2">
 									<p:outputLabel value="Date (start)" for="startDate" />
 									<p:outputLabel value="Date (end)" for="endDate" />
-											<p:inputText id="startDate" required="true"
-										value="#{jobPositionBean.creationDate}" style="width:70%;"/>
+											<p:calendar id="startDate" required="true"
+										value="#{jobPositionBean.creationDate}" style="width:100px;"/>
 									<p:calendar id="endDate" required="true"
-										value="#{jobPositionBean.finalDate}" style="width:70%;" />
+										value="#{jobPositionBean.finalDate}" style="width:100px;" />
 								</h:panelGrid>
 							<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="SLA" for="sla" />
-									<p:outputLabel value="CODE" for="lname1" />
+									<p:outputLabel value="CODE" for="jobposition" />
 											<p:inputText id="sla" required="true"
-										value="#{jobPositionBean.sla}" style="width:200%;" />									
+										value="#{jobPositionBean.sla}" style="width:100%;" />	
+												<p:inputText id="jobposition" required="true"
+										value="#{jobPositionBean.positionCode}" style="width:100%;" />								
 								</h:panelGrid>
 
 
@@ -114,14 +116,6 @@
 								<p:inputText id="location" required="true"
 									value="#{jobPositionBean.location}" />
 
-								<p:outputLabel value="City" for="city" />
-								<p:outputLabel value="Country" for="country" />
-
-								<p:inputText id="city" required="true"
-									value="#{candidateBean.city}" />
-								<p:inputText id="country" required="true"
-									value="#{candidateBean.country}" />
-
 								<p:outputLabel value="Status" for="status" />
 								<p:outputLabel value="Vacancies" for="vacancies" />
 
@@ -132,39 +126,24 @@
 								<p:outputLabel value="Technical Area" for="tarea" />
 
 								<p:inputText id="responsable" required="true"
-									value="#{jobPositionBean.}" />
+									value="#{jobPositionBean.responsable}" />
 								<p:inputText id="tarea" required="true"
-									value="#{candidateBean.school}" />
+									value="#{jobPositionBean.technicalArea}" />
 
-								<p:outputLabel value="Password" for="password" />
-								<p:outputLabel value="Confirm Password" for="confpassword" />
+								<p:outputLabel value="Company" for="company" />
+					<p:outputLabel value="Job description" for="description" />
 
-								<p:password id="password" required="true" match="confpassword"
-									feedback="true" value="#{candidateBean.password}" />
-								<p:password id="confpassword" required="true" />
+								<p:inputText id="company" required="true" value="#{jobPositionBean.company}" />
+			<p:outputLabel id="description" value="#{jobPositionBean.jobDescription}"/>
 
-								<p:outputLabel value="Linkedin Profile" for="linkin" />
-								<p:outputLabel />
 
-								<p:inputText id="linkin" />
-								<p:outputLabel />
+							
 							</h:panelGrid>
 							<div class="out">
 								<div class="in">
 									<h:panelGrid columns="1">
-										<p:outputLabel value="Upload your CV" for="cv"
-											style="font-weight: bolder;"></p:outputLabel>
-										<p:outputLabel value="PDF format, max size: 1Mb" for="cv" />
-										<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
-
-										<p:outputLabel value="Upload your motivation letter"
-											for="mletter" style="font-weight: bolder;"></p:outputLabel>
-										<p:outputLabel value="PDF format, max size: 1Mb" for="mletter" />
-										<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
-											id="mletter" />
-										<p:outputLabel value="" />
 										<p:commandButton value="SAVE"
-											action="#{candidateBean.saveCandidate}" />
+											action="#{jobPositionBean.saveJobPosition}" />
 									</h:panelGrid>
 								</div>
 							</div>

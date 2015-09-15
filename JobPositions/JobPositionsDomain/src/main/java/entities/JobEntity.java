@@ -33,6 +33,7 @@ public class JobEntity implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+	private String responsable;
 	private JobStatus jobStatus;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
@@ -147,6 +148,16 @@ public class JobEntity implements Serializable {
 	public void setVacancies(String vacancies) {
 		this.vacancies = vacancies;
 	}
+	
+	@Column(nullable = false, length=20)
+	public String getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+
 
 //	public List<CandidateEntity> getCandidates() {
 //		return candidates;
@@ -180,6 +191,7 @@ public class JobEntity implements Serializable {
 			return false;
 		return true;
 	}
+
 
 	
 	
