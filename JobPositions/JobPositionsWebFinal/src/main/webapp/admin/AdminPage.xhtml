@@ -107,12 +107,12 @@
 
 
 								<p:outputLabel value="Title" for="title" />
-								<p:outputLabel value="Adress" for="adress" />
+								<p:outputLabel value="Location" for="location" />
 
-								<p:inputText id="email" required="true"
-									value="#{candidateBean.email}" />
-								<p:inputText id="adress" required="true"
-									value="#{candidateBean.address}" />
+								<p:inputText id="title" required="true"
+									value="#{jobPositionBean.title}" />
+								<p:inputText id="location" required="true"
+									value="#{jobPositionBean.location}" />
 
 								<p:outputLabel value="City" for="city" />
 								<p:outputLabel value="Country" for="country" />
@@ -122,11 +122,11 @@
 								<p:inputText id="country" required="true"
 									value="#{candidateBean.country}" />
 
-								<p:outputLabel value="Phone" for="phone" />
-								<p:outputLabel value="Mobile" for="mobile" />
+								<p:outputLabel value="Status" for="status" />
+								<p:outputLabel value="Vacancies" for="vacancies" />
 
-								<p:inputText id="phone" value="#{candidateBean.phone}" />
-								<p:inputText id="mobile" value="#{candidateBean.mobile}" />
+								<p:inputText id="status" value="#{jobPositionBean.jobStatus}" />
+								<p:inputText id="vacancies" value="#{jobPositionBean.v}" />
 
 								<p:outputLabel value="Main Course" for="mcourse" />
 								<p:outputLabel value="School" for="school" />
