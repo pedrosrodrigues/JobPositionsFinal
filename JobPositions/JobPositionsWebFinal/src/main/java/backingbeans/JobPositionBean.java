@@ -45,6 +45,7 @@ public class JobPositionBean implements Serializable {
 		ent.setSla(sla);
 		ent.setTechnicalArea(technicalArea);
 		ent.setTitle(title);
+		ent.setVacancies(vacancies);
 		ij.saveJob(ent);
 	}
 
