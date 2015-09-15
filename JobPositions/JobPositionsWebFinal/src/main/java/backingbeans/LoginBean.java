@@ -1,5 +1,6 @@
 package backingbeans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @SessionScoped
 @Named
@@ -33,15 +35,22 @@ public class LoginBean implements Serializable {
 		return "/simpleuser/UserPage.xhtml?faces-redirect=true";
 	}
 
-	public String logout() {
+	public void logout() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
+		HttpServletResponse response = (HttpServletResponse) context
+				.getExternalContext().getResponse();
 		try {
 			request.logout();
-			return "Home.xhtml?faces-redirect=true";
+			request.getSession().invalidate();
+			response.sendRedirect(request.getContextPath() + "/Home.xhtml");
 		} catch (ServletException e) {
-			return "/simpleuser/UserPage.xhtml?faces-redirect=true";
+			// log.error("Logout failure");
+			// context.addMessage(null, new FacesMessage("Logout falhou."));
+		} catch (IOException e) {
+			// log.error("Redirect failure");
+			// context.addMessage(null, new FacesMessage("Logout falhou."));
 		}
 	}
 

@@ -22,8 +22,7 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<header> 
-	<p:layout fullPage="true">
+	<header> <p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="195" collapsible="true"
 			resizable="false">
@@ -31,7 +30,7 @@
 				<h:graphicImage library="images" name="logo-critical.png"
 					style="margin:8px 20px;float:left; width:110px;" />
 			</div>
-			
+
 			<div style="float: right;">
 				<a href="https://www.facebook.com/criticalsoftware" target="_blank">
 					<p:graphicImage styleClass="social-img" library="images"
@@ -54,12 +53,8 @@
 			<div style="float: bottom, right;">
 				<h:form style="display:inline-block;">
 
-					<p:menuButton icon=" ui-icon-person" value="LOGIN" styleClass="system-menu" >
-						<p:menuitem value="Candidate" action="Login.xhtml?faces-redirect=true" />
-						<p:menuitem value="Worker" action="Login.xhtml?faces-redirect=true"/>
-						</p:menuButton>
-						<p:commandButton value="Home" action="Home.xhtml?faces-redirect=true" />
-						<p:commandButton value="Logout" action="#{loginBean.logout}" />
+					
+					<p:commandButton value="Logout" actionListener="#{loginBean.logout}" ajax="false" />
 				</h:form>
 
 			</div>
