@@ -12,6 +12,7 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
+
 					<p:dataTable value="#{searchPositionsBean.positions}"
 						var="position" rows="10" emptyMessage="No records found."
 						paginator="true" paginatorPosition="bottom"
@@ -128,7 +129,9 @@
 				</p:tab>
 
 			<p:tab title="Edit my profile">
-			<div id="loginfrm" >		
+			<div id="loginfrm" >
+			<h:form id="frmEdit">
+			
 				<h:panelGrid style="display:block; text-align:center; width:99%" id="newgrid" columns="2">
 
 					<p:outputLabel value="First Name" for="fname" />

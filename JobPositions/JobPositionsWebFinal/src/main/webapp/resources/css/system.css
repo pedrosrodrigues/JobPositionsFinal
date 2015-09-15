@@ -37,22 +37,11 @@ footer {
 h1 {
 	font-size: 24px;
 	font-weight: 500;
-	padding: 1px 0px;
+	padding: 10px 0px;
 	margin: 0px;
 	color: white;
 	text-transform: uppercase;
-	margin-left: 15px;
-}
-
-h2 {
-	font-size: 20px;
-	font-weight: 500;
-	padding: 1px 0px;
-	margin: 0px;
-	color: white;
-	text-transform: uppercase;
-	margin-left: 15px;
-}
+	}
 
 #login-dialog {
 	width: 290px;
@@ -172,12 +161,12 @@ a:link {
 
 )
 ;
+
 }
 .inputTable {
 	display: table;
 	padding: 15px;
 	margin: 0 auto;
-	cell
 }
 
 .inputTable .ui-panelgrid .ui-panelgrid-cell {
@@ -223,44 +212,16 @@ a:link {
 	text-align: right;
 }
 
-#formReg td {
-	background: none;
-}
-
-#super-centered {
-/* 	position: absolute;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	vertical-align: middle;
-	z-index: 9999; */
-margin: 0 auto;
-  width: 1000px;
-/*   background: black;
-  padding: 20px; */
-  color: white;
+#formReg td{
+	background:none;
 	
 }
 
-.ui-tabs .ui-tabs-nav {
-	background-color:white;
-}
-
-.ui-fileupload-buttonbar .ui-widget-header .ui-corner-top{
-	margin: 0 auto;
-  width: 1000px;
-/*   background: black;
-  padding: 20px; */
-  color: white;
-	
-}
-
-.out{
-	width:100%;
-	text-align:center;
-}
-
-.in{
-	display:inline-block;
-	width:50%;
+.super-centered {
+    position:absolute; 
+    width:100%;
+    height:100%;
+    text-align:center; 
+    vertical-align:middle;
+    z-index: 9999;
 }
