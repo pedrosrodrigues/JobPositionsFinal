@@ -25,11 +25,11 @@
 	<header> 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="215" collapsible="true" resizable="">
+		<p:layoutUnit position="north" size="195" collapsible="true"
+			resizable="false">
 			<div style="float: left;">
 				<h:graphicImage library="images" name="logo-critical.png"
-					style="margin:10px 20px;float:left; width:110px;" />
-
+					style="margin:8px 20px;float:left; width:110px;" />
 			</div>
 			
 			<div style="float: right;">
@@ -53,18 +53,19 @@
 
 			<div style="float: bottom, right;">
 				<h:form style="display:inline-block;">
-					<p:menubar styleClass="system-menu">
-						<p:submenu  label="Login" outcome="Login">
 
-						</p:submenu>
-					</p:menubar>
+					<p:menuButton icon=" ui-icon-person" value="LOGIN" styleClass="system-menu" >
+						<p:menuitem value="Candidate" action="Login.xhtml?faces-redirect=true" />
+						<p:menuitem value="Worker" action="Login.xhtml?faces-redirect=true"/>
+						</p:menuButton>
+						<p:commandButton value="Home" action="Home.xhtml?faces-redirect=true" />
 				</h:form>
 
 			</div>
 			<div style="clear: both" />
 			<div>
 				<p:toolbar
-					style="background:#a50d12; border-radius:0px;height:35px; padding-top:10px;">
+					style="background:#a50d12; border-radius:0px;height:35px; padding-top:10px; margin:0;">
 					<p:toolbarGroup align="left">
 						<h1>
 							<ui:insert name="bar">JOB POSITIONS</ui:insert>
