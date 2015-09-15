@@ -32,7 +32,7 @@ public class JobEntity implements Serializable {
 	private String location;
 	private String title;
 	private String positionCode;
-//	private String vacancies;
+	private String vacancies;
 	private JobStatus jobStatus;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
@@ -138,6 +138,15 @@ public class JobEntity implements Serializable {
 	public void setJobStatus(JobStatus jobStatus) {
 		this.jobStatus = jobStatus;
 	}
+	
+	@Column(nullable = false, length=20)
+	public String getVacancies() {
+		return vacancies;
+	}
+
+	public void setVacancies(String vacancies) {
+		this.vacancies = vacancies;
+	}
 
 //	public List<CandidateEntity> getCandidates() {
 //		return candidates;
@@ -172,12 +181,7 @@ public class JobEntity implements Serializable {
 		return true;
 	}
 
-	public String getVacancies() {
-		return vacancies;
-	}
-
-	public void setVacancies(String vacancies) {
-		this.vacancies = vacancies;
-	}
+	
+	
 
 }
