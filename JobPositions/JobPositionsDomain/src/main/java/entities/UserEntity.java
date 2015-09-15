@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 import enumeration.RoleEntity;
 
+@Entity
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
