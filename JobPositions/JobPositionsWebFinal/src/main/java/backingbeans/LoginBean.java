@@ -28,9 +28,9 @@ public class LoginBean implements Serializable {
 		try {
 			request.login(email, password);
 		} catch (ServletException e) {
-			return "LoginError.xhtml";
+			return "LoginError.xhtml?faces-redirect=true";
 		}
-		return "/simpleuser/UserPage.xhtml";
+		return "/simpleuser/UserPage.xhtml?faces-redirect=true";
 	}
 
 	public String logout() {
@@ -41,7 +41,23 @@ public class LoginBean implements Serializable {
 			request.logout();
 			return "Home.xhtml?faces-redirect=true";
 		} catch (ServletException e) {
-			return "/simpleuser/UserPage.xhtml";
+			return "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		}
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
