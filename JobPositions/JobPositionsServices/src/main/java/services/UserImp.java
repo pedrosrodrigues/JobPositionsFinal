@@ -19,4 +19,11 @@ public class UserImp implements IUser {
 		return ud.findEmail(email);
 	}
 
+	@Override
+	public void saveUser(UserEntity uent) {
+		// TODO Auto-generated method stub
+		ud.save(uent);
+
+	}
+
 }
