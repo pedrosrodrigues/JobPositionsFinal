@@ -3,7 +3,9 @@ package backingbeans;
 import interfaces.IJobPosition;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -31,6 +33,7 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
 	
 	public IJobPosition getIj() {
 		return ij;
@@ -165,6 +168,15 @@ public class JobPositionBean implements Serializable {
 	public void setResponsable(String responsable) {
 		this.responsable = responsable;
 	}
+
+	public List<JobEntity> getJobpositions() {
+		jobpositions=ij.findAll();
+		return jobpositions;
+	}
+
+	public void setJobpositions(List<JobEntity> jobpositions) {
+		this.jobpositions = jobpositions;
+	}
 	
-	
+
 }

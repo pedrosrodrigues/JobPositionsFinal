@@ -12,16 +12,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import enumeration.JobStatus;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "JobEntity.findAll", query="SELECT j FROM JobEntity j")})
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	public static final String FIND_ALL = "JobEntity.findAll";
+	
 	private Long id;
 	private Date creationDate;
 	private Date finalDate;

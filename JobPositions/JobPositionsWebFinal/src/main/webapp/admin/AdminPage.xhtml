@@ -15,7 +15,7 @@
 					<p:messages />
 
 					<p:dataTable value="#{jobPositionBean.jobpositions}"
-						var="position" rows="10" emptyMessage="No records found."
+						var="position" rows="8" emptyMessage="No records found."
 						paginator="true" paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -24,23 +24,23 @@
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
 							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-							<h:outputText value="#{jobPositionBean.technicalArea}" />
+						<h:outputText value="#{position.title}"/>
 						</p:column>
 						<p:column headerText="Location"
 							style="text-align: center; width:150px">
-							<h:outputText value="#{jobPositionBean.location}" />
+							<h:outputText value="#{position.location}" />
 						</p:column>
 						<p:column headerText="Date"
 							style="text-align: center; width:150px">
-							<h:outputText value="#{jobPositionBean.finalDate}" />
+							<h:outputText value="#{position.finalDate}" />
 						</p:column>
-						<p:column headerText="State"
+					<!-- 	<p:column headerText="State"
 							style="text-align: center; width:150px">
 							<h:outputText value="Open" />
-						</p:column>
+						</p:column> -->
 						<p:column headerText="# Candidates"
 							style="text-align: center; width:150px">
-							<h:outputText value="#{jobPositionBean.vacancies}" />
+							<h:outputText value="#{position.vacancies}" />
 						</p:column>
 						<p:column style="width:16px">
 							<p:rowToggler />
@@ -72,7 +72,7 @@
 
 							<p:panelGrid columns="1" style="width:100%;">
 								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-								<h:outputText value="Description" />
+							<h:outputText value="#{position.jobDescription}" /> 
 							</p:panelGrid>
 						</p:rowExpansion>
 					</p:dataTable>

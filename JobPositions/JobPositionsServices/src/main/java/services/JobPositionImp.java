@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import interfaces.IJobPosition;
 
 import javax.ejb.Stateless;
@@ -22,6 +24,11 @@ public class JobPositionImp implements IJobPosition{
 		// se puder grava na bd
 
 		job.save(jobentity);
+	}
+
+	@Override
+	public List<JobEntity> findAll() {		
+		return job.findAll();
 	}
 
 }

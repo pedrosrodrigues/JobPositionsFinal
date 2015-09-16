@@ -1,8 +1,11 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.JobEntity;
 
@@ -18,4 +21,9 @@ public class JobDAO {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<JobEntity> findAll(){
+		Query q = em.createNamedQuery(JobEntity.FIND_ALL);
+		return q.getResultList();
+	}
 }
