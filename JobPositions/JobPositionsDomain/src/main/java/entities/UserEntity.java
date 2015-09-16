@@ -9,10 +9,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 import enumeration.RoleEntity;
 
 @Entity
+@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,47 +23,52 @@ public class UserEntity implements Serializable {
 	private String email;
 	private String password;
 	private RoleEntity role;
-	
+
+	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(nullable=false)
+	@Column(nullable = false)
 	public RoleEntity getRole() {
 		return role;
 	}
-	
+
 	public void setRole(RoleEntity role) {
 		this.role = role;
 	}
@@ -90,8 +97,5 @@ public class UserEntity implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

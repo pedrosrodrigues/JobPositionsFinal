@@ -8,6 +8,7 @@ import java.text.ParseException;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,9 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 
+	@Inject
+	private SystemUser su;
+
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -33,6 +37,8 @@ public class LoginBean implements Serializable {
 		} catch (ServletException e) {
 			return "LoginError.xhtml?faces-redirect=true";
 		}
+		su.searchUser(email);
+		su.setLogIn(true);
 		return "/simpleuser/UserPage.xhtml?faces-redirect=true";
 	}
 
@@ -46,6 +52,8 @@ public class LoginBean implements Serializable {
 			request.logout();
 			request.getSession().invalidate();
 			response.sendRedirect(request.getContextPath() + "/Home.xhtml");
+			su.setUserlogado(null);
+			su.setLogIn(true);
 		} catch (ServletException e) {
 			// log.error("Logout failure");
 			// context.addMessage(null, new FacesMessage("Logout falhou."));

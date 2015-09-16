@@ -3,6 +3,7 @@ package dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.UserEntity;
 
@@ -15,5 +16,11 @@ public class UserDAO {
 	public void save(UserEntity ent) {
 		em.persist(ent);
 
+	}
+
+	public UserEntity findEmail(String email) {
+		Query q = em.createNamedQuery(UserEntity.FIND_BY_EMAIL);
+		q.setParameter("email", email);
+		return (UserEntity) q.getSingleResult();
 	}
 }

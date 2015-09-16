@@ -53,8 +53,9 @@
 			<div style="float: bottom, right;">
 				<h:form style="display:inline-block;">
 
-					
-					<p:commandButton value="Logout" actionListener="#{loginBean.logout}" ajax="false" />
+					<p:button value="Login" outcome="Login.xhtml" rendered="#{!systemUser.logIn}" />
+					<p:button value="Home" outcome="Home.xhtml" rendered="#{!systemUser.logIn}" />
+					<p:commandButton value="Logout" actionListener="#{loginBean.logout}" ajax="false" rendered="#{systemUser.logIn}"/>
 				</h:form>
 
 			</div>
