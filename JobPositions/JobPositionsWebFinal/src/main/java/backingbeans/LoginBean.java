@@ -29,6 +29,7 @@ public class LoginBean implements Serializable {
 				.getExternalContext().getRequest();
 		try {
 			request.login(email, password);
+
 		} catch (ServletException e) {
 			return "LoginError.xhtml?faces-redirect=true";
 		}
