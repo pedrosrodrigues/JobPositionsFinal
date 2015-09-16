@@ -31,6 +31,7 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+	
 	public IJobPosition getIj() {
 		return ij;
 	}

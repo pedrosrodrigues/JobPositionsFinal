@@ -20,6 +20,9 @@ public class SearchPositionsBean implements Serializable {
 		}
 
 	}
+	
+	
+	
 
 	public String getNome() {
 		return nome;

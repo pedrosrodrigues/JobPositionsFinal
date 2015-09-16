@@ -13,10 +13,13 @@
 			<p:tab title="Job Positions">
 				<h:form id="frm">
 					<p:messages />
+
 					<p:dataTable value="#{searchPositionsBean.positions}"
 						var="position" rows="10" emptyMessage="No records found."
 						paginator="true" paginatorPosition="bottom"
-						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						id="jobstable">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
@@ -37,10 +40,14 @@
 						</p:column>
 						<p:column headerText="# Candidates"
 							style="text-align: center; width:150px">
-							<h:outputText value="37" />
+							<h:outputText value="#{jobPositionBean.vacancies}" />
 						</p:column>
 						<p:column style="width:16px">
 							<p:rowToggler />
+						</p:column>
+						<p:column headerText="" style="text-align: center; width:40px;">
+							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()"
+								ajax="false" />
 						</p:column>
 
 						<p:rowExpansion id="rowselection">
@@ -66,10 +73,19 @@
 								<h:outputText value="Description" />
 							</p:panelGrid>
 						</p:rowExpansion>
-
 					</p:dataTable>
+
+					<p:confirmDialog header="Delete position"
+						message="Are you sure you want to delete the select element?"
+						widgetVar="confirm">
+						<p:commandButton valeu="OK" update="jobstable"
+							oncomplete="confirm.hide()" />
+						<p:commandButton valeu="Cancel"
+							onclick="confirm.hide();return false;" />
+					</p:confirmDialog>
 				</h:form>
 			</p:tab>
+
 			<p:tab title="New Position">
 
 				<div id="loginfrm">
