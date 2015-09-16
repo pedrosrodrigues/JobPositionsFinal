@@ -12,4 +12,6 @@ public interface IJobPosition {
 	public void saveJob(JobEntity ent);
 
 	public List<JobEntity> findAll();
+
+
 }

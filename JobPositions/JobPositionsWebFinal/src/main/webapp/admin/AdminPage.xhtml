@@ -12,29 +12,30 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-					<p:messages />
+					<p:messages autoUpdate="true" closable="true" />
 
-					<p:dataTable value="#{jobPositionBean.jobpositions}"
-						var="position" rows="8" emptyMessage="No records found."
-						paginator="true" paginatorPosition="bottom"
+					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
+						rows="8" emptyMessage="No records found." paginator="true"
+						paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						id="jobstable">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
-							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-						<h:outputText value="#{position.title}"/>
+							sortBy="#{position.title}">
+							<h:outputText value="#{position.title}" />
 						</p:column>
 						<p:column headerText="Location"
-							style="text-align: center; width:150px">
+							style="text-align: center; width:150px"
+							sortBy="#{position.location}">
 							<h:outputText value="#{position.location}" />
 						</p:column>
 						<p:column headerText="Date"
 							style="text-align: center; width:150px">
 							<h:outputText value="#{position.finalDate}" />
 						</p:column>
-					<!-- 	<p:column headerText="State"
+						<!-- 	<p:column headerText="State"
 							style="text-align: center; width:150px">
 							<h:outputText value="Open" />
 						</p:column> -->
@@ -46,10 +47,12 @@
 							<p:rowToggler />
 						</p:column>
 						<p:column headerText="" style="text-align: center; width:40px;">
-							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()"
-								ajax="false" >
-							 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-								</p:commandButton>
+							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
+								<!-- 		<p:confirm header="Confirmation" message="Are you sure?"
+									icon="ui-icon-alert" /> -->
+								<f:setPropertyActionListener
+									target="#{jobPositionBean.selectPosition}" value="#{position}" />
+							</p:commandButton>
 						</p:column>
 
 						<p:rowExpansion id="rowselection">
@@ -72,25 +75,20 @@
 
 							<p:panelGrid columns="1" style="width:100%;">
 								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-							<h:outputText value="#{position.jobDescription}" /> 
+								<h:outputText value="#{position.jobDescription}" />
 							</p:panelGrid>
 						</p:rowExpansion>
 					</p:dataTable>
-					
-					
-<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-    </p:confirmDialog>
 
-					<!-- <p:confirmDialog header="Delete position"
+					<p:confirmDialog header="Delete position"
 						message="Are you sure you want to delete the select element?"
 						widgetVar="confirm">
 						<p:commandButton valeu="OK" update="jobstable"
-							oncomplete="confirm.hide()" />
+							oncomplete="confirm.hide()"
+							action="#{jobPositionBean.removePosition}" />
 						<p:commandButton valeu="Cancel"
 							onclick="confirm.hide();return false;" />
-					</p:confirmDialog> -->
+					</p:confirmDialog>
 				</h:form>
 			</p:tab>
 
@@ -103,6 +101,7 @@
 
 
 					<h:form id="frmEdit">
+						<p:messages autoUpdate="true" closable="true" />
 
 						<p:panel id="panel" style="border-width: 0px;">
 

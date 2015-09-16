@@ -41,7 +41,7 @@ public class JobEntity implements Serializable {
 	private String vacancies;
 	private String responsable;
 	private String jobStatus;
-//	private JobStatus jobStatus;
+//	private JobStatus jobStatus = JobStatus.OPEN;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
 	@Id
@@ -75,6 +75,7 @@ public class JobEntity implements Serializable {
 	}
 
 	@Column(nullable = false, length=3000)
+//	@Column (columnDefinition = "text")
 	public String getJobDescription() {
 		return jobDescription;
 	}
@@ -176,6 +177,14 @@ public class JobEntity implements Serializable {
 //		this.candidates = candidates;
 //	}
 
+	public String getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(String jobStatus) {
+		this.jobStatus = jobStatus;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -201,13 +210,7 @@ public class JobEntity implements Serializable {
 		return true;
 	}
 
-	public String getJobStatus() {
-		return jobStatus;
-	}
-
-	public void setJobStatus(String jobStatus) {
-		this.jobStatus = jobStatus;
-	}
+	
 
 
 	

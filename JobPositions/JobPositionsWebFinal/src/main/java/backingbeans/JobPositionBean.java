@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import entities.JobEntity;
-import enumeration.JobStatus;
+//import enumeration.JobStatus;
 
 @SessionScoped
 @Named
@@ -33,27 +33,12 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
+//	private JobStatus jobStatus;
+	private String jobStatus;
+	private String responsable;
+	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
 	
-	public IJobPosition getIj() {
-		return ij;
-	}
-
-	public void setIj(IJobPosition ij) {
-		this.ij = ij;
-	}
-
-	public String getJobStatus() {
-		return jobStatus;
-	}
-
-	public void setJobStatus(String jobStatus) {
-		this.jobStatus = jobStatus;
-	}
-
-	private String responsable;
-	private String jobStatus;
-//	private JobStatus jobStatus;
 
 	public void saveJobPosition() {
 		JobEntity ent = new JobEntity();
@@ -71,6 +56,18 @@ public class JobPositionBean implements Serializable {
 		ent.setResponsable(responsable);
 		System.out.println("Job position criada");
 		ij.saveJob(ent);
+	}
+	
+	public void removePosition(){
+		jobpositions.remove(selectPosition);
+	}
+	
+	public IJobPosition getIj() {
+		return ij;
+	}
+
+	public void setIj(IJobPosition ij) {
+		this.ij = ij;
 	}
 
 	public Date getCreationDate() {
@@ -145,14 +142,6 @@ public class JobPositionBean implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-//	public JobStatus getJobStatus() {
-//		return jobStatus;
-//	}
-//
-//	public void setJobStatus(JobStatus jobStatus) {
-//		this.jobStatus = jobStatus;
-//	}
-
 	public String getVacancies() {
 		return vacancies;
 	}
@@ -177,6 +166,23 @@ public class JobPositionBean implements Serializable {
 	public void setJobpositions(List<JobEntity> jobpositions) {
 		this.jobpositions = jobpositions;
 	}
-	
+
+
+	public String getSelectPosition() {
+		return selectPosition;
+	}
+
+	public void setSelectPosition(String selectPosition) {
+		this.selectPosition = selectPosition;
+	}
+
+	public String getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(String jobStatus) {
+		this.jobStatus = jobStatus;
+	}
+
 
 }
