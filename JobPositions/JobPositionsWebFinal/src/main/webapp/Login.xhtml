@@ -10,23 +10,28 @@
 	<ui:define name="body">
 		<div id="loginfrm">
 			<h:form id="frm">
-
+							<p:messages autoUpdate="true" />
 				<p:panel style="border-width: 0px;">
-					<p:messages globalOnly="true" />
+
 					<h:panelGrid columns="2" header="Login">
 						<p:outputLabel value="Email" for="email" />
 						<p:inputText id="email" required="true"
 							requiredMessage="Enter your email" value="#{loginBean.email}" />
-						<p:outputLabel value="Password" for="senha"
-							requiredMessage="Enter your password" />
+							
+						<p:outputLabel value="Password" for="senha" />
 						<p:password id="senha" required="true"
-							value="#{loginBean.password}" />
+							value="#{loginBean.password}"
+							requiredMessage="Enter your password" >
+							<f:validateLength minimum="6"/>
+							</p:password>
 					</h:panelGrid>
 					<h:panelGrid columns="1" style="text-align:right; width:100%;">
+
 						<p:link style="text-align: center;" value="Forgot your password?" />
 						<p:outputLabel value="" />
 						<p:commandButton value="Login" action="#{loginBean.login}"
-							style="margin-top: 10px; width:180px" />
+							style="margin-top: 10px; width:180px" update="@form"/>
+						<p:outputLabel value="" />
 					</h:panelGrid>
 				</p:panel>
 			</h:form>

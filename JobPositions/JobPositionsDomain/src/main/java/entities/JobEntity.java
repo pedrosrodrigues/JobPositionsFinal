@@ -68,7 +68,7 @@ public class JobEntity implements Serializable {
 		this.finalDate = finalDate;
 	}
 
-	@Column(nullable = false, length=200)
+	@Column(nullable = false, length=3000)
 	public String getJobDescription() {
 		return jobDescription;
 	}
