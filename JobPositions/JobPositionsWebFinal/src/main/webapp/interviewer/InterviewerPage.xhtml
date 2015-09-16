@@ -1,0 +1,190 @@
+<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Admin Menu</ui:define>
+	<ui:define name="bar">Pedro Rodrigues</ui:define>
+	<ui:define name="body">
+
+		<p:tabView>
+			<p:tab title="Job Positions">
+				<h:form id="frm">
+					<p:messages />
+
+					<p:dataTable value="#{jobPositionBean.jobpositions}"
+						var="position" rows="10" emptyMessage="No records found."
+						paginator="true" paginatorPosition="bottom"
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						id="jobstable">
+
+						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+							style="text-align: center; width:200px"
+							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
+							<h:outputText value="#{jobPositionBean.technicalArea}" />
+						</p:column>
+						<p:column headerText="Location"
+							style="text-align: center; width:150px">
+							<h:outputText value="#{jobPositionBean.location}" />
+						</p:column>
+						<p:column headerText="Date"
+							style="text-align: center; width:150px">
+							<h:outputText value="#{jobPositionBean.finalDate}" />
+						</p:column>
+						<p:column headerText="State"
+							style="text-align: center; width:150px">
+							<h:outputText value="Open" />
+						</p:column>
+						<p:column headerText="# Candidates"
+							style="text-align: center; width:150px">
+							<h:outputText value="#{jobPositionBean.vacancies}" />
+						</p:column>
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
+						<p:column headerText="" style="text-align: center; width:40px;">
+							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()"
+								ajax="false" >
+							 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+								</p:commandButton>
+						</p:column>
+
+						<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
+
+								<h:outputText value="Job Code" />
+								<h:outputText value="541" />
+
+								<h:outputText value="Function" />
+								<h:outputText value="Java Engineer" />
+
+								<h:outputText value="Location" />
+								<h:outputText value="Brazil (S. Paulo)" />
+
+								<h:outputText value="# of openings" />
+								<h:outputText value="1" />
+
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="width:100%;">
+								<p:inputTextarea rows="10" cols="100" style="width:95%" />
+								<h:outputText value="Description" />
+							</p:panelGrid>
+						</p:rowExpansion>
+					</p:dataTable>
+					
+					
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+
+					<!-- <p:confirmDialog header="Delete position"
+						message="Are you sure you want to delete the select element?"
+						widgetVar="confirm">
+						<p:commandButton valeu="OK" update="jobstable"
+							oncomplete="confirm.hide()" />
+						<p:commandButton valeu="Cancel"
+							onclick="confirm.hide();return false;" />
+					</p:confirmDialog> -->
+				</h:form>
+			</p:tab>
+
+			<p:tab title="New Position">
+
+				<div id="loginfrm">
+
+
+					<!-- <div id="super-centered"> -->
+
+
+					<h:form id="frmEdit">
+
+						<p:panel id="panel" style="border-width: 0px;">
+
+							<h:panelGrid styleClass="inputTable" columns="2"
+								cellpadding="4px" cellspacing="4px">
+								<h:panelGrid styleClass="inputTable2" columns="2"
+									cellpadding="4px" cellspacing="4px">
+									<p:outputLabel value="Date (start)" for="startDate" />
+									<p:outputLabel value="Date (end)" for="endDate" />
+
+									<p:calendar id="startDate" required="true"
+										value="#{jobPositionBean.creationDate}" style="width:10%;"
+										size="10" pattern="dd/MM/yyyy" />
+									<p:calendar id="endDate" required="true"
+										value="#{jobPositionBean.finalDate}" style="width:10%;"
+										size="10" pattern="dd/MM/yyyy" />
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
+									<p:outputLabel value="SLA" for="sla" />
+									<p:outputLabel value="CODE" for="jobposition" />
+									<p:inputText id="sla" required="true"
+										value="#{jobPositionBean.sla}" style="width:100%;" />
+									<p:inputText id="jobposition" required="true"
+										value="#{jobPositionBean.positionCode}" style="width:100%;" />
+								</h:panelGrid>
+
+
+								<p:outputLabel value="Title" for="title" />
+								<p:outputLabel value="Location" for="location" />
+
+								<p:inputText id="title" required="true"
+									value="#{jobPositionBean.title}" />
+								<p:inputText id="location" required="true"
+									value="#{jobPositionBean.location}" />
+
+								<p:outputLabel value="Status" for="status" />
+								<p:outputLabel value="Vacancies" for="vacancies" />
+
+								<p:inputText id="status" value="#{jobPositionBean.jobStatus}" />
+								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
+
+								<p:outputLabel value="Responsable" for="responsable" />
+								<p:outputLabel value="Technical Area" for="tarea" />
+
+								<p:inputText id="responsable" required="true"
+									value="#{jobPositionBean.responsable}" />
+								<p:inputText id="tarea" required="true"
+									value="#{jobPositionBean.technicalArea}" />
+
+								<p:outputLabel value="Company" for="company" />
+								<p:outputLabel value="Job description" for="description" />
+
+								<p:inputText id="company" required="true"
+									value="#{jobPositionBean.company}" />
+								<p:inputTextarea id="description"
+									value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
+									autoResize="false" />
+								<h:outputText />
+							</h:panelGrid>
+							<div class="out">
+								<div class="in">
+									<h:panelGrid columns="1">
+										<p:commandButton value="SAVE"
+											action="#{jobPositionBean.saveJobPosition}" ajax="false"
+											icon="ui-icon-disk" />
+									</h:panelGrid>
+								</div>
+							</div>
+
+
+						</p:panel>
+
+					</h:form>
+				</div>
+			</p:tab>
+		</p:tabView>
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>

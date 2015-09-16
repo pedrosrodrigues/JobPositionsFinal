@@ -23,6 +23,7 @@ public class SystemUser implements Serializable {
 
 	public void searchUser(String email) {
 		this.LoggedUser = iu.searchUser(email);
+		System.out.println(LoggedUser.getRole());
 	}
 
 	public boolean isLogIn() {

@@ -28,6 +28,7 @@ public class LoginBean implements Serializable {
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
+		String page = "";
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
@@ -39,7 +40,17 @@ public class LoginBean implements Serializable {
 		}
 		su.searchUser(email);
 		su.setLogIn(true);
-		return "/simpleuser/UserPage.xhtml?faces-redirect=true";
+		String role = su.getUserlogado().getRole().toString();
+		if (role.equals("ADMINISTRATOR"))
+			page = "/admin/AdminPage.xhtml?faces-redirect=true";
+		else if (role.equals("MANAGER"))
+			page = "/manager/ManagerPage.xhtml?faces-redirect=true";
+		else if (role.equals("INTERVIEWER"))
+			page = "/interviewer/InterviewerPage.xhtml?faces-redirect=true";
+		else if (role.equals("CANDIDATE"))
+			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
+
+		return page;
 	}
 
 	public void logout() {
@@ -53,13 +64,13 @@ public class LoginBean implements Serializable {
 			request.getSession().invalidate();
 			response.sendRedirect(request.getContextPath() + "/Home.xhtml");
 			su.setUserlogado(null);
-			su.setLogIn(true);
+			su.setLogIn(false);
 		} catch (ServletException e) {
 			// log.error("Logout failure");
-			// context.addMessage(null, new FacesMessage("Logout falhou."));
+			// context.addMessage(null, new FacesMessage("Logout failed."));
 		} catch (IOException e) {
 			// log.error("Redirect failure");
-			// context.addMessage(null, new FacesMessage("Logout falhou."));
+			// context.addMessage(null, new FacesMessage("Logout failed."));
 		}
 	}
 
