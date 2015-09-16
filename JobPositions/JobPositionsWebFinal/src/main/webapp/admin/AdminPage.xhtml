@@ -12,7 +12,7 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-<p:messages/>
+					<p:messages />
 					<p:dataTable value="#{searchPositionsBean.positions}"
 						var="position" rows="10" emptyMessage="No records found."
 						paginator="true" paginatorPosition="bottom"
@@ -86,12 +86,13 @@
 
 
 					<h:form id="frmEdit">
-					
+
 						<p:panel id="panel" style="border-width: 0px;">
-							
+
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
-								<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px" cellspacing="4px">
+								<h:panelGrid styleClass="inputTable2" columns="2"
+									cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="Date (start)" for="startDate" />
 									<p:outputLabel value="Date (end)" for="endDate" />
 
@@ -102,7 +103,7 @@
 										value="#{jobPositionBean.finalDate}" style="width:10%;"
 										size="10" pattern="dd/MM/yyyy" />
 								</h:panelGrid>
-								
+
 								<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="SLA" for="sla" />
 									<p:outputLabel value="CODE" for="jobposition" />
@@ -140,15 +141,17 @@
 
 								<p:inputText id="company" required="true"
 									value="#{jobPositionBean.company}" />
-								<p:inputText id="description"
-									value="#{jobPositionBean.jobDescription}" />
-
+								<p:inputTextarea id="description"
+									value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
+									autoResize="false" />
+								<h:outputText />
 							</h:panelGrid>
 							<div class="out">
 								<div class="in">
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
-											action="#{jobPositionBean.saveJobPosition}" ajax="false" icon="ui-icon-disk" />
+											action="#{jobPositionBean.saveJobPosition}" ajax="false"
+											icon="ui-icon-disk" />
 									</h:panelGrid>
 								</div>
 							</div>
