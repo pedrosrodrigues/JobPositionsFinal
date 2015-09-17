@@ -42,4 +42,8 @@ public class SystemUser implements Serializable {
 		this.LoggedUser = userlogado;
 	}
 
+	public String getLoggedUserName() {
+		return this.getUserlogado().getName();
+	}
+
 }
