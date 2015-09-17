@@ -12,13 +12,13 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-				
+
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						id="jobstable" >
+						id="jobstable">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
@@ -34,10 +34,7 @@
 							style="text-align: center; width:150px">
 							<h:outputText value="#{position.finalDate}" />
 						</p:column>
-						<!-- 	<p:column headerText="State"
-							style="text-align: center; width:150px">
-							<h:outputText value="Open" />
-						</p:column> -->
+
 						<p:column headerText="# Candidates"
 							style="text-align: center; width:150px">
 							<h:outputText value="#{position.vacancies}" />
@@ -47,7 +44,7 @@
 						</p:column>
 						<p:column headerText="" style="text-align: center; width:40px;">
 							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
-			
+
 								<f:setPropertyActionListener
 									target="#{jobPositionBean.selectPosition}" value="#{position}" />
 							</p:commandButton>
@@ -93,13 +90,8 @@
 			<p:tab title="New Position">
 
 				<div id="loginfrm">
-
-
-					<!-- <div id="super-centered"> -->
-
-
 					<h:form id="frmEdit">
-						<p:messages id ="messageForm2" closable="true" />
+						<p:messages id="messageForm2" closable="true" />
 
 						<p:panel id="panel" style="border-width: 0px;">
 
@@ -165,12 +157,10 @@
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
 											action="#{jobPositionBean.saveJobPosition}"
-											icon="ui-icon-disk" update="messageForm2"/>
+											icon="ui-icon-disk" update="messageForm2" />
 									</h:panelGrid>
 								</div>
 							</div>
-
-
 						</p:panel>
 
 					</h:form>
