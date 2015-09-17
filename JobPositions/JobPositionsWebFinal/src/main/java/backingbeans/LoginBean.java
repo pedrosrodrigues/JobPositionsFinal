@@ -30,13 +30,12 @@ public class LoginBean implements Serializable {
 
 	@Inject
 	private SystemUser su;
-	
+
 	@Inject
 	private ICandidate ic;
-	
+
 	@Inject
 	private CandidateBean cb;
-	
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
@@ -59,9 +58,10 @@ public class LoginBean implements Serializable {
 			page = "/manager/ManagerPage.xhtml?faces-redirect=true";
 		else if (role.equals("INTERVIEWER"))
 			page = "/interviewer/InterviewerPage.xhtml?faces-redirect=true";
-		else if (role.equals("CANDIDATE"))	
-		setCandidateInfo();
-		page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
+		else if (role.equals("CANDIDATE")) {
+			setCandidateInfo();
+			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
+		}
 		return page;
 	}
 
@@ -77,7 +77,7 @@ public class LoginBean implements Serializable {
 		cb.setMobile(ce.getMobile());
 		cb.setPassword(ce.getPassword());
 		cb.setPhone(ce.getPhone());
-		cb.setSchool(ce.getSchool());	
+		cb.setSchool(ce.getSchool());
 	}
 
 	public void logout() {

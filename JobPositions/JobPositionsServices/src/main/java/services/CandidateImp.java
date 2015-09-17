@@ -26,12 +26,6 @@ public class CandidateImp implements ICandidate {
 
 	@Override
 	public void saveCandidate(CandidateEntity candidateentity) {
-
-		// verifica se pode gravar
-
-		// se puder grava na bd
-
-		// Encriptação da password do utilizador!
 		try {
 			candidateentity.setPassword(passEncript(candidateentity
 					.getPassword()));
@@ -74,7 +68,6 @@ public class CandidateImp implements ICandidate {
 	@Override
 	public CandidateEntity findByEmail(String email) {
 		return cd.findByEmail(email);
-		
-		
+
 	}
 }
