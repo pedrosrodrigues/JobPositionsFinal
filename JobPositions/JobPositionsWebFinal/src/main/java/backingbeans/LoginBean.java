@@ -1,5 +1,7 @@
 package backingbeans;
 
+import interfaces.ICandidate;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -14,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities.CandidateEntity;
+
 @SessionScoped
 @Named
 public class LoginBean implements Serializable {
@@ -22,9 +26,17 @@ public class LoginBean implements Serializable {
 
 	private String email;
 	private String password;
+	private CandidateEntity ce;
 
 	@Inject
 	private SystemUser su;
+	
+	@Inject
+	private ICandidate ic;
+	
+	@Inject
+	private CandidateBean cb;
+	
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
@@ -47,10 +59,25 @@ public class LoginBean implements Serializable {
 			page = "/manager/ManagerPage.xhtml?faces-redirect=true";
 		else if (role.equals("INTERVIEWER"))
 			page = "/interviewer/InterviewerPage.xhtml?faces-redirect=true";
-		else if (role.equals("CANDIDATE"))
-			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
-
+		else if (role.equals("CANDIDATE"))	
+		setCandidateInfo();
+		page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		return page;
+	}
+
+	private void setCandidateInfo() {
+		ce = ic.findByEmail(su.getUserlogado().getEmail());
+		cb.setAddress(ce.getAddress());
+		cb.setCity(ce.getCity());
+		cb.setCountry(ce.getCountry());
+		cb.setCourse(ce.getCourse());
+		cb.setFirstname(ce.getFirstname());
+		cb.setLastname(ce.getLastname());
+		cb.setLinkedin(ce.getLinkedin());
+		cb.setMobile(ce.getMobile());
+		cb.setPassword(ce.getPassword());
+		cb.setPhone(ce.getPhone());
+		cb.setSchool(ce.getSchool());	
 	}
 
 	public void logout() {

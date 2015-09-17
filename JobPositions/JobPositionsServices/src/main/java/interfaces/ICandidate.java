@@ -9,4 +9,6 @@ public interface ICandidate {
 
 	public void saveCandidate(CandidateEntity ent);
 
+	public CandidateEntity findByEmail(String email);
+
 }

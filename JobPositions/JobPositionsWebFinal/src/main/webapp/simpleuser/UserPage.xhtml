@@ -12,15 +12,16 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-					<p:dataTable value="#{searchPositionsBean.positions}"
+				<p:messages autoUpdate="true" closable="true" />
+					<p:dataTable value="#{jobPositionBean.jobpositions}"
 						var="position" rows="10" emptyMessage="No records found."
 						paginator="true" paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
-							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-							<h:outputText value="Programador em Java" />
+							sortBy="#{position.title}" >
+							<h:outputText value="#{position.title}" />
 						</p:column>
 						<p:column headerText="Location"
 							style="text-align: center; width:150px">
@@ -133,16 +134,19 @@
 				<h:panelGrid style="display:block; text-align:center; width:99%" id="newgrid" columns="2">
 
 					<p:outputLabel value="First Name" for="fname" />
+				
 					<p:outputLabel value="Last Name" for="lname" />
 
-					<p:inputText id="fname" required="true" />
-					<p:inputText id="lname" required="true" />
+					<p:inputText  id="fname" required="true" value="#{candidateBean.firstname}"/>
+					<p:inputText id="lname" required="true" value="#{candidateBean.lastname}"/>
 
-					<p:outputLabel value="E-mail" for="email" />
+			
 					<p:outputLabel value="Adress" for="adress" />
+	<p:outputLabel />
 
-					<p:inputText id="email" required="true" />
+			
 					<p:inputText id="adress" required="true" />
+						<p:outputLabel />
 
 					<p:outputLabel value="City" for="city" />
 					<p:outputLabel value="Country" for="country" />

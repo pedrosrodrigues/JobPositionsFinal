@@ -70,4 +70,11 @@ public class CandidateImp implements ICandidate {
 
 		return securedPassword;
 	}
+
+	@Override
+	public CandidateEntity findByEmail(String email) {
+		return cd.findByEmail(email);
+		
+		
+	}
 }

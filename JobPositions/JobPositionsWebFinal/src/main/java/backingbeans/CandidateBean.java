@@ -48,6 +48,8 @@ public class CandidateBean implements Serializable {
 		ent.setSchool(school);
 		ic.saveCandidate(ent);
 	}
+	
+	//metodo save candidate alterado
 
 	public String getFirstname() {
 		return firstname;
