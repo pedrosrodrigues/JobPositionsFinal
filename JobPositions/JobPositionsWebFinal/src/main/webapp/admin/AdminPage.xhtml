@@ -12,8 +12,7 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-					<p:messages autoUpdate="true" closable="true" />
-
+				
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -100,7 +99,7 @@
 
 
 					<h:form id="frmEdit">
-						<p:messages autoUpdate="true" closable="true" />
+						<p:messages id ="messageForm2" closable="true" />
 
 						<p:panel id="panel" style="border-width: 0px;">
 
@@ -166,7 +165,7 @@
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
 											action="#{jobPositionBean.saveJobPosition}" ajax="false"
-											icon="ui-icon-disk" />
+											icon="ui-icon-disk" update="messageForm2"/>
 									</h:panelGrid>
 								</div>
 							</div>

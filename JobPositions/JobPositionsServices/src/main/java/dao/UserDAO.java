@@ -15,7 +15,6 @@ public class UserDAO {
 
 	public void save(UserEntity ent) {
 		em.persist(ent);
-
 	}
 
 	public UserEntity findEmail(String email) {

@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "CandidateEntity.findByEmail", query="SELECT c FROM CandidateEntity c WHERE c.email LIKE :email")})
+	@NamedQuery(name = "CandidateEntity.findByEmail", query="SELECT c FROM CandidateEntity c WHERE c.email like :email")})
 public class CandidateEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
