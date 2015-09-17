@@ -1,6 +1,7 @@
 package backingbeans;
 
 import interfaces.ICandidate;
+import interfaces.IJobPosition;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -38,6 +39,11 @@ public class LoginBean implements Serializable {
 	@Inject
 	private CandidateBean cb;
 
+	@Inject
+	private JobPositionBean jpb;
+	@Inject
+	private IJobPosition ij;
+
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
 		String page = "";
@@ -65,6 +71,7 @@ public class LoginBean implements Serializable {
 			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		}
 		context.addMessage(null, new FacesMessage("Login sucessfull!."));
+		jpb.setJobpositions(ij.findAll());
 		return page;
 	}
 

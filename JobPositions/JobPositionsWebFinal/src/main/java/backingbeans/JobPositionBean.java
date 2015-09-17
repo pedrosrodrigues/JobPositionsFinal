@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import entities.JobEntity;
+
 //import enumeration.JobStatus;
 
 @SessionScoped
@@ -20,7 +21,7 @@ public class JobPositionBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject 
+	@Inject
 	private IJobPosition ij;
 
 	private Date creationDate;
@@ -33,12 +34,11 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
-//	private JobStatus jobStatus;
+	// private JobStatus jobStatus;
 	private String jobStatus;
 	private String responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
-	
 
 	public void saveJobPosition() {
 		JobEntity ent = new JobEntity();
@@ -54,20 +54,18 @@ public class JobPositionBean implements Serializable {
 		ent.setTitle(title);
 		ent.setVacancies(vacancies);
 		ent.setResponsable(responsable);
-		System.out.println("Job position criada");
-		ij.saveJob(ent);
-	}
-	
-	public void removePosition(){
-		jobpositions.remove(selectPosition);
-	}
-	
-	public IJobPosition getIj() {
-		return ij;
+		try {
+			ij.saveJob(ent);
+			this.jobpositions.add(ent);
+		} catch (Exception e) {
+			// mensagem e log nao conseguiu gravar posiçao.
+			e.printStackTrace();
+		}
 	}
 
-	public void setIj(IJobPosition ij) {
-		this.ij = ij;
+	public void removePosition() {
+		System.out.println(selectPosition);
+		jobpositions.remove(selectPosition);
 	}
 
 	public Date getCreationDate() {
@@ -159,14 +157,12 @@ public class JobPositionBean implements Serializable {
 	}
 
 	public List<JobEntity> getJobpositions() {
-		jobpositions=ij.findAll();
 		return jobpositions;
 	}
 
 	public void setJobpositions(List<JobEntity> jobpositions) {
 		this.jobpositions = jobpositions;
 	}
-
 
 	public String getSelectPosition() {
 		return selectPosition;
@@ -183,6 +179,5 @@ public class JobPositionBean implements Serializable {
 	public void setJobStatus(String jobStatus) {
 		this.jobStatus = jobStatus;
 	}
-
 
 }
