@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,6 +48,7 @@ public class LoginBean implements Serializable {
 			request.login(email, password);
 
 		} catch (ServletException e) {
+			context.addMessage(null, new FacesMessage("Login failed!."));
 			return "LoginError.xhtml?faces-redirect=true";
 		}
 		su.searchUser(email);
@@ -62,22 +64,25 @@ public class LoginBean implements Serializable {
 			setCandidateInfo();
 			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		}
+		context.addMessage(null, new FacesMessage("Login sucessfull!."));
 		return page;
 	}
 
 	private void setCandidateInfo() {
 		ce = ic.findByEmail(su.getUserlogado().getEmail());
-		cb.setAddress(ce.getAddress());
-		cb.setCity(ce.getCity());
-		cb.setCountry(ce.getCountry());
-		cb.setCourse(ce.getCourse());
-		cb.setFirstname(ce.getFirstname());
-		cb.setLastname(ce.getLastname());
-		cb.setLinkedin(ce.getLinkedin());
-		cb.setMobile(ce.getMobile());
-		cb.setPassword(ce.getPassword());
-		cb.setPhone(ce.getPhone());
-		cb.setSchool(ce.getSchool());
+		if (ce != null) {
+			cb.setAddress(ce.getAddress());
+			cb.setCity(ce.getCity());
+			cb.setCountry(ce.getCountry());
+			cb.setCourse(ce.getCourse());
+			cb.setFirstname(ce.getFirstname());
+			cb.setLastname(ce.getLastname());
+			cb.setLinkedin(ce.getLinkedin());
+			cb.setMobile(ce.getMobile());
+			cb.setPassword(ce.getPassword());
+			cb.setPhone(ce.getPhone());
+			cb.setSchool(ce.getSchool());
+		}
 	}
 
 	public void logout() {
@@ -92,12 +97,13 @@ public class LoginBean implements Serializable {
 			response.sendRedirect(request.getContextPath() + "/Home.xhtml");
 			su.setUserlogado(null);
 			su.setLogIn(false);
+			context.addMessage(null, new FacesMessage("Logout sucessfull!."));
 		} catch (ServletException e) {
 			// log.error("Logout failure");
-			// context.addMessage(null, new FacesMessage("Logout failed."));
+			context.addMessage(null, new FacesMessage("Logout failed."));
 		} catch (IOException e) {
 			// log.error("Redirect failure");
-			// context.addMessage(null, new FacesMessage("Logout failed."));
+			context.addMessage(null, new FacesMessage("Logout failed."));
 		}
 	}
 
