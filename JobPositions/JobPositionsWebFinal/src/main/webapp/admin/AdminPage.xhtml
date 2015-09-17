@@ -9,7 +9,7 @@
 	<ui:define name="bar">Pedro Rodrigues</ui:define>
 	<ui:define name="body">
 
-		<p:tabView>
+		<p:tabView dynamic="false">
 			<p:tab title="Job Positions">
 				<h:form id="frm">
 				
@@ -18,7 +18,7 @@
 						paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						id="jobstable">
+						id="jobstable" >
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
@@ -164,7 +164,7 @@
 								<div class="in">
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
-											action="#{jobPositionBean.saveJobPosition}" ajax="false"
+											action="#{jobPositionBean.saveJobPosition}"
 											icon="ui-icon-disk" update="messageForm2"/>
 									</h:panelGrid>
 								</div>
@@ -178,10 +178,6 @@
 			</p:tab>
 		</p:tabView>
 
-
-
 	</ui:define>
-
-
 
 </ui:composition>
