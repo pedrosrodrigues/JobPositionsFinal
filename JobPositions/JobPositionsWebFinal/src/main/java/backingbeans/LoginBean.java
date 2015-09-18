@@ -41,8 +41,10 @@ public class LoginBean implements Serializable {
 
 	@Inject
 	private JobPositionBean jpb;
+	
 	@Inject
 	private IJobPosition ij;
+	
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {

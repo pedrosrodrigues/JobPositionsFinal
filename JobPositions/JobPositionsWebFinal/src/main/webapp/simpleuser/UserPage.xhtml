@@ -12,24 +12,26 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-				<p:messages autoUpdate="true" closable="true" />
-					<p:dataTable value="#{jobPositionBean.jobpositions}"
-						var="position" rows="10" emptyMessage="No records found."
-						paginator="true" paginatorPosition="bottom"
-						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
+						rows="8" emptyMessage="No records found." paginator="true"
+						paginatorPosition="bottom"
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						id="jobstable" sortMode="single">
 
 						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
 							style="text-align: center; width:200px"
-							sortBy="#{position.title}" >
+							sortBy="#{position.title}">
 							<h:outputText value="#{position.title}" />
 						</p:column>
 						<p:column headerText="Location"
-							style="text-align: center; width:150px">
-							<h:outputText value="Portugal,(Coimbra)" />
+							style="text-align: center; width:150px"
+							sortBy="#{position.location}">
+							<h:outputText value="#{position.location}" />
 						</p:column>
 						<p:column headerText="Date"
 							style="text-align: center; width:150px">
-							<h:outputText value="19-08-2015" />
+							<h:outputText value="#{position.finalDate}" />
 						</p:column>
 						<p:column style="width:16px">
 							<p:rowToggler />
@@ -40,23 +42,18 @@
 								style="width:100%;">
 
 								<h:outputText value="Job Code" />
-								<h:outputText value="541" />
+								<h:outputText value="#{position.position}" />
 
-								<h:outputText value="Function" />
-								<h:outputText value="Java Engineer" />
-
-								<h:outputText value="Location" />
-								<h:outputText value="Brazil (S. Paulo)" />
+								<h:outputText value="Job Function" />
+								<h:outputText value="#{position.technicalArea}" />
 
 								<h:outputText value="# of openings" />
-								<h:outputText value="1" />
-
+								<h:outputText value="#{position.vacancies}" />
 							</p:panelGrid>
 
 							<p:panelGrid columns="1" style="width:100%;">
-
 								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-								<h:outputText value="Description" />
+								<h:outputText value="#{position.jobDescription}" />
 								<p:commandButton value="Submit" id="ajax">
 									<p:confirm header="Job Position"
 										message="A sua candidatura foi efectuada com sucesso!" />
@@ -68,131 +65,145 @@
 					</p:dataTable>
 				</h:form>
 			</p:tab>
-			<p:tab title="My Applications">	
-					<p:dataTable value="#{searchPositionsBean.positions}"
-						var="position" rows="10" emptyMessage="No records found."
-						paginator="true" paginatorPosition="bottom"
-						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:tab title="My Applications">
+				<p:dataTable value="#{searchPositionsBean.positions}" var="position"
+					rows="10" emptyMessage="No records found." paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
-							style="text-align: center; width:200px"
-							sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-							<h:outputText value="Programador em Java" />
-						</p:column>
-						<p:column headerText="Location"
-							style="text-align: center; width:150px">
-							<h:outputText value="Portugal,(Coimbra)" />
-						</p:column>
-						<p:column headerText="Application date"
-							style="text-align: center; width:150px">
-							<h:outputText value="19-08-2015" />
-						</p:column>
-						<p:column headerText="Status"
-							style="text-align: center; width:150px">
-							<h:outputText value="19-08-2015" />
-						</p:column>
-						<p:column style="width:16px">
-							<p:rowToggler />
-						</p:column>
+					<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+						style="text-align: center; width:200px"
+						sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
+						<h:outputText value="Programador em Java" />
+					</p:column>
+					<p:column headerText="Location"
+						style="text-align: center; width:150px">
+						<h:outputText value="Portugal,(Coimbra)" />
+					</p:column>
+					<p:column headerText="Application date"
+						style="text-align: center; width:150px">
+						<h:outputText value="19-08-2015" />
+					</p:column>
+					<p:column headerText="Status"
+						style="text-align: center; width:150px">
+						<h:outputText value="19-08-2015" />
+					</p:column>
+					<p:column style="width:16px">
+						<p:rowToggler />
+					</p:column>
 
-						<p:rowExpansion id="rowselection">
-							<p:panelGrid columns="2" columnClasses="label, field"
-								style="width:100%;">
+					<p:rowExpansion id="rowselection">
+						<p:panelGrid columns="2" columnClasses="label, field"
+							style="width:100%;">
 
-								<h:outputText value="Job Code" />
-								<h:outputText value="541" />
+							<h:outputText value="Job Code" />
+							<h:outputText value="541" />
 
-								<h:outputText value="Function" />
-								<h:outputText value="Java Engineer" />
+							<h:outputText value="Function" />
+							<h:outputText value="Java Engineer" />
 
-								<h:outputText value="Location" />
-								<h:outputText value="Brazil (S. Paulo)" />
+							<h:outputText value="Location" />
+							<h:outputText value="Brazil (S. Paulo)" />
 
-								<h:outputText value="# of openings" />
-								<h:outputText value="1" />
+							<h:outputText value="# of openings" />
+							<h:outputText value="1" />
 
-							</p:panelGrid>
+						</p:panelGrid>
 
-							<p:panelGrid columns="1" style="width:100%;">
+						<p:panelGrid columns="1" style="width:100%;">
 
-								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-								<h:outputText value="Description" />
-								<p:commandButton value="Submit" id="ajax">
-									<p:confirm header="Job Position"
-										message="A sua candidatura foi efectuada com sucesso!" />
-								</p:commandButton>
-							</p:panelGrid>
-							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade" />
-						</p:rowExpansion>
-					</p:dataTable>
-				</p:tab>
+							<p:inputTextarea rows="10" cols="100" style="width:95%" />
+							<h:outputText value="Description" />
+						</p:panelGrid>
+					</p:rowExpansion>
+				</p:dataTable>
+			</p:tab>
 
 			<p:tab title="Edit my profile">
-			<div id="loginfrm" >	
-			<h:form>	
-				<h:panelGrid style="display:block; text-align:center; width:99%" id="newgrid" columns="2">
-
-					<p:outputLabel value="First Name" for="fname" />
+	<div id="super-centered">
+			<h:form id="frmEdit">
+				<p:messages globalOnly="true" />
+				<p:panel id="panel" style="border-width: 0px;">
 				
-					<p:outputLabel value="Last Name" for="lname" />
+					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+						cellspacing="4px">
+						<p:outputLabel value="First Name" for="fname" />
+						<p:outputLabel value="Last Name" for="lname" />
 
-					<p:inputText  id="fname" required="true" value="#{candidateBean.firstname}"/>
-					<p:inputText id="lname" required="true" value="#{candidateBean.lastname}"/>
+						<p:inputText id="fname" required="true"
+							value="#{candidateBean.firstname}" />
+						<p:inputText id="lname" required="true"
+							value="#{candidateBean.lastname}" />
 
-			
-					<p:outputLabel value="Adress" for="adress" />
-	<p:outputLabel />
+	
+						<p:outputLabel value="Adress" for="adress" />
 
-			
-					<p:inputText id="adress" required="true" />
+						<p:inputText id="adress" required="true"
+							value="#{candidateBean.address}" />
+
+						<p:outputLabel value="City" for="city" />
+						<p:outputLabel value="Country" for="country" />
+
+						<p:inputText id="city" required="true"
+							value="#{candidateBean.city}" />
+						<p:inputText id="country" required="true"
+							value="#{candidateBean.country}" />
+
+						<p:outputLabel value="Phone" for="phone" />
+						<p:outputLabel value="Mobile" for="mobile" />
+
+						<p:inputText id="phone" value="#{candidateBean.phone}" />
+						<p:inputText id="mobile" value="#{candidateBean.mobile}" />
+
+						<p:outputLabel value="Main Course" for="mcourse" />
+						<p:outputLabel value="School" for="school" />
+
+						<p:inputText id="mcourse" required="true"
+							value="#{candidateBean.course}" />
+						<p:inputText id="school" required="true"
+							value="#{candidateBean.school}" />
+
+						<p:outputLabel value="Password" for="password" />
+						<p:outputLabel value="Confirm Password" for="confpassword" />
+
+						<p:password id="password" required="true" match="confpassword"
+							feedback="true" value="#{candidateBean.password}" />
+						<p:password id="confpassword" required="true" />
+
+						<p:outputLabel value="Linkedin Profile" for="linkin" />
+						<p:outputLabel value="#"/>
+
+						<p:inputText id="linkin" value="#{candidateBean.linkedin}" />
 						<p:outputLabel />
+					</h:panelGrid>
+					<div class="out">
+						<div class="in">
+							<h:panelGrid columns="1">
+								<p:outputLabel value="Upload your CV" for="cv"
+									style="font-weight: bolder;"></p:outputLabel>
+								<p:outputLabel value="PDF format, max size: 1Mb" for="cv" />
+								<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
 
-					<p:outputLabel value="City" for="city" />
-					<p:outputLabel value="Country" for="country" />
+								<p:outputLabel value="Upload your motivation letter"
+									for="mletter" style="font-weight: bolder;"></p:outputLabel>
+								<p:outputLabel value="PDF format, max size: 1Mb" for="mletter" />
+								<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
+									id="mletter" />
+								<p:outputLabel value="" />
+								<p:commandButton value="SAVE"
+									action="#{candidateBean.saveCandidate}" />
+							</h:panelGrid>
+						</div>
+					</div>
 
-					<p:inputText id="city" required="true" />
-					<p:inputText id="country" required="true" />
 
-					<p:outputLabel value="Phone" for="phone" />
-					<p:outputLabel value="Mobile" for="mobile" />
+				</p:panel>
 
-					<p:inputText id="phone" required="true" />
-					<p:inputText id="mobile" required="true" />
-
-					<p:outputLabel value="Main Course" for="mcourse" />
-					<p:outputLabel value="School" for="school" />
-
-					<p:inputText id="mcourse" required="true" />
-					<p:inputText id="school" required="true" />
-
-					<p:outputLabel value="Linkedin Profile" for="linkin" />
-					<p:outputLabel />
-
-					<p:inputText id="linkin" required="true" />
-					<p:outputLabel />
-
-					<p:outputLabel value="Upload your CV" for="cv"></p:outputLabel>
-					<p:outputLabel value="PDF format, max size: 1Mb" for="cv"></p:outputLabel>
-					<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
-
-					<p:outputLabel value="Upload your motivation letter" for="mletter"></p:outputLabel>
-					<p:outputLabel value="PDF format, max size: 1Mb" for="mletter"></p:outputLabel>
-					<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
-						id="mletter" />
-			
-				</h:panelGrid>
-				
-				<div>
-					<p:toolbar
-						style="background:#a50d12; border:none; border-radius:0px;padding:10px;">
-						<p:toolbarGroup align="left" style="margin-left:50px;">
-							<p:commandButton value="SAVE" />
-						</p:toolbarGroup>
-					</p:toolbar>
-				</div>
 			</h:form>
-			</div>
+
+
+
+		</div>
 			</p:tab>
 
 			<p:tab title="Other stuff">

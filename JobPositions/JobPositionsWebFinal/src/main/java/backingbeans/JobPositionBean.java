@@ -62,10 +62,10 @@ public class JobPositionBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
-	public void removePosition() {
-		System.out.println(selectPosition);
-		jobpositions.remove(selectPosition);
+	
+	public void start(){
+		 System.out.println("Starting app...");
+		 jobpositions = ij.findAll();
 	}
 
 	public Date getCreationDate() {

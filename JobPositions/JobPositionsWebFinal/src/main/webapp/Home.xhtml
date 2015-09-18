@@ -8,26 +8,34 @@
 	<ui:define name="title">Current Positions</ui:define>
 	<ui:define name="bar">Current Positions</ui:define>
 	<ui:define name="body">
+		<f:metadata>
+		<f:viewParam name="PositionCode" />
+			<f:event listener="#{jobPositionBean.start}"
+				type="preRenderView" />
+		</f:metadata>
 
 		<h:form id="frm">
 
 			<p:dataTable style="margin-top:10px; padding: 0px 100px;"
-				value="#{searchPositionsBean.positions}" var="position" rows="10"
+				value="#{jobPositionBean.jobpositions}" var="position" rows="10"
 				emptyMessage="No records found." paginator="true"
 				paginatorPosition="bottom"
-				paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				id="jobstable" sortMode="single">
 
-				<p:column styleClass="jobs-table" headerText="DESCRIPTION"
-					style="text-align: center; width:200px"
-					sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-					<h:outputText value="Programador em Java" />
+				<p:column styleClass="jobs-table" headerText="Job Title"
+					style="text-align: center; width:200px" sortBy="#{position.title}">
+					<h:outputText value="#{position.title}" />
 				</p:column>
+
 				<p:column headerText="Location"
-					style="text-align: center; width:150px">
-					<h:outputText value="Portugal,(Aveiro)" />
+					style="text-align: center; width:150px"
+					sortBy="#{position.location}">
+					<h:outputText value="#{position.location}" />
 				</p:column>
+
 				<p:column headerText="Date" style="text-align: center; width:150px">
-					<h:outputText value="19-08-2015" />
+					<h:outputText value="#{position.finalDate}" />
 				</p:column>
 				<p:column style="width:16px">
 					<p:rowToggler />
@@ -38,32 +46,29 @@
 						style="width:100%;">
 
 						<h:outputText value="Job Code" />
-						<h:outputText value="541" />
+						<h:outputText value="#{position.positionCode}" />
 
 						<h:outputText value="Function" />
-						<h:outputText value="Java Engineer" />
+						<h:outputText value="#{position.technicalArea}" />
 
 						<h:outputText value="Location" />
-						<h:outputText value="Brazil (S. Paulo)" />
+						<h:outputText value="#{position.location}" />
 
-						<h:outputText value="# of openings" />
-						<h:outputText value="1" />
 					</p:panelGrid>
 
 					<p:panelGrid columns="1" style="width:100%;">
 						<p:inputTextarea rows="10" cols="100" style="width:95%" />
-						<h:outputText value="Description" />
+						<h:outputText value="#{position.jobDescription}" />
 						<p:commandButton value="Submit" id="ajax">
 							<p:confirm header="Job Position"
-								message="Para responder a esta, e outras ofertas de emprego, REGISTE-SE ou faça o seu LOGIN." />
+								message="To apply,LOGIN or CREATE A NEW ACCOUNT" />
 						</p:commandButton>
 					</p:panelGrid>
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					
+
 						<p:button value="Login" styleClass="ui-confirmdialog-yes"
 							outcome="Login" />
-						<p:button value="Registration"
-							styleClass="ui-confirmdialog-no"
+						<p:button value="Registration" styleClass="ui-confirmdialog-no"
 							outcome="NewCandidate" />
 					</p:confirmDialog>
 				</p:rowExpansion>

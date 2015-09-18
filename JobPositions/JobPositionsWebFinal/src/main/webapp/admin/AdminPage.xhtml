@@ -44,7 +44,6 @@
 						</p:column>
 						<p:column headerText="" style="text-align: center; width:40px;">
 							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
-
 								<f:setPropertyActionListener
 									target="#{jobPositionBean.selectPosition}" value="#{position}" />
 							</p:commandButton>
@@ -55,16 +54,13 @@
 								style="width:100%;">
 
 								<h:outputText value="Job Code" />
-								<h:outputText value="541" />
+								<h:outputText value="#{position.position}" />
 
-								<h:outputText value="Function" />
+								<h:outputText value="Job Function" />
 								<h:outputText value="Java Engineer" />
 
-								<h:outputText value="Location" />
-								<h:outputText value="Brazil (S. Paulo)" />
-
 								<h:outputText value="# of openings" />
-								<h:outputText value="1" />
+								<h:outputText value="#{position.vacancies}" />
 
 							</p:panelGrid>
 

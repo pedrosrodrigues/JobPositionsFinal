@@ -73,7 +73,7 @@ public class CandidateEntity implements Serializable {
 		this.email = email;
 	}
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 100, unique=true)
 	public String getAddress() {
 		return address;
 	}
