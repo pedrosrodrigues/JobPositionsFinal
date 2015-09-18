@@ -20,11 +20,31 @@
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						id="jobstable" sortMode="single" >
 
-						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+						<p:column styleClass="jobs-table" headerText="Job Title"
 							style="text-align: center; width:200px"
 							sortBy="#{position.title}">
 							<h:outputText value="#{position.title}" />
 						</p:column>
+							<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
+
+								<h:outputText value="Job Code" />
+								<h:outputText value="#{position.positionCode}" />
+
+								<h:outputText value="Job Function" />
+								<h:outputText value="Java Engineer" />
+
+								<h:outputText value="# of openings" />
+								<h:outputText value="#{position.vacancies}" />
+
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="width:100%;">
+								<p:inputTextarea rows="10" cols="100" style="width:95%" />
+								<h:outputText value="#{position.jobDescription}" />
+							</p:panelGrid>
+						</p:rowExpansion>
 						<p:column headerText="Location"
 							style="text-align: center; width:150px"
 							sortBy="#{position.location}">
@@ -49,26 +69,7 @@
 							</p:commandButton>
 						</p:column>
 
-						<p:rowExpansion id="rowselection">
-							<p:panelGrid columns="2" columnClasses="label, field"
-								style="width:100%;">
-
-								<h:outputText value="Job Code" />
-								<h:outputText value="#{position.positionCode}" />
-
-								<h:outputText value="Job Function" />
-								<h:outputText value="Java Engineer" />
-
-								<h:outputText value="# of openings" />
-								<h:outputText value="#{position.vacancies}" />
-
-							</p:panelGrid>
-
-							<p:panelGrid columns="1" style="width:100%;">
-								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-								<h:outputText value="#{position.jobDescription}" />
-							</p:panelGrid>
-						</p:rowExpansion>
+					
 					</p:dataTable>
 
 					<p:confirmDialog header="Delete position"

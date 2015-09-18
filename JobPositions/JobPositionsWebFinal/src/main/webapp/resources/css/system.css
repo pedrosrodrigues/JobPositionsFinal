@@ -5,7 +5,7 @@ body {
 	font-family: "PFDinDisplayProLight", Georgia;
 	margin: 0px;
 	font-weight: normal;
-	margin-top: 20px;
+/* 	margin-top: 20px; */
 }
 
 header {
@@ -78,7 +78,7 @@ h2 {
 
 .ui-panelgrid .ui-panelgrid-cell {
 	height: 10px;
-	background-color: grey;
+	background-color: red;
 	border-width: 1px;
 	border-style: solid;
 	border-color: inherit;

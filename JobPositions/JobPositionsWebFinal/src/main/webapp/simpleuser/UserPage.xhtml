@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">User Menu</ui:define>
-	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
+	<ui:define name="bar"><h2>#{systemUser.loggedUserName}</h2></ui:define>
 	<ui:define name="body">
 
 		<p:tabView>
@@ -135,7 +135,6 @@
 						<p:inputText id="lname" required="true"
 							value="#{candidateBean.lastname}" />
 
-	
 						<p:outputLabel value="Adress" for="adress" />
 
 						<p:inputText id="adress" required="true"
