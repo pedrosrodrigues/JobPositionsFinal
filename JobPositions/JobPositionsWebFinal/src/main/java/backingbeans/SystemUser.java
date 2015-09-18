@@ -23,7 +23,7 @@ public class SystemUser implements Serializable {
 
 	public void searchUser(String email) {
 		this.LoggedUser = iu.searchUser(email);
-		System.out.println(LoggedUser.getRole());
+		// log.info("Finding user on database...");
 	}
 
 	public boolean isLogIn() {
@@ -43,6 +43,9 @@ public class SystemUser implements Serializable {
 	}
 
 	public String getLoggedUserName() {
+		if (this.LoggedUser == null) {
+			this.LoggedUser = new UserEntity();
+		}
 		return this.getUserlogado().getName();
 	}
 
