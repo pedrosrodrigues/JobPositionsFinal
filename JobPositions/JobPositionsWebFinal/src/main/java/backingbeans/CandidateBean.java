@@ -5,6 +5,8 @@ import interfaces.ICandidate;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -33,7 +35,9 @@ public class CandidateBean implements Serializable {
 	private String linkedin;
 
 	public void saveCandidate() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		CandidateEntity ent = new CandidateEntity();
+		// log.info("Trying to save a new candidate on database...");
 		ent.setAddress(address);
 		ent.setCity(city);
 		ent.setCountry(country);
@@ -46,10 +50,18 @@ public class CandidateBean implements Serializable {
 		ent.setPassword(password);
 		ent.setPhone(phone);
 		ent.setSchool(school);
-		ic.saveCandidate(ent);
+		try {
+			ic.saveCandidate(ent);
+			context.addMessage(null, new FacesMessage(
+					"Candidate saved on database!"));
+			// log.info("Candidate saved!");
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(
+					"Problem saving candidate on database!"));
+			// log.error("Problem saving candidate!");
+			e.printStackTrace();
+		}
 	}
-	
-	//metodo save candidate alterado
 
 	public String getFirstname() {
 		return firstname;

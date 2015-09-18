@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -41,6 +43,8 @@ public class JobPositionBean implements Serializable {
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
 
 	public void saveJobPosition() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		// log.info("Trying to save a new position on database...");
 		JobEntity ent = new JobEntity();
 		ent.setCompany(company);
 		ent.setCreationDate(creationDate);
@@ -57,15 +61,19 @@ public class JobPositionBean implements Serializable {
 		try {
 			ij.saveJob(ent);
 			this.jobpositions.add(ent);
+			// log.info("Position saved on database!");
+			context.addMessage(null, new FacesMessage("Position created!."));
 		} catch (Exception e) {
-			// mensagem e log nao conseguiu gravar posiçao.
+			// log.error("Problem saving position!");
+			context.addMessage(null, new FacesMessage(
+					"Position creation failed!."));
 			e.printStackTrace();
 		}
 	}
-	
-	public void start(){
-		 System.out.println("Starting app...");
-		 jobpositions = ij.findAll();
+
+	public void start() {
+		System.out.println("Starting app...");
+		jobpositions = ij.findAll();
 	}
 
 	public Date getCreationDate() {
