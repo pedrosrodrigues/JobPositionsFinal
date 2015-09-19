@@ -14,8 +14,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import entities.JobEntity;
+import enumeration.JobStatus;
 
-//import enumeration.JobStatus;
 
 @SessionScoped
 @Named
@@ -36,8 +36,8 @@ public class JobPositionBean implements Serializable {
 	private String title;
 	private String positionCode;
 	private String vacancies;
-	// private JobStatus jobStatus;
-	private String jobStatus;
+	private JobStatus jobStatus;
+//	private String jobStatus;
 	private String responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
@@ -76,6 +76,11 @@ public class JobPositionBean implements Serializable {
 		jobpositions = ij.findAll();
 	}
 
+	public Date getActualDate(){
+		return  new Date();
+		
+	}
+	
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -180,12 +185,18 @@ public class JobPositionBean implements Serializable {
 		this.selectPosition = selectPosition;
 	}
 
-	public String getJobStatus() {
+	 public JobStatus[] getJobStatuses() {
+	        return JobStatus.values();
+    }
+	 
+	public JobStatus getJobStatus() {
 		return jobStatus;
 	}
 
-	public void setJobStatus(String jobStatus) {
+	public void setJobStatus(JobStatus jobStatus) {
 		this.jobStatus = jobStatus;
 	}
+
+	
 
 }

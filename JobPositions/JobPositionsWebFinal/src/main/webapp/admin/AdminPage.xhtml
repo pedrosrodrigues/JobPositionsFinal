@@ -3,11 +3,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:o="http://omnifaces.org/ui">
 
 	<ui:define name="title">Admin Menu</ui:define>
 	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
 	<ui:define name="body">
+		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
+			allSuffix="ALL_ENUM_VALUES" />
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
@@ -18,33 +22,13 @@
 						paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						id="jobstable" sortMode="single" >
+						id="jobstable" sortMode="single">
 
 						<p:column styleClass="jobs-table" headerText="Job Title"
 							style="text-align: center; width:200px"
 							sortBy="#{position.title}">
 							<h:outputText value="#{position.title}" />
 						</p:column>
-							<p:rowExpansion id="rowselection">
-							<p:panelGrid columns="2" columnClasses="label, field"
-								style="width:100%;">
-
-								<h:outputText value="Job Code" />
-								<h:outputText value="#{position.positionCode}" />
-
-								<h:outputText value="Job Function" />
-								<h:outputText value="Java Engineer" />
-
-								<h:outputText value="# of openings" />
-								<h:outputText value="#{position.vacancies}" />
-
-							</p:panelGrid>
-
-							<p:panelGrid columns="1" style="width:100%;">
-								<p:inputTextarea rows="10" cols="100" style="width:95%" />
-								<h:outputText value="#{position.jobDescription}" />
-							</p:panelGrid>
-						</p:rowExpansion>
 						<p:column headerText="Location"
 							style="text-align: center; width:150px"
 							sortBy="#{position.location}">
@@ -62,14 +46,34 @@
 						<p:column style="width:16px">
 							<p:rowToggler />
 						</p:column>
+						<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
+
+								<h:outputText value="Job Code" />
+								<h:outputText value="#{position.positionCode}" />
+
+								<h:outputText value="Job Function" />
+								<h:outputText value="#{position.technicalArea}" />
+
+								<h:outputText value="# of openings" />
+								<h:outputText value="#{position.vacancies}" />
+
+								<h:outputText value="Responsable" />
+								<h:outputText value="#{position.responsable}" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="width:100%;">
+								<h:outputText value="#{position.jobDescription}" />
+							</p:panelGrid>
+						</p:rowExpansion>
+
 						<p:column headerText="" style="text-align: center; width:40px;">
 							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
 								<f:setPropertyActionListener
 									target="#{jobPositionBean.selectPosition}" value="#{position}" />
 							</p:commandButton>
 						</p:column>
-
-					
 					</p:dataTable>
 
 					<p:confirmDialog header="Delete position"
@@ -85,7 +89,6 @@
 			</p:tab>
 
 			<p:tab title="New Position">
-
 				<div id="loginfrm">
 					<h:form id="frmEdit">
 						<p:messages id="messageForm2" closable="true" />
@@ -101,7 +104,7 @@
 
 									<p:calendar id="startDate" required="true"
 										value="#{jobPositionBean.creationDate}" style="width:10%;"
-										size="10" pattern="dd/MM/yyyy" />
+										size="10" pattern="dd/MM/yyyy" mindate="#{jobPositionBean.actualDate}"/>
 									<p:calendar id="endDate" required="true"
 										value="#{jobPositionBean.finalDate}" style="width:10%;"
 										size="10" pattern="dd/MM/yyyy" />
@@ -128,7 +131,14 @@
 								<p:outputLabel value="Status" for="status" />
 								<p:outputLabel value="Vacancies" for="vacancies" />
 
-								<p:inputText id="status" value="#{jobPositionBean.jobStatus}" />
+								<p:selectOneMenu id="status"
+									value="#{jobPositionBean.jobStatus}">
+									<f:selectItem itemLabel="Selecione a Localização" />
+									<f:selectItems value="#{enumJobStatus.ALL_ENUM_VALUES}"
+										var="status" itemLabel="#{status.label}" itemValue="#{status}">
+									</f:selectItems>
+								</p:selectOneMenu>
+
 								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
 
 								<p:outputLabel value="Responsable" for="responsable" />

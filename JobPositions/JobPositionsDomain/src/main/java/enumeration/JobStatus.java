@@ -1,19 +1,24 @@
 package enumeration;
 
 public enum JobStatus {
-	
-	OPEN, CLOSED, ON_HOLD;
-	
-	private String jobStatus;
 
-	public String getJobStatus() {
-		return jobStatus;
+	OPEN("OPEN"), CLOSED("CLOSED"), ON_HOLD("ON_HOLD");
+
+	private String label;
+
+	JobStatus(String label) {
+		this.label = label;
 	}
 
-	public void setJobStatus(String jobStatus) {
-		this.jobStatus = jobStatus;
+	public String getLabel() {
+		return this.label;
 	}
+
+
 	
-	
+
 
 }
+
+
+

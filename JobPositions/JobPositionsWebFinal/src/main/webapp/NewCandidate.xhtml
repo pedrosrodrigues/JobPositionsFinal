@@ -28,7 +28,12 @@
 						<p:outputLabel value="Adress" for="adress" />
 
 						<p:inputText id="email" required="true"
-							value="#{candidateBean.email}" />
+							value="#{candidateBean.email}" size="60" maxlength="80"
+							requiredMessage="PLease email"
+							validatorMessage="E-mail not valid" required="true">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</p:inputText>
 						<p:inputText id="adress" required="true"
 							value="#{candidateBean.address}" />
 

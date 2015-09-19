@@ -7,7 +7,7 @@ public enum RoleEntity {
 	private String role;
 
 	public String getRole() {
-		return role;
+		return this.role;
 	}
 
 	public void setRole(String role) {

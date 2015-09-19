@@ -52,6 +52,7 @@ public class LoginBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
+		
 		try {
 			request.login(email, password);
 

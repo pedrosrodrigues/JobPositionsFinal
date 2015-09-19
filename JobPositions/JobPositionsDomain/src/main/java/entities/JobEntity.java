@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import enumeration.JobStatus;
 
+
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "JobEntity.findAll", query="SELECT j FROM JobEntity j")})
@@ -40,8 +41,8 @@ public class JobEntity implements Serializable {
 	private String positionCode;
 	private String vacancies;
 	private String responsable;
-	private String jobStatus;
-//	private JobStatus jobStatus = JobStatus.OPEN;
+//	private String jobStatus;
+	private JobStatus jobStatus;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
 	@Id
@@ -137,15 +138,15 @@ public class JobEntity implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-//	@Enumerated(EnumType.STRING)
-//	@Column(nullable = false, length=20)
-//	public JobStatus getJobStatus() {
-//		return jobStatus;
-//	}
-//
-//	public void setJobStatus(JobStatus jobStatus) {
-//		this.jobStatus = jobStatus;
-//	}
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length=20)
+	public JobStatus getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(JobStatus jobStatus) {
+		this.jobStatus = jobStatus;
+	}
 	
 	
 	
@@ -176,13 +177,13 @@ public class JobEntity implements Serializable {
 //		this.candidates = candidates;
 //	}
 
-	public String getJobStatus() {
-		return jobStatus;
-	}
-
-	public void setJobStatus(String jobStatus) {
-		this.jobStatus = jobStatus;
-	}
+//	public String getJobStatus() {
+//		return jobStatus;
+//	}
+//
+//	public void setJobStatus(String jobStatus) {
+//		this.jobStatus = jobStatus;
+//	}
 
 	@Override
 	public int hashCode() {
