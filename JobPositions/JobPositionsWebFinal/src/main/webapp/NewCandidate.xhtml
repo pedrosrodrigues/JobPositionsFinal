@@ -13,7 +13,7 @@
 
 			<h:form id="frmEdit">
 				<p:panel id="panel" style="border-width: 0px;">
-					<p:messages globalOnly="true" />
+				<p:messages autoUpdate="true" />
 					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
 						cellspacing="4px">
 						<p:outputLabel value="First Name" for="fname" />
@@ -30,7 +30,7 @@
 						<p:inputText id="email" required="true"
 							value="#{candidateBean.email}" size="60" maxlength="80"
 							requiredMessage="PLease email"
-							validatorMessage="E-mail not valid" required="true">
+							validatorMessage="E-mail not valid" >
 							<f:validateRegex
 								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 						</p:inputText>
@@ -86,8 +86,9 @@
 								<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
 									id="mletter" />
 								<p:outputLabel value="" />
+							
 								<p:commandButton value="SAVE"
-									action="#{candidateBean.saveCandidate}" />
+									action="#{candidateBean.saveCandidate}" update="frmEdit"/>
 							</h:panelGrid>
 						</div>
 					</div>

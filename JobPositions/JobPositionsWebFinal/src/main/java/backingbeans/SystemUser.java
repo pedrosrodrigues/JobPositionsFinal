@@ -8,6 +8,9 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import entities.UserEntity;
 
 @SessionScoped
@@ -17,13 +20,15 @@ public class SystemUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private UserEntity LoggedUser;
 	private boolean logIn;
+	
+	private static final Logger log = LoggerFactory.getLogger(SystemUser.class);
 
 	@EJB
 	private IUser iu;
 
 	public void searchUser(String email) {
 		this.LoggedUser = iu.searchUser(email);
-		// log.info("Finding user on database...");
+		log.info("Finding user on database...");
 	}
 
 	public boolean isLogIn() {

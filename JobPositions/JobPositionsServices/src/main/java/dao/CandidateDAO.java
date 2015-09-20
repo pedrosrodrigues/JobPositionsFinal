@@ -23,4 +23,10 @@ public class CandidateDAO {
 		return (CandidateEntity) q.getSingleResult();
 	}
 
+	public void update(CandidateEntity ent) {
+		em.persist(ent);		
+	}
+
+	
+
 }

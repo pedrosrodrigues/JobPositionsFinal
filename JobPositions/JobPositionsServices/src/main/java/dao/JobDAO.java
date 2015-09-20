@@ -18,7 +18,10 @@ public class JobDAO {
 
 	public void save(JobEntity ent) {
 		em.persist(ent);
-
+	}
+	
+	public void update(JobEntity ent) {
+		em.merge(ent);		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -26,4 +29,6 @@ public class JobDAO {
 		Query q = em.createNamedQuery(JobEntity.FIND_ALL);
 		return q.getResultList();
 	}
+
+	
 }

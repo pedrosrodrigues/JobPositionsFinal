@@ -4,6 +4,9 @@ import interfaces.ICandidate;
 
 import java.io.Serializable;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -33,12 +36,14 @@ public class CandidateBean implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
+	
+	private static final Logger log = LoggerFactory.getLogger(CandidateBean.class);
 
 	public String saveCandidate() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		CandidateEntity ent = new CandidateEntity();
 		String page = "";
-		// log.info("Trying to save a new candidate on database...");
+		log.info("Trying to save a new candidate on database...");
 		ent.setAddress(address);
 		ent.setCity(city);
 		ent.setCountry(country);
@@ -57,48 +62,17 @@ public class CandidateBean implements Serializable {
 					"Candidate saved on database!"));
 			page= "/Login.xhtml?faces-redirect=true";
 			
-			// log.info("Candidate saved!");
+			log.info("Candidate saved!");
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(
 					"Problem saving candidate on database!"));
-			// log.error("Problem saving candidate!");
+			log.error("Problem saving candidate!");
 			e.printStackTrace();
 		}
 		return page;
 	}
 	
-	public void updateCandidate() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		CandidateEntity ent = new CandidateEntity();
-		String page = "";
-		// log.info("Trying to save a new candidate on database...");
-		ent.setAddress(address);
-		ent.setCity(city);
-		ent.setCountry(country);
-		ent.setCourse(course);
-		ent.setEmail(email);
-		ent.setFirstname(firstname);
-		ent.setLastname(lastname);
-		ent.setLinkedin(linkedin);
-		ent.setMobile(mobile);
-		ent.setPassword(password);
-		ent.setPhone(phone);
-		ent.setSchool(school);
-		try {
-			ic.saveCandidate(ent);
-			context.addMessage(null, new FacesMessage(
-					"Candidate saved on database!"));
-			page= "/Login.xhtml?faces-redirect=true";
-			
-			// log.info("Candidate saved!");
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(
-					"Problem saving candidate on database!"));
-			// log.error("Problem saving candidate!");
-			e.printStackTrace();
-		}
-		return page;
-	}
+
 
 	public String getFirstname() {
 		return firstname;

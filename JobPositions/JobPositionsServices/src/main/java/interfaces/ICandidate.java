@@ -11,4 +11,6 @@ public interface ICandidate {
 
 	public CandidateEntity findByEmail(String email);
 
+	public void updateCandidate(CandidateEntity ent);
+
 }

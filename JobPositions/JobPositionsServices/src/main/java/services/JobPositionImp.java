@@ -18,17 +18,19 @@ public class JobPositionImp implements IJobPosition{
 
 	@Override
 	public void saveJob(JobEntity jobentity) {
-
 		// verifica se pode gravar
-
 		// se puder grava na bd
-
 		job.save(jobentity);
 	}
 
 	@Override
 	public List<JobEntity> findAll() {		
 		return job.findAll();
+	}
+
+	@Override
+	public void updateJob(JobEntity ent) {
+		job.update(ent);
 	}
 
 }

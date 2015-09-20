@@ -13,6 +13,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import entities.JobEntity;
 import enumeration.JobStatus;
 
@@ -41,10 +44,12 @@ public class JobPositionBean implements Serializable {
 	private String responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
+	
+	private static final Logger log = LoggerFactory.getLogger(JobPositionBean.class);
 
 	public void saveJobPosition() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		// log.info("Trying to save a new position on database...");
+		log.info("Trying to save a new position on database...");
 		JobEntity ent = new JobEntity();
 		ent.setCompany(company);
 		ent.setCreationDate(creationDate);
@@ -61,24 +66,24 @@ public class JobPositionBean implements Serializable {
 		try {
 			ij.saveJob(ent);
 			this.jobpositions.add(ent);
-			// log.info("Position saved on database!");
+			log.info("Position saved on database!");
 			context.addMessage(null, new FacesMessage("Position created!."));
 		} catch (Exception e) {
-			// log.error("Problem saving position!");
+			log.error("Problem saving position!");
 			context.addMessage(null, new FacesMessage(
 					"Position creation failed!."));
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 	public void start() {
 		System.out.println("Starting app...");
 		jobpositions = ij.findAll();
 	}
 
 	public Date getActualDate(){
-		return  new Date();
-		
+		return  new Date();		
 	}
 	
 	public Date getCreationDate() {

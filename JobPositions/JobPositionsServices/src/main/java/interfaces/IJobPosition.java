@@ -10,6 +10,8 @@ import entities.JobEntity;
 public interface IJobPosition {
 
 	public void saveJob(JobEntity ent);
+	
+	public void updateJob(JobEntity ent);
 
 	public List<JobEntity> findAll();
 

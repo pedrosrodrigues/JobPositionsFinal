@@ -12,6 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import services.CandidateImp;
 import entities.UserEntity;
 import enumeration.RoleEntity;
@@ -25,30 +28,32 @@ public class NewUserInputBean implements Serializable {
 	private String email;
 	private String password;
 	private RoleEntity role;
+	
+	private static final Logger log = LoggerFactory.getLogger(NewUserInputBean.class);
 
 	@Inject
 	private IUser iu;
 
 	public void newUserInput() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		// log.info("Trying to save a new user (admin created) on database...");
+		log.info("Trying to save a new user (admin created) on database...");
 		UserEntity uent = new UserEntity();
 		uent.setEmail(this.email);
 		uent.setName(this.name);
 		uent.setRole(role);
 		try {
 			uent.setPassword(CandidateImp.passEncript(password));
-			// log.info("Password encrypted...");
+			log.info("Password encrypted...");
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 
 		try {
 			iu.saveUser(uent);
-			// log.info("New user saved!");
+			log.info("New user saved!");
 			context.addMessage(null, new FacesMessage("User created!"));
 		} catch (Exception e) {
-			// log.error("Problem saving user!");
+			log.error("Problem saving user!");
 			context.addMessage(null, new FacesMessage(
 					"Problem creating the new user!"));
 			e.printStackTrace();

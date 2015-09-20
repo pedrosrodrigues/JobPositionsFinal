@@ -70,4 +70,9 @@ public class CandidateImp implements ICandidate {
 		return cd.findByEmail(email);
 
 	}
+
+	@Override
+	public void updateCandidate(CandidateEntity ent) {
+		cd.update(ent);	
+	}
 }

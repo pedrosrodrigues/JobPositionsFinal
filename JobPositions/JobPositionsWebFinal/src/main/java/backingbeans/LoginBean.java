@@ -18,6 +18,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import entities.CandidateEntity;
 
 @SessionScoped
@@ -29,6 +32,8 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 	private CandidateEntity ce;
+	
+	private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
 
 	@Inject
 	private SystemUser su;
@@ -47,7 +52,7 @@ public class LoginBean implements Serializable {
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
-		// log.info("Attempt to login...");
+		log.info("Attempt to login...");
 		String page = "";
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
@@ -59,7 +64,7 @@ public class LoginBean implements Serializable {
 		} catch (ServletException e) {
 			context.addMessage(null, new FacesMessage(
 					"Login failed! User not on database."));
-			// log.error("Login failed!");
+			log.error("Login failed!");
 			return "LoginError.xhtml?faces-redirect=true";
 		}
 		su.searchUser(email);
@@ -82,7 +87,7 @@ public class LoginBean implements Serializable {
 	}
 
 	private void setCandidateInfo() {
-		// log.info("Setting candidate information!");
+		log.info("Setting candidate information!");
 		ce = ic.findByEmail(su.getUserlogado().getEmail());
 		if (ce != null) {
 			cb.setAddress(ce.getAddress());
@@ -100,7 +105,7 @@ public class LoginBean implements Serializable {
 	}
 
 	public void logout() {
-		// log.info("logout attempt...");
+		log.info("logout attempt...");
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
@@ -113,12 +118,12 @@ public class LoginBean implements Serializable {
 			su.setUserlogado(null);
 			su.setLogIn(false);
 			context.addMessage(null, new FacesMessage("Logout sucessfull!."));
-			// log.info("Logout failure!");
+			log.info("Logout failure!");
 		} catch (ServletException e) {
-			// log.error("Logout failure!");
+			log.error("Logout failure!");
 			context.addMessage(null, new FacesMessage("Logout failed."));
 		} catch (IOException e) {
-			// log.error("Redirect failure!");
+			log.error("Redirect failure!");
 			context.addMessage(
 					null,
 					new FacesMessage(
