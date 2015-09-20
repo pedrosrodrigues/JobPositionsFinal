@@ -43,6 +43,7 @@ public class JobEntity implements Serializable {
 	private String responsable;
 //	private String jobStatus;
 	private JobStatus jobStatus;
+	private List<ApplicationEntity> applications;
 	//private List<CandidateEntity> candidates = new ArrayList<>();
 
 	@Id

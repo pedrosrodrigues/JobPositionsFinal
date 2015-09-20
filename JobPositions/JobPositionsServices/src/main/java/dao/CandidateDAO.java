@@ -24,7 +24,7 @@ public class CandidateDAO {
 	}
 
 	public void update(CandidateEntity ent) {
-		em.persist(ent);		
+		em.merge(ent);		
 	}
 
 	
