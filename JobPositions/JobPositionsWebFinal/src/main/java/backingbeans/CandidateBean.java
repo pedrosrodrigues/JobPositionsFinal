@@ -60,6 +60,7 @@ public class CandidateBean implements Serializable {
 		ent.setPhone(phone);
 		ent.setSchool(school);
 		try {
+			System.out.println(ent.getAddress());
 			ic.saveCandidate(ent);
 			context.addMessage(null, new FacesMessage(
 					"Candidate saved on database!"));

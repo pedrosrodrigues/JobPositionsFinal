@@ -46,17 +46,5 @@ public class Populator implements Serializable {
 		uent3.setName("Interviewer");
 		uent3.setRole(RoleEntity.INTERVIEWER);
 		iu.saveUser(uent3);
-		UserEntity uent4 = new UserEntity();
-		uent4.setEmail("pedro@gmail.com");
-		uent4.setPassword(CandidateImp.passEncript("123"));
-		uent4.setName("Pedro Rodrigues");
-		uent4.setRole(RoleEntity.CANDIDATE);
-		iu.saveUser(uent4);
-		UserEntity uent5 = new UserEntity();
-		uent5.setEmail("filipa@gmail.com");
-		uent5.setPassword(CandidateImp.passEncript("123"));
-		uent5.setName("Filipa Pedrosa");
-		uent5.setRole(RoleEntity.CANDIDATE);
-		iu.saveUser(uent5);
 	}
 }

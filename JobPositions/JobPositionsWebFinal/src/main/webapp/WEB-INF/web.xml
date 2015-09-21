@@ -22,7 +22,6 @@
 				<form-error-page>LoginError.xhtml</form-error-page>
 			</form-login-config>
 	</login-config>
-
 	<security-constraint>
 		<display-name>projfinal</display-name>
 		<web-resource-collection>

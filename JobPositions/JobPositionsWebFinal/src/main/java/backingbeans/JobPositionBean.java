@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import entities.JobEntity;
 import enumeration.JobStatus;
 
-
 @SessionScoped
 @Named
 public class JobPositionBean implements Serializable {
@@ -40,12 +39,13 @@ public class JobPositionBean implements Serializable {
 	private String positionCode;
 	private String vacancies;
 	private JobStatus jobStatus;
-//	private String jobStatus;
+	// private String jobStatus;
 	private String responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
-	
-	private static final Logger log = LoggerFactory.getLogger(JobPositionBean.class);
+
+	private static final Logger log = LoggerFactory
+			.getLogger(JobPositionBean.class);
 
 	public void saveJobPosition() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -55,7 +55,7 @@ public class JobPositionBean implements Serializable {
 		ent.setCreationDate(creationDate);
 		ent.setFinalDate(finalDate);
 		ent.setJobDescription(jobDescription);
-		ent.setJobStatus(jobStatus);
+		ent.setJobStatus(JobStatus.OPEN);
 		ent.setLocation(location);
 		ent.setPositionCode(positionCode);
 		ent.setSla(sla);
@@ -75,17 +75,16 @@ public class JobPositionBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public void start() {
 		System.out.println("Starting app...");
 		jobpositions = ij.findAll();
 	}
 
-	public Date getActualDate(){
-		return  new Date();		
+	public Date getActualDate() {
+		return new Date();
 	}
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -190,10 +189,10 @@ public class JobPositionBean implements Serializable {
 		this.selectPosition = selectPosition;
 	}
 
-	 public JobStatus[] getJobStatuses() {
-	        return JobStatus.values();
-    }
-	 
+	public JobStatus[] getJobStatuses() {
+		return JobStatus.values();
+	}
+
 	public JobStatus getJobStatus() {
 		return jobStatus;
 	}
@@ -201,7 +200,5 @@ public class JobPositionBean implements Serializable {
 	public void setJobStatus(JobStatus jobStatus) {
 		this.jobStatus = jobStatus;
 	}
-
-	
 
 }
