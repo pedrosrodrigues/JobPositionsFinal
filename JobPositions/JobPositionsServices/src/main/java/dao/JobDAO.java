@@ -31,7 +31,7 @@ public class JobDAO {
 		return q.getResultList();
 	}
 
-	public JobEntity findById(int id) {
+	public JobEntity findById(Long id) {
 		Query q = em.createNamedQuery(JobEntity.FIND_BY_ID);
 		q.setParameter("id", id);
 		return (JobEntity) q.getSingleResult();

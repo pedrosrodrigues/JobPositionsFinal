@@ -16,7 +16,7 @@ public interface IJobPosition {
 
 	public List<JobEntity> findAll();
 	
-	public JobEntity findById(int id);
+	public JobEntity findById(Long id);
 
 
 }

@@ -34,9 +34,8 @@ public class JobPositionImp implements IJobPosition{
 	}
 
 	@Override
-	public JobEntity findById(int id) {
-		return job.findById(id);
-		
+	public JobEntity findById(Long id) {
+		return job.findById(id);		
 	}
 
 }
