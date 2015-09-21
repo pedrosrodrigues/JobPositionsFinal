@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import enumeration.ApplicationStatus;
 
@@ -19,14 +23,27 @@ public class ApplicationEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
-	private Date aplicationDate;
-	private CandidateEntity candidateEntity;
-	private JobEntity jobEntity;
-	private ApplicationStatus appStatus;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Long id;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false, length = 100)
+	private Date aplicationDate;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 100)	
+	private ApplicationStatus appStatus;
+	
+	@ManyToOne
+	@JoinColumn(name = "candidate_id", nullable = false)
+	private CandidateEntity candidateEntity;
+	
+	@ManyToOne
+	@JoinColumn(name = "job_id", nullable = false)
+	private JobEntity jobEntity;
+	
 	public Long getId() {
 		return id;
 	}
@@ -35,7 +52,7 @@ public class ApplicationEntity implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(nullable = false, length = 100)
+
 	public Date getAplicationDate() {
 		return aplicationDate;
 	}
@@ -44,8 +61,6 @@ public class ApplicationEntity implements Serializable {
 		this.aplicationDate = aplicationDate;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "candidateEntity")
 	public CandidateEntity getCandidateEntity() {
 		return candidateEntity;
 	}
@@ -54,7 +69,6 @@ public class ApplicationEntity implements Serializable {
 		this.candidateEntity = candidateEntity;
 	}
 	
-	@Column(nullable = false, length = 100)
 	public JobEntity getJobEntity() {
 		return jobEntity;
 	}

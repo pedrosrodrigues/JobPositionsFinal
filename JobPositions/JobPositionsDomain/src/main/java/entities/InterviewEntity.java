@@ -8,20 +8,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class InterviewEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
 	private Long id;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false, length = 100)
 	private Date interviewDate;
 
 	// private ApplicationEntity applicationEntity;
 	// private UserEntity userEntity;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public Long getId() {
 		return id;
 	}

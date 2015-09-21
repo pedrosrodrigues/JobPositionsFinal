@@ -1,18 +1,22 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,26 +33,53 @@ public class JobEntity implements Serializable {
 	public static final String FIND_ALL = "JobEntity.findAll";
 	public static final String FIND_BY_ID = "JobEntity.findId";
 
-	private Long id;
-	private Date creationDate;
-	private Date finalDate;
-	private String jobDescription;
-	private String company;
-	private String technicalArea;
-	private String sla;
-	private String location;
-	private String title;
-	private String positionCode;
-	private String vacancies;
-	private String responsable;
-	// private String jobStatus;
-	private JobStatus jobStatus;
-	private List<ApplicationEntity> applications;
-
-	// private List<CandidateEntity> candidates = new ArrayList<>();
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Long id;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false, length = 100)
+	private Date creationDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false, length = 100)
+	private Date finalDate;
+	
+	@Column(nullable = false, length = 3000, columnDefinition = "text")
+	private String jobDescription;
+	
+	@Column(nullable = false, length = 100)
+	private String company;
+	
+	@Column(nullable = false, length = 100)
+	private String technicalArea;
+	
+	@Column(nullable = false, length = 100)
+	private String sla;
+	
+	@Column(nullable = false, length = 100)
+	private String location;
+	
+	@Column(nullable = false, length = 100)
+	private String title;
+	
+	@Column(nullable = false, length = 100)
+	private String positionCode;
+	
+	@Column(nullable = false, length = 100)
+	private String vacancies;
+	
+	@Column(nullable = false, length = 100)
+	private String responsable;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 100)
+	private JobStatus jobStatus;
+	
+	@OneToMany(mappedBy = "jobEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<ApplicationEntity> applications = new ArrayList<>();;
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,8 +88,6 @@ public class JobEntity implements Serializable {
 		this.id = id;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -67,8 +96,6 @@ public class JobEntity implements Serializable {
 		this.creationDate = creationDate;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
 	public Date getFinalDate() {
 		return finalDate;
 	}
@@ -77,7 +104,6 @@ public class JobEntity implements Serializable {
 		this.finalDate = finalDate;
 	}
 
-	@Column(nullable = false, length = 3000, columnDefinition = "text")
 	public String getJobDescription() {
 		return jobDescription;
 	}
@@ -86,7 +112,6 @@ public class JobEntity implements Serializable {
 		this.jobDescription = jobDescription;
 	}
 
-	@Column(nullable = false, length = 20)
 	public String getCompany() {
 		return company;
 	}
@@ -95,7 +120,6 @@ public class JobEntity implements Serializable {
 		this.company = company;
 	}
 
-	@Column(nullable = false, length = 50)
 	public String getTechnicalArea() {
 		return technicalArea;
 	}
@@ -104,7 +128,6 @@ public class JobEntity implements Serializable {
 		this.technicalArea = technicalArea;
 	}
 
-	@Column(nullable = false, length = 20)
 	public String getSla() {
 		return sla;
 	}
@@ -113,7 +136,6 @@ public class JobEntity implements Serializable {
 		this.sla = sla;
 	}
 
-	@Column(nullable = false, length = 50)
 	public String getLocation() {
 		return location;
 	}
@@ -122,7 +144,6 @@ public class JobEntity implements Serializable {
 		this.location = location;
 	}
 
-	@Column(nullable = false, length = 50)
 	public String getTitle() {
 		return title;
 	}
@@ -131,7 +152,6 @@ public class JobEntity implements Serializable {
 		this.title = title;
 	}
 
-	@Column(nullable = false, length = 20)
 	public String getPositionCode() {
 		return positionCode;
 	}
@@ -140,8 +160,7 @@ public class JobEntity implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 20)
+
 	public JobStatus getJobStatus() {
 		return jobStatus;
 	}
@@ -150,7 +169,6 @@ public class JobEntity implements Serializable {
 		this.jobStatus = jobStatus;
 	}
 
-	@Column(nullable = false, length = 20)
 	public String getVacancies() {
 		return vacancies;
 	}
@@ -159,7 +177,6 @@ public class JobEntity implements Serializable {
 		this.vacancies = vacancies;
 	}
 
-	@Column(nullable = false, length = 20)
 	public String getResponsable() {
 		return responsable;
 	}
@@ -167,22 +184,6 @@ public class JobEntity implements Serializable {
 	public void setResponsable(String responsable) {
 		this.responsable = responsable;
 	}
-
-	// public List<CandidateEntity> getCandidates() {
-	// return candidates;
-	// }
-	//
-	// public void setCandidates(List<CandidateEntity> candidates) {
-	// this.candidates = candidates;
-	// }
-
-	// public String getJobStatus() {
-	// return jobStatus;
-	// }
-	//
-	// public void setJobStatus(String jobStatus) {
-	// this.jobStatus = jobStatus;
-	// }
 
 	@Override
 	public int hashCode() {
@@ -209,4 +210,13 @@ public class JobEntity implements Serializable {
 		return true;
 	}
 
+	public List<ApplicationEntity> getApplications() {
+		return applications;
+	}
+
+	public void setApplications(List<ApplicationEntity> applications) {
+		this.applications = applications;
+	}
+
+	
 }
