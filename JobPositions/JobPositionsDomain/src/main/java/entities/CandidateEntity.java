@@ -1,14 +1,18 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
@@ -32,6 +36,7 @@ public class CandidateEntity implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
+	private List<ApplicationEntity> appList;
 
 	// FALTA AQUI CV E CARTA PEDRO NAO DORME ENQTO NAO DESCOBRIR
 	// private List<Application> applications = new ArrayList<>();
@@ -127,8 +132,6 @@ public class CandidateEntity implements Serializable {
 		this.password = password;
 	}
 	
-	
-
 	// //CASCADE PARA QDO GRAVARMOS UM CLIENTE GRAVRARMOS TB AS SUAS
 	// CANDIDATURAS//
 	// @OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
@@ -141,6 +144,7 @@ public class CandidateEntity implements Serializable {
 	// }
 	//
 	//
+	
 	@Column(nullable = true, length = 50)
 	public String getMobile() {
 		return mobile;
@@ -168,6 +172,17 @@ public class CandidateEntity implements Serializable {
 		this.linkedin = linkedin;
 	}
 
+	@OneToMany(mappedBy = "candidateEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<ApplicationEntity> getAppList() {
+		return appList;
+	}
+
+	public void setAppList(List<ApplicationEntity> appList) {
+		this.appList = appList;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -192,5 +207,7 @@ public class CandidateEntity implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 
 }

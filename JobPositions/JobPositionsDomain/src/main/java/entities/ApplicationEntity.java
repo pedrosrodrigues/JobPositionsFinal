@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import enumeration.ApplicationStatus;
+
 import java.util.Date;
 
 @Entity
@@ -18,6 +23,7 @@ public class ApplicationEntity implements Serializable {
 	private Date aplicationDate;
 	private CandidateEntity candidateEntity;
 	private JobEntity jobEntity;
+	private ApplicationStatus appStatus;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,7 +44,8 @@ public class ApplicationEntity implements Serializable {
 		this.aplicationDate = aplicationDate;
 	}
 	
-	@Column(nullable = false, length = 100)
+	@ManyToOne
+	@JoinColumn(name = "candidate_id")
 	public CandidateEntity getCandidateEntity() {
 		return candidateEntity;
 	}
@@ -55,6 +62,15 @@ public class ApplicationEntity implements Serializable {
 	public void setJobEntity(JobEntity jobEntity) {
 		this.jobEntity = jobEntity;
 	}
+	
+	public ApplicationStatus getAppStatus() {
+		return appStatus;
+	}
+
+	public void setAppStatus(ApplicationStatus appStatus) {
+		this.appStatus = appStatus;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

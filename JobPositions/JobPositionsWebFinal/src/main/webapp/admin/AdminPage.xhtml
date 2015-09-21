@@ -10,8 +10,8 @@
 	<ui:define name="title">Admin Menu</ui:define>
 	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
 	<ui:define name="body">
-		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
-			allSuffix="ALL_ENUM_VALUES" />
+<!-- 		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
+			allSuffix="ALL_ENUM_VALUES" /> -->
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
@@ -134,8 +134,8 @@
 								<p:selectOneMenu id="status"
 									value="#{jobPositionBean.jobStatus}">
 									<f:selectItem itemLabel="Selecione a Localização" />
-									<f:selectItems value="#{enumJobStatus.ALL_ENUM_VALUES}"
-										var="status" itemLabel="#{status.label}" itemValue="#{status}">
+									<f:selectItems value="#{JobStatus.ALL_ENUM_VALUES}"
+										var="status" itemLabel="#{status.toString}" itemValue="#{status}">
 									</f:selectItems>
 								</p:selectOneMenu>
 
