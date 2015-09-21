@@ -33,4 +33,10 @@ public class JobPositionImp implements IJobPosition{
 		job.update(ent);
 	}
 
+	@Override
+	public JobEntity findById(int id) {
+		return job.findById(id);
+		
+	}
+
 }

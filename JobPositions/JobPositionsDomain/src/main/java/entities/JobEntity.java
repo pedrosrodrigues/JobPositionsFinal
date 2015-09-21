@@ -22,12 +22,14 @@ import enumeration.JobStatus;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "JobEntity.findAll", query="SELECT j FROM JobEntity j")})
+	@NamedQuery(name = "JobEntity.findAll", query="SELECT j FROM JobEntity j"),
+	@NamedQuery(name = "JobEntity.findId", query="SELECT j FROM JobEntity j WHERE j.id like :id")})
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	public static final String FIND_ALL = "JobEntity.findAll";
+	public static final String FIND_BY_ID = "JobEntity.findId";
 	
 	private Long id;
 	private Date creationDate;

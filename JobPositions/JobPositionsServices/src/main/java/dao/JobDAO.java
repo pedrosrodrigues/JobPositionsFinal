@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.CandidateEntity;
 import entities.JobEntity;
 
 
@@ -28,6 +29,13 @@ public class JobDAO {
 	public List<JobEntity> findAll(){
 		Query q = em.createNamedQuery(JobEntity.FIND_ALL);
 		return q.getResultList();
+	}
+
+	public JobEntity findById(int id) {
+		Query q = em.createNamedQuery(JobEntity.FIND_BY_ID);
+		q.setParameter("id", id);
+		return (JobEntity) q.getSingleResult();
+		
 	}
 
 	
