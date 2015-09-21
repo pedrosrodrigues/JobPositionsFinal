@@ -37,6 +37,7 @@ public class CandidateEntity implements Serializable {
 	private String password;
 	private String linkedin;
 	private List<ApplicationEntity> appList;
+	private List<InterviewEntity> intList;
 
 	// FALTA AQUI CV E CARTA PEDRO NAO DORME ENQTO NAO DESCOBRIR
 	// private List<Application> applications = new ArrayList<>();
@@ -132,19 +133,6 @@ public class CandidateEntity implements Serializable {
 		this.password = password;
 	}
 	
-	// //CASCADE PARA QDO GRAVARMOS UM CLIENTE GRAVRARMOS TB AS SUAS
-	// CANDIDATURAS//
-	// @OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
-	// public List<Application> getApplications() {
-	// return applications;
-	// }
-	//
-	// public void setApplications(List<Application> applications) {
-	// this.applications = applications;
-	// }
-	//
-	//
-	
 	@Column(nullable = true, length = 50)
 	public String getMobile() {
 		return mobile;
@@ -180,8 +168,15 @@ public class CandidateEntity implements Serializable {
 	public void setAppList(List<ApplicationEntity> appList) {
 		this.appList = appList;
 	}
-
 	
+	@OneToMany(mappedBy = "candidateEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<InterviewEntity> getIntList() {
+		return intList;
+	}
+
+	public void setIntList(List<InterviewEntity> intList) {
+		this.intList = intList;
+	}
 
 	@Override
 	public int hashCode() {
@@ -207,6 +202,8 @@ public class CandidateEntity implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 
 	
 
