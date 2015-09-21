@@ -61,7 +61,6 @@ public class CandidateImp implements ICandidate {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-
 		return securedPassword;
 	}
 
@@ -80,6 +79,5 @@ public class CandidateImp implements ICandidate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }
