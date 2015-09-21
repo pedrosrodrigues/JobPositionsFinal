@@ -45,7 +45,7 @@ public class ApplicationEntity implements Serializable {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "candidate_id")
+	@JoinColumn(name = "candidateEntity")
 	public CandidateEntity getCandidateEntity() {
 		return candidateEntity;
 	}
