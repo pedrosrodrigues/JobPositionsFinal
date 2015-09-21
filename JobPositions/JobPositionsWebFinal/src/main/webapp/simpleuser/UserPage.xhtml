@@ -56,7 +56,7 @@
 
 							<p:panelGrid columns="1" style="width:100%;">
 								<h:outputText value="#{position.jobDescription}" />
-								<p:commandButton value="Submit" id="ajax" action="#applicationBean.saveApp(position.idJobPosition)">
+								<p:commandButton value="Submit" id="ajax" action="#{applicationBean.saveApp(position.idJobPosition)}">
 									<p:confirm header="Job Position"
 										message="A sua candidatura foi efectuada com sucesso!" />
 								</p:commandButton>

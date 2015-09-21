@@ -53,6 +53,8 @@
 						rendered="#{!systemUser.logIn}" />
 					<p:commandLink value="Home" action="/Home.xhtml?faces-redirect=true"
 						rendered="#{!systemUser.logIn}" />
+								<p:commandLink value="Regist" action="/NewCandidate.xhtml?faces-redirect=true"
+						rendered="#{!systemUser.logIn}" />
 					<p:commandLink value="Logout"
 						actionListener="#{loginBean.logout}" ajax="false"
 						rendered="#{systemUser.logIn}" />
