@@ -4,14 +4,14 @@ import interfaces.ICandidate;
 
 import java.io.Serializable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import entities.CandidateEntity;
 
@@ -23,6 +23,8 @@ public class CandidateBean implements Serializable {
 
 	@Inject
 	private ICandidate ic;
+	@Inject
+	private SystemUser su;
 
 	private String firstname;
 	private String lastname;
@@ -36,8 +38,9 @@ public class CandidateBean implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
-	
-	private static final Logger log = LoggerFactory.getLogger(CandidateBean.class);
+
+	private static final Logger log = LoggerFactory
+			.getLogger(CandidateBean.class);
 
 	public String saveCandidate() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -60,8 +63,8 @@ public class CandidateBean implements Serializable {
 			ic.saveCandidate(ent);
 			context.addMessage(null, new FacesMessage(
 					"Candidate saved on database!"));
-			page= "/Login.xhtml?faces-redirect=true";
-			
+			page = "/Login.xhtml?faces-redirect=true";
+
 			log.info("Candidate saved!");
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(
@@ -71,8 +74,35 @@ public class CandidateBean implements Serializable {
 		}
 		return page;
 	}
-	
 
+	public void updateCandidate() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		CandidateEntity ent = new CandidateEntity();
+		log.info("Trying to update a candidate on database...");
+		ent.setAddress(address);
+		ent.setCity(city);
+		ent.setCountry(country);
+		ent.setCourse(course);
+		ent.setEmail(su.getUserlogado().getEmail());
+		ent.setFirstname(firstname);
+		ent.setLastname(lastname);
+		ent.setLinkedin(linkedin);
+		ent.setMobile(mobile);
+		ent.setPassword(password);
+		ent.setPhone(phone);
+		ent.setSchool(school);
+		try {
+			ic.updateCandidate(ent);
+			context.addMessage(null, new FacesMessage(
+					"Candidate updated on database!"));
+			log.info("Candidate updated!");
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(
+					"Problem updating candidate on database!"));
+			log.error("Problem updating candidate!");
+			e.printStackTrace();
+		}
+	}
 
 	public String getFirstname() {
 		return firstname;

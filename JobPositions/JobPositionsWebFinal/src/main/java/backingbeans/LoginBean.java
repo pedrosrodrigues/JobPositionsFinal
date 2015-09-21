@@ -32,7 +32,7 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 	private CandidateEntity ce;
-	
+
 	private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
 
 	@Inject
@@ -57,7 +57,7 @@ public class LoginBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
-		
+
 		try {
 			request.login(email, password);
 
@@ -80,7 +80,7 @@ public class LoginBean implements Serializable {
 			setCandidateInfo();
 			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		}
-		// log.info("Login sucessfull!");
+		log.info("Login sucessfull!");
 		context.addMessage(null, new FacesMessage("Login sucessfull!"));
 		jpb.setJobpositions(ij.findAll());
 		return page;
@@ -118,7 +118,7 @@ public class LoginBean implements Serializable {
 			su.setUserlogado(null);
 			su.setLogIn(false);
 			context.addMessage(null, new FacesMessage("Logout sucessfull!."));
-			log.info("Logout failure!");
+			log.info("Logout sucessfull!");
 		} catch (ServletException e) {
 			log.error("Logout failure!");
 			context.addMessage(null, new FacesMessage("Logout failed."));

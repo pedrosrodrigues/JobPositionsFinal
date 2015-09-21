@@ -73,6 +73,13 @@ public class CandidateImp implements ICandidate {
 
 	@Override
 	public void updateCandidate(CandidateEntity ent) {
-		cd.update(ent);	
+		System.out.println(ent.getCountry());
+		try {
+			ent.setPassword(passEncript(ent.getPassword()));
+			cd.update(ent);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }
