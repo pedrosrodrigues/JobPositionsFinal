@@ -20,15 +20,16 @@ public class SystemUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private UserEntity LoggedUser;
 	private boolean logIn;
-	
+
 	private static final Logger log = LoggerFactory.getLogger(SystemUser.class);
 
 	@EJB
 	private IUser iu;
 
 	public void searchUser(String email) {
-		this.LoggedUser = iu.searchUser(email);
 		log.info("Finding user on database...");
+		log.info("Setting logged user...");
+		this.LoggedUser = iu.searchUser(email);
 	}
 
 	public boolean isLogIn() {

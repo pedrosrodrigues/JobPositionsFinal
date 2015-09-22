@@ -11,4 +11,6 @@ public interface IUser {
 
 	public void saveUser(UserEntity uent);
 
+	public void updateUser(UserEntity uent);
+
 }

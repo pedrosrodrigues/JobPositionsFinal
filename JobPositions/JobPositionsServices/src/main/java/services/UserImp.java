@@ -2,6 +2,9 @@ package services;
 
 import interfaces.IUser;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,6 +26,22 @@ public class UserImp implements IUser {
 	public void saveUser(UserEntity uent) {
 		// TODO Auto-generated method stub
 		ud.save(uent);
+
+	}
+
+	@Override
+	public void updateUser(UserEntity uent) {
+		// TODO Auto-generated method stub
+		try {
+			uent.setPassword(CandidateImp.passEncript(uent.getPassword()));
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ud.updateUser(uent);
 
 	}
 
