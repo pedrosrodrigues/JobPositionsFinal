@@ -10,13 +10,13 @@
 	<ui:define name="title">Admin Menu</ui:define>
 	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
 	<ui:define name="body">
-		<!-- 		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
-			allSuffix="ALL_ENUM_VALUES" /> -->
+		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
+			allSuffix="ALL_ENUM_VALUES" />
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-					<p:messages autoUpdate="true" closable="true"/>
+					<p:messages autoUpdate="true" closable="true" />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -91,7 +91,7 @@
 			<p:tab title="New Position">
 				<div id="loginfrm">
 					<h:form id="frmEdit">
-						<p:messages id="messageForm2" closable="true" autoUpdate="true"/>
+						<p:messages id="messageForm2" closable="true" autoUpdate="true" />
 						<p:panel id="panel" style="border-width: 0px;">
 
 							<h:panelGrid styleClass="inputTable" columns="2"
@@ -118,7 +118,6 @@
 									<p:inputText id="jobposition" required="true"
 										value="#{jobPositionBean.positionCode}" style="width:100%;" />
 								</h:panelGrid>
-
 
 								<p:outputLabel value="Title" for="title" />
 								<p:outputLabel value="Location" for="location" />
@@ -171,9 +170,38 @@
 							</div>
 						</p:panel>
 
+						<p:tab title="New User">
+							<div id="loginfrm">
+								<h:form id="frmNewUser">
+									<p:messages autoUpdate="true" closable="true" />
+									<p:panel id="panel" style="border-width: 0px;">
+
+										<h:panelGrid styleClass="inputTable" columns="2"
+											cellpadding="4px" cellspacing="4px">
+											<p:selectOneMenu id="role"
+												value="#{newUserInputBean.role}">
+												<f:selectItem id="item1" itemLabel="Administrator"
+													itemValue="ADMINISTRATOR" />
+												<f:selectItem id="item2" itemLabel="Manager" itemValue="MANAGER" />
+												<f:selectItem id="item3" itemLabel="Interviewer"
+													itemValue="INTERVIEWER" />
+												<f:selectItem id="item4" itemLabel="Candidate" itemValue="CANDIDATE" />
+											</p:selectOneMenu>
+											<p:outputLabel value="Name" for="name" />
+											<p:outputLabel value="Email" for="email" />
+
+											<p:inputText id="name" value="#{newUserInputBean.name}" />
+											<p:inputText id="email" value="#{newUserInputBean.email}" />
+
+										</h:panelGrid>
+								</h:form>
+							</div>
+						</p:tab>
+
 					</h:form>
 				</div>
 			</p:tab>
+
 		</p:tabView>
 
 	</ui:define>
