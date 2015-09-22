@@ -10,11 +10,15 @@
 		<h2>#{systemUser.loggedUserName}</h2>
 	</ui:define>
 	<ui:define name="body">
+		<f:metadata>
+			<f:viewParam name="PositionCode" />
+			<f:event listener="#{applicationBean.start}" type="preRenderView" />
+		</f:metadata>
 
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-				<p:messages autoUpdate="true" />
+					<p:messages autoUpdate="true" />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -56,8 +60,9 @@
 
 							<p:panelGrid columns="1" style="width:100%;">
 								<h:outputText value="#{position.jobDescription}" />
-								<p:commandButton value="Submit" id="ajax" action="#{applicationBean.saveApp(position.id)}" />
-					
+								<p:commandButton value="Submit" id="ajax"
+									action="#{applicationBean.saveApp(position.id)}" />
+
 							</p:panelGrid>
 							<p:confirmDialog global="true" showEffect="fade"
 								hideEffect="fade" />
@@ -129,26 +134,20 @@
 								<p:outputLabel value="First Name" for="fname" />
 								<p:outputLabel value="Last Name" for="lname" />
 
-								<p:inputText id="fname"
-									value="#{candidateBean.firstname}" />
-								<p:inputText id="lname"
-									value="#{candidateBean.lastname}" />
+								<p:inputText id="fname" value="#{candidateBean.firstname}" />
+								<p:inputText id="lname" value="#{candidateBean.lastname}" />
 
 								<p:outputLabel value="Email" for="email" />
 								<p:outputLabel value="Adress" for="adress" />
 
-								<p:inputText id="email"
-									value="#{candidateBean.email}" />
-								<p:inputText id="adress" 
-									value="#{candidateBean.address}" />
+								<p:inputText id="email" value="#{candidateBean.email}" />
+								<p:inputText id="adress" value="#{candidateBean.address}" />
 
 								<p:outputLabel value="City" for="city" />
 								<p:outputLabel value="Country" for="country" />
 
-								<p:inputText id="city"
-									value="#{candidateBean.city}" />
-								<p:inputText id="country"
-									value="#{candidateBean.country}" />
+								<p:inputText id="city" value="#{candidateBean.city}" />
+								<p:inputText id="country" value="#{candidateBean.country}" />
 
 								<p:outputLabel value="Phone" for="phone" />
 								<p:outputLabel value="Mobile" for="mobile" />
