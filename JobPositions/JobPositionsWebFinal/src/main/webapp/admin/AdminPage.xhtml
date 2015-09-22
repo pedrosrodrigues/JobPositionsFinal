@@ -177,7 +177,7 @@
 			<p:tab title="New User">
 				<div id="loginfrm">
 					<h:form id="frmNewUser">
-						<p:messages autoUpdate="true" closable="true" />
+						<p:messages id="msgNewUser" autoUpdate="true" closable="true" />
 						<p:panel id="panel" style="border-width: 0px;">
 
 							<h:panelGrid styleClass="inputTable" columns="2"
@@ -198,11 +198,16 @@
 								<p:outputLabel value="Email" for="email" />
 								<p:inputText id="email" value="#{newUserInputBean.email}" />
 
-								<p:outputLabel value="Password" for="password" />
-								<p:inputText id="password" value="#{newUserInputBean.password}" />
+								<p:outputLabel value="Password" for="password" />								
+								<p:password id="password" required="true" match="confpassword"
+									feedback="true" value="#{newUserInputBean.password}" />
+								
+								<p:outputLabel value="Confirm Password" for="confpassword" />
+								<p:password id="confpassword" required="true" />
 
 								<p:commandButton value="SAVE"
-									action="#{newUserInputBean.newUserInput}" />
+									action="#{newUserInputBean.newUserInput}"
+									update="tab:frmNewUsermsg:NewUser" />
 							</h:panelGrid>
 						</p:panel>
 					</h:form>
