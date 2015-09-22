@@ -15,6 +15,7 @@
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
+				<div id="loginfrm">
 				<h:form id="frm">
 					<p:messages id="frmJob" closable="true" />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
@@ -25,25 +26,33 @@
 						id="jobstable" sortMode="single">
 
 						<p:column styleClass="jobs-table" headerText="Job Title"
-							style="text-align: center; width:200px"
+							style="text-align: center; width:180px"
 							sortBy="#{position.title}">
 							<h:outputText value="#{position.title}" />
 						</p:column>
 						<p:column headerText="Location"
-							style="text-align: center; width:150px"
+							style="text-align: center; width:140px"
 							sortBy="#{position.location}">
 							<h:outputText value="#{position.location}" />
 						</p:column>
 						<p:column headerText="Date"
-							style="text-align: center; width:150px" sortBy="#{position.finalDate}" >
+							style="text-align: center; width:140px" sortBy="#{position.finalDate}" >
 							<h:outputText value="#{position.finalDate}" />
 						</p:column>
 						<p:column headerText="Status"
-							style="text-align: center; width:150px" >
-							<h:outputText value="OPEN" />
+							style="text-align: center; width:140px" sortBy="#{position.status}">
+							<p:selectOneMenu id="appstatus" value="#{position.jobStatus}"
+									required="true">
+									<f:selectItem id="item1" itemLabel="Open"
+										itemValue="OPEN" />
+									<f:selectItem id="item2" itemLabel="On Hold"
+										itemValue="ON_HOLD" />
+									<f:selectItem id="item3" itemLabel="Closed"
+										itemValue="CLOSED" />
+								</p:selectOneMenu>
 						</p:column>
 						<p:column headerText="# Candidates"
-							style="text-align: center; width:150px" sortBy="#{position.vacancies}" >
+							style="text-align: center; width:80px" sortBy="#{position.vacancies}" >
 							<h:outputText value="#{position.vacancies}" />
 						</p:column>
 						<p:column style="width:16px">
@@ -89,6 +98,7 @@
 							onclick="confirm.hide();return false;" />
 					</p:confirmDialog>
 				</h:form>
+				</div>
 			</p:tab>
 
 			<p:tab title="New Position">
@@ -96,7 +106,6 @@
 					<h:form id="frmEdit">
 						<p:messages id="messageForm2" closable="true" />
 						<p:panel id="panel" style="border-width: 0px;">
-
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
 								<h:panelGrid styleClass="inputTable2" columns="2"
@@ -167,7 +176,7 @@
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
 											action="#{jobPositionBean.saveJobPosition}"
-											icon="ui-icon-disk" update="tab:frm:jobstable" />
+											icon="ui-icon-disk" update="tab:frmEdit:messageForm2" />
 									</h:panelGrid>
 								</div>
 							</div>
@@ -228,7 +237,7 @@
 			<p:tab title="My profile">
 				<div id="loginfrm">
 					<h:form id="frmEditUser">
-						<p:messages id="msgEditUser" autoUpdate="true" closable="true" />
+						<p:messages id="msgEditUser" closable="true" />
 						<p:panel id="panelUser" style="border-width: 0px;">
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">

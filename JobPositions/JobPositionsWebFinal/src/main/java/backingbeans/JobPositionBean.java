@@ -67,7 +67,7 @@ public class JobPositionBean implements Serializable {
 			ij.saveJob(ent);
 			this.jobpositions.add(ent);
 			log.info("Position saved on database!");
-			context.addMessage(null, new FacesMessage("Position created!."));
+			context.addMessage(null, new FacesMessage("Position created!"));
 		} catch (Exception e) {
 			log.error("Problem saving position!");
 			context.addMessage(null, new FacesMessage(

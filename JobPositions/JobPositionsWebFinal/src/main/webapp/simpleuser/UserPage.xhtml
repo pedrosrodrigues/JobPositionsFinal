@@ -17,7 +17,8 @@
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
-				<h:form id="frm">
+				<h:form id="frm">	
+				<div id="loginfrm">
 					<p:messages />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
@@ -75,6 +76,7 @@
 								hideEffect="fade" />
 						</p:rowExpansion>
 					</p:dataTable>
+					</div>
 				</h:form>
 			</p:tab>
 			<p:tab title="My Applications">
@@ -134,7 +136,7 @@
 				<div id="loginfrm">
 					<h:form id="frmEdit">
 						<p:messages closable="true" />
-						<p:panel id="panel2" style="border-width: 0px;">
+						<p:panel id="panel2" style="border-width:0px;">
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
 

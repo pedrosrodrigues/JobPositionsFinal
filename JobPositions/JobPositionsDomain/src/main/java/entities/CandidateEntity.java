@@ -34,7 +34,7 @@ public class CandidateEntity implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String lastname;
 
-	@Column(nullable = false, unique = true)
+	
 	private String email;
 
 	@Column(nullable = false, length = 100)

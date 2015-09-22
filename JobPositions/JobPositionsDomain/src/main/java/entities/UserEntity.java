@@ -16,19 +16,29 @@ import enumeration.RoleEntity;
 @Entity
 @NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email")
 public class UserEntity implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
-	private String name;
-	private String email;
-	private String password;
-	private RoleEntity role;
-
 	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Long id;
+	
+	@Column(nullable = false, length = 100)
+	private String name;
+	
+	@Column(nullable = false, length = 100, unique=true)
+	private String email;
+	
+	@Column(nullable = false, length = 100)
+	private String password;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private RoleEntity role;
+
 	public Long getId() {
 		return id;
 	}
@@ -37,7 +47,6 @@ public class UserEntity implements Serializable {
 		this.id = id;
 	}
 
-	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -46,7 +55,6 @@ public class UserEntity implements Serializable {
 		this.name = name;
 	}
 
-	@Column(nullable = false)
 	public String getEmail() {
 		return email;
 	}
@@ -55,7 +63,6 @@ public class UserEntity implements Serializable {
 		this.email = email;
 	}
 
-	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -64,8 +71,6 @@ public class UserEntity implements Serializable {
 		this.password = password;
 	}
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
 	public RoleEntity getRole() {
 		return role;
 	}

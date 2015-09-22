@@ -5,7 +5,7 @@ html, body {
 	font-family: "PFDinDisplayProLight", Georgia;
 	margin: 0px;
 	font-weight: normal;
-	padding:0;
+	padding:0px;
 	height:100%;
 	overflow-x:hidden;
 }
@@ -13,7 +13,7 @@ html, body {
 #wrapper {
 	min-height:100%;
 	position:relative;
-	height:100%;
+/* 	height:100%; */
 }
 
 #header {
@@ -30,6 +30,8 @@ html, body {
 #content {
 	padding-bottom:60px; 
 	margin:100 auto;
+	margin-left:150px;
+	margin-right:15px;
 }
 
 #footer {
@@ -40,7 +42,8 @@ html, body {
 	font-family: "PFDinDisplayProLight", Georgia;
 	width:100%;
 	height:60px;
-	position:fixed;
+	margin-top:60px;
+	position:absolute;
 	bottom:0;
 	left:0;
 }
