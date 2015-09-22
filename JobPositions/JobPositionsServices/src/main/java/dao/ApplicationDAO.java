@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,11 +20,12 @@ public class ApplicationDAO {
 		em.persist(ent);
 	}
 
-	public ApplicationEntity findByCandidateJob(Long idJob, Long idCan) {
+	@SuppressWarnings("unchecked")
+	public List<ApplicationEntity> findByCandidateJob(Long idJob, Long idCan) {
 		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_CANJOB);
 		q.setParameter("id", idJob);
 		q.setParameter("id", idCan);
-		return (ApplicationEntity) q.getResultList();	
+		return q.getResultList();	
 	}
 
 }
