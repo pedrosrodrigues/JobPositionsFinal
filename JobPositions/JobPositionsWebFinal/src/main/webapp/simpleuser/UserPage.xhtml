@@ -15,7 +15,7 @@
 			<f:event listener="#{applicationBean.start}" type="preRenderView" />
 		</f:metadata>
 
-		<p:tabView>
+		<p:tabView id="tab">
 			<p:tab title="Job Positions">
 				<h:form id="frm">
 					<p:messages autoUpdate="true" />
@@ -61,7 +61,8 @@
 							<p:panelGrid columns="1" style="width:100%;">
 								<h:outputText value="#{position.jobDescription}" />
 								<p:commandButton value="Submit" id="ajax"
-									action="#{applicationBean.saveApp(position.id)}" />
+									action="#{applicationBean.saveApp(position.id)}"
+									update="tab:frm1:myappstable" />
 
 							</p:panelGrid>
 							<p:confirmDialog global="true" showEffect="fade"
@@ -71,56 +72,57 @@
 				</h:form>
 			</p:tab>
 			<p:tab title="My Applications">
-				<p:dataTable value="#{applicationBean.listApp}" var="applist"
-					rows="10" emptyMessage="No records found." paginator="true"
-					paginatorPosition="bottom"
-					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				<h:form id="frm1">
+					<p:dataTable id="myappstable" value="#{applicationBean.listApp}" var="applist"
+						rows="10" emptyMessage="No records found." paginator="true"
+						paginatorPosition="bottom"
+						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-					<p:column styleClass="jobs-table" headerText="Job Title"
-						style="text-align: center; width:200px">
-						<h:outputText value="#{applist.JobEntity.title}" />
-					</p:column>
-					<p:column headerText="Location"
-						style="text-align: center; width:150px">
-						<h:outputText value="Portugal,(Coimbra)" />
-					</p:column>
-					<p:column headerText="Application date"
-						style="text-align: center; width:150px">
-						<h:outputText value="19-08-2015" />
-					</p:column>
-					<p:column headerText="Status"
-						style="text-align: center; width:150px">
-						<h:outputText value="19-08-2015" />
-					</p:column>
-					<p:column style="width:16px">
-						<p:rowToggler />
-					</p:column>
+						<p:column styleClass="jobs-table" headerText="Job Title"
+							style="text-align: center; width:200px">
+							<h:outputText value="#{applist.jobEntity.title}" />
+						</p:column>
+						<p:column headerText="Location"
+							style="text-align: center; width:150px">
+							<h:outputText value="Portugal,(Coimbra)" />
+						</p:column>
+						<p:column headerText="Application date"
+							style="text-align: center; width:150px">
+							<h:outputText value="19-08-2015" />
+						</p:column>
+						<p:column headerText="Status"
+							style="text-align: center; width:150px">
+							<h:outputText value="19-08-2015" />
+						</p:column>
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
 
-					<p:rowExpansion id="rowselection">
-						<p:panelGrid columns="2" columnClasses="label, field"
-							style="width:100%;">
+						<p:rowExpansion id="rowselection">
+							<p:panelGrid columns="2" columnClasses="label, field"
+								style="width:100%;">
 
-							<h:outputText value="Job Code" />
-							<h:outputText value="541" />
+								<h:outputText value="Job Code" />
+								<h:outputText value="541" />
 
-							<h:outputText value="Function" />
-							<h:outputText value="Java Engineer" />
+								<h:outputText value="Function" />
+								<h:outputText value="Java Engineer" />
 
-							<h:outputText value="Location" />
-							<h:outputText value="Brazil (S. Paulo)" />
+								<h:outputText value="Location" />
+								<h:outputText value="Brazil (S. Paulo)" />
 
-							<h:outputText value="# of openings" />
-							<h:outputText value="1" />
+								<h:outputText value="# of openings" />
+								<h:outputText value="1" />
 
-						</p:panelGrid>
+							</p:panelGrid>
+							<p:panelGrid columns="1" style="width:100%;">
 
-						<p:panelGrid columns="1" style="width:100%;">
-
-							<p:inputTextarea rows="10" cols="100" style="width:95%" />
-							<h:outputText value="Description" />
-						</p:panelGrid>
-					</p:rowExpansion>
-				</p:dataTable>
+								<p:inputTextarea rows="10" cols="100" style="width:95%" />
+								<h:outputText value="Description" />
+							</p:panelGrid>
+						</p:rowExpansion>
+					</p:dataTable>
+				</h:form>
 			</p:tab>
 
 			<p:tab title="My profile">
@@ -195,17 +197,10 @@
 									</h:panelGrid>
 								</div>
 							</div>
-
-
 						</p:panel>
-
 					</h:form>
-
-
-
 				</div>
 			</p:tab>
-
 			<p:tab title="Other stuff">
 		Se houver necessidade fica, senão sai.
 				</p:tab>
