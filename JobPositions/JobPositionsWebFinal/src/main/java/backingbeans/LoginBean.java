@@ -87,10 +87,8 @@ public class LoginBean implements Serializable {
 	}
 
 	private void setCandidateInfo() {
-		log.info("Setting candidate information!");
-		System.out.println("aqui chega");
+		log.info("Setting candidate information...");
 		ce = ic.findByEmail(su.getUserlogado().getEmail());
-		System.out.println("aqui tambem chega");
 
 		if (ce != null) {
 			cb.setAddress(ce.getAddress());
@@ -105,10 +103,12 @@ public class LoginBean implements Serializable {
 			cb.setPhone(ce.getPhone());
 			cb.setSchool(ce.getSchool());
 		}
+		log.info("Candidate info updated!");
+
 	}
 
 	public void logout() {
-		log.info("logout attempt...");
+		log.info("Logout attempt...");
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
 				.getExternalContext().getRequest();
