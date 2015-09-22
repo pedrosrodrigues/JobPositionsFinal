@@ -16,7 +16,7 @@
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-					<p:messages closable="true" />
+					<p:messages id="frmJob" closable="true" />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -35,12 +35,15 @@
 							<h:outputText value="#{position.location}" />
 						</p:column>
 						<p:column headerText="Date"
-							style="text-align: center; width:150px">
+							style="text-align: center; width:150px" sortBy="#{position.finalDate}" >
 							<h:outputText value="#{position.finalDate}" />
 						</p:column>
-
+						<p:column headerText="Status"
+							style="text-align: center; width:150px" >
+							<h:outputText value="OPEN" />
+						</p:column>
 						<p:column headerText="# Candidates"
-							style="text-align: center; width:150px">
+							style="text-align: center; width:150px" sortBy="#{position.vacancies}" >
 							<h:outputText value="#{position.vacancies}" />
 						</p:column>
 						<p:column style="width:16px">
@@ -177,7 +180,7 @@
 			<p:tab title="New User">
 				<div id="loginfrm">
 					<h:form id="frmNewUser">
-						<p:messages id="msgNewUser" autoUpdate="true" closable="true" />
+						<p:messages id="msgNewUser" closable="true" />
 						<p:panel id="panel" style="border-width: 0px;">
 
 							<h:panelGrid styleClass="inputTable" columns="2"

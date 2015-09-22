@@ -22,7 +22,9 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
-	            @NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan")})
+	@NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan")})
+
+
 public class ApplicationEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
