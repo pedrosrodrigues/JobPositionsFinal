@@ -170,7 +170,7 @@
 							</div>
 						</p:panel>
 					</h:form>
-					</div>
+				</div>
 			</p:tab>
 
 
@@ -182,6 +182,7 @@
 
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
+								<p:outputLabel value="Role" for="role" />
 								<p:selectOneMenu id="role" value="#{newUserInputBean.role}">
 									<f:selectItem id="item1" itemLabel="Administrator"
 										itemValue="ADMINISTRATOR" />
@@ -192,14 +193,18 @@
 									<f:selectItem id="item4" itemLabel="Candidate"
 										itemValue="CANDIDATE" />
 								</p:selectOneMenu>
-								<p:outputLabel value="Name" for="name" />
-								<p:outputLabel value="Email" for="email" />
-									<p:outputLabel value="Password" for="password" />
-								
 
+								<p:outputLabel value="Name" for="name" />
 								<p:inputText id="name" value="#{newUserInputBean.name}" />
+
+								<p:outputLabel value="Email" for="email" />
 								<p:inputText id="email" value="#{newUserInputBean.email}" />
-										<p:inputText id="password" value="#{newUserInputBean.password}" />
+
+								<p:outputLabel value="Password" for="password" />
+								<p:inputText id="password" value="#{newUserInputBean.password}" />
+
+								<p:commandButton value="SAVE"
+									action="#{newUserInputBean.newUserInput}" />
 							</h:panelGrid>
 						</p:panel>
 					</h:form>
