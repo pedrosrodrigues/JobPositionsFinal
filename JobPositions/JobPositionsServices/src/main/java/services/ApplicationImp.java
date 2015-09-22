@@ -34,4 +34,9 @@ public class ApplicationImp implements IApplication {
 		return saved;
 	}
 
+	@Override
+	public List<ApplicationEntity> findCandApps(Long id) {
+		return ap.findByCandApp(id);
+	}
+
 }

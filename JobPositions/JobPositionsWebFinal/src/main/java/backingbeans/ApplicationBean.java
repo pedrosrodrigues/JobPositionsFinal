@@ -42,6 +42,9 @@ public class ApplicationBean implements Serializable {
 
 	private CandidateEntity cent;
 	private JobEntity jent;
+	
+	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();;
+	
 	private static final Logger log = LoggerFactory
 			.getLogger(ApplicationBean.class);
 
@@ -74,10 +77,15 @@ public class ApplicationBean implements Serializable {
 	}
 
 	public void findCandApps() {
-		List<ApplicationEntity> aent = new ArrayList<>();
-
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
-		ia.findCandApps(cent.getId());
+		listApp = ia.findCandApps(cent.getId());
+	}
 
+	public List<ApplicationEntity> getListApp() {
+		return listApp;
+	}
+
+	public void setListApp(List<ApplicationEntity> listApp) {
+		this.listApp = listApp;
 	}
 }
