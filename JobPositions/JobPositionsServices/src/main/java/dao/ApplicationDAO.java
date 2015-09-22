@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.ApplicationEntity;
-import entities.JobEntity;
 
 @Stateless
 public class ApplicationDAO {
@@ -23,9 +22,9 @@ public class ApplicationDAO {
 	@SuppressWarnings("unchecked")
 	public List<ApplicationEntity> findByCandidateJob(Long idJob, Long idCan) {
 		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_CANJOB);
-		q.setParameter("id", idJob);
-		q.setParameter("id", idCan);
-		return q.getResultList();	
+		q.setParameter("idJob", idJob);
+		q.setParameter("idCan", idCan);
+		return q.getResultList();
 	}
 
 }
