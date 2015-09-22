@@ -88,7 +88,10 @@ public class LoginBean implements Serializable {
 
 	private void setCandidateInfo() {
 		log.info("Setting candidate information!");
+		System.out.println("aqui chega");
 		ce = ic.findByEmail(su.getUserlogado().getEmail());
+		System.out.println("aqui tambem chega");
+
 		if (ce != null) {
 			cb.setAddress(ce.getAddress());
 			cb.setCity(ce.getCity());

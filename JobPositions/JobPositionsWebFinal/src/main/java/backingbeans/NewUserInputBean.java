@@ -53,6 +53,9 @@ public class NewUserInputBean implements Serializable {
 
 		try {
 			iu.saveUser(uent);
+			this.email = "";
+			this.name = "";
+			this.password = "";
 			log.info("New user saved!");
 			context.addMessage(null, new FacesMessage("User created!"));
 		} catch (Exception e) {
