@@ -21,7 +21,7 @@ import enumeration.ApplicationStatus;
 import java.util.Date;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity=:jobEntity and a.candidateEntity=:candidateEntity") })
+@NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan") })
 public class ApplicationEntity implements Serializable {
 
 	
