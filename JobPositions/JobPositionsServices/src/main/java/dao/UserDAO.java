@@ -22,4 +22,13 @@ public class UserDAO {
 		q.setParameter("email", email);
 		return (UserEntity) q.getSingleResult();
 	}
+
+	public void updateUser(UserEntity uent) {
+		Query q = em
+				.createQuery("UPDATE UserEntity SET name =:name, password =:password WHERE email =:email");
+		q.setParameter("name", uent.getName());
+		q.setParameter("password", uent.getPassword());
+		q.setParameter("email", uent.getEmail());
+		q.executeUpdate();
+	}
 }

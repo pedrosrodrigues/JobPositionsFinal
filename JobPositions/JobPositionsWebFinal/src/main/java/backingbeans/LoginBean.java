@@ -2,6 +2,7 @@ package backingbeans;
 
 import interfaces.ICandidate;
 import interfaces.IJobPosition;
+import interfaces.IUser;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import entities.CandidateEntity;
+import entities.UserEntity;
 
 @SessionScoped
 @Named
@@ -32,6 +34,7 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 	private CandidateEntity ce;
+	private UserEntity ue;
 
 	private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
 
@@ -49,6 +52,12 @@ public class LoginBean implements Serializable {
 
 	@Inject
 	private IJobPosition ij;
+
+	@Inject
+	private IUser iu;
+
+	@Inject
+	private UserBean ub;
 
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
@@ -70,13 +79,16 @@ public class LoginBean implements Serializable {
 		su.searchUser(email);
 		su.setLogIn(true);
 		String role = su.getUserlogado().getRole().toString();
-		if (role.equals("ADMINISTRATOR"))
+		if (role.equals("ADMINISTRATOR")) {
+			setUserInfo();
 			page = "/admin/AdminPage.xhtml?faces-redirect=true";
-		else if (role.equals("MANAGER"))
+		} else if (role.equals("MANAGER")) {
+			setUserInfo();
 			page = "/manager/ManagerPage.xhtml?faces-redirect=true";
-		else if (role.equals("INTERVIEWER"))
+		} else if (role.equals("INTERVIEWER")) {
+			setUserInfo();
 			page = "/interviewer/InterviewerPage.xhtml?faces-redirect=true";
-		else if (role.equals("CANDIDATE")) {
+		} else if (role.equals("CANDIDATE")) {
 			setCandidateInfo();
 			page = "/simpleuser/UserPage.xhtml?faces-redirect=true";
 		}
@@ -84,6 +96,18 @@ public class LoginBean implements Serializable {
 		context.addMessage(null, new FacesMessage("Login sucessfull!"));
 		jpb.setJobpositions(ij.findAll());
 		return page;
+	}
+
+	private void setUserInfo() {
+		log.info("Setting user information...");
+		ue = iu.searchUser(su.getUserlogado().getEmail());
+
+		ub.setEmail(ue.getEmail());
+		ub.setName(ue.getName());
+		ub.setPassword(ue.getPassword());
+		ub.setRole(ue.getRole().toString());
+
+		log.info("User info updated!");
 	}
 
 	private void setCandidateInfo() {
@@ -104,7 +128,6 @@ public class LoginBean implements Serializable {
 			cb.setSchool(ce.getSchool());
 		}
 		log.info("Candidate info updated!");
-
 	}
 
 	public void logout() {
