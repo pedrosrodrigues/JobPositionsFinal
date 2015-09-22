@@ -28,8 +28,9 @@ public class NewUserInputBean implements Serializable {
 	private String email;
 	private String password;
 	private RoleEntity role;
-	
-	private static final Logger log = LoggerFactory.getLogger(NewUserInputBean.class);
+
+	private static final Logger log = LoggerFactory
+			.getLogger(NewUserInputBean.class);
 
 	@Inject
 	private IUser iu;
@@ -43,8 +44,10 @@ public class NewUserInputBean implements Serializable {
 		uent.setRole(role);
 		try {
 			uent.setPassword(CandidateImp.passEncript(password));
-			log.info("Password encrypted...");
+			log.info("Password encrypted!");
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			log.error("Problem encrypting password!");
+
 			e.printStackTrace();
 		}
 
@@ -55,10 +58,42 @@ public class NewUserInputBean implements Serializable {
 		} catch (Exception e) {
 			log.error("Problem saving user!");
 			context.addMessage(null, new FacesMessage(
-					"Problem creating the new user!"));
+					"Problem creating the new user! Email already existed!"));
 			e.printStackTrace();
 		}
 
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public RoleEntity getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEntity role) {
+		this.role = role;
 	}
 
 }
