@@ -10,13 +10,13 @@
 	<ui:define name="title">Admin Menu</ui:define>
 	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
 	<ui:define name="body">
-<!-- 		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
+		<!-- 		<pe:importEnum type="enumeration.JobStatus" var="enumJobStatus"
 			allSuffix="ALL_ENUM_VALUES" /> -->
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-
+					<p:messages autoUpdate="true"/>
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -91,8 +91,7 @@
 			<p:tab title="New Position">
 				<div id="loginfrm">
 					<h:form id="frmEdit">
-						<p:messages id="messageForm2" closable="true" />
-
+						<p:messages id="messageForm2" closable="true" autoUpdate="true"/>
 						<p:panel id="panel" style="border-width: 0px;">
 
 							<h:panelGrid styleClass="inputTable" columns="2"
@@ -104,7 +103,8 @@
 
 									<p:calendar id="startDate" required="true"
 										value="#{jobPositionBean.creationDate}" style="width:10%;"
-										size="10" pattern="dd/MM/yyyy" mindate="#{jobPositionBean.actualDate}"/>
+										size="10" pattern="dd/MM/yyyy"
+										mindate="#{jobPositionBean.actualDate}" />
 									<p:calendar id="endDate" required="true"
 										value="#{jobPositionBean.finalDate}" style="width:10%;"
 										size="10" pattern="dd/MM/yyyy" />
@@ -135,7 +135,8 @@
 									value="#{jobPositionBean.jobStatus}">
 									<f:selectItem itemLabel="Selecione a Localização" />
 									<f:selectItems value="#{JobStatus.ALL_ENUM_VALUES}"
-										var="status" itemLabel="#{status.toString}" itemValue="#{status}">
+										var="status" itemLabel="#{status.toString}"
+										itemValue="#{status}">
 									</f:selectItems>
 								</p:selectOneMenu>
 

@@ -14,7 +14,7 @@
 		<p:tabView>
 			<p:tab title="Job Positions">
 				<h:form id="frm">
-				<p:messages />
+				<p:messages autoUpdate="true" />
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"

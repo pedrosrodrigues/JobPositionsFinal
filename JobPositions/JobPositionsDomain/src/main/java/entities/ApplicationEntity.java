@@ -24,13 +24,9 @@ import java.util.Date;
 @NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan") })
 public class ApplicationEntity implements Serializable {
 
-	
-	//@NamedQuery(name = "Playlist.findByNameUtilizador", query="SELECT p FROM Playlist p  WHERE p.name=:name and p.utilizador=:utilizador"),
-	//	@NamedQuery(name = "Music.findTotal", query="SELECT COUNT(m) FROM Music m"),
 	private static final long serialVersionUID = 1L;
 	
 	public static final String FIND_BY_CANJOB = "ApplicationEntity.findOne";
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
