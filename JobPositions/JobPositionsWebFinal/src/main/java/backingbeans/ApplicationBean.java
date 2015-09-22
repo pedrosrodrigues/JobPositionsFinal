@@ -10,8 +10,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import entities.ApplicationEntity;
 import entities.CandidateEntity;
@@ -35,8 +40,12 @@ public class ApplicationBean implements Serializable {
 
 	private CandidateEntity cent;
 	private JobEntity jent;
+	private static final Logger log = LoggerFactory
+			.getLogger(ApplicationBean.class);
 
 	public void saveApp(int idPosition) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("trying to save an application on database...");
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 		Date dateobj = new Date();
 		System.out.println(idPosition);
@@ -49,7 +58,18 @@ public class ApplicationBean implements Serializable {
 		aent.setJobEntity(jent);
 		aent.setAppStatus(ApplicationStatus.OPEN);
 		aent.setAplicationDate(dateobj);
-		ia.saveApplication(aent);
+		if (ia.saveApplication(aent)) {
+			log.info("Application saved on database!");
+			context.addMessage(null, new FacesMessage(
+					"Application saved on database!"));
+
+		} else {
+			log.error("Application already submited!");
+			context.addMessage(
+					null,
+					new FacesMessage(
+							"You have already submitted your application for this job position!"));
+		}
 
 	}
 }
