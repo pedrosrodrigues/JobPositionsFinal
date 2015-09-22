@@ -7,7 +7,9 @@ import interfaces.IJobPosition;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -60,8 +62,7 @@ public class ApplicationBean implements Serializable {
 		aent.setAplicationDate(dateobj);
 		if (ia.saveApplication(aent)) {
 			log.info("Application saved on database!");
-			context.addMessage(null, new FacesMessage(
-					"Application saved on database!"));
+			context.addMessage(null, new FacesMessage("Application saved!"));
 
 		} else {
 			log.error("Application already submited!");
@@ -70,6 +71,13 @@ public class ApplicationBean implements Serializable {
 					new FacesMessage(
 							"You have already submitted your application for this job position!"));
 		}
+	}
+
+	public void findCandApps() {
+		List<ApplicationEntity> aent = new ArrayList<>();
+
+		cent = ic.findByEmail(su.getUserlogado().getEmail());
+		ia.findCandApps(cent.getId());
 
 	}
 }

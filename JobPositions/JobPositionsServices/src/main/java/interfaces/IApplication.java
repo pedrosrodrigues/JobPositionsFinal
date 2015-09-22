@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import entities.ApplicationEntity;
@@ -8,6 +10,7 @@ import entities.ApplicationEntity;
 public interface IApplication {
 
 	public boolean saveApplication(ApplicationEntity ent);
-	
-	
+
+	public List<ApplicationEntity> findCandApps(Long id);
+
 }
