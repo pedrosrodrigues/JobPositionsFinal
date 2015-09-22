@@ -101,12 +101,10 @@ public class LoginBean implements Serializable {
 	private void setUserInfo() {
 		log.info("Setting user information...");
 		ue = iu.searchUser(su.getUserlogado().getEmail());
-
 		ub.setEmail(ue.getEmail());
 		ub.setName(ue.getName());
 		ub.setPassword(ue.getPassword());
 		ub.setRole(ue.getRole().toString());
-
 		log.info("User info updated!");
 	}
 
