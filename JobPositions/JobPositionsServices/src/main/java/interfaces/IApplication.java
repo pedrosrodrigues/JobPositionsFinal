@@ -8,4 +8,6 @@ import entities.ApplicationEntity;
 public interface IApplication {
 
 	public boolean saveApplication(ApplicationEntity ent);
+	
+	
 }

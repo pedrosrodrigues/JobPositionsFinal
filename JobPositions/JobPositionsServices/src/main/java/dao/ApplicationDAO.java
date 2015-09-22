@@ -27,4 +27,10 @@ public class ApplicationDAO {
 		return q.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<ApplicationEntity> findByCandApp(Long idCan) {
+		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_CANDAPP);
+		q.setParameter("idCan", idCan);
+		return q.getResultList();
+	}
 }

@@ -21,67 +21,69 @@ import enumeration.ApplicationStatus;
 import java.util.Date;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan") })
+@NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
+	            @NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan")})
 public class ApplicationEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final String FIND_BY_CANJOB = "ApplicationEntity.findOne";
-	
+	public static final String FIND_BY_CANDAPP = "ApplicationEntity.findCandApp";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date aplicationDate;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 100)	
 	private ApplicationStatus appStatus;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "candidate_id", nullable = false)
 	private CandidateEntity candidateEntity;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "job_id", nullable = false)
 	private JobEntity jobEntity;
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 
 	public Date getAplicationDate() {
 		return aplicationDate;
 	}
-	
+
 	public void setAplicationDate(Date aplicationDate) {
 		this.aplicationDate = aplicationDate;
 	}
-	
+
 	public CandidateEntity getCandidateEntity() {
 		return candidateEntity;
 	}
-	
+
 	public void setCandidateEntity(CandidateEntity candidateEntity) {
 		this.candidateEntity = candidateEntity;
 	}
-	
+
 	public JobEntity getJobEntity() {
 		return jobEntity;
 	}
-	
+
 	public void setJobEntity(JobEntity jobEntity) {
 		this.jobEntity = jobEntity;
 	}
-	
+
 	public ApplicationStatus getAppStatus() {
 		return appStatus;
 	}
@@ -113,9 +115,9 @@ public class ApplicationEntity implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
