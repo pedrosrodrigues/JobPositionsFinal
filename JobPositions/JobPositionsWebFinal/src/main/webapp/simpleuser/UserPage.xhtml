@@ -22,7 +22,7 @@
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						id="jobstable" sortMode="single">
 
-						<p:column styleClass="jobs-table" headerText="DESCRIPTION"
+						<p:column styleClass="jobs-table" headerText="Job Title"
 							style="text-align: center; width:200px"
 							sortBy="#{position.title}">
 							<h:outputText value="#{position.title}" />
@@ -66,15 +66,14 @@
 				</h:form>
 			</p:tab>
 			<p:tab title="My Applications">
-				<p:dataTable value="#{searchPositionsBean.positions}" var="position"
+				<p:dataTable value="#{applicationBean.listApp}" var="applist"
 					rows="10" emptyMessage="No records found." paginator="true"
 					paginatorPosition="bottom"
 					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-					<p:column styleClass="jobs-table" headerText="DESCRIPTION"
-						style="text-align: center; width:200px"
-						sortBy="COLOCAR AQUI O EL DO OUTPUTTEXT">
-						<h:outputText value="Programador em Java" />
+					<p:column styleClass="jobs-table" headerText="Job Title"
+						style="text-align: center; width:200px">
+						<h:outputText value="#{applist.JobEntity.title}" />
 					</p:column>
 					<p:column headerText="Location"
 						style="text-align: center; width:150px">
