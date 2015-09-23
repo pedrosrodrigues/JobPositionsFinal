@@ -1,6 +1,7 @@
 package backingbeans;
 
 import interfaces.ICandidate;
+import interfaces.IUser;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import entities.CandidateEntity;
+import entities.UserEntity;
 
 @SessionScoped
 @Named
@@ -25,6 +27,9 @@ public class CandidateBean implements Serializable {
 	private ICandidate ic;
 	@Inject
 	private SystemUser su;
+
+	@Inject
+	private IUser iu;
 
 	private String firstname;
 	private String lastname;
@@ -102,6 +107,13 @@ public class CandidateBean implements Serializable {
 			log.error("Problem updating candidate!");
 			e.printStackTrace();
 		}
+		log.info("Also need to update user table!");
+		UserEntity uent = new UserEntity();
+		uent.setEmail(su.getUserlogado().getEmail());
+		uent.setName(firstname + " " + lastname);
+		uent.setPassword(password);
+		iu.updateUser(uent);
+		su.searchUser(su.getUserlogado().getEmail());
 	}
 
 	public String getFirstname() {

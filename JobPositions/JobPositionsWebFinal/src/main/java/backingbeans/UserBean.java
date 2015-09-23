@@ -23,6 +23,8 @@ public class UserBean implements Serializable {
 
 	@Inject
 	private IUser iu;
+	@Inject
+	private SystemUser su;
 
 	private String name;
 	private String email;
@@ -47,6 +49,7 @@ public class UserBean implements Serializable {
 			context.addMessage(null, new FacesMessage("Problem upating user!"));
 			e.printStackTrace();
 		}
+		su.searchUser(email);
 	}
 
 	public String getName() {
