@@ -2,7 +2,7 @@ package enumeration;
 
 public enum ApplicationStatus {
 	
-	OPEN("OPEN"), CLOSED("CLOSED"), ON_HOLD("ON_HOLD");
+	NEW("NEW"), OPEN("OPEN"), CLOSED("CLOSED"), ON_HOLD("ON_HOLD");
 
 	private String label;
 
