@@ -42,6 +42,7 @@ public class ApplicationBean implements Serializable {
 
 	private CandidateEntity cent;
 	private JobEntity jent;
+	private int ze;
 
 	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();;
 
