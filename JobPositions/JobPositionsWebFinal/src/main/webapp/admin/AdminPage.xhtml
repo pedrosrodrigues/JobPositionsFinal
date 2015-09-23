@@ -51,10 +51,13 @@
 										itemValue="CLOSED" />
 								</p:selectOneMenu>
 						</p:column>
-						<p:column headerText="# Candidates"
-							style="text-align: center; width:80px" sortBy="#{position.vacancies}" >
-							<h:outputText value="#{position.vacancies}" />
+							<p:column headerText="" style="text-align: center; width:40px;">
+							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
+								<f:setPropertyActionListener
+									target="#{jobPositionBean.selectPosition}" value="#{position}" />
+							</p:commandButton>
 						</p:column>
+		
 						<p:column style="width:16px">
 							<p:rowToggler />
 						</p:column>
@@ -80,12 +83,7 @@
 							</p:panelGrid>
 						</p:rowExpansion>
 
-						<p:column headerText="" style="text-align: center; width:40px;">
-							<p:commandButton icon="ui-icon-trash" oncomplete="confirm.show()">
-								<f:setPropertyActionListener
-									target="#{jobPositionBean.selectPosition}" value="#{position}" />
-							</p:commandButton>
-						</p:column>
+					
 					</p:dataTable>
 
 					<p:confirmDialog header="Delete position"

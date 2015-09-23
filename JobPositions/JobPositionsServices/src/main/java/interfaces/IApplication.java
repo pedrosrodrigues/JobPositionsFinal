@@ -12,5 +12,7 @@ public interface IApplication {
 	public boolean saveApplication(ApplicationEntity ent);
 
 	public List<ApplicationEntity> findCandApps(Long id);
+	
+	public List<ApplicationEntity> findByJobCand(Long id);
 
 }
