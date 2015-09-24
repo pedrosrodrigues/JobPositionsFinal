@@ -40,9 +40,8 @@
 								<h:outputText value="#{position.technicalArea}" />
 							</p:column>
 							<p:column headerText="Code"
-								style="text-align: center; width:140px"
-								sortBy="#{position.positionCode}">
-								<h:outputText value="#{position.positionCode}" />
+								style="text-align: center; width:140px" sortBy="#{position.id}">
+								<h:outputText value="JP-#{position.id}" />
 							</p:column>
 							<p:column headerText="Location"
 								style="text-align: center; width:140px"
@@ -61,7 +60,15 @@
 								sortBy="#{position.jobStatus}">
 								<h:outputText value="#{position.jobStatus}" />
 							</p:column>
-							<p:column headerText="" style="text-align: center; width:40px;">
+							<p:column headerText="Edit"
+								style="text-align: center; width:40px;">
+								<p:commandButton icon="ui-icon-pencil"
+									action="#{applicationBean.searchCandidates(position.id)}"
+									update="tab:frm:candidatesforposition"
+									oncomplete="PF('dlg2').show();" />
+							</p:column>
+							<p:column headerText="Candidates"
+								style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-person"
 									action="#{applicationBean.searchCandidates(position.id)}"
 									update="tab:frm:candidatesforposition"
@@ -74,12 +81,6 @@
 							<p:rowExpansion id="rowselection">
 								<p:panelGrid columns="2" columnClasses="label, field"
 									style="width:100%;">
-
-									<h:outputText value="Job Code" />
-									<h:outputText value="#{position.positionCode}" />
-
-									<h:outputText value="Job Function" />
-									<h:outputText value="#{position.technicalArea}" />
 
 									<h:outputText value="# of openings" />
 									<h:outputText value="#{position.vacancies}" />
@@ -102,12 +103,25 @@
 								paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 								<p:column styleClass="jobs-table" headerText="Name"
-									style="text-align: center; width:200px">
+									style="text-align: center; width:200px" sortBy="#{candlist.candidateEntity.firstname}">
 									<h:outputText
 										value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
+										<p:rowToggler />
 								</p:column>
+								<p:rowExpansion id="rowselection">
+									<p:panelGrid columns="2" columnClasses="label, field"
+										style="width:100%;">
+
+										<h:outputText value="City" />
+										<h:outputText value="#{candlist.candidateEntity.city}" />
+
+										<h:outputText value="Mobile" />
+										<h:outputText value="#{candlist.candidateEntity.mobile}" />
+
+									</p:panelGrid>
+								</p:rowExpansion>
 								<p:column styleClass="jobs-table" headerText="Email"
-									style="text-align: center; width:200px">
+									style="text-align: center; width:200px" sortBy="#{candlist.candidateEntity.email}">
 									<h:outputText value="#{candlist.candidateEntity.email}" />
 								</p:column>
 								<p:column headerText="Application Status"
@@ -116,19 +130,19 @@
 									<p:selectOneMenu id="appstatus" value="#{candlist.appStatus}"
 										required="true">
 										<f:selectItem id="item1" itemLabel="Submitted"
-											itemValue="SUBMITTED" />
+											itemValue="SUBMITTED" value="#{applicationBean.appStatus}" />
 										<f:selectItem id="item2" itemLabel="Interviewing"
-											itemValue="INTERVIEWING" />
+											itemValue="INTERVIEWING" value="#{applicationBean.appStatus}"/>
 										<f:selectItem id="item3" itemLabel="Negotiation"
-											itemValue="NEGOTIATION" />
+											itemValue="NEGOTIATION" value="#{applicationBean.appStatus}"/>
 										<f:selectItem id="item4" itemLabel="Rejected"
-											itemValue="REJECTED" />
-										<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" />
+											itemValue="REJECTED" value="#{applicationBean.appStatus}"/>
+										<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" value="#{applicationBean.appStatus}"/>
 									</p:selectOneMenu>
 								</p:column>
 								<p:column styleClass="jobs-table" headerText="Save"
 									style="text-align: center; width:200px">
-									<p:commandButton icon="ui-icon-disk" />
+									<p:commandButton icon="ui-icon-disk" action="#{applicationBean.updateApp(candlist.id)}"/>
 								</p:column>
 							</p:dataTable>
 						</p:dialog>
