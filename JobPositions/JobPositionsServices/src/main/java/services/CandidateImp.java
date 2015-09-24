@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -79,5 +80,50 @@ public class CandidateImp implements ICandidate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<CandidateEntity> findByFistName(String fname) {
+		return cd.findByFistName(fname);
+	}
+
+	@Override
+	public List<CandidateEntity>findByLastName(String lname) {
+		return cd.findByLastName(lname);
+	}
+
+	@Override
+	public List<CandidateEntity> findByAdress(String adress) {
+		return cd.findByAdress(adress);
+	}
+
+	@Override
+	public List<CandidateEntity> findByCiy(String city) {
+		return cd.findByCiy(city);
+	}
+
+	@Override
+	public List<CandidateEntity> findByPhone(String phone) {
+		return cd.findByPhone(phone);
+	}
+
+	@Override
+	public List<CandidateEntity> findByMobile(String mobile) {
+		return cd.findByMobile(mobile);
+	}
+
+	@Override
+	public List<CandidateEntity> findByCountry(String country) {
+		return cd.findByCountry(country);
+	}
+
+	@Override
+	public List<CandidateEntity> findByCourse(String course) {
+		return cd.findByCourse(course);
+	}
+
+	@Override
+	public List<CandidateEntity> findBySchool(String school) {
+		return cd.findBySchool(school);
 	}
 }

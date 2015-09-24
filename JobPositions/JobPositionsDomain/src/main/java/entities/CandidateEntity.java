@@ -16,13 +16,32 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "CandidateEntity.findByEmail", query = "SELECT c FROM CandidateEntity c WHERE c.email like :email") })
+@NamedQueries({ @NamedQuery(name = "CandidateEntity.findByEmail", query = "SELECT c FROM CandidateEntity c WHERE c.email like :email"),
+				@NamedQuery(name = "CandidateEntity.findByFName", query = "SELECT c FROM CandidateEntity c WHERE c.firstname like :firstname "),
+				@NamedQuery(name = "CandidateEntity.findByLName", query = "SELECT c FROM CandidateEntity c WHERE c.lastname like :lastname "),
+				@NamedQuery(name = "CandidateEntity.findByAdress", query = "SELECT c FROM CandidateEntity c WHERE c.address like :address "),
+				@NamedQuery(name = "CandidateEntity.findByCity", query = "SELECT c FROM CandidateEntity c WHERE c.city like :city "),
+				@NamedQuery(name = "CandidateEntity.findByCountry", query = "SELECT c FROM CandidateEntity c WHERE c.country like :country "),
+				@NamedQuery(name = "CandidateEntity.findByMobile", query = "SELECT c FROM CandidateEntity c WHERE c.mobile like :mobile "),
+				@NamedQuery(name = "CandidateEntity.findByPhone", query = "SELECT c FROM CandidateEntity c WHERE c.phone like :phone "),
+				@NamedQuery(name = "CandidateEntity.findByCourse", query = "SELECT c FROM CandidateEntity c WHERE c.course like :course "),
+				@NamedQuery(name = "CandidateEntity.findBySchool", query = "SELECT c FROM CandidateEntity c WHERE c.school like :school ")})
+
 public class CandidateEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_BY_EMAIL = "CandidateEntity.findByEmail";
-
+	public static final String FIND_BY_FIRSTNAME = "CandidateEntity.findByFName";
+	public static final String FIND_BY_LASTNAME = "CandidateEntity.findByLName";
+	public static final String FIND_BY_ADRESS = "CandidateEntity.findByAdress";
+	public static final String FIND_BY_CITY = "CandidateEntity.findByCity";
+	public static final String FIND_BY_COUNTRY = "CandidateEntity.findByCountry";
+	public static final String FIND_BY_MOBILE = "CandidateEntity.findByMobile";
+	public static final String FIND_BY_PHONE = "CandidateEntity.findByPhone";
+	public static final String FIND_BY_COURSE = "CandidateEntity.findByCourse";
+	public static final String FIND_BY_SCHOOL = "CandidateEntity.findBySchool";
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
@@ -34,7 +53,7 @@ public class CandidateEntity implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String lastname;
 
-	
+
 	private String email;
 
 	@Column(nullable = false, length = 100)
