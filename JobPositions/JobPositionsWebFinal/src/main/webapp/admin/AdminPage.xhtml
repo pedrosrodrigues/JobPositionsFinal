@@ -132,15 +132,14 @@
 									<p:selectOneMenu id="appstatus" value="#{candlist.appStatus}"
 										required="true">
 										<f:selectItem id="item1" itemLabel="Submitted"
-											itemValue="SUBMITTED"/>
+											itemValue="SUBMITTED" />
 										<f:selectItem id="item2" itemLabel="Interviewing"
-											itemValue="INTERVIEWING"/>
+											itemValue="INTERVIEWING" />
 										<f:selectItem id="item3" itemLabel="Negotiation"
-											itemValue="NEGOTIATION"/>
+											itemValue="NEGOTIATION" />
 										<f:selectItem id="item4" itemLabel="Rejected"
-											itemValue="REJECTED"/>
-										<f:selectItem id="item5" itemLabel="Hired" 
-										itemValue="HIRED"/>
+											itemValue="REJECTED" />
+										<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" />
 									</p:selectOneMenu>
 								</p:column>
 								<p:column styleClass="jobs-table" headerText="Save"
@@ -175,13 +174,10 @@
 										size="10" pattern="dd/MM/yyyy" />
 								</h:panelGrid>
 
-								<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
+								<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
 									<p:outputLabel value="SLA" for="sla" />
-									<p:outputLabel value="CODE" for="jobposition" />
 									<p:inputText id="sla" required="true"
 										value="#{jobPositionBean.sla}" style="width:100%;" />
-									<p:inputText id="jobposition" required="true"
-										value="#{jobPositionBean.positionCode}" style="width:100%;" />
 								</h:panelGrid>
 
 								<p:outputLabel value="Title" for="title" />
@@ -192,33 +188,24 @@
 								<p:inputText id="location" required="true"
 									value="#{jobPositionBean.location}" />
 
-								<p:outputLabel value="Status" for="status" />
 								<p:outputLabel value="Vacancies" for="vacancies" />
-
-								<p:selectOneMenu id="status"
-									value="#{jobPositionBean.jobStatus}">
-									<f:selectItem itemLabel="Selecione a Localização" />
-									<f:selectItems value="#{JobStatus.ALL_ENUM_VALUES}"
-										var="status" itemLabel="#{status.toString}"
-										itemValue="#{status}">
-									</f:selectItems>
-								</p:selectOneMenu>
+								<p:outputLabel value="Responsable" for="responsable" />
 
 								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-
-								<p:outputLabel value="Responsable" for="responsable" />
-								<p:outputLabel value="Technical Area" for="tarea" />
-
 								<p:inputText id="responsable" required="true"
 									value="#{jobPositionBean.responsable}" />
+
+								<p:outputLabel value="Technical Area" for="tarea" />
+								<p:outputLabel value="Company" for="company" />
+
 								<p:inputText id="tarea" required="true"
 									value="#{jobPositionBean.technicalArea}" />
-
-								<p:outputLabel value="Company" for="company" />
-								<p:outputLabel value="Job description" for="description" />
-
 								<p:inputText id="company" required="true"
 									value="#{jobPositionBean.company}" />
+
+								<p:outputLabel value="Job description" for="description" />
+								<p:outputLabel />
+								
 								<p:inputTextarea id="description"
 									value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
 									autoResize="false" />
