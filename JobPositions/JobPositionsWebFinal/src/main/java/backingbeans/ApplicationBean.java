@@ -42,9 +42,9 @@ public class ApplicationBean implements Serializable {
 
 	private CandidateEntity cent;
 	private JobEntity jent;
-	private int ze;
 
-	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();;
+	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();
+	private List<ApplicationEntity> listPosApp = new ArrayList<ApplicationEntity>();
 
 	private static final Logger log = LoggerFactory
 			.getLogger(ApplicationBean.class);
@@ -54,11 +54,8 @@ public class ApplicationBean implements Serializable {
 		log.info("trying to save an application on database...");
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 		Date dateobj = new Date();
-		System.out.println(idPosition);
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		jent = ijp.findById((long) idPosition);
-		System.out.println(cent.getLastname());
-		System.out.println(jent.getJobDescription());
 		ApplicationEntity aent = new ApplicationEntity();
 		aent.setCandidateEntity(cent);
 		aent.setJobEntity(jent);
@@ -67,7 +64,6 @@ public class ApplicationBean implements Serializable {
 		if (ia.saveApplication(aent)) {
 			log.info("Application saved on database!");
 			context.addMessage(null, new FacesMessage("Application saved!"));
-
 		} else {
 			log.error("Application already submited!");
 			context.addMessage(
@@ -82,6 +78,10 @@ public class ApplicationBean implements Serializable {
 		listApp = ia.findCandApps(cent.getId());
 	}
 
+	public void searchCandidates(Long idPos) {
+		listPosApp = ia.findByJobCand(idPos);
+	}
+
 	public List<ApplicationEntity> getListApp() {
 		return listApp;
 	}
@@ -89,4 +89,13 @@ public class ApplicationBean implements Serializable {
 	public void setListApp(List<ApplicationEntity> listApp) {
 		this.listApp = listApp;
 	}
+
+	public List<ApplicationEntity> getListPosApp() {
+		return listPosApp;
+	}
+
+	public void setListPosApp(List<ApplicationEntity> listPosApp) {
+		this.listPosApp = listPosApp;
+	}
+
 }
