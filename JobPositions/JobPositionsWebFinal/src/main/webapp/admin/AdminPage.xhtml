@@ -103,10 +103,11 @@
 								paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 								<p:column styleClass="jobs-table" headerText="Name"
-									style="text-align: center; width:200px" sortBy="#{candlist.candidateEntity.firstname}">
+									style="text-align: center; width:200px"
+									sortBy="#{candlist.candidateEntity.firstname}">
 									<h:outputText
 										value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
-										<p:rowToggler />
+									<p:rowToggler />
 								</p:column>
 								<p:rowExpansion id="rowselection">
 									<p:panelGrid columns="2" columnClasses="label, field"
@@ -121,7 +122,8 @@
 									</p:panelGrid>
 								</p:rowExpansion>
 								<p:column styleClass="jobs-table" headerText="Email"
-									style="text-align: center; width:200px" sortBy="#{candlist.candidateEntity.email}">
+									style="text-align: center; width:200px"
+									sortBy="#{candlist.candidateEntity.email}">
 									<h:outputText value="#{candlist.candidateEntity.email}" />
 								</p:column>
 								<p:column headerText="Application Status"
@@ -130,19 +132,21 @@
 									<p:selectOneMenu id="appstatus" value="#{candlist.appStatus}"
 										required="true">
 										<f:selectItem id="item1" itemLabel="Submitted"
-											itemValue="SUBMITTED" value="#{applicationBean.appStatus}" />
+											itemValue="SUBMITTED"/>
 										<f:selectItem id="item2" itemLabel="Interviewing"
-											itemValue="INTERVIEWING" value="#{applicationBean.appStatus}"/>
+											itemValue="INTERVIEWING"/>
 										<f:selectItem id="item3" itemLabel="Negotiation"
-											itemValue="NEGOTIATION" value="#{applicationBean.appStatus}"/>
+											itemValue="NEGOTIATION"/>
 										<f:selectItem id="item4" itemLabel="Rejected"
-											itemValue="REJECTED" value="#{applicationBean.appStatus}"/>
-										<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" value="#{applicationBean.appStatus}"/>
+											itemValue="REJECTED"/>
+										<f:selectItem id="item5" itemLabel="Hired" 
+										itemValue="HIRED"/>
 									</p:selectOneMenu>
 								</p:column>
 								<p:column styleClass="jobs-table" headerText="Save"
 									style="text-align: center; width:200px">
-									<p:commandButton icon="ui-icon-disk" action="#{applicationBean.updateApp(candlist.id)}"/>
+									<p:commandButton icon="ui-icon-disk"
+										action="#{applicationBean.updateApp(candlist.id)}" />
 								</p:column>
 							</p:dataTable>
 						</p:dialog>

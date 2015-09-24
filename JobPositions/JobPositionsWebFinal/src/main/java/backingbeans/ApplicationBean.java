@@ -78,9 +78,13 @@ public class ApplicationBean implements Serializable {
 		ApplicationEntity aent = new ApplicationEntity();
 		System.out.println(idApplication);
 		log.info("Trying to update an application on database...");
-
-		aent.setAppStatus(appStatus);
-		System.out.println(appStatus.toString());
+		for (ApplicationEntity x : listPosApp) {
+			if (x.getId() == idApplication) {
+				this.appStatus = x.getAppStatus();
+			}
+		}
+		// aent.setAppStatus(appStatus);
+		System.out.println(this.appStatus);
 		//
 		// ia.updateCandidate(aent);
 
