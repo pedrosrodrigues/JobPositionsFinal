@@ -59,6 +59,9 @@ public class LoginBean implements Serializable {
 	@Inject
 	private UserBean ub;
 
+	@Inject
+	private ApplicationBean ab;
+
 	public String login() throws NoSuchAlgorithmException,
 			UnsupportedEncodingException, ParseException {
 		log.info("Attempt to login...");
