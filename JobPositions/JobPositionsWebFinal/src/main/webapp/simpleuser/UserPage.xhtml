@@ -19,7 +19,7 @@
 			<p:tab title="Job Positions">
 				<h:form id="frm">	
 				<div id="loginfrm">
-					<p:messages />
+					<p:messages id="submitanswer" closable="true"/>
 					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 						rows="8" emptyMessage="No records found." paginator="true"
 						paginatorPosition="bottom"
@@ -37,18 +37,18 @@
 							sortBy="#{position.location}">
 							<h:outputText value="#{position.location}" />
 						</p:column>
-						<p:column headerText="Date"
+						<p:column headerText="Final Date"
 							style="text-align: center; width:150px"
 							sortBy="#{position.finalDate}">
 							<h:outputText value="#{position.finalDate}" />
 						</p:column>
 						<p:column headerText="Job Status"
 							style="text-align: center; width:150px">
-							<h:outputText value="#{position.finalDate}" />
+							<h:outputText value="#{position.jobStatus}" />
 						</p:column>
 
 						<p:column style="width:16px">
-							<p:rowToggler />
+							<p:rowToggler id="rowToggler"/>
 						</p:column>
 
 						<p:rowExpansion id="rowselection">
@@ -69,11 +69,11 @@
 								<h:outputText value="#{position.jobDescription}" />
 								<p:commandButton value="Submit" id="ajax"
 									action="#{applicationBean.saveApp(position.id)}"
-									update="tab:frm1:myappstable" />
+									update="tab:frm1:myappstable tab:frm:submitanswer"
+									oncomplete="rowToggler.hide();" />
 
 							</p:panelGrid>
-							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade" />
+		
 						</p:rowExpansion>
 					</p:dataTable>
 					</div>
@@ -95,9 +95,9 @@
 								style="text-align: center; width:150px">
 								<h:outputText value="Portugal,(Coimbra)" />
 							</p:column>
-							<p:column headerText="Application date"
+							<p:column headerText="Application status"
 								style="text-align: center; width:150px">
-								<h:outputText value="19-08-2015" />
+								<h:outputText value="#{applist.appStatus}" />
 							</p:column>
 						
 							<p:column style="width:16px">
