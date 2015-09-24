@@ -15,6 +15,6 @@ public interface IApplication {
 	
 	public List<ApplicationEntity> findByJobCand(Long id);
 
-//	public void updateCandidate(ApplicationEntity aent);
+	public void updateApplication(ApplicationEntity aent);
 
 }

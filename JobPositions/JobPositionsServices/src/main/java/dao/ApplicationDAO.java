@@ -40,4 +40,15 @@ public class ApplicationDAO {
 		q.setParameter("idJob", idJob);
 		return q.getResultList();
 	}
+
+	public void update(ApplicationEntity aent) {
+		Query q = em
+				.createQuery("UPDATE ApplicationEntity SET appStatus =:appStatus WHERE id =:idApplication");
+		q.setParameter("idApplication",aent.getId());
+		q.setParameter("appStatus", aent.getAppStatus());
+		q.executeUpdate();	
+	}
+
+
+
 }

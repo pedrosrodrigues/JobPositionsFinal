@@ -31,7 +31,7 @@ public class InterviewEntity implements Serializable {
 //	@JoinColumn(name = "application_id", nullable = false)
 	private ApplicationEntity application;
 	
-	// private UserEntity userEntity;
+	// private UserEntity interviewer;
 
 
 	public Long getId() {

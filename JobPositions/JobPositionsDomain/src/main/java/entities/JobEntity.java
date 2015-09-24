@@ -72,6 +72,8 @@ public class JobEntity implements Serializable {
 	
 	@Column(nullable = false, length = 100)
 	private String responsable;
+	
+	// private UserEntity responsable;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 100)

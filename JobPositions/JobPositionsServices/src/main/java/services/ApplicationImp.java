@@ -2,6 +2,8 @@ package services;
 
 import interfaces.IApplication;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +46,13 @@ public class ApplicationImp implements IApplication {
 		return ap.findByJobCand(id);
 	}
 
-//	@Override
-//	public void updateCandidate(ApplicationEntity aent) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void updateApplication(ApplicationEntity aent) {			
+		ap.update(aent);
 
+		
+	}
 }
+
+
+

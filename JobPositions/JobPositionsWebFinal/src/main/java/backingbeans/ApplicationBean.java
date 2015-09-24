@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import entities.ApplicationEntity;
 import entities.CandidateEntity;
 import entities.JobEntity;
+import entities.UserEntity;
 import enumeration.ApplicationStatus;
 
 @SessionScoped
@@ -72,22 +73,28 @@ public class ApplicationBean implements Serializable {
 		}
 	}
 
-	public void updateApp(int idApplication) {
-		System.out.println();
+	public void updateApp(Long idApplication) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		ApplicationEntity aent = new ApplicationEntity();
-		System.out.println(idApplication);
 		log.info("Trying to update an application on database...");
+		ApplicationEntity aent = new ApplicationEntity();	
 		for (ApplicationEntity x : listPosApp) {
 			if (x.getId() == idApplication) {
 				this.appStatus = x.getAppStatus();
 			}
 		}
-		// aent.setAppStatus(appStatus);
-		System.out.println(this.appStatus);
-		//
-		// ia.updateCandidate(aent);
-
+		aent.setAppStatus(appStatus);
+		aent.setId(idApplication);
+		try{
+			ia.updateApplication(aent);
+			log.info("Application updated!");
+			context.addMessage(null, new FacesMessage("Application updated!"));
+		}
+		catch (Exception e) {
+			log.info("Problem updating application!");
+			context.addMessage(null, new FacesMessage("Problem upating application!"));
+			e.printStackTrace();
+		}
+		//despoletar caixa de entrevista
 	}
 
 	public void start() {
