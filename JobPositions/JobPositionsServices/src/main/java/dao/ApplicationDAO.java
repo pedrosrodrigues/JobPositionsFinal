@@ -33,10 +33,10 @@ public class ApplicationDAO {
 		q.setParameter("idCan", idCan);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<ApplicationEntity> findByJobCand(Long idJob) {
-		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_CANJOB);
+		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_JOBCAND);
 		q.setParameter("idJob", idJob);
 		return q.getResultList();
 	}

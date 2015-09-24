@@ -37,7 +37,9 @@
 							<p:column headerText="Date"
 								style="text-align: center; width:140px"
 								sortBy="#{position.finalDate}">
-								<h:outputText value="#{position.finalDate}" />
+								<h:outputText value="#{position.finalDate}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
 							</p:column>
 							<p:column headerText="Status"
 								style="text-align: center; width:140px"
@@ -52,6 +54,8 @@
 							</p:column>
 							<p:column headerText="" style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-person"
+									action="#{applicationBean.searchCandidates(position.id)}"
+									update="tab:frm:candidatesforposition"
 									oncomplete="PF('dlg2').show();" />
 							</p:column>
 
@@ -80,9 +84,44 @@
 								</p:panelGrid>
 							</p:rowExpansion>
 						</p:dataTable>
-						<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
+						<p:dialog header="Candidates" widgetVar="dlg2" modal="true"
 							height="300" weight="100">
-							<h:outputText value="This is a Modal Dialog." />
+							<p:dataTable id="candidatesforposition"
+								value="#{applicationBean.listPosApp}" var="candlist" rows="10"
+								emptyMessage="No records found." paginator="true"
+								paginatorPosition="bottom"
+								paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+								<p:column styleClass="jobs-table" headerText="Name"
+									style="text-align: center; width:200px">
+									<h:outputText
+										value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
+								</p:column>
+								<p:column styleClass="jobs-table" headerText="Email"
+									style="text-align: center; width:200px">
+									<h:outputText value="#{candlist.candidateEntity.email}" />
+								</p:column>
+								<p:column headerText="Application Status"
+									style="text-align: center; width:140px"
+									sortBy="#{candlist.appStatus}">
+									<p:selectOneMenu id="appstatus" value="#{candlist.appStatus}"
+										required="true">
+										<f:selectItem id="item1" itemLabel="Submitted"
+											itemValue="SUBMITTED" />
+										<f:selectItem id="item2" itemLabel="Interviewing"
+											itemValue="INTERVIEWING" />
+										<f:selectItem id="item3" itemLabel="Negotiation"
+											itemValue="NEGOTIATION" />
+										<f:selectItem id="item4" itemLabel="Rejected"
+											itemValue="REJECTED" />
+										<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" />
+									</p:selectOneMenu>
+								</p:column>
+								<p:column styleClass="jobs-table" headerText="Save"
+									style="text-align: center; width:200px">
+									<p:commandButton icon="ui-icon-disk" />
+								</p:column>
+							</p:dataTable>
 						</p:dialog>
 					</h:form>
 				</div>
@@ -284,12 +323,12 @@
 									<f:selectItem id="item9" itemLabel="Course" itemValue="course" />
 									<f:selectItem id="item10" itemLabel="School" itemValue="school" />
 								</p:selectOneMenu>
-						</h:panelGrid>
+							</h:panelGrid>
 							<div class="out">
 								<div class="in">
 									<h:panelGrid columns="1">
 										<p:commandButton value="SEARCH" />
-										
+
 									</h:panelGrid>
 								</div>
 							</div>

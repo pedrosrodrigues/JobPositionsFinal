@@ -1,8 +1,9 @@
 package enumeration;
 
 public enum ApplicationStatus {
-	
-	NEW("NEW"), OPEN("OPEN"), CLOSED("CLOSED"), ON_HOLD("ON_HOLD");
+
+	SUBMITTED("SUBMITTED"), INTERVIEWING("INTERVIEWING"), NEGOTIATION(
+			"NEGOTIATION"), REJECTED("REJECTED"), HIRED("HIRED");
 
 	private String label;
 
@@ -13,8 +14,5 @@ public enum ApplicationStatus {
 	public String getLabel() {
 		return this.label;
 	}
-
-
-	
 
 }

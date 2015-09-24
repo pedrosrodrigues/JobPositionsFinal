@@ -5,8 +5,6 @@ import interfaces.ICandidate;
 import interfaces.IJobPosition;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,14 +50,13 @@ public class ApplicationBean implements Serializable {
 	public void saveApp(int idPosition) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("trying to save an application on database...");
-		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 		Date dateobj = new Date();
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		jent = ijp.findById((long) idPosition);
 		ApplicationEntity aent = new ApplicationEntity();
 		aent.setCandidateEntity(cent);
 		aent.setJobEntity(jent);
-		aent.setAppStatus(ApplicationStatus.OPEN);
+		aent.setAppStatus(ApplicationStatus.SUBMITTED);
 		aent.setAplicationDate(dateobj);
 		if (ia.saveApplication(aent)) {
 			log.info("Application saved on database!");
