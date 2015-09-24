@@ -163,7 +163,8 @@
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
 											action="#{jobPositionBean.saveJobPosition}"
-											icon="ui-icon-disk" update="tab:frmEdit:messageForm2 frm" />
+											icon="ui-icon-disk"
+											update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
 									</h:panelGrid>
 								</div>
 							</div>
@@ -212,7 +213,7 @@
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE"
 											action="#{newUserInputBean.newUserInput}"
-											update="@form, @(:messages)"/>
+											update="tab:frmNewUser:msgNewUser" />
 									</h:panelGrid>
 								</div>
 							</div>
@@ -250,6 +251,44 @@
 								<div class="in">
 									<h:panelGrid columns="1">
 										<p:commandButton value="SAVE" action="#{userBean.updateUser}" />
+									</h:panelGrid>
+								</div>
+							</div>
+						</p:panel>
+					</h:form>
+				</div>
+			</p:tab>
+			<p:tab title="Search">
+				<div id="loginfrm">
+					<h:form id="frmSearchUser">
+						<p:messages id="msgSearchUser" closable="true" />
+						<p:panel id="panel" style="border-width: 0px;">
+
+							<h:panelGrid styleClass="inputTable" columns="2"
+								cellpadding="4px" cellspacing="4px">
+								<p:outputLabel value="Search" for="searchItem" />
+								<p:inputText value="" />
+								<p:selectOneMenu id="searchItem"
+									value="#{newUserInputBean.role}" required="true">
+									<f:selectItem id="item1" itemLabel="First Name"
+										itemValue="fname" />
+									<f:selectItem id="item2" itemLabel="Last Name"
+										itemValue="lname" />
+									<f:selectItem id="item3" itemLabel="Email" itemValue="email" />
+									<f:selectItem id="item4" itemLabel="Adress" itemValue="address" />
+									<f:selectItem id="item5" itemLabel="City" itemValue="city" />
+									<f:selectItem id="item6" itemLabel="Phone" itemValue="phone" />
+									<f:selectItem id="item7" itemLabel="Mobile" itemValue="mobile" />
+									<f:selectItem id="item8" itemLabel="Country"
+										itemValue="country" />
+									<f:selectItem id="item9" itemLabel="Course" itemValue="course" />
+									<f:selectItem id="item10" itemLabel="School" itemValue="school" />
+								</p:selectOneMenu>
+						</h:panelGrid>
+							<div class="out">
+								<div class="in">
+									<h:panelGrid columns="1">
+										<p:commandButton value="SEARCH" />
 									</h:panelGrid>
 								</div>
 							</div>
