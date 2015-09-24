@@ -76,11 +76,12 @@ public class ApplicationBean implements Serializable {
 		System.out.println();
 		FacesContext context = FacesContext.getCurrentInstance();
 		ApplicationEntity aent = new ApplicationEntity();
-		System.out.println(aent.getId());
+		System.out.println(idApplication);
 		log.info("Trying to update an application on database...");
 
 		aent.setAppStatus(appStatus);
 		System.out.println(appStatus.toString());
+		context.addMessage(null, new FacesMessage("Application saved!"));
 //	
 //		ia.updateCandidate(aent);
 
