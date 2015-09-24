@@ -40,7 +40,7 @@ public class ApplicationBean implements Serializable {
 
 	private CandidateEntity cent;
 	private JobEntity jent;
-	
+
 	private ApplicationStatus appStatus;
 
 	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();
@@ -71,7 +71,7 @@ public class ApplicationBean implements Serializable {
 							"You have already submitted your application for this job position!"));
 		}
 	}
-	
+
 	public void updateApp(int idApplication) {
 		System.out.println();
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -81,13 +81,10 @@ public class ApplicationBean implements Serializable {
 
 		aent.setAppStatus(appStatus);
 		System.out.println(appStatus.toString());
-//	
-//		ia.updateCandidate(aent);
+		//
+		// ia.updateCandidate(aent);
 
-		
-	
-		}
-
+	}
 
 	public void start() {
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
@@ -112,6 +109,14 @@ public class ApplicationBean implements Serializable {
 
 	public void setListPosApp(List<ApplicationEntity> listPosApp) {
 		this.listPosApp = listPosApp;
+	}
+
+	public ApplicationStatus getAppStatus() {
+		return appStatus;
+	}
+
+	public void setAppStatus(ApplicationStatus appStatus) {
+		this.appStatus = appStatus;
 	}
 
 }
