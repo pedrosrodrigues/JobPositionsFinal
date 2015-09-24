@@ -29,28 +29,37 @@
 								sortBy="#{position.title}">
 								<h:outputText value="#{position.title}" />
 							</p:column>
+							<p:column styleClass="jobs-table" headerText="Company"
+								style="text-align: center; width:180px"
+								sortBy="#{position.company}">
+								<h:outputText value="#{position.company}" />
+							</p:column>
+							<p:column headerText="Technical Area"
+								style="text-align: center; width:140px"
+								sortBy="#{position.technicalArea}">
+								<h:outputText value="#{position.technicalArea}" />
+							</p:column>
+							<p:column headerText="Code"
+								style="text-align: center; width:140px"
+								sortBy="#{position.positionCode}">
+								<h:outputText value="#{position.positionCode}" />
+							</p:column>
 							<p:column headerText="Location"
 								style="text-align: center; width:140px"
 								sortBy="#{position.location}">
 								<h:outputText value="#{position.location}" />
 							</p:column>
-							<p:column headerText="Date"
+							<p:column headerText="Final date"
 								style="text-align: center; width:140px"
 								sortBy="#{position.finalDate}">
 								<h:outputText value="#{position.finalDate}">
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</h:outputText>
 							</p:column>
-							<p:column headerText="Status"
+							<p:column headerText="Job Status"
 								style="text-align: center; width:140px"
-								sortBy="#{position.status}">
-								<p:selectOneMenu id="appstatus" value="#{position.jobStatus}"
-									required="true">
-									<f:selectItem id="item1" itemLabel="Open" itemValue="OPEN" />
-									<f:selectItem id="item2" itemLabel="On Hold"
-										itemValue="ON_HOLD" />
-									<f:selectItem id="item3" itemLabel="Closed" itemValue="CLOSED" />
-								</p:selectOneMenu>
+								sortBy="#{position.jobStatus}">
+								<h:outputText value="#{position.jobStatus}" />
 							</p:column>
 							<p:column headerText="" style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-person"
