@@ -4,6 +4,8 @@ import interfaces.ICandidate;
 import interfaces.IUser;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -43,6 +45,8 @@ public class CandidateBean implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
+	private List<CandidateEntity> candidatesList = new ArrayList<CandidateEntity>();
+	private CandidateEntity candidate;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(CandidateBean.class);
@@ -116,6 +120,60 @@ public class CandidateBean implements Serializable {
 		su.searchUser(su.getUserlogado().getEmail());
 	}
 
+	public void findByEmail(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.candidate = ic.findByEmail(email);
+		if(candidate.getEmail()== null){
+			context.addMessage(null, new FacesMessage(
+					"No records found!"));
+		}
+	}
+	
+	public List<CandidateEntity> findByFirstName(String fname){
+		this.candidatesList = ic.findByFistName(fname);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByLastName(String lname){
+		this.candidatesList = ic.findByLastName(lname);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByAdress(String adress){
+		this.candidatesList = ic.findByAdress(adress);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByCity(String city){
+		this.candidatesList = ic.findByCiy(city);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByPhone(String phone){
+		this.candidatesList = ic.findByPhone(city);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByMobile(String mobile){
+		this.candidatesList = ic.findByMobile(mobile);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByCountry(String country){
+		this.candidatesList = ic.findByCountry(country);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findByCourse(String course){
+		this.candidatesList = ic.findByCourse(course);
+		return candidatesList;
+	}
+	
+	public List<CandidateEntity> findBySchool(String school){
+		this.candidatesList = ic.findBySchool(school);
+		return candidatesList;
+	}
+	
 	public String getFirstname() {
 		return firstname;
 	}
@@ -211,5 +269,15 @@ public class CandidateBean implements Serializable {
 	public void setLinkedin(String linkedin) {
 		this.linkedin = linkedin;
 	}
+
+	public List<CandidateEntity> getCandidatesList() {
+		return candidatesList;
+	}
+
+	public void setCandidatesList(List<CandidateEntity> candidatesList) {
+		this.candidatesList = candidatesList;
+	}
+
+
 
 }
