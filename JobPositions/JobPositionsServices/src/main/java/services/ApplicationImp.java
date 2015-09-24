@@ -44,4 +44,10 @@ public class ApplicationImp implements IApplication {
 		return ap.findByJobCand(id);
 	}
 
+//	@Override
+//	public void updateCandidate(ApplicationEntity aent) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
 }

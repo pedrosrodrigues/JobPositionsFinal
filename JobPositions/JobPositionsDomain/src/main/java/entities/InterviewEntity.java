@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,8 +26,11 @@ public class InterviewEntity implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date interviewDate;
-
-	// private ApplicationEntity applicationEntity;
+//	
+//	@ManyToOne
+//	@JoinColumn(name = "application_id", nullable = false)
+	private ApplicationEntity application;
+	
 	// private UserEntity userEntity;
 
 

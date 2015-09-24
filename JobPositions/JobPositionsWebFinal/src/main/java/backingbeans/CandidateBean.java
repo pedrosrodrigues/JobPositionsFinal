@@ -190,6 +190,7 @@ public class CandidateBean implements Serializable {
 		this.lastname = lastname;
 	}
 
+	
 	public String getEmail() {
 		return email;
 	}

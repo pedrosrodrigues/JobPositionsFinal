@@ -34,7 +34,7 @@
 					<h:outputText value="#{position.location}" />
 				</p:column>
 
-				<p:column headerText="Date" style="text-align: center; width:150px">
+				<p:column headerText="Date" style="text-align: center; width:150px" sortBy="#{position.finalDate}" >
 					<h:outputText value="#{position.finalDate}" />
 				</p:column>
 				<p:column style="width:16px">
@@ -46,7 +46,7 @@
 						style="width:100%;">
 
 						<h:outputText value="Job Code:" />
-						<h:outputText value="#{position.positionCode}" />
+						<h:outputText value="JP-#{position.id}" />
 
 						<h:outputText value="Function:" />
 						<h:outputText value="#{position.technicalArea}" />

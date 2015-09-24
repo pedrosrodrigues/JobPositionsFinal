@@ -119,6 +119,7 @@ public class LoginBean implements Serializable {
 			cb.setAddress(ce.getAddress());
 			cb.setCity(ce.getCity());
 			cb.setCountry(ce.getCountry());
+			cb.setEmail(ce.getEmail());
 			cb.setCourse(ce.getCourse());
 			cb.setFirstname(ce.getFirstname());
 			cb.setLastname(ce.getLastname());

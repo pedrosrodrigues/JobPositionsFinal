@@ -41,6 +41,7 @@ public class ApplicationBean implements Serializable {
 	private CandidateEntity cent;
 	private JobEntity jent;
 	
+	private ApplicationStatus appStatus;
 
 	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();
 	private List<ApplicationEntity> listPosApp = new ArrayList<ApplicationEntity>();
@@ -70,6 +71,23 @@ public class ApplicationBean implements Serializable {
 							"You have already submitted your application for this job position!"));
 		}
 	}
+	
+	public void updateApp(int idApplication) {
+		System.out.println();
+		FacesContext context = FacesContext.getCurrentInstance();
+		ApplicationEntity aent = new ApplicationEntity();
+		System.out.println(aent.getId());
+		log.info("Trying to update an application on database...");
+
+		aent.setAppStatus(appStatus);
+		System.out.println(appStatus.toString());
+//	
+//		ia.updateCandidate(aent);
+
+		
+	
+		}
+
 
 	public void start() {
 		cent = ic.findByEmail(su.getUserlogado().getEmail());

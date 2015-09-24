@@ -17,65 +17,62 @@
 
 		<p:tabView id="tab">
 			<p:tab title="Job Positions">
-				<h:form id="frm">	
-				<div id="loginfrm">
-					<p:messages id="submitanswer" closable="true"/>
-					<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
-						rows="8" emptyMessage="No records found." paginator="true"
-						paginatorPosition="bottom"
-						paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+				<h:form id="frm">
+					<div id="loginfrm">
+						<p:messages id="submitanswer" closable="true" />
+						<p:dataTable value="#{jobPositionBean.jobpositions}"
+							var="position" rows="8" emptyMessage="No records found."
+							paginator="true" paginatorPosition="bottom"
+							paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						id="jobstable" sortMode="single">
+							id="jobstable" sortMode="single">
 
-						<p:column styleClass="jobs-table" headerText="Job Title"
-							style="text-align: center; width:200px"
-							sortBy="#{position.title}">
-							<h:outputText value="#{position.title}" />
-						</p:column>
-						<p:column headerText="Location"
-							style="text-align: center; width:150px"
-							sortBy="#{position.location}">
-							<h:outputText value="#{position.location}" />
-						</p:column>
-						<p:column headerText="Final Date"
-							style="text-align: center; width:150px"
-							sortBy="#{position.finalDate}">
-							<h:outputText value="#{position.finalDate}" />
-						</p:column>
-						<p:column headerText="Job Status"
-							style="text-align: center; width:150px">
-							<h:outputText value="#{position.jobStatus}" />
-						</p:column>
+							<p:column styleClass="jobs-table" headerText="Job Title"
+								style="text-align: center; width:200px"
+								sortBy="#{position.title}">
+								<h:outputText value="#{position.title}" />
+							</p:column>
+							<p:column headerText="Location"
+								style="text-align: center; width:150px"
+								sortBy="#{position.location}">
+								<h:outputText value="#{position.location}" />
+							</p:column>
+							<p:column headerText="Final Date"
+								style="text-align: center; width:150px"
+								sortBy="#{position.finalDate}">
+								<h:outputText value="#{position.finalDate}" />
+							</p:column>
+							<p:column headerText="Job Status"
+								style="text-align: center; width:150px">
+								<h:outputText value="#{position.jobStatus}" />
+							</p:column>
 
-						<p:column style="width:16px">
-							<p:rowToggler id="rowToggler"/>
-						</p:column>
+							<p:column style="width:16px">
+								<p:rowToggler id="rowToggler" />
+							</p:column>
 
-						<p:rowExpansion id="rowselection">
-							<p:panelGrid columns="2" columnClasses="label, field"
-								style="width:100%;">
+							<p:rowExpansion id="rowselection">
+								<p:panelGrid columns="2" columnClasses="label, field"
+									style="width:100%;">
 
-								<h:outputText value="Job Code" />
-								<h:outputText value="#{position.positionCode}" />
+									<h:outputText value="Job Code" />
+									<h:outputText value="#{position.positionCode}" />
 
-								<h:outputText value="Job Function" />
-								<h:outputText value="#{position.technicalArea}" />
+									<h:outputText value="Job Function" />
+									<h:outputText value="#{position.technicalArea}" />
 
-								<h:outputText value="# of openings" />
-								<h:outputText value="#{position.vacancies}" />
-							</p:panelGrid>
+									<h:outputText value="# of openings" />
+									<h:outputText value="#{position.vacancies}" />
+								</p:panelGrid>
 
-							<p:panelGrid columns="1" style="width:100%;">
-								<h:outputText value="#{position.jobDescription}" />
-								<p:commandButton value="Submit" id="ajax"
-									action="#{applicationBean.saveApp(position.id)}"
-									update="tab:frm1:myappstable tab:frm:submitanswer"
-									oncomplete="rowToggler.hide();" />
-
-							</p:panelGrid>
-		
-						</p:rowExpansion>
-					</p:dataTable>
+								<p:panelGrid columns="1" style="width:100%;">
+									<h:outputText value="#{position.jobDescription}" />
+									<p:commandButton value="Submit" id="ajax"
+										action="#{applicationBean.saveApp(position.id)}"
+										update="tab:frm1:myappstable tab:frm:submitanswer" />
+								</p:panelGrid>
+							</p:rowExpansion>
+						</p:dataTable>
 					</div>
 				</h:form>
 			</p:tab>
@@ -99,7 +96,7 @@
 								style="text-align: center; width:150px">
 								<h:outputText value="#{applist.appStatus}" />
 							</p:column>
-						
+
 							<p:column style="width:16px">
 								<p:rowToggler />
 							</p:column>
@@ -109,22 +106,20 @@
 									style="width:100%;">
 
 									<h:outputText value="Job Code" />
-									<h:outputText value="541" />
+									<h:outputText value="JP-#{applist.jobEntity.id}" />
 
-									<h:outputText value="Function" />
-									<h:outputText value="Java Engineer" />
+									<h:outputText value="Job Function" />
+									<h:outputText value="#{applist.jobEntity.technicalArea}" />
 
 									<h:outputText value="Location" />
-									<h:outputText value="Brazil (S. Paulo)" />
+									<h:outputText value="#{applist.jobEntity.location}" />
 
 									<h:outputText value="# of openings" />
-									<h:outputText value="1" />
+									<h:outputText value="#{applist.jobEntity.vacancies}" />
 
 								</p:panelGrid>
 								<p:panelGrid columns="1" style="width:100%;">
-
-									<p:inputTextarea rows="10" cols="100" style="width:95%" />
-									<h:outputText value="Description" />
+									<h:outputText value="#{applist.jobEntity.jobDescription}" />
 								</p:panelGrid>
 							</p:rowExpansion>
 						</p:dataTable>
@@ -135,7 +130,7 @@
 			<p:tab title="My profile">
 				<div id="loginfrm">
 					<h:form id="frmEdit">
-						<p:messages closable="true" />
+						<p:messages id="myprofileMsg" closable="true" />
 						<p:panel id="panel2" style="border-width:0px;">
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
@@ -149,7 +144,7 @@
 								<p:outputLabel value="Email" for="email" />
 								<p:outputLabel value="Adress" for="adress" />
 
-								<p:inputText id="email" value="#{candidateBean.email}" />
+								<p:inputText id="email" value="#{candidateBean.email}" readonly="true" />
 								<p:inputText id="adress" value="#{candidateBean.address}" />
 
 								<p:outputLabel value="City" for="city" />
@@ -200,7 +195,7 @@
 											id="mletter" />
 										<p:outputLabel value="" />
 										<p:commandButton value="SAVE"
-											action="#{candidateBean.updateCandidate}" update=""/>
+											action="#{candidateBean.updateCandidate}" update="tab:frmEdit:myprofileMsg" />
 									</h:panelGrid>
 								</div>
 							</div>
