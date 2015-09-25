@@ -24,7 +24,9 @@
 							paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 							id="jobstable" sortMode="single">
-
+							<p:column style="width:16px">
+								<p:rowToggler />
+							</p:column>
 							<p:column styleClass="jobs-table" headerText="Job Title"
 								style="text-align: center; width:180px"
 								sortBy="#{position.title}">
@@ -75,9 +77,6 @@
 									oncomplete="PF('dlg2').show();" />
 							</p:column>
 
-							<p:column style="width:16px">
-								<p:rowToggler />
-							</p:column>
 							<p:rowExpansion id="rowselection">
 								<p:panelGrid columns="2" columnClasses="label, field"
 									style="width:100%;">
@@ -94,33 +93,26 @@
 								</p:panelGrid>
 							</p:rowExpansion>
 						</p:dataTable>
+
 						<p:dialog header="Candidates" widgetVar="dlg2" modal="true"
-							height="300" weight="100">
+							height="200" weight="100">
 							<p:dataTable id="candidatesforposition"
 								value="#{applicationBean.listPosApp}" var="candlist" rows="10"
 								emptyMessage="No records found." paginator="true"
 								paginatorPosition="bottom"
 								paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-
+								<p:column headerText="" style="text-align: center; width:40px;">
+									<p:commandButton icon="ui-icon-search"
+										oncomplete="PF('dlg4').show();" />
+								</p:column>
 								<p:column styleClass="jobs-table" headerText="Name"
 									style="text-align: center; width:200px"
 									sortBy="#{candlist.candidateEntity.firstname}">
+
 									<h:outputText
 										value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
-									<p:rowToggler />
 								</p:column>
-								<p:rowExpansion id="rowselection">
-									<p:panelGrid columns="2" columnClasses="label, field"
-										style="width:100%;">
 
-										<h:outputText value="City" />
-										<h:outputText value="#{candlist.candidateEntity.city}" />
-
-										<h:outputText value="Mobile" />
-										<h:outputText value="#{candlist.candidateEntity.mobile}" />
-
-									</p:panelGrid>
-								</p:rowExpansion>
 								<p:column styleClass="jobs-table" headerText="Email"
 									style="text-align: center; width:200px"
 									sortBy="#{candlist.candidateEntity.email}">
@@ -149,6 +141,7 @@
 								</p:column>
 							</p:dataTable>
 						</p:dialog>
+
 						<p:dialog header="Edition" widgetVar="dlg3" modal="true"
 							height="300" weight="100">
 
@@ -156,6 +149,7 @@
 							<h:inputText id="ola" value="#{jobPositionBean.location}" />
 
 						</p:dialog>
+
 						<p:dialog header="Set Interview" widgetVar="InterviewDialog"
 							modal="true" height="300" weight="100">
 
@@ -169,6 +163,28 @@
 								<f:selectItems value="#{applicationBean.interviewerList}"
 									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
 							</p:selectOneMenu>
+						</p:dialog>
+
+						<p:dialog header="Candidate Profile" widgetVar="dlg4" modal="true"
+							height="200" weight="100">
+							<p:panelGrid columns="2" columnClasses="label,value">
+								<h:outputText value="Adress" />
+								<h:outputText value="#{candlist.candidateEntity.address}" />
+
+								<h:outputText value="City" />
+								<h:outputText value="#{candlist.candidateEntity.city}" />
+
+								<h:outputText value="Mobile" />
+								<h:outputText value="#{candlist.candidateEntity.mobile}" />
+
+
+								<h:outputText value="Course" />
+								<h:outputText value="#{candlist.candidateEntity.course}" />
+
+								<h:outputText value="School" />
+								<h:outputText value="#{candlist.candidateEntity.school}" />
+
+							</p:panelGrid>
 						</p:dialog>
 					</h:form>
 				</div>
@@ -192,7 +208,8 @@
 										mindate="#{jobPositionBean.actualDate}" />
 									<p:calendar id="endDate" required="true"
 										value="#{jobPositionBean.finalDate}" style="width:10%;"
-										size="10" pattern="dd/MM/yyyy" />
+										size="10" pattern="dd/MM/yyyy"
+										mindate="#{jobPositionBean.actualDate}" />
 								</h:panelGrid>
 
 								<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
