@@ -4,6 +4,7 @@ import interfaces.IUser;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -43,6 +44,11 @@ public class UserImp implements IUser {
 		}
 		ud.updateUser(uent);
 
+	}
+
+	@Override
+	public List<UserEntity> findAllManagers() {
+		return ud.findAllManagers();
 	}
 
 }

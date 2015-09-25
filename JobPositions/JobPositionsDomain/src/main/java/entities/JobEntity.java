@@ -14,6 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -37,51 +39,50 @@ public class JobEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date creationDate;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date finalDate;
-	
+
 	@Column(nullable = false, length = 3000, columnDefinition = "text")
 	private String jobDescription;
-	
+
 	@Column(nullable = false, length = 100)
 	private String company;
-	
+
 	@Column(nullable = false, length = 100)
 	private String technicalArea;
-	
+
 	@Column(nullable = false, length = 100)
 	private String sla;
-	
+
 	@Column(nullable = false, length = 100)
 	private String location;
-	
+
 	@Column(nullable = false, length = 100)
 	private String title;
-	
-	@Column(nullable = false, length = 100)
+
+	@Column(nullable = true, length = 100)
 	private String positionCode;
-	
+
 	@Column(nullable = false, length = 100)
 	private String vacancies;
-	
-	@Column(nullable = false, length = 100)
-	private String responsable;
-	
-	// private UserEntity responsable;
+
+	@ManyToOne
+	@JoinColumn(name = "responsable_id", nullable = false)
+	private UserEntity responsable;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 100)
 	private JobStatus jobStatus;
-	
+
 	@OneToMany(mappedBy = "jobEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ApplicationEntity> applications = new ArrayList<>();;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -162,7 +163,6 @@ public class JobEntity implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-
 	public JobStatus getJobStatus() {
 		return jobStatus;
 	}
@@ -179,11 +179,11 @@ public class JobEntity implements Serializable {
 		this.vacancies = vacancies;
 	}
 
-	public String getResponsable() {
+	public UserEntity getResponsable() {
 		return responsable;
 	}
 
-	public void setResponsable(String responsable) {
+	public void setResponsable(UserEntity responsable) {
 		this.responsable = responsable;
 	}
 
@@ -220,5 +220,4 @@ public class JobEntity implements Serializable {
 		this.applications = applications;
 	}
 
-	
 }

@@ -30,7 +30,7 @@
 			<artifactId>JobPositionsServices</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<!-- Mojarra (implementacao do JSF) -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -38,7 +38,17 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+
+		<!-- Omnicenas -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>2.1</version>
+		</dependency>
+
 	</dependencies>
+
 
 	<build>
 		<!-- Define o nome do artefacto final (war) -->

@@ -1,6 +1,7 @@
 package backingbeans;
 
 import interfaces.IJobPosition;
+import interfaces.IUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import entities.JobEntity;
+import entities.UserEntity;
 import enumeration.JobStatus;
 
 @SessionScoped
@@ -28,6 +30,9 @@ public class JobPositionBean implements Serializable {
 	@Inject
 	private IJobPosition ij;
 
+	@Inject
+	private IUser iu;
+
 	private Date creationDate;
 	private Date finalDate;
 	private String jobDescription;
@@ -37,12 +42,13 @@ public class JobPositionBean implements Serializable {
 	private String location;
 	private String title;
 	private String positionCode;
+	private String responsableEmail;
 	private String vacancies;
 	private JobStatus jobStatus;
-	// private String jobStatus;
-	private String responsable;
+	private UserEntity responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
+	private List<UserEntity> responsableList = new ArrayList<UserEntity>();
 
 	private static final Logger log = LoggerFactory
 			.getLogger(JobPositionBean.class);
@@ -57,12 +63,11 @@ public class JobPositionBean implements Serializable {
 		ent.setJobDescription(jobDescription);
 		ent.setJobStatus(JobStatus.OPEN);
 		ent.setLocation(location);
-		ent.setPositionCode(positionCode);
 		ent.setSla(sla);
 		ent.setTechnicalArea(technicalArea);
 		ent.setTitle(title);
 		ent.setVacancies(vacancies);
-		ent.setResponsable(responsable);
+		ent.setResponsable(iu.searchUser(responsableEmail));
 		try {
 			ij.saveJob(ent);
 			this.jobpositions.add(ent);
@@ -79,6 +84,10 @@ public class JobPositionBean implements Serializable {
 	public void start() {
 		System.out.println("Starting app...");
 		jobpositions = ij.findAll();
+		responsableList = iu.findAllManagers();
+		for (UserEntity x : responsableList) {
+			System.out.println(x.getName());
+		}
 	}
 
 	public void jobInfo(Long idPos) {
@@ -177,11 +186,11 @@ public class JobPositionBean implements Serializable {
 		this.vacancies = vacancies;
 	}
 
-	public String getResponsable() {
+	public UserEntity getResponsable() {
 		return responsable;
 	}
 
-	public void setResponsable(String responsable) {
+	public void setResponsable(UserEntity responsable) {
 		this.responsable = responsable;
 	}
 
@@ -211,6 +220,22 @@ public class JobPositionBean implements Serializable {
 
 	public void setJobStatus(JobStatus jobStatus) {
 		this.jobStatus = jobStatus;
+	}
+
+	public List<UserEntity> getResponsableList() {
+		return responsableList;
+	}
+
+	public void setResponsableList(List<UserEntity> responsableList) {
+		this.responsableList = responsableList;
+	}
+
+	public String getResponsableEmail() {
+		return responsableEmail;
+	}
+
+	public void setResponsableEmail(String responsableEmail) {
+		this.responsableEmail = responsableEmail;
 	}
 
 }

@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions"
-	xmlns:o="http://omnifaces.org/ui">
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 	<ui:define name="title">Admin Menu</ui:define>
 	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
@@ -150,10 +151,10 @@
 						</p:dialog>
 						<p:dialog header="Edition" widgetVar="dlg3" modal="true"
 							height="300" weight="100">
-								
-									<p:outputLabel value="Location" />
-									<h:inputText id="ola" value="#{jobPositionBean.location}" />
-								
+
+							<p:outputLabel value="Location" />
+							<h:inputText id="ola" value="#{jobPositionBean.location}" />
+
 						</p:dialog>
 					</h:form>
 				</div>
@@ -198,8 +199,13 @@
 								<p:outputLabel value="Responsable" for="responsable" />
 
 								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-								<p:inputText id="responsable" required="true"
-									value="#{jobPositionBean.responsable}" />
+
+								<p:selectOneMenu id="responsable"
+									value="#{jobPositionBean.responsableEmail}" >
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{jobPositionBean.responsableList}"
+										var="resp" itemValue="#{resp.email}" itemLabel="#{resp}"/>
+								</p:selectOneMenu>
 
 								<p:outputLabel value="Technical Area" for="tarea" />
 								<p:outputLabel value="Company" for="company" />

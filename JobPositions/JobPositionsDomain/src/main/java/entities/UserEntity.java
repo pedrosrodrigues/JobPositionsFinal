@@ -1,43 +1,56 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import enumeration.RoleEntity;
 
 @Entity
-@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email")
+@NamedQueries({
+		@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email"),
+		@NamedQuery(name = "UserEntity.findAllManagers", query = "SELECT u FROM UserEntity u WHERE u.role like :role") })
 public class UserEntity implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
+
+	public static final String FIND_ALL_MANAGERS = "UserEntity.findAllManagers";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 100)
 	private String name;
-	
-	@Column(nullable = false, length = 100, unique=true)
+
+	@Column(nullable = false, length = 100, unique = true)
 	private String email;
-	
+
 	@Column(nullable = false, length = 100)
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private RoleEntity role;
+
+	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<JobEntity> jobList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -79,6 +92,14 @@ public class UserEntity implements Serializable {
 		this.role = role;
 	}
 
+	public List<JobEntity> getJobList() {
+		return jobList;
+	}
+
+	public void setJobList(List<JobEntity> jobList) {
+		this.jobList = jobList;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -102,6 +123,11 @@ public class UserEntity implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
 	}
 
 }

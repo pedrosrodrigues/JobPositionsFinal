@@ -1,11 +1,14 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.UserEntity;
+import enumeration.RoleEntity;
 
 @Stateless
 public class UserDAO {
@@ -30,5 +33,12 @@ public class UserDAO {
 		q.setParameter("password", uent.getPassword());
 		q.setParameter("email", uent.getEmail());
 		q.executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<UserEntity> findAllManagers() {
+		Query q = em.createNamedQuery(UserEntity.FIND_ALL_MANAGERS);
+		q.setParameter("role", RoleEntity.MANAGER);
+		return q.getResultList();
 	}
 }
