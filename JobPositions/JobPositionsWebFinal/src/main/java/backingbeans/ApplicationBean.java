@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -107,10 +108,15 @@ public class ApplicationBean implements Serializable {
 		}
 	}
 
+	@PostConstruct
+	public void init() {
+		interviewerList = iu.findAllInterviewers();
+	}
+
 	public void start() {
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		listApp = ia.findCandApps(cent.getId());
-		interviewerList = iu.findAllInterviewers();
+
 	}
 
 	public void searchCandidates(Long idPos) {
