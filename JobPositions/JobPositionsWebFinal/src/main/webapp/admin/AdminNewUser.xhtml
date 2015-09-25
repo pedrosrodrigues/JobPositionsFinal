@@ -1,0 +1,51 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="frmNewUser">
+		<div id="loginfrm">
+			<p:messages id="msgNewUser" closable="true" />
+			<p:panel id="panel" style="border-width: 0px;">
+
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+					<p:outputLabel value="Role" for="role" />
+					<p:selectOneMenu id="role" value="#{newUserInputBean.role}"
+						required="true">
+						<f:selectItem id="item1" itemLabel="Administrator"
+							itemValue="ADMINISTRATOR" />
+						<f:selectItem id="item2" itemLabel="Manager" itemValue="MANAGER" />
+						<f:selectItem id="item3" itemLabel="Interviewer"
+							itemValue="INTERVIEWER" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Name" for="name" />
+					<p:inputText id="name" value="#{newUserInputBean.name}"
+						required="true" />
+
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" value="#{newUserInputBean.email}"
+						required="true" />
+
+					<p:outputLabel value="Password" for="password" />
+					<p:password id="password" required="true" match="confpassword"
+						feedback="true" value="#{newUserInputBean.password}" />
+
+					<p:outputLabel value="Confirm Password" for="confpassword" />
+					<p:password id="confpassword" required="true" />
+				</h:panelGrid>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="1">
+							<p:commandButton value="SAVE"
+								action="#{newUserInputBean.newUserInput}"
+								update="tab:frmNewUser:msgNewUser" />
+						</h:panelGrid>
+					</div>
+				</div>
+			</p:panel>
+		</div>
+		</h:form>
+</ui:composition>

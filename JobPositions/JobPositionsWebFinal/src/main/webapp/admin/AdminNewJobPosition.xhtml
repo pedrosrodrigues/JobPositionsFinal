@@ -1,0 +1,81 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="frmEdit">
+		<div id="loginfrm">
+			<p:messages id="messageForm2" closable="true" />
+			<p:panel id="panel" style="border-width: 0px;">
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
+						cellspacing="4px">
+						<p:outputLabel value="Date (start)" for="startDate" />
+						<p:outputLabel value="Date (end)" for="endDate" />
+
+						<p:calendar id="startDate" required="true"
+							value="#{jobPositionBean.creationDate}" style="width:10%;"
+							size="10" pattern="dd/MM/yyyy"
+							mindate="#{jobPositionBean.actualDate}" />
+						<p:calendar id="endDate" required="true"
+							value="#{jobPositionBean.finalDate}" style="width:10%;" size="10"
+							pattern="dd/MM/yyyy" mindate="#{jobPositionBean.actualDate}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
+						<p:outputLabel value="SLA" for="sla" />
+						<p:inputText id="sla" required="true"
+							value="#{jobPositionBean.sla}" style="width:100%;" />
+					</h:panelGrid>
+
+					<p:outputLabel value="Title" for="title" />
+					<p:outputLabel value="Location" for="location" />
+
+					<p:inputText id="title" required="true"
+						value="#{jobPositionBean.title}" />
+					<p:inputText id="location" required="true"
+						value="#{jobPositionBean.location}" />
+
+					<p:outputLabel value="Vacancies" for="vacancies" />
+					<p:outputLabel value="Responsable" for="responsable" />
+
+					<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
+
+					<p:selectOneMenu id="responsable"
+						value="#{jobPositionBean.responsableEmail}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{jobPositionBean.responsableList}"
+							var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Technical Area" for="tarea" />
+					<p:outputLabel value="Company" for="company" />
+
+					<p:inputText id="tarea" required="true"
+						value="#{jobPositionBean.technicalArea}" />
+					<p:inputText id="company" required="true"
+						value="#{jobPositionBean.company}" />
+
+					<p:outputLabel value="Job description" for="description" />
+					<p:outputLabel />
+
+					<p:inputTextarea id="description"
+						value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
+						autoResize="false" />
+					<h:outputText />
+				</h:panelGrid>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="1">
+							<p:commandButton value="SAVE"
+								action="#{jobPositionBean.saveJobPosition}" icon="ui-icon-disk"
+								update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
+						</h:panelGrid>
+					</div>
+				</div>
+			</p:panel>
+		</div>
+	</h:form>
+</ui:composition>
