@@ -111,6 +111,13 @@
 
 									<h:outputText
 										value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
+										<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}" target="_blank"> <p:graphicImage
+											title="Open motivation letter" styleClass="social-img" library="images" name="ml_icon.png" />
+									</a>
+									<a href="#{systemUser.cvPath(candlist.candidateEntity.email)}" target="_blank"> <p:graphicImage
+											title="Open CV" styleClass="social-img" library="images" name="cv_icon_red.png" />
+									</a>
+									
 								</p:column>
 
 								<p:column styleClass="jobs-table" headerText="Email"

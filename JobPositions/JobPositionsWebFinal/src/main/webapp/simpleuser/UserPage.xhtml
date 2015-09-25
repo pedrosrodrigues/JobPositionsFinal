@@ -144,7 +144,8 @@
 								<p:outputLabel value="Email" for="email" />
 								<p:outputLabel value="Adress" for="adress" />
 
-								<p:inputText id="email" value="#{candidateBean.email}" readonly="true" />
+								<p:inputText id="email" value="#{candidateBean.email}"
+									readonly="true" />
 								<p:inputText id="adress" value="#{candidateBean.address}" />
 
 								<p:outputLabel value="City" for="city" />
@@ -175,7 +176,7 @@
 								<p:password id="confpassword" required="true" />
 
 								<p:outputLabel value="Linkedin Profile" for="linkin" />
-								<p:outputLabel value="#" />
+								<p:outputLabel value="" />
 
 								<p:inputText id="linkin" value="#{candidateBean.linkedin}" />
 								<p:outputLabel />
@@ -183,19 +184,10 @@
 							<div class="out">
 								<div class="in">
 									<h:panelGrid columns="1">
-										<p:outputLabel value="Upload your CV" for="cv"
-											style="font-weight: bolder;"></p:outputLabel>
-										<p:outputLabel value="PDF format, max size: 1Mb" for="cv" />
-										<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
-
-										<p:outputLabel value="Upload your motivation letter"
-											for="mletter" style="font-weight: bolder;"></p:outputLabel>
-										<p:outputLabel value="PDF format, max size: 1Mb" for="mletter" />
-										<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
-											id="mletter" />
 										<p:outputLabel value="" />
 										<p:commandButton value="SAVE"
-											action="#{candidateBean.updateCandidate}" update="tab:frmEdit:myprofileMsg" />
+											action="#{candidateBean.updateCandidate}"
+											update="tab:frmEdit:myprofileMsg" />
 									</h:panelGrid>
 								</div>
 							</div>
@@ -203,9 +195,27 @@
 					</h:form>
 				</div>
 			</p:tab>
-			<p:tab title="Other stuff">
-		Se houver necessidade fica, senão sai.
-				</p:tab>
+			<p:tab title="Upload my CV">
+					<h:form id="uploadCVForm">
+
+			<p:fileUpload id="file-upload" dragDropSupport="true"
+				label="Pick your CV (*.pdf)" uploadLabel="Submit CV"
+				fileUploadListener="#{uploadCVCDI.uploadCV}" mode="advanced"
+				cancelLabel="Cancel" sizeLimit="1000000" fileLimit="1"
+				invalidSizeMessage="File is too big! (max. 1Mb)."
+				invalidFileMessage="Only files with extension .pdf" allowTypes="/(\.|\/)(pdf)$/"
+				update="@this" />
+				
+			<p:fileUpload id="file-upload2" dragDropSupport="true"
+				label="Pick your motivation letter (*.pdf)" uploadLabel="Submit motivation letter"
+				fileUploadListener="#{uploadCVCDI.uploadML}" mode="advanced"
+				cancelLabel="Cancel" sizeLimit="1000000" fileLimit="1"
+				invalidSizeMessage="File is too big! (max. 1Mb)."
+				invalidFileMessage="Only files with extension .pdf" allowTypes="/(\.|\/)(pdf)$/"
+				update="@this" />
+
+		</h:form>
+			</p:tab>
 		</p:tabView>
 
 

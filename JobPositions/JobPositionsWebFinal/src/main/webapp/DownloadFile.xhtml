@@ -10,15 +10,11 @@
 	<ui:define name="body">
 
 
-		<h:form id="uploadCVForm">
+		<h:form>
 
-			<p:fileUpload id="file-upload" dragDropSupport="true"
-				label="Pick your CV (*.pdf)" uploadLabel="Submit CV"
-				fileUploadListener="#{uploadCVCDI.uploadCV}" mode="advanced"
-				cancelLabel="Cancel" sizeLimit="1000000" fileLimit="1"
-				invalidSizeMessage="File is too big! (max. 1Mb)."
-				invalidFileMessage="Only files with extension .pdf" allowTypes="/(\.|\/)(pdf)$/"
-				update="@this" />
+			<a href="#{systemUser.cvPath}" target="_blank"> <p:graphicImage
+					styleClass="social-img" library="images" name="facebook.png" />
+			</a>
 
 		</h:form>
 	</ui:define>

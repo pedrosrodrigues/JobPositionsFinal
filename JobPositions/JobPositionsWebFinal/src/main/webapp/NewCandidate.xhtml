@@ -71,18 +71,6 @@
 								<p:inputText id="linkin" value="#{candidateBean.linkedin}" />
 								<p:outputLabel value="" />
 
-								<p:outputLabel value="Upload your CV" for="cv"
-									style="font-weight: bolder;"></p:outputLabel>
-								<p:outputLabel value="PDF format, max size: 1Mb" for="cv" />
-								<p:fileUpload dragDropSupport="true" label="UPLOAD CV" id="cv" />
-
-								<p:outputLabel value="Upload your motivation letter"
-									for="mletter" style="font-weight: bolder;"></p:outputLabel>
-								<p:outputLabel value="PDF format, max size: 1Mb" for="mletter" />
-								<p:fileUpload dragDropSupport="true" label="UPLOAD LETTER"
-									id="mletter" />
-								<p:outputLabel value="" />
-
 								<p:commandButton value="SAVE"
 									action="#{candidateBean.saveCandidate}" update="frmEdit" />
 							</h:panelGrid>
