@@ -81,6 +81,18 @@ public class JobPositionBean implements Serializable {
 		jobpositions = ij.findAll();
 	}
 
+	public void jobInfo(Long idPos) {
+		System.out.println("estou aqui");
+		System.out.println("id:" + idPos);
+		JobEntity jent = new JobEntity();
+		jent = ij.findById(idPos);
+
+		System.out.println("Location db:" + jent.getLocation());
+		setLocation(jent.getLocation());
+		System.out.println("location bean:" + this.location);
+
+	}
+
 	public Date getActualDate() {
 		return new Date();
 	}

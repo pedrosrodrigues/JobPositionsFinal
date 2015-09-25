@@ -63,9 +63,8 @@
 							<p:column headerText="Edit"
 								style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-pencil"
-									action="#{applicationBean.searchCandidates(position.id)}"
-									update="tab:frm:candidatesforposition"
-									oncomplete="PF('dlg2').show();" />
+									action="#{jobPositionBean.jobInfo(position.id)}"
+									update="tab:frm:ola" oncomplete="PF('dlg3').show();" />
 							</p:column>
 							<p:column headerText="Candidates"
 								style="text-align: center; width:40px;">
@@ -149,6 +148,13 @@
 								</p:column>
 							</p:dataTable>
 						</p:dialog>
+						<p:dialog header="Edition" widgetVar="dlg3" modal="true"
+							height="300" weight="100">
+								
+									<p:outputLabel value="Location" />
+									<h:inputText id="ola" value="#{jobPositionBean.location}" />
+								
+						</p:dialog>
 					</h:form>
 				</div>
 			</p:tab>
@@ -205,7 +211,7 @@
 
 								<p:outputLabel value="Job description" for="description" />
 								<p:outputLabel />
-								
+
 								<p:inputTextarea id="description"
 									value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
 									autoResize="false" />
