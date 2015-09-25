@@ -22,14 +22,16 @@ import enumeration.RoleEntity;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email"),
-		@NamedQuery(name = "UserEntity.findAllManagers", query = "SELECT u FROM UserEntity u WHERE u.role like :role") })
+		@NamedQuery(name = "UserEntity.findAllManagers", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),
+		@NamedQuery(name = "UserEntity.findAllInterviewrs", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),})
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
-
 	public static final String FIND_ALL_MANAGERS = "UserEntity.findAllManagers";
+	public static final String FIND_ALL_INTERVIEWERS = "UserEntity.findAllInterviewrs";
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -41,4 +41,11 @@ public class UserDAO {
 		q.setParameter("role", RoleEntity.MANAGER);
 		return q.getResultList();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<UserEntity> findAllInterviewers() {
+		Query q = em.createNamedQuery(UserEntity.FIND_ALL_INTERVIEWERS);
+		q.setParameter("role", RoleEntity.INTERVIEWER);
+		return q.getResultList();
+	}
 }

@@ -51,4 +51,9 @@ public class UserImp implements IUser {
 		return ud.findAllManagers();
 	}
 
+	@Override
+	public List<UserEntity> findAllInterviewers() {
+		return ud.findAllInterviewers();
+	}
+
 }

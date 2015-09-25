@@ -105,7 +105,7 @@ public class ApplicationBean implements Serializable {
 	public void searchCandidates(Long idPos) {
 		listPosApp = ia.findByJobCand(idPos);
 	}
-
+	
 	public List<ApplicationEntity> getListApp() {
 		return listApp;
 	}
