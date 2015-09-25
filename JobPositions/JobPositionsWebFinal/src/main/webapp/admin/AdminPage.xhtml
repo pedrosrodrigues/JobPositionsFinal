@@ -156,6 +156,20 @@
 							<h:inputText id="ola" value="#{jobPositionBean.location}" />
 
 						</p:dialog>
+						<p:dialog header="Set Interview" widgetVar="InterviewDialog"
+							modal="true" height="300" weight="100">
+
+							<p:outputLabel value="Data" />
+							<p:outputLabel value="Interviewer" for="int" />
+
+							<h:inputText />
+							<p:selectOneMenu id="int"
+								value="#{applicationBean.interviewerEmail}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{applicationBean.interviewerList}"
+									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
+							</p:selectOneMenu>
+						</p:dialog>
 					</h:form>
 				</div>
 			</p:tab>
@@ -201,10 +215,10 @@
 								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
 
 								<p:selectOneMenu id="responsable"
-									value="#{jobPositionBean.responsableEmail}" >
+									value="#{jobPositionBean.responsableEmail}">
 									<f:selectItem itemLabel="Select One" itemValue="" />
 									<f:selectItems value="#{jobPositionBean.responsableList}"
-										var="resp" itemValue="#{resp.email}" itemLabel="#{resp}"/>
+										var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />
 								</p:selectOneMenu>
 
 								<p:outputLabel value="Technical Area" for="tarea" />

@@ -3,6 +3,7 @@ package backingbeans;
 import interfaces.IApplication;
 import interfaces.ICandidate;
 import interfaces.IJobPosition;
+import interfaces.IUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +40,8 @@ public class ApplicationBean implements Serializable {
 	private IJobPosition ijp;
 	@Inject
 	private IApplication ia;
+	@Inject
+	private IUser iu;
 
 	private CandidateEntity cent;
 	private JobEntity jent;
@@ -46,6 +50,8 @@ public class ApplicationBean implements Serializable {
 
 	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();
 	private List<ApplicationEntity> listPosApp = new ArrayList<ApplicationEntity>();
+	private List<UserEntity> interviewerList = new ArrayList<UserEntity>();
+	private String interviewerEmail;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(ApplicationBean.class);
@@ -76,7 +82,7 @@ public class ApplicationBean implements Serializable {
 	public void updateApp(Long idApplication) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to update an application on database...");
-		ApplicationEntity aent = new ApplicationEntity();	
+		ApplicationEntity aent = new ApplicationEntity();
 		for (ApplicationEntity x : listPosApp) {
 			if (x.getId() == idApplication) {
 				this.appStatus = x.getAppStatus();
@@ -84,28 +90,33 @@ public class ApplicationBean implements Serializable {
 		}
 		aent.setAppStatus(appStatus);
 		aent.setId(idApplication);
-		try{
+		try {
 			ia.updateApplication(aent);
 			log.info("Application updated!");
 			context.addMessage(null, new FacesMessage("Application updated!"));
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.info("Problem updating application!");
-			context.addMessage(null, new FacesMessage("Problem upating application!"));
+			context.addMessage(null, new FacesMessage(
+					"Problem upating application!"));
 			e.printStackTrace();
 		}
-		//despoletar caixa de entrevista
+		// despoletar caixa de entrevista
+		if (this.appStatus.equals(ApplicationStatus.INTERVIEWING)) {
+			RequestContext cont = RequestContext.getCurrentInstance();
+			cont.execute("PF('InterviewDialog').show();");
+		}
 	}
 
 	public void start() {
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		listApp = ia.findCandApps(cent.getId());
+		interviewerList = iu.findAllInterviewers();
 	}
 
 	public void searchCandidates(Long idPos) {
 		listPosApp = ia.findByJobCand(idPos);
 	}
-	
+
 	public List<ApplicationEntity> getListApp() {
 		return listApp;
 	}
@@ -128,6 +139,22 @@ public class ApplicationBean implements Serializable {
 
 	public void setAppStatus(ApplicationStatus appStatus) {
 		this.appStatus = appStatus;
+	}
+
+	public List<UserEntity> getInterviewerList() {
+		return interviewerList;
+	}
+
+	public void setInterviewerList(List<UserEntity> interviewerList) {
+		this.interviewerList = interviewerList;
+	}
+
+	public String getInterviewerEmail() {
+		return interviewerEmail;
+	}
+
+	public void setInterviewerEmail(String interviewerEmail) {
+		this.interviewerEmail = interviewerEmail;
 	}
 
 }
