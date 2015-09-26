@@ -2,6 +2,7 @@ package backingbeans;
 
 import interfaces.IUser;
 
+import java.io.File;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
@@ -55,6 +56,26 @@ public class SystemUser implements Serializable {
 				+ iu.searchUser(email).getId() + iu.searchUser(email).getName()
 				+ "ML" + UploadFile.DOCUMENT_EXTENSION_PDF;
 		// https://localhost:443/userCV/1.pdf
+	}
+
+	public boolean cvFileExists(String email) {
+		boolean exists = new File(
+				"c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
+						+ iu.searchUser(email).getId()
+						+ iu.searchUser(email).getName() + "CV"
+						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
+		System.out.println(exists);
+		return exists;
+	}
+
+	public boolean mlFileExists(String email) {
+		boolean exists = new File(
+				"c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
+						+ iu.searchUser(email).getId()
+						+ iu.searchUser(email).getName() + "ML"
+						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
+		System.out.println(exists);
+		return exists;
 	}
 
 	public boolean isLogIn() {
