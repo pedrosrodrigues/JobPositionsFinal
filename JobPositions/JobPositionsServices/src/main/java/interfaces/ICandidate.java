@@ -15,9 +15,9 @@ public interface ICandidate {
 
 	public void updateCandidate(CandidateEntity ent);
 
-	public List<CandidateEntity> findByFistName(String fname);
+	public List<CandidateEntity> findByFirstName(String firstname);
 
-	public List<CandidateEntity>  findByLastName(String lname);
+	public List<CandidateEntity>  findByLastName(String lastname);
 
 	public List<CandidateEntity>  findByAdress(String adress);
 

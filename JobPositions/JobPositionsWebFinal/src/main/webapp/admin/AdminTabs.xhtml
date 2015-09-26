@@ -5,9 +5,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
-	<ui:define name="title">Admin Menu</ui:define>
-	<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
-
 	<p:tabView id="tab">
 		<p:tab id="jobPositions" title="Job Positions">
 			<ui:include src="/admin/AdminJobPositions.xhtml" />

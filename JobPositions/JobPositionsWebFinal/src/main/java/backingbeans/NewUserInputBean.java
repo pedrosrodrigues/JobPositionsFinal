@@ -47,7 +47,6 @@ public class NewUserInputBean implements Serializable {
 			log.info("Password encrypted!");
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			log.error("Problem encrypting password!");
-
 			e.printStackTrace();
 		}
 

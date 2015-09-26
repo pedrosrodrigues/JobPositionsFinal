@@ -83,8 +83,8 @@ public class CandidateImp implements ICandidate {
 	}
 
 	@Override
-	public List<CandidateEntity> findByFistName(String fname) {
-		return cd.findByFistName(fname);
+	public List<CandidateEntity> findByFirstName(String firstname) {
+		return cd.findByFirstName(firstname);
 	}
 
 	@Override

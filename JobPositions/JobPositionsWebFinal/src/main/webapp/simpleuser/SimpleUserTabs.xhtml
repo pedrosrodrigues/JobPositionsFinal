@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<ui:define name="title">User Menu</ui:define>
+		<ui:define name="bar">#{systemUser.loggedUserName}</ui:define>
+
+		<p:tabView id="tab">
+			<p:tab id="jobPositions" title="Job Positions">
+				<ui:include src="/simpleuser/SUserJobPositions.xhtml" />
+			</p:tab>
+			<p:tab id="applications" title="Applications">
+				<ui:include src="/simpleuser/SUserApplications.xhtml" />
+			</p:tab>
+			<p:tab id="profile" title="Profile">
+				<ui:include src="/simpleuser/SUserProfile.xhtml" />
+			</p:tab>
+			<p:tab id="newuser" title="Uploads">
+				<ui:include src="/simpleuser/SUserUploads.xhtml" />
+			</p:tab>
+		</p:tabView>
+</ui:composition>

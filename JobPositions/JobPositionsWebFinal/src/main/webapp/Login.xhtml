@@ -10,7 +10,7 @@
 	<ui:define name="body">
 		<div id="loginfrm">
 			<h:form id="frm">
-					<p:messages autoUpdate="true" />
+					<p:messages id="message" autoUpdate="true" closable="true" />
 				<p:panel style="border-width: 0px;">
 
 					<h:panelGrid columns="2" header="Login">
@@ -30,7 +30,7 @@
 						<p:link style="text-align: center;" value="Forgot your password?" />
 						<p:outputLabel value="" />
 						<p:commandButton value="Login" action="#{loginBean.login}"
-							style="margin-top: 10px; width:180px" update="@form"/>
+							style="margin-top: 10px; width:180px" update="message"/>
 						<p:outputLabel value="" />
 					</h:panelGrid>
 				</p:panel>

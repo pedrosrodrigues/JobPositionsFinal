@@ -45,30 +45,30 @@ public class CandidateDAO {
 	
 
 	@SuppressWarnings("unchecked")
-	public List<CandidateEntity> findByFistName(String fname) {
+	public List<CandidateEntity> findByFirstName(String firstname) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_FIRSTNAME);
-		q.setParameter("firstname", fname);
+		q.setParameter("firstname", firstname);
 		return q.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<CandidateEntity> findByLastName(String lname) {
+	public List<CandidateEntity> findByLastName(String lastname) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_LASTNAME);
-		q.setParameter("lastname", lname);
+		q.setParameter("lastname", lastname);
 		return q.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<CandidateEntity> findByAdress(String adress) {
+	public List<CandidateEntity> findByAdress(String address) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_ADRESS);
-		q.setParameter("address", adress);
+		q.setParameter("address", address);
 		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByCiy(String city) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_CITY);
-		q.setParameter("City", city);
+		q.setParameter("city", city);
 		return q.getResultList();
 	}
 	
@@ -81,7 +81,7 @@ public class CandidateDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByMobile(String mobile) {
-		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_LASTNAME);
+		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_MOBILE);
 		q.setParameter("mobile", mobile);
 		return q.getResultList();
 	}

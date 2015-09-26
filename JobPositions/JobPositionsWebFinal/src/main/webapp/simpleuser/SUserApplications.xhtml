@@ -1,0 +1,54 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="frm1">
+		<div id="loginfrm">
+			<p:dataTable id="myappstable" value="#{applicationBean.listApp}"
+				var="applist" rows="10" emptyMessage="No records found."
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<p:column styleClass="jobs-table" headerText="Job Title"
+					style="text-align: center; width:200px">
+					<h:outputText value="#{applist.jobEntity.title}" />
+				</p:column>
+				<p:column headerText="Location"
+					style="text-align: center; width:150px">
+					<h:outputText value="Portugal,(Coimbra)" />
+				</p:column>
+				<p:column headerText="Application status"
+					style="text-align: center; width:150px">
+					<h:outputText value="#{applist.appStatus}" />
+				</p:column>
+
+				<p:column style="width:16px">
+					<p:rowToggler />
+				</p:column>
+
+				<p:rowExpansion id="rowselection">
+					<p:panelGrid columns="2" columnClasses="label, field"
+						style="width:100%;">
+
+						<h:outputText value="Job Code" />
+						<h:outputText value="JP-#{applist.jobEntity.id}" />
+
+						<h:outputText value="Job Function" />
+						<h:outputText value="#{applist.jobEntity.technicalArea}" />
+
+						<h:outputText value="Location" />
+						<h:outputText value="#{applist.jobEntity.location}" />
+
+						<h:outputText value="# of openings" />
+						<h:outputText value="#{applist.jobEntity.vacancies}" />
+
+					</p:panelGrid>
+					<p:panelGrid columns="1" style="width:100%;">
+						<h:outputText value="#{applist.jobEntity.jobDescription}" />
+					</p:panelGrid>
+				</p:rowExpansion>
+			</p:dataTable>
+		</div>
+	</h:form>
+	</ui:composition>

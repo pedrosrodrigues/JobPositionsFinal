@@ -1,0 +1,27 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:form id="uploadCVForm">
+
+		<p:fileUpload id="file-upload" dragDropSupport="true"
+			label="Pick your CV (*.pdf)" uploadLabel="Submit CV"
+			fileUploadListener="#{uploadCVCDI.uploadCV}" mode="advanced"
+			cancelLabel="Cancel" sizeLimit="1000000" fileLimit="1"
+			invalidSizeMessage="File is too big! (max. 1Mb)."
+			invalidFileMessage="Only files with extension .pdf"
+			allowTypes="/(\.|\/)(pdf)$/" update="@this" />
+
+		<p:fileUpload id="file-upload2" dragDropSupport="true"
+			label="Pick your motivation letter (*.pdf)"
+			uploadLabel="Submit motivation letter"
+			fileUploadListener="#{uploadCVCDI.uploadML}" mode="advanced"
+			cancelLabel="Cancel" sizeLimit="1000000" fileLimit="1"
+			invalidSizeMessage="File is too big! (max. 1Mb)."
+			invalidFileMessage="Only files with extension .pdf"
+			allowTypes="/(\.|\/)(pdf)$/" update="@this" />
+
+	</h:form>
+	</ui:composition>

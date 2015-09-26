@@ -1,0 +1,73 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div id="loginfrm">
+		<h:form id="frmEdit">
+			<p:messages id="myprofileMsg" closable="true" />
+			<p:panel id="panel2" style="border-width:0px;">
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+
+					<p:outputLabel value="First Name" for="fname" />
+					<p:outputLabel value="Last Name" for="lname" />
+
+					<p:inputText id="fname" value="#{candidateBean.firstname}" />
+					<p:inputText id="lname" value="#{candidateBean.lastname}" />
+
+					<p:outputLabel value="Email" for="email" />
+					<p:outputLabel value="Adress" for="adress" />
+
+					<p:inputText id="email" value="#{candidateBean.email}"
+						readonly="true" />
+					<p:inputText id="adress" value="#{candidateBean.address}" />
+
+					<p:outputLabel value="City" for="city" />
+					<p:outputLabel value="Country" for="country" />
+
+					<p:inputText id="city" value="#{candidateBean.city}" />
+					<p:inputText id="country" value="#{candidateBean.country}" />
+
+					<p:outputLabel value="Phone" for="phone" />
+					<p:outputLabel value="Mobile" for="mobile" />
+
+					<p:inputText id="phone" value="#{candidateBean.phone}" />
+					<p:inputText id="mobile" value="#{candidateBean.mobile}" />
+
+					<p:outputLabel value="Main Course" for="mcourse" />
+					<p:outputLabel value="School" for="school" />
+
+					<p:inputText id="mcourse" required="true"
+						value="#{candidateBean.course}" />
+					<p:inputText id="school" required="true"
+						value="#{candidateBean.school}" />
+
+					<p:outputLabel value="Password" for="password" />
+					<p:outputLabel value="Confirm Password" for="confpassword" />
+
+					<p:password id="password" required="true" match="confpassword"
+						feedback="true" value="#{candidateBean.password}" />
+					<p:password id="confpassword" required="true" />
+
+					<p:outputLabel value="Linkedin Profile" for="linkin" />
+					<p:outputLabel value="" />
+
+					<p:inputText id="linkin" value="#{candidateBean.linkedin}" />
+					<p:outputLabel />
+				</h:panelGrid>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="1">
+							<p:outputLabel value="" />
+							<p:commandButton value="SAVE"
+								action="#{candidateBean.updateCandidate}"
+								update="tab:frmEdit:myprofileMsg" />
+						</h:panelGrid>
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+	</div>
+	</ui:composition>

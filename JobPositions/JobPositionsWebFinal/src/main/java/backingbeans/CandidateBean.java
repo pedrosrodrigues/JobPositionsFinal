@@ -45,6 +45,7 @@ public class CandidateBean implements Serializable {
 	private String school;
 	private String password;
 	private String linkedin;
+	private String value;
 	private List<CandidateEntity> candidatesList = new ArrayList<CandidateEntity>();
 	private CandidateEntity candidate;
 
@@ -129,9 +130,23 @@ public class CandidateBean implements Serializable {
 		}
 	}
 	
-	public List<CandidateEntity> findByFirstName(String fname){
-		this.candidatesList = ic.findByFistName(fname);
-		return candidatesList;
+	public void searchCandidate(String value){
+		System.out.println("aqui");
+		System.out.println(value);
+	
+//		if(id.equalsIgnoreCase("item1")){
+//			this.candidatesList = ic.findByFirstName(firstname);
+//		}
+		
+	}
+	
+	public void findByFirstName(){
+		this.candidatesList = ic.findByFirstName(firstname);
+	}
+	
+
+	public void cleanTable(){
+		this.candidatesList.clear();		
 	}
 	
 	public List<CandidateEntity> findByLastName(String lname){
@@ -279,6 +294,13 @@ public class CandidateBean implements Serializable {
 		this.candidatesList = candidatesList;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
 
 
 }
