@@ -91,6 +91,17 @@ public class JobPositionBean implements Serializable {
 		JobEntity jent = new JobEntity();
 		jent = ij.findById(idPos);
 		setLocation(jent.getLocation());
+		setCompany(jent.getCompany());
+		setSla(jent.getSla());
+		setCreationDate(jent.getCreationDate());
+		setFinalDate(jent.getFinalDate());
+		setResponsable(jent.getResponsable());
+		setTitle(jent.getTitle());
+		setTechnicalArea(jent.getTechnicalArea());
+		setJobDescription(jent.getJobDescription());
+		setJobStatus(jent.getJobStatus());
+		setVacancies(jent.getVacancies());
+		setPositionCode(jent.getPositionCode());
 	}
 
 	public Date getActualDate() {

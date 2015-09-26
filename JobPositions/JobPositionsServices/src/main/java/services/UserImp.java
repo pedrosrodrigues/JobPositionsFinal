@@ -25,9 +25,7 @@ public class UserImp implements IUser {
 
 	@Override
 	public void saveUser(UserEntity uent) {
-		// TODO Auto-generated method stub
 		ud.save(uent);
-
 	}
 
 	@Override
@@ -43,7 +41,6 @@ public class UserImp implements IUser {
 			e.printStackTrace();
 		}
 		ud.updateUser(uent);
-
 	}
 
 	@Override

@@ -5,6 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form id="frm">
 
+
 		<div id="loginfrm">
 
 			<p:messages id="frmJob" closable="true" />
@@ -14,9 +15,7 @@
 				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				id="jobstable" sortMode="single">
-				<p:column style="width:10px">
-					<p:rowToggler />
-				</p:column>
+
 				<p:column styleClass="jobs-table" headerText="Job Title"
 					style="text-align: center; width:170px" sortBy="#{position.title}">
 					<h:outputText value="#{position.title}" />
@@ -32,7 +31,7 @@
 					<h:outputText value="#{position.technicalArea}" />
 				</p:column>
 				<p:column headerText="Job Code"
-					style="text-align: center; width:40px" sortBy="#{position.id}">
+					style="text-align: center; width:60px" sortBy="#{position.id}">
 					<h:outputText value="JP-#{position.id}" />
 				</p:column>
 				<p:column headerText="Location"
@@ -41,21 +40,21 @@
 					<h:outputText value="#{position.location}" />
 				</p:column>
 				<p:column headerText="Final date"
-					style="text-align: center; width:140px"
+					style="text-align: center; width:120px"
 					sortBy="#{position.finalDate}">
 					<h:outputText value="#{position.finalDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Job Status"
-					style="text-align: center; width:140px"
+					style="text-align: center; width:120px"
 					sortBy="#{position.jobStatus}">
 					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
 				<p:column headerText="Edit" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-pencil"
 						action="#{jobPositionBean.jobInfo(position.id)}"
-						update="tab:frm:ola" oncomplete="PF('dlg3').show();" />
+						update="tab:frm:panel" oncomplete="PF('dlg3').show();" />
 				</p:column>
 				<p:column headerText="Candidates"
 					style="text-align: center; width:40px;">
@@ -65,6 +64,9 @@
 						oncomplete="PF('dlg2').show();" />
 				</p:column>
 
+				<p:column style="width:16px">
+					<p:rowToggler />
+				</p:column>
 				<p:rowExpansion id="rowselection">
 					<p:panelGrid columns="2" columnClasses="label, field"
 						style="width:100%;">
@@ -81,37 +83,33 @@
 					</p:panelGrid>
 				</p:rowExpansion>
 			</p:dataTable>
-
 			<p:dialog header="Candidates" widgetVar="dlg2" modal="true"
-				height="200" weight="100">
+				height="300" weight="100">
 				<p:dataTable id="candidatesforposition"
 					value="#{applicationBean.listPosApp}" var="candlist" rows="10"
 					emptyMessage="No records found." paginator="true"
 					paginatorPosition="bottom"
 					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-					<p:column headerText="" style="text-align: center; width:40px;">
-						<p:rowToggler />
-					</p:column>
+
 					<p:column styleClass="jobs-table" headerText="Name"
 						style="text-align: center; width:200px"
 						sortBy="#{candlist.candidateEntity.firstname}">
-
 						<h:outputText
 							value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
-						<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}"
-							target="_blank"> <p:graphicImage
-								rendered="#{systemUser.mlFileExists(candlist.candidateEntity.email)}"
-								title="Open motivation letter" styleClass="social-img"
-								library="images" name="ml_icon.png" />
-						</a>
-						<a href="#{systemUser.cvPath(candlist.candidateEntity.email)}"
-							target="_blank"> <p:graphicImage title="Open CV"
-								rendered="#{systemUser.cvFileExists(candlist.candidateEntity.email)}"
-								styleClass="social-img" library="images" name="cv_icon_red.png" />
-						</a>
-
+						<p:rowToggler />
 					</p:column>
+					<p:rowExpansion id="rowselection">
+						<p:panelGrid columns="2" columnClasses="label, field"
+							style="width:100%;">
 
+							<h:outputText value="City" />
+							<h:outputText value="#{candlist.candidateEntity.city}" />
+
+							<h:outputText value="Mobile" />
+							<h:outputText value="#{candlist.candidateEntity.mobile}" />
+
+						</p:panelGrid>
+					</p:rowExpansion>
 					<p:column styleClass="jobs-table" headerText="Email"
 						style="text-align: center; width:200px"
 						sortBy="#{candlist.candidateEntity.email}">
@@ -138,59 +136,10 @@
 						<p:commandButton icon="ui-icon-disk"
 							action="#{applicationBean.updateApp(candlist.id)}" />
 					</p:column>
-
-					<p:rowExpansion id="rowselection" style="width:500px; height:500px">
-						<div class="out">
-							<div class="in">
-								<p:panelGrid columns="2" style="width:300px; height:500px">
-
-									<f:facet name="header">
-										<h:outputText value="Candidate profile" />
-									</f:facet>
-
-									<h:outputText value="Adress" />
-									<h:outputText value="#{candlist.candidateEntity.address}" />
-
-									<h:outputText value="City" />
-									<h:outputText value="#{candlist.candidateEntity.city}" />
-
-									<h:outputText value="Country" />
-									<h:outputText value="#{candlist.candidateEntity.country}" />
-
-									<h:outputText value="Mobile" />
-									<h:outputText value="#{candlist.candidateEntity.mobile}" />
-
-									<h:outputText value="Phone" />
-									<h:outputText value="#{candlist.candidateEntity.phone}" />
-
-									<h:outputText value="Course" />
-									<h:outputText value="#{candlist.candidateEntity.course}" />
-
-									<h:outputText value="School" />
-									<h:outputText value="#{candlist.candidateEntity.course}" />
-								</p:panelGrid>
-								<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}"
-									target="_blank"> <p:graphicImage
-										title="Open motivation letter" styleClass="social-img"
-										library="images" name="ml_icon.png" />
-								</a> <a href="#{systemUser.cvPath(candlist.candidateEntity.email)}"
-									target="_blank"> <p:graphicImage title="Open CV"
-										styleClass="social-img" library="images"
-										name="cv_icon_red.png" />
-								</a>
-
-							</div>
-						</div>
-					</p:rowExpansion>
 				</p:dataTable>
 			</p:dialog>
-
-			<p:dialog header="Job Position Edition" widgetVar="dlg3" modal="true"
-				height="300" weight="100">
-				
-				<p:outputLabel value="Job Title" for="ola" />
-				<h:inputText id="ola" value="#{jobPositionBean.location}" />
-
+			<p:dialog header="Edit Job Position" widgetVar="dlg3" modal="true" height="300"
+				weight="300">
 				<div id="loginfrm">
 					<p:messages id="messageForm2" closable="true" />
 					<p:panel id="panel" style="border-width: 0px;">
@@ -199,52 +148,43 @@
 							<h:panelGrid styleClass="inputTable2" columns="2"
 								cellpadding="4px" cellspacing="4px">
 
-
-
 								<p:outputLabel value="Date (start)" for="startDate" />
 								<p:outputLabel value="Date (end)" for="endDate" />
-
-								<h:inputText id="startDate"
-									value="#{jobPositionBean.creationDate}" readOnly="true" />
-								<p:calendar id="endDate" required="true"
-									value="#{jobPositionBean.finalDate}" style="width:10%;"
-									size="10" pattern="dd/MM/yyyy"
-									mindate="#{jobPositionBean.actualDate}" />
+								<p:calendar id="startDate"
+									value="#{jobPositionBean.creationDate}" readonlyInput="true"
+									requiredMessage="Please Select Date Of Registration"
+									style="width:10%;" />
+								<p:calendar id="endDate" value="#{jobPositionBean.finalDate}"
+									style="width:10%;" />
 							</h:panelGrid>
-
-							<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
+							<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 								<p:outputLabel value="SLA" for="sla" />
-								<p:inputText id="sla" required="true"
-									value="#{jobPositionBean.sla}" style="width:100%;" />
+								<p:outputLabel value="Job Code" for="jcode" />
+
+								<p:inputText id="sla" value="#{jobPositionBean.sla}"
+									style="width:100%;" />
+								<p:inputText id="jcode" value="#{jobPositionBean.positionCode}"
+									style="width:100%;" />
 							</h:panelGrid>
 
 							<p:outputLabel value="Title" for="title" />
 							<p:outputLabel value="Location" for="location" />
 
-							<p:inputText id="title" required="true"
-								value="#{jobPositionBean.title}" />
-							<p:inputText id="location" required="true"
-								value="#{jobPositionBean.location}" />
+							<p:inputText id="title" value="#{jobPositionBean.title}" />
+							<p:inputText id="location" value="#{jobPositionBean.location}" />
 
 							<p:outputLabel value="Vacancies" for="vacancies" />
 							<p:outputLabel value="Responsable" for="responsable" />
 
 							<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-
-							<p:selectOneMenu id="responsable"
-								value="#{jobPositionBean.responsableEmail}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItems value="#{jobPositionBean.responsableList}"
-									var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />
-							</p:selectOneMenu>
+							<p:inputText id="responsable"
+								value="#{jobPositionBean.responsable}" />
 
 							<p:outputLabel value="Technical Area" for="tarea" />
 							<p:outputLabel value="Company" for="company" />
 
-							<p:inputText id="tarea" required="true"
-								value="#{jobPositionBean.technicalArea}" />
-							<p:inputText id="company" required="true"
-								value="#{jobPositionBean.company}" />
+							<p:inputText id="tarea" value="#{jobPositionBean.technicalArea}" />
+							<p:inputText id="company" value="#{jobPositionBean.company}" />
 
 							<p:outputLabel value="Job description" for="description" />
 							<p:outputLabel />
@@ -252,42 +192,13 @@
 							<p:inputTextarea id="description"
 								value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
 								autoResize="false" />
-							<h:outputText />
+
+
 						</h:panelGrid>
-						<div class="out">
-							<div class="in">
-								<h:panelGrid columns="1">
-									<p:commandButton value="SAVE"
-										action="#{jobPositionBean.saveJobPosition}"
-										icon="ui-icon-disk"
-										update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
-								</h:panelGrid>
-							</div>
-						</div>
 					</p:panel>
 				</div>
 			</p:dialog>
-
-			<p:dialog header="Set Interview" widgetVar="InterviewDialog"
-				modal="true" height="300" weight="100">
-				<p:panelGrid columns="1">
-					<!-- 	<p:outputLabel value="Data" for="datetime" />
-					<p:calendar id="datetime" value=""
-						pattern="MM/dd/yyyy" required="true"/> -->
-
-					<p:outputLabel value="Interviewer" for="int" />
-
-					<h:inputText />
-					<p:selectOneMenu id="int"
-						value="#{applicationBean.interviewerEmail}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{applicationBean.interviewerList}"
-							var="int" itemValue="#{int.email}" itemLabel="#{int}" />
-					</p:selectOneMenu>
-				</p:panelGrid>
-			</p:dialog>
-
-
 		</div>
+
 	</h:form>
 </ui:composition>
