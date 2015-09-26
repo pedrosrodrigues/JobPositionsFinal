@@ -116,7 +116,6 @@ public class ApplicationBean implements Serializable {
 	public void start() {
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		listApp = ia.findCandApps(cent.getId());
-
 	}
 
 	public void searchCandidates(Long idPos) {

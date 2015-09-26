@@ -138,8 +138,8 @@
 					</p:column>
 				</p:dataTable>
 			</p:dialog>
-			<p:dialog header="Edit Job Position" widgetVar="dlg3" modal="true" height="300"
-				weight="300">
+			<p:dialog header="Edit Job Position" widgetVar="dlg3" modal="true"
+				height="300" weight="300">
 				<div id="loginfrm">
 					<p:messages id="messageForm2" closable="true" />
 					<p:panel id="panel" style="border-width: 0px;">
@@ -192,9 +192,16 @@
 							<p:inputTextarea id="description"
 								value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
 								autoResize="false" />
-
-
 						</h:panelGrid>
+						<div class="out">
+							<div class="in">
+								<h:panelGrid columns="1">
+									<p:commandButton icon="ui-icon-disk" value="SAVE"
+										action="#{jobPositionBean.updateJobPosition}"										
+										update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
+								</h:panelGrid>
+							</div>
+						</div>
 					</p:panel>
 				</div>
 			</p:dialog>
