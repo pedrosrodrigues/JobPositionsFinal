@@ -5,63 +5,78 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form id="frm">
 
-
 		<div id="loginfrm">
 
 			<p:messages id="frmJob" closable="true" />
 			<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
-				rows="8" emptyMessage="No records found." paginator="true"
+				id="newjobsTable" widgetVar="w_varjobstable" rows="8"
+				emptyMessage="No records found." paginator="true"
 				paginatorPosition="bottom"
+				filteredValue="#{jobPositionBean.jobpositionsfilter}"
 				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				id="jobstable" sortMode="single">
+				sortMode="single">
+
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Search all fields:" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('w_varjobstable').filter()" style="width:150px"
+							placeholder="Enter keyword" />
+					</p:outputPanel>
+				</f:facet>
 
 				<p:column styleClass="jobs-table" headerText="Job Title"
-					style="text-align: center; width:170px" sortBy="#{position.title}">
+					style="text-align: center; width:170px" sortBy="#{position.title}"
+					filterBy="#{position.title}">
 					<h:outputText value="#{position.title}" />
 				</p:column>
 				<p:column styleClass="jobs-table" headerText="Company"
 					style="text-align: center; width:170px"
-					sortBy="#{position.company}">
+					sortBy="#{position.company}" filterBy="#{position.company}">
 					<h:outputText value="#{position.company}" />
 				</p:column>
 				<p:column headerText="Technical Area"
 					style="text-align: center; width:140px"
-					sortBy="#{position.technicalArea}">
+					sortBy="#{position.technicalArea}"
+					filterBy="#{position.technicalArea}">
 					<h:outputText value="#{position.technicalArea}" />
 				</p:column>
 				<p:column headerText="Job Code"
-					style="text-align: center; width:60px" sortBy="#{position.id}">
+					style="text-align: center; width:100px" sortBy="#{position.id}"
+					filterBy="#{position.id}">
 					<h:outputText value="JP-#{position.id}" />
 				</p:column>
 				<p:column headerText="Location"
 					style="text-align: center; width:140px"
-					sortBy="#{position.location}">
+					sortBy="#{position.location}" filterBy="#{position.location}">
 					<h:outputText value="#{position.location}" />
 				</p:column>
 				<p:column headerText="Final date"
 					style="text-align: center; width:120px"
-					sortBy="#{position.finalDate}">
+					sortBy="#{position.finalDate}" filterBy="#{position.finalDate}">
 					<h:outputText value="#{position.finalDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
-					sortBy="#{position.jobStatus}">
+					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}">
 					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
-				<p:column headerText="Edit" style="text-align: center; width:40px;">
+				<p:column headerText="" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-pencil"
 						action="#{jobPositionBean.jobInfo(position.id)}"
-						update="tab:frm:panel" oncomplete="PF('dlg3').show();" />
+						update="tab:frm:panel" onclick="PF('dlg3').show();" />
 				</p:column>
-				<p:column headerText="Candidates"
-					style="text-align: center; width:40px;">
+				<p:column headerText="" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-person"
 						action="#{applicationBean.searchCandidates(position.id)}"
 						update="tab:frm:candidatesforposition"
-						oncomplete="PF('dlg2').show();" />
+						onclick="PF('dlg2').show();">
+
+					</p:commandButton>
+
 				</p:column>
 
 				<p:column style="width:16px">
@@ -174,11 +189,10 @@
 							<p:inputText id="location" value="#{jobPositionBean.location}" />
 
 							<p:outputLabel value="Vacancies" for="vacancies" />
-							<p:outputLabel value="Responsable" for="responsable" />
+
 
 							<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-							<p:inputText id="responsable"
-								value="#{jobPositionBean.responsable}" />
+
 
 							<p:outputLabel value="Technical Area" for="tarea" />
 							<p:outputLabel value="Company" for="company" />
@@ -197,13 +211,25 @@
 							<div class="in">
 								<h:panelGrid columns="1">
 									<p:commandButton icon="ui-icon-disk" value="SAVE"
-										action="#{jobPositionBean.updateJobPosition}"										
-										update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
+										action="#{jobPositionBean.updateJobPosition}" />
 								</h:panelGrid>
 							</div>
 						</div>
 					</p:panel>
 				</div>
+			</p:dialog>
+			<p:dialog header="Set Interview" widgetVar="InterviewDialog"
+				modal="true" height="300" weight="100">
+				<p:outputLabel value="Data" />
+				<p:outputLabel value="Interviewer" for="int" />
+
+				<h:inputText />
+				<p:selectOneMenu id="int"
+					value="#{applicationBean.interviewerEmail}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{applicationBean.interviewerList}" var="int"
+						itemValue="#{int.email}" itemLabel="#{int}" />
+				</p:selectOneMenu>
 			</p:dialog>
 		</div>
 

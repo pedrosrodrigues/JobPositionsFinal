@@ -7,7 +7,7 @@
 	<h:form id="frmEdit">
 		<div id="loginfrm">
 			<p:messages id="messageForm2" closable="true" />
-			<p:panel id="panel" style="border-width: 0px;">
+			<p:panel id="panel2" style="border-width: 0px;">
 				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
 					cellspacing="4px">
 					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
@@ -44,7 +44,7 @@
 					<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
 
 					<p:selectOneMenu id="responsable"
-						value="#{jobPositionBean.responsableEmail}">
+						value="#{jobPositionBean.responsableEmail}" required="true">
 						<f:selectItem itemLabel="Select One" itemValue="" />
 						<f:selectItems value="#{jobPositionBean.responsableList}"
 							var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />
@@ -71,7 +71,8 @@
 						<h:panelGrid columns="1">
 							<p:commandButton value="SAVE"
 								action="#{jobPositionBean.saveJobPosition}" icon="ui-icon-disk"
-								update="tab:frmEdit:messageForm2 tab:frm:jobstable" />
+								update="tab:frmEdit:messageForm2 tab:frm:newjobsTable "
+								onclick="w_varjobstable.filter();"/>
 						</h:panelGrid>
 					</div>
 				</div>

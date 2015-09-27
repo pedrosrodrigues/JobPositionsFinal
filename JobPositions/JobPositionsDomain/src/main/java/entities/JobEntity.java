@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.type.descriptor.java.UUIDTypeDescriptor.ToStringTransformer;
+
 import enumeration.JobStatus;
 
 @Entity
@@ -218,6 +220,10 @@ public class JobEntity implements Serializable {
 
 	public void setApplications(List<ApplicationEntity> applications) {
 		this.applications = applications;
+	}
+	
+	public String toString(){
+		return String.format("JobEntity[%d, %s]", id, responsable);
 	}
 
 }
