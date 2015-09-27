@@ -8,7 +8,7 @@
 		<div id="loginfrm">
 			<p:messages id="messageForm2" closable="true" />
 			<p:panel id="panel2" style="border-width: 0px;">
-				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+				<h:panelGrid id="newjobpanel" styleClass="inputTable" columns="2" cellpadding="4px"
 					cellspacing="4px">
 					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
 						cellspacing="4px">
@@ -17,11 +17,12 @@
 
 						<p:calendar id="startDate" required="true"
 							value="#{jobPositionBean.creationDate}" style="width:10%;"
-							size="10" pattern="dd/MM/yyyy"
+							maxlength="10" size="10" pattern="dd/MM/yyyy"
 							mindate="#{jobPositionBean.actualDate}" />
 						<p:calendar id="endDate" required="true"
 							value="#{jobPositionBean.finalDate}" style="width:10%;" size="10"
-							pattern="dd/MM/yyyy" mindate="#{jobPositionBean.actualDate}" />
+							maxlength="10" pattern="dd/MM/yyyy"
+							mindate="#{jobPositionBean.actualDate}" />
 					</h:panelGrid>
 
 					<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
@@ -71,8 +72,12 @@
 						<h:panelGrid columns="1">
 							<p:commandButton value="SAVE"
 								action="#{jobPositionBean.saveJobPosition}" icon="ui-icon-disk"
-								update="tab:frmEdit:messageForm2 tab:frm:newjobsTable "
-								onclick="w_varjobstable.filter();"/>
+								update="tab:frmEdit:messageForm2 tab:frm:jobstable panel2" >
+								<p:resetInput target="panel2" />
+								</p:commandButton>
+								<p:commandButton value="CLEAR"
+								action="#{jobPositionBean.clear}"/>
+								
 						</h:panelGrid>
 					</div>
 				</div>

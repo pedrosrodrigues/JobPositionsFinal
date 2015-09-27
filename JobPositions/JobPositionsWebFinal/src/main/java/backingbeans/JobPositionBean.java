@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,6 +56,17 @@ public class JobPositionBean implements Serializable {
 	private static final Logger log = LoggerFactory
 			.getLogger(JobPositionBean.class);
 
+	@PostConstruct
+	public void init() {
+		responsableList = iu.findAllManagers();
+	}
+
+	public void start() {
+		System.out.println("Starting app...");
+		responsableList = iu.findAllManagers();
+		jobpositions = ij.findAll();
+	}
+	
 	public void saveJobPosition() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new position on database...");
@@ -85,7 +97,6 @@ public class JobPositionBean implements Serializable {
 			this.technicalArea = "";
 			this.title = "";
 			this.vacancies = "";
-		
 
 		} catch (Exception e) {
 			log.error("Problem saving position!");
@@ -94,19 +105,22 @@ public class JobPositionBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
+
+	public void clear(){
+		this.company = "";
+		this.sla = "";
+		this.jobDescription = "";
+		this.location = "";
+		this.creationDate= null;
+		this.finalDate = null;
+		this.responsable = null;
+		this.technicalArea = "";
+		this.title = "";
+		this.vacancies = "";	
+	}
 	
-	@PostConstruct
-	public void init() {
-		jobpositions = ij.findAll();
-		responsableList = iu.findAllManagers();
-	}
+	
 
-
-	public void start() {
-		System.out.println("Starting app...");
-		responsableList = iu.findAllManagers();
-		jobpositions = ij.findAll();
-	}
 
 	public void jobInfo(Long idPos) {
 		System.out.println(idPos);
@@ -128,6 +142,10 @@ public class JobPositionBean implements Serializable {
 
 	public void updateJobPosition(){
 		System.out.println("Está a entrar no metodo updateJP");
+	}
+	
+	public void clearTable(){
+		
 	}
 
 	public Date getActualDate() {

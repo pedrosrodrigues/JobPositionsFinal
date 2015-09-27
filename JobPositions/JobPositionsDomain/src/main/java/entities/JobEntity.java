@@ -29,7 +29,7 @@ import enumeration.JobStatus;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
-		@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id") })
+		@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id")})
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
