@@ -42,7 +42,6 @@ public class CandidateDAO {
 		q.setParameter("email", ent.getEmail());
 		q.executeUpdate();
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByFirstName(String firstname) {
@@ -50,14 +49,14 @@ public class CandidateDAO {
 		q.setParameter("firstname", firstname);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByLastName(String lastname) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_LASTNAME);
 		q.setParameter("lastname", lastname);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByAdress(String adress) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_ADRESS);
@@ -71,35 +70,35 @@ public class CandidateDAO {
 		q.setParameter("city", city);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByPhone(String phone) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_PHONE);
 		q.setParameter("phone", phone);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByMobile(String mobile) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_MOBILE);
 		q.setParameter("mobile", mobile);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByCountry(String country) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_COUNTRY);
 		q.setParameter("country", country);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByCourse(String course) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_COURSE);
 		q.setParameter("course", course);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findBySchool(String school) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_SCHOOL);
@@ -109,7 +108,7 @@ public class CandidateDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<CandidateEntity> findByEmailList(String email) {
-		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_EMAIL);
+		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_EMAIL_LIST);
 		q.setParameter("email", email);
 		return q.getResultList();
 	}

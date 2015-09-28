@@ -140,7 +140,6 @@ public class JobPositionBean implements Serializable {
 	}
 
 	public void updateJobPosition() {
-		System.out.println("Está a entrar no metodo updateJP");
 		JobEntity jent = new JobEntity();
 		jent.setFinalDate(this.finalDate);
 		jent.setSla(this.sla);

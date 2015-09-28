@@ -16,7 +16,7 @@
 				id="jobstable" sortMode="single">
 				<f:facet name="header">
 					<p:outputPanel>
-						<h:outputText value="Search all fields:" />
+						<h:outputText value="Search all fields: " />
 						<p:inputText id="globalFilter" onkeyup="PF('tableJobs').filter()"
 							style="width:150px" placeholder="Enter keyword" />
 					</p:outputPanel>
@@ -254,7 +254,7 @@
 				<h:panelGrid columns="1">
 					<p:commandButton value="SAVE"
 						action="#{jobPositionBean.updateJobPosition}"
-						update="tab:frm:jobstable @form"
+						update="tab:frm:jobstable "
 						oncomplete="PF('tableJobs').clearFilters()" />
 				</h:panelGrid>
 			</p:dialog>
