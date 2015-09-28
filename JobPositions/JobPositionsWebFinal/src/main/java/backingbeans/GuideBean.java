@@ -1,5 +1,6 @@
 package backingbeans;
 
+import interfaces.ICandidate;
 import interfaces.IGuide;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import entities.CandidateEntity;
 import entities.GuideEntity;
 
 @SessionScoped
@@ -25,6 +27,10 @@ public class GuideBean implements Serializable{
 
 	@Inject 
 	private IGuide ig;
+	@Inject
+	private SystemUser su;
+	@Inject
+	private ICandidate ic;
 
 	private String guideName;
 	private String question1;
@@ -32,6 +38,7 @@ public class GuideBean implements Serializable{
 	private String question3;
 	private String question4;
 	private String question5;
+	private CandidateEntity cent;
 	private List<GuideEntity> guidesList = new ArrayList<GuideEntity>();
 
 	private static final Logger log = LoggerFactory
@@ -39,15 +46,16 @@ public class GuideBean implements Serializable{
 
 	public void createGuide(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		GuideEntity ent = new GuideEntity();
 		log.info("Trying to create a new guide on database...");
-	
+		GuideEntity ent = new GuideEntity();		
+
 		ent.setGuideName(guideName);
 		ent.setQuestion1(question1);
 		ent.setQuestion2(question2);
 		ent.setQuestion3(question3);
 		ent.setQuestion4(question4);
 		ent.setQuestion5(question5);
+		
 		System.out.println("Trying to create a new guide on database...");
 		try {
 			ig.saveGuide(ent);
