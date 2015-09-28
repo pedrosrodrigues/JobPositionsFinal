@@ -60,11 +60,13 @@ public class JobPositionBean implements Serializable {
 	public void init() {
 		responsableList = iu.findAllManagers();
 		jobpositionsfilter = jobpositions;
+		jobpositions = ij.findAll();
 	}
 
 	public void start() {
 		System.out.println("Starting app...");
 		responsableList = iu.findAllManagers();
+		jobpositionsfilter = jobpositions;
 		jobpositions = ij.findAll();
 	}
 
@@ -102,7 +104,7 @@ public class JobPositionBean implements Serializable {
 		} catch (Exception e) {
 			log.error("Problem saving position!");
 			context.addMessage(null, new FacesMessage(
-					"Position creation failed!."));
+					"Position creation failed!"));
 			e.printStackTrace();
 		}
 	}
@@ -140,6 +142,8 @@ public class JobPositionBean implements Serializable {
 	}
 
 	public void updateJobPosition() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to update a position on database...");
 		JobEntity jent = new JobEntity();
 		jent.setFinalDate(this.finalDate);
 		jent.setSla(this.sla);
@@ -151,7 +155,17 @@ public class JobPositionBean implements Serializable {
 		jent.setJobDescription(this.jobDescription);
 		jent.setResponsable(iu.searchUser(responsableEmail));
 		jent.setId(this.idJob);
-		ij.updateJob(jent);
+		try {
+			ij.updateJob(jent);
+			log.info("Position updated on database!");
+			context.addMessage(null, new FacesMessage(
+					"Position updated on database!"));
+		} catch (Exception e) {
+			log.error("Problem updating position!");
+			context.addMessage(null, new FacesMessage(
+					"Problem updating position!"));
+			e.printStackTrace();
+		}
 	}
 
 	public void clearTable() {
