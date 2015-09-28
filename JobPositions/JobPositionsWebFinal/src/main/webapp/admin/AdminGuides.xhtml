@@ -6,9 +6,62 @@
 
 	<h:form id="frmGuide">
 		<div id="loginfrm">
-		
-		
-		
+			<p:messages id="msgGuide" closable="true" />
+			<p:panel id="panelGuide" style="border-width: 0px;">
+				<h:panelGrid styleClass="inputTable" columns="1" cellpadding="4px"
+					cellspacing="4px">
+
+					<p:outputLabel value="Name" for="name" />
+					<p:inputText id="name" value="#{guideBean.guideName}"
+						required="true" />
+
+		<!-- 			<p:outputLabel value="Question1" for="question1" />
+					<p:selectOneMenu id="question1" value="#{guideBean.question1}">
+						<f:selectItem id="item1" itemLabel="Question A"
+							itemValue="Question A" />
+						<f:selectItem id="item2" itemLabel="Question B"
+							itemValue="Question B" />
+						<f:selectItem id="item3" itemLabel="Question C"
+							itemValue="Question C" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Question2" for="question2" />
+					<p:selectOneMenu id="question2" value="#{guideBean.question2}">
+						<f:selectItem id="item4" itemLabel="Question A"
+							itemValue="Question A" />
+						<f:selectItem id="item5" itemLabel="Question B"
+							itemValue="Question B" />
+						<f:selectItem id="item6" itemLabel="Question C"
+							itemValue="Question C" />
+					</p:selectOneMenu> -->
+						<p:outputLabel value="Question1" for="question1" />
+					<p:inputText id="question1" value="#{guideBean.question1}" />
+					
+						<p:outputLabel value="Question2" for="question2" />
+					<p:inputText id="question2" value="#{guideBean.question2}" />
+					
+
+					<p:outputLabel value="Question3" for="question3" />
+					<p:inputText id="question3" value="#{guideBean.question3}" />
+
+					<p:outputLabel value="Question4" for="question4" />
+					<p:inputText id="question4" value="#{guideBean.question4}" />
+
+					<p:outputLabel value="Question5" for="question5" />
+					<p:inputText id="question5" value="#{guideBean.question5}" />
+
+
+				</h:panelGrid>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="1">
+							<p:commandButton value="SAVE" action="#{guideBean.createGuide}"
+								update="tab:frmGuide:msgGuide" />
+						</h:panelGrid>
+					</div>
+				</div>
+			</p:panel>
+
 		</div>
 	</h:form>
-	</ui:composition>
+</ui:composition>

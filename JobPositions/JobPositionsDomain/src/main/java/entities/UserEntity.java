@@ -21,9 +21,9 @@ import enumeration.RoleEntity;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email"),
-		@NamedQuery(name = "UserEntity.findAllManagers", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),
-		@NamedQuery(name = "UserEntity.findAllInterviewrs", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),})
+	@NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email like :email"),
+	@NamedQuery(name = "UserEntity.findAllManagers", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),
+	@NamedQuery(name = "UserEntity.findAllInterviewrs", query = "SELECT u FROM UserEntity u WHERE u.role like :role"),})
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class UserEntity implements Serializable {
 	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
 	public static final String FIND_ALL_MANAGERS = "UserEntity.findAllManagers";
 	public static final String FIND_ALL_INTERVIEWERS = "UserEntity.findAllInterviewrs";
-	
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,6 +53,9 @@ public class UserEntity implements Serializable {
 
 	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<JobEntity> jobList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "responsableGuide", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<GuideEntity> guidesList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -100,6 +103,14 @@ public class UserEntity implements Serializable {
 
 	public void setJobList(List<JobEntity> jobList) {
 		this.jobList = jobList;
+	}
+
+	public List<GuideEntity> getGuidesList() {
+		return guidesList;
+	}
+
+	public void setGuidesList(List<GuideEntity> guidesList) {
+		this.guidesList = guidesList;
 	}
 
 	@Override

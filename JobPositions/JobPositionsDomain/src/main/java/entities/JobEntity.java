@@ -28,8 +28,8 @@ import enumeration.JobStatus;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
-		@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id")})
+	@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
+	@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id")})
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -189,6 +189,14 @@ public class JobEntity implements Serializable {
 		this.responsable = responsable;
 	}
 
+	public List<ApplicationEntity> getApplications() {
+		return applications;
+	}
+
+	public void setApplications(List<ApplicationEntity> applications) {
+		this.applications = applications;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -214,14 +222,6 @@ public class JobEntity implements Serializable {
 		return true;
 	}
 
-	public List<ApplicationEntity> getApplications() {
-		return applications;
-	}
-
-	public void setApplications(List<ApplicationEntity> applications) {
-		this.applications = applications;
-	}
-	
 	public String toString(){
 		return String.format("JobEntity[%d, %s]", id, responsable);
 	}

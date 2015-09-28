@@ -98,6 +98,12 @@
 						sortBy="#{candlist.candidateEntity.firstname}">
 						<h:outputText
 							value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
+							<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}" target="_blank"> <p:graphicImage
++											title="Open motivation letter" styleClass="social-img" library="images" name="ml_icon.png" />
++									</a>
++									<a href="#{systemUser.cvPath(candlist.candidateEntity.email)}" target="_blank"> <p:graphicImage
++											title="Open CV" styleClass="social-img" library="images" name="cv_icon_red.png" />
++									</a>
 						<p:rowToggler />
 					</p:column>
 					<p:rowExpansion id="rowselection">
@@ -109,6 +115,9 @@
 
 							<h:outputText value="Mobile" />
 							<h:outputText value="#{candlist.candidateEntity.mobile}" />
+							
+							<h:outputText value="Country" />
+							<h:outputText value="#{candlist.candidateEntity.country}" />
 
 						</p:panelGrid>
 					</p:rowExpansion>
@@ -199,6 +208,22 @@
 					</h:panelGrid>
 				</p:panel>
 			</p:dialog>
+			</h:form>
+			<h:form id="interviewDialog">
+			<p:dialog header="Set Interview" widgetVar="InterviewDialog"
+							modal="true" height="300" weight="100">
+
+							<p:outputLabel value="Data" />
+							<p:outputLabel value="Interviewer" for="int" />
+
+							<h:inputText />
+							<p:selectOneMenu id="int"
+								value="#{applicationBean.interviewerEmail}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{applicationBean.interviewerList}"
+									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
+							</p:selectOneMenu>
+						</p:dialog>
 
 		</h:form>
 	</div>
