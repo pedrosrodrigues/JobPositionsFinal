@@ -51,6 +51,7 @@ public class JobPositionBean implements Serializable {
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
 	private List<JobEntity> jobpositionsfilter = new ArrayList<JobEntity>();
 	private List<UserEntity> responsableList = new ArrayList<UserEntity>();
+	private Long idJob;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(JobPositionBean.class);
@@ -120,8 +121,8 @@ public class JobPositionBean implements Serializable {
 	}
 
 	public void jobInfo(Long idPos) {
-		System.out.println(idPos);
 		JobEntity jent = new JobEntity();
+		this.idJob = idPos;
 		jent = ij.findById(idPos);
 		setLocation(jent.getLocation());
 		setCompany(jent.getCompany());
@@ -129,6 +130,7 @@ public class JobPositionBean implements Serializable {
 		setCreationDate(jent.getCreationDate());
 		setFinalDate(jent.getFinalDate());
 		setResponsable(jent.getResponsable());
+		setResponsableEmail(jent.getResponsable().getEmail());
 		setTitle(jent.getTitle());
 		setTechnicalArea(jent.getTechnicalArea());
 		setJobDescription(jent.getJobDescription());
@@ -139,6 +141,18 @@ public class JobPositionBean implements Serializable {
 
 	public void updateJobPosition() {
 		System.out.println("Está a entrar no metodo updateJP");
+		JobEntity jent = new JobEntity();
+		jent.setFinalDate(this.finalDate);
+		jent.setSla(this.sla);
+		jent.setTitle(this.title);
+		jent.setLocation(this.location);
+		jent.setCompany(this.company);
+		jent.setVacancies(this.vacancies);
+		jent.setTechnicalArea(this.technicalArea);
+		jent.setJobDescription(this.jobDescription);
+		jent.setResponsable(iu.searchUser(responsableEmail));
+		jent.setId(this.idJob);
+		ij.updateJob(jent);
 	}
 
 	public void clearTable() {
@@ -287,6 +301,14 @@ public class JobPositionBean implements Serializable {
 
 	public void setJobpositionsfilter(List<JobEntity> jobpositionsfilter) {
 		this.jobpositionsfilter = jobpositionsfilter;
+	}
+
+	public Long getIdJob() {
+		return idJob;
+	}
+
+	public void setIdJob(Long idJob) {
+		this.idJob = idJob;
 	}
 
 }
