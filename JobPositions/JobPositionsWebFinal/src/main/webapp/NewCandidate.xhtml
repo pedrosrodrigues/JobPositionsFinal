@@ -11,7 +11,7 @@
 		<div id="loginfrm">
 			<h:form id="frmEdit">
 				<p:panel id="panel" style="border-width: 0px;">
-					<p:messages autoUpdate="true" />
+					<p:messages id="newregistmsg" />
 					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
 						cellspacing="4px">
 						<p:outputLabel value="First Name" for="fname" />
@@ -72,7 +72,7 @@
 								<p:outputLabel value="" />
 
 								<p:commandButton value="SAVE"
-									action="#{candidateBean.saveCandidate}" update="frmEdit" />
+									action="#{candidateBean.saveCandidate}" update="frmEdit newregistmsg" />
 							</h:panelGrid>
 						</div>
 					</div>
