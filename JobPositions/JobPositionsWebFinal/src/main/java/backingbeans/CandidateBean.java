@@ -72,14 +72,18 @@ public class CandidateBean implements Serializable {
 		ent.setSchool(school);
 		try {
 			ic.saveCandidate(ent);
+			context.getExternalContext().getFlash().setKeepMessages(true);
 			context.addMessage(null, new FacesMessage(
 					"Candidate saved on database!"));
 			page = "/Login.xhtml?faces-redirect=true";
+			this.address = "";
+			this.city = "";
+			this.country= "";
 
 			log.info("Candidate saved!");
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(
-					"Problem saving candidate on database!"));
+					"Problem saving candidate on database!Someone already has that email. Try another?"));
 			log.error("Problem saving candidate!");
 			e.printStackTrace();
 		}
