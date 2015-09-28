@@ -31,6 +31,7 @@ public class JobDAO {
 		q.setParameter("responsable", ent.getResponsable());
 		q.setParameter("technicalArea", ent.getTechnicalArea());
 		q.setParameter("jobDescription", ent.getJobDescription());
+		q.setParameter("id", ent.getId());
 		q.executeUpdate();
 	}
 

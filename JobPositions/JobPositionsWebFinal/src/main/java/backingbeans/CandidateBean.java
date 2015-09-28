@@ -122,9 +122,8 @@ public class CandidateBean implements Serializable {
 		su.searchUser(su.getUserlogado().getEmail());
 	}
 
-	public void findByAnything(){
-		System.out.println("field" + this.field + this.value);
-		if(this.field.equals("fname")) {
+	public void findByAnything() {
+		if (this.field.equals("fname")) {
 			this.candidatesList = ic.findByFirstName(value);
 		} else if (this.field.equals("lname")) {
 			this.candidatesList = ic.findByLastName(value);
@@ -144,11 +143,11 @@ public class CandidateBean implements Serializable {
 			this.candidatesList = ic.findByCourse(value);
 		} else if (this.field.equals("school")) {
 			this.candidatesList = ic.findBySchool(value);
-		}  
+		}
 	}
 
-	public void cleanTable(){
-		this.candidatesList.clear();		
+	public void cleanTable() {
+		this.candidatesList.clear();
 	}
 
 	public String getFirstname() {
@@ -166,7 +165,6 @@ public class CandidateBean implements Serializable {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -271,6 +269,5 @@ public class CandidateBean implements Serializable {
 	public void setField(String field) {
 		this.field = field;
 	}
-
 
 }
