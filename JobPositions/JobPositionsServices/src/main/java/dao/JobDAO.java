@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.JobEntity;
+import enumeration.JobStatus;
 
 @Stateless
 public class JobDAO {
@@ -21,7 +22,7 @@ public class JobDAO {
 
 	public void update(JobEntity ent) {
 		Query q = em
-				.createQuery("UPDATE JobEntity SET finalDate =:finalDate, sla =:sla, title =:title, location =:location, company =:company, vacancies =:vacancies, responsable =:responsable, technicalArea =:technicalArea, jobDescription =:jobDescription WHERE id =:id");
+				.createQuery("UPDATE JobEntity SET finalDate =:finalDate, sla =:sla, title =:title, location =:location, company =:company, vacancies =:vacancies, responsable =:responsable, technicalArea =:technicalArea, jobDescription =:jobDescription, jobStatus =:jobStatus WHERE id =:id");
 		q.setParameter("finalDate", ent.getFinalDate());
 		q.setParameter("sla", ent.getSla());
 		q.setParameter("title", ent.getTitle());
@@ -31,6 +32,7 @@ public class JobDAO {
 		q.setParameter("responsable", ent.getResponsable());
 		q.setParameter("technicalArea", ent.getTechnicalArea());
 		q.setParameter("jobDescription", ent.getJobDescription());
+		q.setParameter("jobStatus", ent.getJobStatus());
 		q.setParameter("id", ent.getId());
 		q.executeUpdate();
 	}
@@ -46,6 +48,13 @@ public class JobDAO {
 		q.setParameter("id", id);
 		return (JobEntity) q.getSingleResult();
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<JobEntity> findAllOpen() {
+		Query q = em.createNamedQuery(JobEntity.FIND_ALL_OPEN);
+		q.setParameter("jobStatus", JobStatus.OPEN);
+		return q.getResultList();
 	}
 
 }

@@ -22,20 +22,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.type.descriptor.java.UUIDTypeDescriptor.ToStringTransformer;
-
 import enumeration.JobStatus;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
-	@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id")})
+		@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
+		@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id"),
+		@NamedQuery(name = "JobEntity.findAllOpen", query = "SELECT j FROM JobEntity j WHERE j.jobStatus  =:jobStatus"), })
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_ALL = "JobEntity.findAll";
 	public static final String FIND_BY_ID = "JobEntity.findId";
+	public static final String FIND_ALL_OPEN = "JobEntity.findAllOpen";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -222,7 +222,8 @@ public class JobEntity implements Serializable {
 		return true;
 	}
 
-	public String toString(){
+	@Override
+	public String toString() {
 		return String.format("JobEntity[%d, %s]", id, responsable);
 	}
 
