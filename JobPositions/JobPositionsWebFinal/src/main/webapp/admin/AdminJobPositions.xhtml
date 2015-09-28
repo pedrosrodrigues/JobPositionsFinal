@@ -9,10 +9,18 @@
 
 			<p:dataTable value="#{jobPositionBean.jobpositions}" var="position"
 				rows="8" emptyMessage="No records found." paginator="true"
-				paginatorPosition="bottom"
+				paginatorPosition="bottom" widgetVar="tableJobs"
+				filteredValue="#{jobPositionBean.jobpositionsfilter}"
 				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				id="jobstable" sortMode="single">
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Search all fields:" />
+						<p:inputText id="globalFilter" onkeyup="PF('tableJobs').filter()"
+							style="width:150px" placeholder="Enter keyword" />
+					</p:outputPanel>
+				</f:facet>
 
 				<p:column styleClass="jobs-table" headerText="Job Title"
 					style="text-align: center; width:170px" sortBy="#{position.title}"
@@ -20,13 +28,13 @@
 					<h:outputText value="#{position.title}" />
 				</p:column>
 				<p:column styleClass="jobs-table" headerText="Company"
-					style="text-align: center; width:170px"
+					style="text-align: center; width:170px" filterBy="#{position.company}"
 					sortBy="#{position.company}">
 					<h:outputText value="#{position.company}" />
 				</p:column>
 				<p:column headerText="Technical Area"
 					style="text-align: center; width:140px"
-					sortBy="#{position.technicalArea}">
+					sortBy="#{position.technicalArea}" filterBy="#{position.technicalArea}">
 					<h:outputText value="#{position.technicalArea}" />
 				</p:column>
 				<p:column headerText="Job Code"
@@ -35,7 +43,7 @@
 				</p:column>
 				<p:column headerText="Location"
 					style="text-align: center; width:140px"
-					sortBy="#{position.location}">
+					sortBy="#{position.location}" filterBy="#{position.location}">
 					<h:outputText value="#{position.location}" />
 				</p:column>
 				<p:column headerText="Final date"

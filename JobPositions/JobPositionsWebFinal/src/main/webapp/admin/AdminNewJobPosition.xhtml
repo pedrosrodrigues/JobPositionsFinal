@@ -8,8 +8,8 @@
 		<div id="loginfrm">
 			<p:messages id="messageForm2" closable="true" />
 			<p:panel id="panel2" style="border-width: 0px;">
-				<h:panelGrid id="newjobpanel" styleClass="inputTable" columns="2" cellpadding="4px"
-					cellspacing="4px">
+				<h:panelGrid id="newjobpanel" styleClass="inputTable" columns="2"
+					cellpadding="4px" cellspacing="4px">
 					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
 						cellspacing="4px">
 						<p:outputLabel value="Date (start)" for="startDate" />
@@ -72,12 +72,12 @@
 						<h:panelGrid columns="1">
 							<p:commandButton value="SAVE"
 								action="#{jobPositionBean.saveJobPosition}" icon="ui-icon-disk"
-								update="tab:frmEdit:messageForm2 tab:frm:jobstable panel2" >
+								update="tab:frmEdit:messageForm2 :tab:frm:jobstable panel2"
+								oncomplete="PF('tableJobs').clearFilters()">
 								<p:resetInput target="panel2" />
-								</p:commandButton>
-								<p:commandButton value="CLEAR"
-								action="#{jobPositionBean.clear}"/>
-								
+							</p:commandButton>
+							<p:commandButton value="CLEAR" action="#{jobPositionBean.clear}" />
+
 						</h:panelGrid>
 					</div>
 				</div>

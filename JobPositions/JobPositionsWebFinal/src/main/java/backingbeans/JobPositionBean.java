@@ -15,7 +15,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +48,7 @@ public class JobPositionBean implements Serializable {
 	private JobStatus jobStatus;
 	private UserEntity responsable;
 	private String selectPosition;
-	private List<JobEntity> jobpositions  = new ArrayList<JobEntity>();
+	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
 	private List<JobEntity> jobpositionsfilter = new ArrayList<JobEntity>();
 	private List<UserEntity> responsableList = new ArrayList<UserEntity>();
 
@@ -59,6 +58,7 @@ public class JobPositionBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		responsableList = iu.findAllManagers();
+		jobpositionsfilter = jobpositions;
 	}
 
 	public void start() {
@@ -66,7 +66,7 @@ public class JobPositionBean implements Serializable {
 		responsableList = iu.findAllManagers();
 		jobpositions = ij.findAll();
 	}
-	
+
 	public void saveJobPosition() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new position on database...");
@@ -91,7 +91,7 @@ public class JobPositionBean implements Serializable {
 			this.sla = "";
 			this.jobDescription = "";
 			this.location = "";
-			this.creationDate= null;
+			this.creationDate = null;
 			this.finalDate = null;
 			this.responsable = null;
 			this.technicalArea = "";
@@ -106,21 +106,18 @@ public class JobPositionBean implements Serializable {
 		}
 	}
 
-	public void clear(){
+	public void clear() {
 		this.company = "";
 		this.sla = "";
 		this.jobDescription = "";
 		this.location = "";
-		this.creationDate= null;
+		this.creationDate = null;
 		this.finalDate = null;
 		this.responsable = null;
 		this.technicalArea = "";
 		this.title = "";
-		this.vacancies = "";	
+		this.vacancies = "";
 	}
-	
-	
-
 
 	public void jobInfo(Long idPos) {
 		System.out.println(idPos);
@@ -140,12 +137,12 @@ public class JobPositionBean implements Serializable {
 		setPositionCode(jent.getPositionCode());
 	}
 
-	public void updateJobPosition(){
+	public void updateJobPosition() {
 		System.out.println("Está a entrar no metodo updateJP");
 	}
-	
-	public void clearTable(){
-		
+
+	public void clearTable() {
+
 	}
 
 	public Date getActualDate() {
@@ -291,7 +288,5 @@ public class JobPositionBean implements Serializable {
 	public void setJobpositionsfilter(List<JobEntity> jobpositionsfilter) {
 		this.jobpositionsfilter = jobpositionsfilter;
 	}
-
-
 
 }
