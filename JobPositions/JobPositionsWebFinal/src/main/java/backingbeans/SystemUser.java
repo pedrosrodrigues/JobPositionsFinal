@@ -55,10 +55,14 @@ public class SystemUser implements Serializable {
 				+ request.getServerPort() + "/userCV/"
 				+ iu.searchUser(email).getId() + iu.searchUser(email).getName()
 				+ "ML" + UploadFile.DOCUMENT_EXTENSION_PDF;
-		// https://localhost:443/userCV/1.pdf
 	}
 
 	public boolean cvFileExists(String email) {
+		// path Filipa: -> copy disto
+		// "c://Users/Filipa Pedrosa/Desktop/JAVA/PROGRAMAS/wildfly-8.2.0.Final/bin/userCV/"
+		// path Pedro: -> copy disto
+		// "c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
+
 		boolean exists = new File(
 				"c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
 						+ iu.searchUser(email).getId()
