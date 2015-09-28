@@ -12,22 +12,28 @@
 
 				<div class="out">
 					<div class="in">
-					<h:panelGrid columns="3">
-						<p:outputLabel value="Search" for="searchItem" />
-						<p:inputText value="#{candidateBean.value}" />
-						<p:selectOneMenu id="searchItem" value="#{candidateBean.field}" >
-							<f:selectItem id="item1" itemLabel="First Name" itemValue="fname" />
-							<f:selectItem id="item2" itemLabel="Last Name" itemValue="lname" />
-							<f:selectItem id="item3" itemLabel="Email" itemValue="email" />
-							<f:selectItem id="item4" itemLabel="Adress" itemValue="adress" />
-							<f:selectItem id="item5" itemLabel="City" itemValue="city" />
-							<f:selectItem id="item6" itemLabel="Phone" itemValue="phone" />
-							<f:selectItem id="item7" itemLabel="Mobile" itemValue="mobile" />
-							<f:selectItem id="item8" itemLabel="Country" itemValue="country" />
-							<f:selectItem id="item9" itemLabel="Course" itemValue="course" />
-							<f:selectItem id="item10" itemLabel="School" itemValue="school" />
-						</p:selectOneMenu>
-					
+						<h:panelGrid columns="3">
+							<p:outputLabel value="Search" for="searchItem" />
+							<p:inputText value="#{candidateBean.value}" />
+							<p:selectOneMenu id="searchItem" value="#{candidateBean.field}">
+								<f:selectItem id="item1" itemLabel="First Name"
+									itemValue="fname" />
+								<f:selectItem id="item2" itemLabel="Last Name" itemValue="lname" />
+								<f:selectItem id="item3" itemLabel="Email" itemValue="email" />
+								<f:selectItem id="item4" itemLabel="Adress" itemValue="adress" />
+								<f:selectItem id="item5" itemLabel="City" itemValue="city" />
+								<f:selectItem id="item6" itemLabel="Phone" itemValue="phone" />
+								<f:selectItem id="item7" itemLabel="Mobile" itemValue="mobile" />
+								<f:selectItem id="item8" itemLabel="Country" itemValue="country" />
+								<f:selectItem id="item9" itemLabel="Course" itemValue="course" />
+								<f:selectItem id="item10" itemLabel="School" itemValue="school" />
+							</p:selectOneMenu>
+							</h:panelGrid>
+					</div>
+				</div>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="2">
 							<p:commandButton value="SEARCH"
 								action="#{candidateBean.findByAnything()}" update="@form" />
 							<p:commandButton value="CLEAN"
@@ -51,9 +57,30 @@
 						<h:outputText value="#{candlist.email}" />
 					</p:column>
 
+					<p:column headerText="Adress"
+						style="text-align: center; width:150px">
+						<h:outputText value="#{candlist.address}" />
+					</p:column>
+
 					<p:column headerText="City" style="text-align: center; width:150px">
 						<h:outputText value="#{candlist.city}" />
 					</p:column>
+
+					<p:column headerText="Country"
+						style="text-align: center; width:150px">
+						<h:outputText value="#{candlist.country}" />
+					</p:column>
+
+					<p:column headerText="School"
+						style="text-align: center; width:150px">
+						<h:outputText value="#{candlist.school}" />
+					</p:column>
+
+					<p:column headerText="Course"
+						style="text-align: center; width:150px">
+						<h:outputText value="#{candlist.course}" />
+					</p:column>
+
 				</p:dataTable>
 			</p:panel>
 		</div>
