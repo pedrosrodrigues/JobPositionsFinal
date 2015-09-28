@@ -10,16 +10,27 @@
 			<p:messages id="msgSearchUser" closable="true" />
 			<p:panel id="panel" style="border-width: 0px;">
 
-			<div class="out">
+				<div class="out">
 					<div class="in">
-						<h:outputLabel value="Name" />
-						<h:inputText value="#{candidateBean.firstname}" />
-
-
-						<h:panelGrid columns="1">
+					<h:panelGrid columns="3">
+						<p:outputLabel value="Search" for="searchItem" />
+						<p:inputText value="#{candidateBean.value}" />
+						<p:selectOneMenu id="searchItem" value="#{candidateBean.field}" >
+							<f:selectItem id="item1" itemLabel="First Name" itemValue="fname" />
+							<f:selectItem id="item2" itemLabel="Last Name" itemValue="lname" />
+							<f:selectItem id="item3" itemLabel="Email" itemValue="email" />
+							<f:selectItem id="item4" itemLabel="Adress" itemValue="adress" />
+							<f:selectItem id="item5" itemLabel="City" itemValue="city" />
+							<f:selectItem id="item6" itemLabel="Phone" itemValue="phone" />
+							<f:selectItem id="item7" itemLabel="Mobile" itemValue="mobile" />
+							<f:selectItem id="item8" itemLabel="Country" itemValue="country" />
+							<f:selectItem id="item9" itemLabel="Course" itemValue="course" />
+							<f:selectItem id="item10" itemLabel="School" itemValue="school" />
+						</p:selectOneMenu>
+					
 							<p:commandButton value="SEARCH"
-								action="#{candidateBean.findByFirstName()}" update="@form" />
-											<p:commandButton value="CLEAN"
+								action="#{candidateBean.findByAnything()}" update="@form" />
+							<p:commandButton value="CLEAN"
 								action="#{candidateBean.cleanTable()}" update="@form" />
 						</h:panelGrid>
 					</div>

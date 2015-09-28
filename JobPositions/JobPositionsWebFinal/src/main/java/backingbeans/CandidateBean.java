@@ -46,6 +46,7 @@ public class CandidateBean implements Serializable {
 	private String password;
 	private String linkedin;
 	private String value;
+	private String field;
 	private List<CandidateEntity> candidatesList = new ArrayList<CandidateEntity>();
 	private CandidateEntity candidate;
 
@@ -121,74 +122,35 @@ public class CandidateBean implements Serializable {
 		su.searchUser(su.getUserlogado().getEmail());
 	}
 
-	public void findByEmail(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		this.candidate = ic.findByEmail(email);
-		if(candidate.getEmail()== null){
-			context.addMessage(null, new FacesMessage(
-					"No records found!"));
-		}
+	public void findByAnything(){
+		System.out.println("field" + this.field + this.value);
+		if(this.field.equals("fname")) {
+			this.candidatesList = ic.findByFirstName(value);
+		} else if (this.field.equals("lname")) {
+			this.candidatesList = ic.findByLastName(value);
+		} else if (this.field.equals("email")) {
+			this.candidatesList = ic.findByEmailList(value);
+		} else if (this.field.equals("adress")) {
+			this.candidatesList = ic.findByAdress(value);
+		} else if (this.field.equals("city")) {
+			this.candidatesList = ic.findByCiy(value);
+		} else if (this.field.equals("phone")) {
+			this.candidatesList = ic.findByPhone(value);
+		} else if (this.field.equals("mobile")) {
+			this.candidatesList = ic.findByMobile(value);
+		} else if (this.field.equals("country")) {
+			this.candidatesList = ic.findByCountry(value);
+		} else if (this.field.equals("course")) {
+			this.candidatesList = ic.findByCourse(value);
+		} else if (this.field.equals("school")) {
+			this.candidatesList = ic.findBySchool(value);
+		}  
 	}
-	
-	public void searchCandidate(String value){
-		System.out.println("aqui");
-		System.out.println(value);
-	
-//		if(id.equalsIgnoreCase("item1")){
-//			this.candidatesList = ic.findByFirstName(firstname);
-//		}
-		
-	}
-	
-	public void findByFirstName(){
-		this.candidatesList = ic.findByFirstName(firstname);
-	}
-	
 
 	public void cleanTable(){
 		this.candidatesList.clear();		
 	}
-	
-	public List<CandidateEntity> findByLastName(String lname){
-		this.candidatesList = ic.findByLastName(lname);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByAdress(String adress){
-		this.candidatesList = ic.findByAdress(adress);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByCity(String city){
-		this.candidatesList = ic.findByCiy(city);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByPhone(String phone){
-		this.candidatesList = ic.findByPhone(city);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByMobile(String mobile){
-		this.candidatesList = ic.findByMobile(mobile);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByCountry(String country){
-		this.candidatesList = ic.findByCountry(country);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findByCourse(String course){
-		this.candidatesList = ic.findByCourse(course);
-		return candidatesList;
-	}
-	
-	public List<CandidateEntity> findBySchool(String school){
-		this.candidatesList = ic.findBySchool(school);
-		return candidatesList;
-	}
-	
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -205,7 +167,7 @@ public class CandidateBean implements Serializable {
 		this.lastname = lastname;
 	}
 
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -300,6 +262,14 @@ public class CandidateBean implements Serializable {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	public String getField() {
+		return field;
+	}
+
+	public void setField(String field) {
+		this.field = field;
 	}
 
 

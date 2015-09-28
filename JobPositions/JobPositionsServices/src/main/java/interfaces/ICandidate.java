@@ -33,4 +33,6 @@ public interface ICandidate {
 
 	public List<CandidateEntity>  findBySchool(String school);
 
+	public List<CandidateEntity> findByEmailList(String email);
+
 }

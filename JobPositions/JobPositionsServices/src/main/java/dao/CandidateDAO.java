@@ -59,9 +59,9 @@ public class CandidateDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<CandidateEntity> findByAdress(String address) {
+	public List<CandidateEntity> findByAdress(String adress) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_ADRESS);
-		q.setParameter("address", address);
+		q.setParameter("address", adress);
 		return q.getResultList();
 	}
 
@@ -104,6 +104,13 @@ public class CandidateDAO {
 	public List<CandidateEntity> findBySchool(String school) {
 		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_SCHOOL);
 		q.setParameter("school", school);
+		return q.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<CandidateEntity> findByEmailList(String email) {
+		Query q = em.createNamedQuery(CandidateEntity.FIND_BY_EMAIL);
+		q.setParameter("email", email);
 		return q.getResultList();
 	}
 }

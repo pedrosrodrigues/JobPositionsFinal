@@ -126,4 +126,9 @@ public class CandidateImp implements ICandidate {
 	public List<CandidateEntity> findBySchool(String school) {
 		return cd.findBySchool(school);
 	}
+
+	@Override
+	public List<CandidateEntity> findByEmailList(String email) {
+		return cd.findByEmailList(email);
+	}
 }
