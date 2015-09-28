@@ -4,15 +4,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import entities.GuideEntity;
+import entities.ScriptEntity;
 
 @Stateless
-public class GuideDAO {
+public class ScriptDAO {
 	
 	@PersistenceContext(name = "JP")
 	private EntityManager em;
 
-	public void save(GuideEntity ent) {
+	public void save(ScriptEntity ent) {
 		em.persist(ent);
 	}
 

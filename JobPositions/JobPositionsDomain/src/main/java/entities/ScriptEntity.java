@@ -7,11 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class GuideEntity implements Serializable {
+public class ScriptEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,10 +35,6 @@ public class GuideEntity implements Serializable {
 	
 	@Column(nullable = false, length = 100)
 	private String question5;
-
-	@ManyToOne
-	@JoinColumn(name = "responsable_id", nullable = false)
-	private UserEntity responsableGuide;
 	
 	public Long getId() {
 		return id;
@@ -114,7 +108,7 @@ public class GuideEntity implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GuideEntity other = (GuideEntity) obj;
+		ScriptEntity other = (ScriptEntity) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

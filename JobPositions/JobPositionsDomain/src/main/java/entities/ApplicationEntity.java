@@ -2,10 +2,12 @@ package entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,12 +15,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import enumeration.ApplicationStatus;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
@@ -54,7 +59,7 @@ public class ApplicationEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "job_id", nullable = false)
 	private JobEntity jobEntity;
-
+	
 	public Long getId() {
 		return id;
 	}

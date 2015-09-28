@@ -26,12 +26,19 @@ public class InterviewEntity implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date interviewDate;
-//	
-//	@ManyToOne
-//	@JoinColumn(name = "application_id", nullable = false)
+	
+	@Column(nullable = false, length = 100)
 	private ApplicationEntity application;
 	
-	// private UserEntity interviewer;
+	@ManyToOne
+	@JoinColumn(name = "interviewer_id", nullable = false)
+	private UserEntity interviewer;
+	
+	@Column(nullable = false, length = 100)
+	private ScriptEntity script;
+	
+	@Column(nullable = false, length = 100)
+	private boolean approved;
 
 
 	public Long getId() {
@@ -51,25 +58,37 @@ public class InterviewEntity implements Serializable {
 		this.interviewDate = interviewDate;
 	}
 
-	// @ManyToOne
-	// @JoinColumn(name = "candidateEntity")
-	// public ApplicationEntity getApplicationEntity() {
-	// return applicationEntity;
-	// }
-	//
-	// public void setApplicationEntity(ApplicationEntity applicationEntity) {
-	// this.applicationEntity = applicationEntity;
-	// }
-	//
-	// @ManyToOne
-	// @JoinColumn(name = "candidateEntity")
-	// public UserEntity getUserEntity() {
-	// return userEntity;
-	// }
-	//
-	// public void setUserEntity(UserEntity userEntity) {
-	// this.userEntity = userEntity;
-	// }
-	//
+	public ApplicationEntity getApplication() {
+		return application;
+	}
+
+	public void setApplication(ApplicationEntity application) {
+		this.application = application;
+	}
+
+	public UserEntity getInterviewer() {
+		return interviewer;
+	}
+
+	public void setInterviewer(UserEntity interviewer) {
+		this.interviewer = interviewer;
+	}
+
+	public ScriptEntity getScript() {
+		return script;
+	}
+
+	public void setScript(ScriptEntity script) {
+		this.script = script;
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
 
 }

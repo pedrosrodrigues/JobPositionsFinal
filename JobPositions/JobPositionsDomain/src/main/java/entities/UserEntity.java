@@ -54,8 +54,8 @@ public class UserEntity implements Serializable {
 	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<JobEntity> jobList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "responsableGuide", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<GuideEntity> guidesList = new ArrayList<>();
+	@OneToMany(mappedBy = "interviewer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<InterviewEntity> interviewesList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -105,12 +105,12 @@ public class UserEntity implements Serializable {
 		this.jobList = jobList;
 	}
 
-	public List<GuideEntity> getGuidesList() {
-		return guidesList;
+	public List<InterviewEntity> getInterviewesList() {
+		return interviewesList;
 	}
 
-	public void setGuidesList(List<GuideEntity> guidesList) {
-		this.guidesList = guidesList;
+	public void setInterviewesList(List<InterviewEntity> interviewesList) {
+		this.interviewesList = interviewesList;
 	}
 
 	@Override

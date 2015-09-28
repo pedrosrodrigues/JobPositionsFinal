@@ -12,11 +12,11 @@
 					cellspacing="4px">
 
 					<p:outputLabel value="Name" for="name" />
-					<p:inputText id="name" value="#{guideBean.guideName}"
+					<p:inputText id="name" value="#{scriptBean.guideName}"
 						required="true" />
 
 		<!-- 			<p:outputLabel value="Question1" for="question1" />
-					<p:selectOneMenu id="question1" value="#{guideBean.question1}">
+					<p:selectOneMenu id="question1" value="#{scriptBean.question1}">
 						<f:selectItem id="item1" itemLabel="Question A"
 							itemValue="Question A" />
 						<f:selectItem id="item2" itemLabel="Question B"
@@ -26,7 +26,7 @@
 					</p:selectOneMenu>
 
 					<p:outputLabel value="Question2" for="question2" />
-					<p:selectOneMenu id="question2" value="#{guideBean.question2}">
+					<p:selectOneMenu id="question2" value="#{scriptBean.question2}">
 						<f:selectItem id="item4" itemLabel="Question A"
 							itemValue="Question A" />
 						<f:selectItem id="item5" itemLabel="Question B"
@@ -35,27 +35,27 @@
 							itemValue="Question C" />
 					</p:selectOneMenu> -->
 						<p:outputLabel value="Question1" for="question1" />
-					<p:inputText id="question1" value="#{guideBean.question1}" />
+					<p:inputText id="question1" value="#{scriptBean.question1}" />
 					
 						<p:outputLabel value="Question2" for="question2" />
-					<p:inputText id="question2" value="#{guideBean.question2}" />
+					<p:inputText id="question2" value="#{scriptBean.question2}" />
 					
 
 					<p:outputLabel value="Question3" for="question3" />
-					<p:inputText id="question3" value="#{guideBean.question3}" />
+					<p:inputText id="question3" value="#{scriptBean.question3}" />
 
 					<p:outputLabel value="Question4" for="question4" />
-					<p:inputText id="question4" value="#{guideBean.question4}" />
+					<p:inputText id="question4" value="#{scriptBean.question4}" />
 
 					<p:outputLabel value="Question5" for="question5" />
-					<p:inputText id="question5" value="#{guideBean.question5}" />
+					<p:inputText id="question5" value="#{scriptBean.question5}" />
 
 
 				</h:panelGrid>
 				<div class="out">
 					<div class="in">
 						<h:panelGrid columns="1">
-							<p:commandButton value="SAVE" action="#{guideBean.createGuide}"
+							<p:commandButton value="SAVE" action="#{scriptBean.createGuide}"
 								update="tab:frmGuide:msgGuide" />
 						</h:panelGrid>
 					</div>
