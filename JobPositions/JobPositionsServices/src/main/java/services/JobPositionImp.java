@@ -1,8 +1,8 @@
 package services;
 
-import java.util.List;
-
 import interfaces.IJobPosition;
+
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,7 +11,7 @@ import dao.JobDAO;
 import entities.JobEntity;
 
 @Stateless
-public class JobPositionImp implements IJobPosition{
+public class JobPositionImp implements IJobPosition {
 
 	@Inject
 	private JobDAO job;
@@ -24,7 +24,7 @@ public class JobPositionImp implements IJobPosition{
 	}
 
 	@Override
-	public List<JobEntity> findAll() {		
+	public List<JobEntity> findAll() {
 		return job.findAll();
 	}
 
@@ -35,7 +35,13 @@ public class JobPositionImp implements IJobPosition{
 
 	@Override
 	public JobEntity findById(Long id) {
-		return job.findById(id);		
+		return job.findById(id);
+	}
+
+	@Override
+	public List<JobEntity> findAllOpen() {
+		// TODO Auto-generated method stub
+		return job.findAllOpen();
 	}
 
 }

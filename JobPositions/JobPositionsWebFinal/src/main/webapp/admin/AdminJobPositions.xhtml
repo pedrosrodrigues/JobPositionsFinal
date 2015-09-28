@@ -237,15 +237,23 @@
 								var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />
 						</p:selectOneMenu>
 
+						<p:outputLabel value="Status" for="status" />
 						<p:outputLabel value="Technical Area" for="tarea" />
-						<p:outputLabel value="Company" for="company" />
 
+						<p:selectOneMenu id="status"
+							value="#{jobPositionBean.status}" required="true">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Open" itemValue="OPEN"/>
+							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD"/>
+							<f:selectItem itemLabel="Closed" itemValue="CLOSED"/>
+							
+						</p:selectOneMenu>
 						<p:inputText id="tarea" value="#{jobPositionBean.technicalArea}" />
-						<p:inputText id="company" value="#{jobPositionBean.company}" />
 
+						<p:outputLabel value="Company" for="company" />
 						<p:outputLabel value="Job description" for="description" />
-						<p:outputLabel />
 
+						<p:inputText id="company" value="#{jobPositionBean.company}" />
 						<p:inputTextarea id="description"
 							value="#{jobPositionBean.jobDescription}" cols="40" rows="4"
 							autoResize="false" />

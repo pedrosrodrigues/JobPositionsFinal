@@ -45,10 +45,12 @@ public class JobPositionBean implements Serializable {
 	private String positionCode;
 	private String responsableEmail;
 	private String vacancies;
+	private String status;
 	private JobStatus jobStatus;
 	private UserEntity responsable;
 	private String selectPosition;
 	private List<JobEntity> jobpositions = new ArrayList<JobEntity>();
+	private List<JobEntity> jobpositionsopen = new ArrayList<JobEntity>();
 	private List<JobEntity> jobpositionsfilter = new ArrayList<JobEntity>();
 	private List<UserEntity> responsableList = new ArrayList<UserEntity>();
 	private Long idJob;
@@ -61,6 +63,7 @@ public class JobPositionBean implements Serializable {
 		responsableList = iu.findAllManagers();
 		jobpositionsfilter = jobpositions;
 		jobpositions = ij.findAll();
+		jobpositionsopen = ij.findAllOpen();
 	}
 
 	public void start() {
@@ -68,6 +71,7 @@ public class JobPositionBean implements Serializable {
 		responsableList = iu.findAllManagers();
 		jobpositionsfilter = jobpositions;
 		jobpositions = ij.findAll();
+		jobpositionsopen = ij.findAllOpen();
 	}
 
 	public void saveJobPosition() {
@@ -96,6 +100,8 @@ public class JobPositionBean implements Serializable {
 			this.location = "";
 			this.creationDate = null;
 			this.finalDate = null;
+			this.jobStatus = null;
+			this.status = "";
 			this.responsable = null;
 			this.technicalArea = "";
 			this.title = "";
@@ -118,6 +124,8 @@ public class JobPositionBean implements Serializable {
 		this.finalDate = null;
 		this.responsable = null;
 		this.technicalArea = "";
+		this.jobStatus = null;
+		this.status = "";
 		this.title = "";
 		this.vacancies = "";
 	}
@@ -137,6 +145,7 @@ public class JobPositionBean implements Serializable {
 		setTechnicalArea(jent.getTechnicalArea());
 		setJobDescription(jent.getJobDescription());
 		setJobStatus(jent.getJobStatus());
+		setStatus(jent.getJobStatus().getLabel());
 		setVacancies(jent.getVacancies());
 		setPositionCode(jent.getPositionCode());
 	}
@@ -150,6 +159,13 @@ public class JobPositionBean implements Serializable {
 		jent.setTitle(this.title);
 		jent.setLocation(this.location);
 		jent.setCompany(this.company);
+		if (this.status.equals("OPEN")) {
+			jent.setJobStatus(JobStatus.OPEN);
+		} else if (this.status.equals("ON_HOLD")) {
+			jent.setJobStatus(JobStatus.ON_HOLD);
+		} else if (this.status.equals("CLOSED")) {
+			jent.setJobStatus(JobStatus.CLOSED);
+		}
 		jent.setVacancies(this.vacancies);
 		jent.setTechnicalArea(this.technicalArea);
 		jent.setJobDescription(this.jobDescription);
@@ -322,6 +338,22 @@ public class JobPositionBean implements Serializable {
 
 	public void setIdJob(Long idJob) {
 		this.idJob = idJob;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public List<JobEntity> getJobpositionsopen() {
+		return jobpositionsopen;
+	}
+
+	public void setJobpositionsopen(List<JobEntity> jobpositionsopen) {
+		this.jobpositionsopen = jobpositionsopen;
 	}
 
 }
