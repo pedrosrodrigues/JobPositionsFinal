@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -9,7 +11,7 @@ import interfaces.IScript;
 
 @Stateless
 public class ScriptImp implements IScript {
-	
+
 	@Inject
 	private ScriptDAO sd;
 
@@ -17,5 +19,11 @@ public class ScriptImp implements IScript {
 	public void saveScript(ScriptEntity ent) {
 		sd.save(ent);		
 	}
+
+	@Override
+	public List<ScriptEntity> findAll() {
+		return sd.findAll();
+	}
+
 
 }

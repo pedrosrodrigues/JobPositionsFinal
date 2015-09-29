@@ -7,33 +7,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s")})
+
 public class ScriptEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String FIND_ALL = "ScriptEntity.findAll";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
 	
-	@Column(nullable = false, unique = true)
-	private String guideName;
+	@Column(nullable = true, unique = true)
+	private String scriptName;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
 	private String question1;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
 	private String question2;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
 	private String question3;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
 	private String question4;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
 	private String question5;
 	
 	public Long getId() {
@@ -44,12 +51,12 @@ public class ScriptEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getGuideName() {
-		return guideName;
+	public String getScriptName() {
+		return scriptName;
 	}
 
-	public void setGuideName(String guideName) {
-		this.guideName = guideName;
+	public void setScriptName(String scriptName) {
+		this.scriptName = scriptName;
 	}
 
 	public String getQuestion1() {
