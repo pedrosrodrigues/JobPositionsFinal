@@ -1,0 +1,61 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form id="frmM">
+	<div id="loginfrmM">
+		<p:messages id="submitanswerM" closable="true" />
+		<p:dataTable value="#{jobPositionBean.jobpositionsopen}" var="position"
+			rows="8" emptyMessage="No records found." paginator="true"
+			paginatorPosition="bottom"
+			paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			id="jobstableM" sortMode="single">
+
+			<p:column styleClass="jobs-table" headerText="Job Title"
+				style="text-align: center; width:200px" sortBy="#{position.title}">
+				<h:outputText value="#{position.title}" />
+			</p:column>
+			<p:column headerText="Location"
+				style="text-align: center; width:150px"
+				sortBy="#{position.location}">
+				<h:outputText value="#{position.location}" />
+			</p:column>
+			<p:column headerText="Final Date"
+				style="text-align: center; width:150px"
+				sortBy="#{position.finalDate}">
+				<h:outputText value="#{position.finalDate}" />
+			</p:column>
+			<p:column headerText="Job Status"
+				style="text-align: center; width:150px">
+				<h:outputText value="#{position.jobStatus}" />
+			</p:column>
+
+			<p:column style="width:16px">
+				<p:rowToggler id="rowToggler" />
+			</p:column>
+
+			<p:rowExpansion id="rowselection">
+				<p:panelGrid columns="2" columnClasses="label, field"
+					style="width:100%;">
+
+					<h:outputText value="Job Code" />
+					<h:outputText value="#{position.positionCode}" />
+
+					<h:outputText value="Job Function" />
+					<h:outputText value="#{position.technicalArea}" />
+
+					<h:outputText value="# of openings" />
+					<h:outputText value="#{position.vacancies}" />
+				</p:panelGrid>
+
+				<p:panelGrid columns="1" style="width:100%;">
+					<h:outputText value="#{position.jobDescription}" />
+				</p:panelGrid>
+			</p:rowExpansion>
+		</p:dataTable>
+	</div>
+</h:form>
+</ui:composition>
