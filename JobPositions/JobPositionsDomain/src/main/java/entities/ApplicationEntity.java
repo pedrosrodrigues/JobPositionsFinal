@@ -1,13 +1,12 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,23 +14,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import enumeration.ApplicationStatus;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 @Entity
-@NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
-	@NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan"),
-	@NamedQuery(name = "ApplicationEntity.findJobCand", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob"),
-	@NamedQuery(name = "ApplicationEntity.findById", query = "SELECT a FROM ApplicationEntity a WHERE a.id=:id")})
-
-
+@NamedQueries({
+		@NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
+		@NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan"),
+		@NamedQuery(name = "ApplicationEntity.findJobCand", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob"),
+		@NamedQuery(name = "ApplicationEntity.findById", query = "SELECT a FROM ApplicationEntity a WHERE a.id=:id") })
 public class ApplicationEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,7 +44,7 @@ public class ApplicationEntity implements Serializable {
 	private Date aplicationDate;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 100)	
+	@Column(nullable = false, length = 100)
 	private ApplicationStatus appStatus;
 
 	@ManyToOne
@@ -61,7 +54,7 @@ public class ApplicationEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "job_id", nullable = false)
 	private JobEntity jobEntity;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -69,7 +62,6 @@ public class ApplicationEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Date getAplicationDate() {
 		return aplicationDate;
@@ -110,6 +102,7 @@ public class ApplicationEntity implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -126,9 +119,5 @@ public class ApplicationEntity implements Serializable {
 			return false;
 		return true;
 	}
-
-
-
-
 
 }
