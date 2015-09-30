@@ -43,6 +43,8 @@ public class ApplicationBean implements Serializable {
 	private IApplication ia;
 	@Inject
 	private IUser iu;
+	@Inject
+	private InterviewBean ib;
 
 	private CandidateEntity cent;
 	private JobEntity jent;
@@ -83,6 +85,7 @@ public class ApplicationBean implements Serializable {
 	public void updateApp(Long idApplication) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to update an application on database...");
+		ib.setIdApplication(idApplication);
 		ApplicationEntity aent = new ApplicationEntity();
 		for (ApplicationEntity x : listPosApp) {
 			if (x.getId() == idApplication) {

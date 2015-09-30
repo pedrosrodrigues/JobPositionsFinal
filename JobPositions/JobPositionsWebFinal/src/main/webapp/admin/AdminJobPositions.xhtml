@@ -284,14 +284,14 @@
 
 							<p:outputLabel value="Interviewer" for="interv" />
 							<p:selectOneMenu id="interv"
-								value="#{applicationBean.interviewerEmail}">
+								value="#{interviewBean.interviewerEmail}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
 								<f:selectItems value="#{applicationBean.interviewerList}"
 									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
 							</p:selectOneMenu>
 
 							<p:outputLabel value="Script" for="script" />
-							<p:selectOneMenu id="script" value="#{scriptBean.scriptName}">
+							<p:selectOneMenu id="script" value="#{interviewBean.scriptName}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
 								<f:selectItems value="#{scriptBean.scriptList}" var="spt"
 									itemValue="#{spt.scriptName}" itemLabel="#{spt}" />

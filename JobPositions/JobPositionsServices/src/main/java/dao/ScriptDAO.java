@@ -7,12 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import entities.JobEntity;
 import entities.ScriptEntity;
 
 @Stateless
 public class ScriptDAO {
-	
+
 	@PersistenceContext(name = "JP")
 	private EntityManager em;
 

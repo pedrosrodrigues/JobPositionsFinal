@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,46 +22,48 @@ import entities.UserEntity;
 
 @SessionScoped
 @Named
-public class InterviewBean implements Serializable{
+public class InterviewBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Inject 
+
+	@Inject
 	private IInterview ii;
-	
+
 	@Inject
 	private IUser iu;
-	
+
 	@Inject
 	private IScript is;
-	
+
 	@Inject
 	private IApplication ia;
-	
+
 	private Date interviewDate;
 	private ScriptEntity script;
 	private UserEntity interviewer;
-	private ApplicationEntity application;	
+	private ApplicationEntity application;
 	private String scriptName;
 	private String interviewerEmail;
-	private Long idJob;
-	private Long idCand;
+	private Long idApplication;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
-	
+
 	public void createInterview() {
-		System.out.println("createInterview");
-//		FacesContext context = FacesContext.getCurrentInstance();
+		// FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new interview on database...");
-		application = ia.findById((long) id);
-		InterviewEntity ent = new InterviewEntity ();
-		ent.setInterviewDate(interviewDate);
-		System.out.println(interviewerEmail);
-		ent.setInterviewer(iu.searchUser(interviewerEmail));
+		InterviewEntity ient = new InterviewEntity();
+		ient.setApproved(false);
+		ient.setInterviewDate(interviewDate);
+		ient.setInterviewer(iu.searchUser(interviewerEmail));
+		log.info("Set interviewer check.");
+
 		System.out.println(scriptName);
-		ent.setScript(is.findByName(scriptName));
-		ii.saveInterview(ent);		
+		ient.setScript(is.findByName(scriptName));
+		log.info("Set script check.");
+		ient.setApplication(ia.findById(idApplication));
+		log.info("Set app check.");
+		ii.saveInterview(ient);
 	}
 
 	public Date getInterviewDate() {
@@ -97,22 +98,28 @@ public class InterviewBean implements Serializable{
 		this.application = application;
 	}
 
-	public Long getIdJob() {
-		return idJob;
+	public String getScriptName() {
+		return scriptName;
 	}
 
-	public void setIdJob(Long idJob) {
-		this.idJob = idJob;
+	public void setScriptName(String scriptName) {
+		this.scriptName = scriptName;
 	}
 
-	public Long getIdCand() {
-		return idCand;
+	public String getInterviewerEmail() {
+		return interviewerEmail;
 	}
 
-	public void setIdCand(Long idCand) {
-		this.idCand = idCand;
+	public void setInterviewerEmail(String interviewerEmail) {
+		this.interviewerEmail = interviewerEmail;
 	}
 
-	
-	
+	public Long getIdApplication() {
+		return idApplication;
+	}
+
+	public void setIdApplication(Long idApplication) {
+		this.idApplication = idApplication;
+	}
+
 }

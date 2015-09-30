@@ -12,40 +12,38 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s"),
-	@NamedQuery(name = "ScriptEntity.findByName", query = "SELECT s FROM ScriptEntity s WHERE s.scriptName like :scriptName")})
-
+		@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s"),
+		@NamedQuery(name = "ScriptEntity.findByName", query = "SELECT s FROM ScriptEntity s WHERE s.scriptName like :scriptName") })
 public class ScriptEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_ALL = "ScriptEntity.findAll";
+	public static final String FIND_BY_NAME = "ScriptEntity.findByName";
 
-	public static final String FIND_BY_NAME = null;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	
+
 	@Column(nullable = true, unique = true)
 	private String scriptName;
-	
+
 	@Column(nullable = true, length = 100)
 	private String question1;
-	
+
 	@Column(nullable = true, length = 100)
 	private String question2;
-	
+
 	@Column(nullable = true, length = 100)
 	private String question3;
-	
+
 	@Column(nullable = true, length = 100)
 	private String question4;
-	
+
 	@Column(nullable = true, length = 100)
 	private String question5;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -126,11 +124,10 @@ public class ScriptEntity implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.scriptName;
 	}
 
 }
-
