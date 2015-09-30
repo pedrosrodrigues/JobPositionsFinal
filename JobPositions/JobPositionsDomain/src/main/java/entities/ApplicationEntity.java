@@ -28,7 +28,8 @@ import java.util.List;
 @Entity
 @NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
 	@NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan"),
-	@NamedQuery(name = "ApplicationEntity.findJobCand", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob")})
+	@NamedQuery(name = "ApplicationEntity.findJobCand", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob"),
+	@NamedQuery(name = "ApplicationEntity.findById", query = "SELECT a FROM ApplicationEntity a WHERE id=:id")})
 
 
 public class ApplicationEntity implements Serializable {
@@ -38,6 +39,7 @@ public class ApplicationEntity implements Serializable {
 	public static final String FIND_BY_CANJOB = "ApplicationEntity.findOne";
 	public static final String FIND_BY_CANDAPP = "ApplicationEntity.findCandApp";
 	public static final String FIND_BY_JOBCAND = "ApplicationEntity.findJobCand";
+	public static final String FIND_BY_ID = "ApplicationEntity.findById";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import dao.ApplicationDAO;
 import entities.ApplicationEntity;
+import entities.JobEntity;
 
 @Stateless
 public class ApplicationImp implements IApplication {
@@ -49,9 +50,13 @@ public class ApplicationImp implements IApplication {
 	@Override
 	public void updateApplication(ApplicationEntity aent) {			
 		ap.update(aent);
-
-		
 	}
+
+	@Override
+	public ApplicationEntity findById(Long id) {
+		return ap.findById(id);
+	}
+
 }
 
 

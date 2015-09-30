@@ -40,7 +40,6 @@ public class JobPositionImp implements IJobPosition {
 
 	@Override
 	public List<JobEntity> findAllOpen() {
-		// TODO Auto-generated method stub
 		return job.findAllOpen();
 	}
 

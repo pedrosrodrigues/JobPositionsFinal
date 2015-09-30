@@ -12,13 +12,16 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s")})
+	@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s"),
+	@NamedQuery(name = "ScriptEntity.findByName", query = "SELECT s FROM ScriptEntity s WHERE s.scriptName like :scriptName")})
 
 public class ScriptEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_ALL = "ScriptEntity.findAll";
+
+	public static final String FIND_BY_NAME = null;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

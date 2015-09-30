@@ -49,6 +49,12 @@ public class ApplicationDAO {
 		q.executeUpdate();	
 	}
 
+	public ApplicationEntity findById(Long id) {
+		Query q = em.createNamedQuery(ApplicationEntity.FIND_BY_ID);
+		q.setParameter("id", id);
+		return (ApplicationEntity) q.getSingleResult();
+	}
+
 
 
 }

@@ -26,4 +26,10 @@ public class ScriptDAO {
 		return q.getResultList();
 	}
 
+	public ScriptEntity findByName(String scriptName) {
+		Query q = em.createNamedQuery(ScriptEntity.FIND_BY_NAME);
+		q.setParameter("scriptName", scriptName);
+		return (ScriptEntity) q.getSingleResult();
+	}
+
 }

@@ -12,4 +12,6 @@ public interface IScript {
 	public void saveScript(ScriptEntity ent);
 	
 	public List<ScriptEntity> findAll();
+	
+	public ScriptEntity findByName (String scriptName);
 }

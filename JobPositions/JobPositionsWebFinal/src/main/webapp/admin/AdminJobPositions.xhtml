@@ -99,8 +99,8 @@
 				height="300" weight="100">
 				<p:dataTable id="candidatesforposition"
 					value="#{applicationBean.listPosApp}" var="candlist" rows="10"
-					emptyMessage="No records found." paginator="true"
-					paginatorPosition="bottom"
+					emptyMessage="No applications for this job position yet."
+					paginator="true" paginatorPosition="bottom"
 					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 					<p:column headerText="" style="text-align: center; width:40px;">
 						<p:rowToggler />
@@ -240,13 +240,13 @@
 						<p:outputLabel value="Status" for="status" />
 						<p:outputLabel value="Technical Area" for="tarea" />
 
-						<p:selectOneMenu id="status"
-							value="#{jobPositionBean.status}" required="true">
+						<p:selectOneMenu id="status" value="#{jobPositionBean.status}"
+							required="true">
 							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="Open" itemValue="OPEN"/>
-							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD"/>
-							<f:selectItem itemLabel="Closed" itemValue="CLOSED"/>
-							
+							<f:selectItem itemLabel="Open" itemValue="OPEN" />
+							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD" />
+							<f:selectItem itemLabel="Closed" itemValue="CLOSED" />
+
 						</p:selectOneMenu>
 						<p:inputText id="tarea" value="#{jobPositionBean.technicalArea}" />
 
@@ -270,17 +270,38 @@
 		<h:form id="interviewDialog">
 			<p:dialog header="Set Interview" widgetVar="InterviewDialog"
 				modal="true" height="300" weight="100">
+				<div id="loginfrm">
+					<p:messages id="messageFormInt" closable="true" />
+					<p:panel id="panel2" style="border-width: 0px;">
+						<h:panelGrid id="interviewpanel" styleClass="inputTable"
+							columns="2" cellpadding="4px" cellspacing="4px">
 
-				<p:outputLabel value="Data" />
-				<p:outputLabel value="Interviewer" for="int" />
+							<p:outputLabel value="Date" for="intDate" />
+							<p:calendar id="intDate" required="true"
+								value="#{interviewBean.interviewDate}" style="width:10%;"
+								maxlength="10" size="10" pattern="dd/MM/yyyy"
+								mindate="#{jobPositionBean.actualDate}" />
 
-				<h:inputText />
-				<p:selectOneMenu id="int"
-					value="#{applicationBean.interviewerEmail}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItems value="#{applicationBean.interviewerList}" var="int"
-						itemValue="#{int.email}" itemLabel="#{int}" />
-				</p:selectOneMenu>
+							<p:outputLabel value="Interviewer" for="interv" />
+							<p:selectOneMenu id="interv"
+								value="#{applicationBean.interviewerEmail}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{applicationBean.interviewerList}"
+									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Script" for="script" />
+							<p:selectOneMenu id="script" value="#{scriptBean.scriptName}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{scriptBean.scriptList}" var="spt"
+									itemValue="#{spt.scriptName}" itemLabel="#{spt}" />
+							</p:selectOneMenu>
+							<p:commandButton icon="ui-icon-disk" value="SAVE" action="#{interviewBean.createInterview}"/>
+
+
+						</h:panelGrid>
+					</p:panel>
+				</div>
 			</p:dialog>
 
 		</h:form>

@@ -25,5 +25,10 @@ public class ScriptImp implements IScript {
 		return sd.findAll();
 	}
 
+	@Override
+	public ScriptEntity findByName(String scriptName) {
+		return sd.findByName(scriptName);
+	}
+
 
 }
