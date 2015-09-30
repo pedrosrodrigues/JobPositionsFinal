@@ -22,24 +22,25 @@ public class InterviewEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, length = 100)
 	private Date interviewDate;
-	
-	@Column(nullable = false, length = 100)
+
+	@ManyToOne
+	@JoinColumn(name = "application_id", nullable = false)
 	private ApplicationEntity application;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "interviewer_id", nullable = false)
 	private UserEntity interviewer;
-	
-	@Column(nullable = false, length = 100)
+
+	@ManyToOne
+	@JoinColumn(name = "script_id", nullable = false)
 	private ScriptEntity script;
-	
+
 	@Column(nullable = false, length = 100)
 	private boolean approved;
-
 
 	public Long getId() {
 		return id;
@@ -89,8 +90,5 @@ public class InterviewEntity implements Serializable {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
-	
-
-
 
 }

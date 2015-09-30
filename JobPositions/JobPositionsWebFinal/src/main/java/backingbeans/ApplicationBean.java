@@ -61,7 +61,7 @@ public class ApplicationBean implements Serializable {
 
 	public void saveApp(int idPosition) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		log.info("trying to save an application on database...");
+		log.info("Trying to save an application on database...");
 		Date dateobj = new Date();
 		cent = ic.findByEmail(su.getUserlogado().getEmail());
 		jent = ijp.findById((long) idPosition);

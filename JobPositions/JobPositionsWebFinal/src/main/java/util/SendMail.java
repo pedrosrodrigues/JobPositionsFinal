@@ -10,16 +10,26 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import backingbeans.ApplicationBean;
+
 public class SendMail {
 
+	private static final Logger log = LoggerFactory
+			.getLogger(ApplicationBean.class);
+
 	public void sendEmail(String to, String subject, String textbody) {
+		log.info("Trying to send an email...");
+
 		String from = "jobsatcritical@gmail.com";
 
 		final String username = "jobsatcritical@gmail.com";
 		final String password = "filipapedro";
 
 		String host = "smtp.gmail.com";
-
+		log.info("Setting properties for email...");
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -43,7 +53,9 @@ public class SendMail {
 			message.setSubject(subject);
 			message.setText(textbody);
 			Transport.send(message);
+			log.info("Email sent! ");
 		} catch (MessagingException e) {
+			log.info("Problem sending email: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}
