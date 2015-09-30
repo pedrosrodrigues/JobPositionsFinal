@@ -14,13 +14,17 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
+	<welcome-file-list>
+		<welcome-file>Welcome.xhtml</welcome-file>
+	</welcome-file-list>
+	
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<realm-name>projfinal</realm-name>
-			<form-login-config>
-				<form-login-page>Welcome.xhtml</form-login-page>
-				<form-error-page>LoginError.xhtml</form-error-page>
-			</form-login-config>
+		<form-login-config>
+			<form-login-page>Login.xhtml</form-login-page>
+			<form-error-page>LoginError.xhtml</form-error-page>
+		</form-login-config>
 	</login-config>
 	<security-constraint>
 		<display-name>projfinal</display-name>

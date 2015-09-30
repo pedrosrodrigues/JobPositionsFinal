@@ -22,44 +22,50 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<div id="wrapper">
+	<!-- 	<div id="wrapper"> -->
 
-		<div id="header"></div>
-		<div style="float: right;">
-			<h:form style="display:inline-block;">
-				<p:commandButton value="Populate!" action="#{populator.populate}"
-					ajax="false" />
-				<p:commandLink value="Login"
-					action="/Login.xhtml?faces-redirect=true"
-					rendered="#{!systemUser.logIn}" />
-				<p:commandLink value="Home" action="/Home.xhtml?faces-redirect=true"
-					rendered="#{!systemUser.logIn}" />
-				<p:commandLink value="Regist"
-					action="/NewCandidate.xhtml?faces-redirect=true"
-					rendered="#{!systemUser.logIn}" />
-				<p:commandLink value="Logout" actionListener="#{loginBean.logout}"
-					ajax="false" rendered="#{systemUser.logIn}" />
-			</h:form>
-		</div>
-		<p:separator style="margin-top: 35px" />
-		<br />
+	<div id="header">
+
 
 		<div>
 			<h:graphicImage library="images" name="logo-critical.png"
-				style="margin:0px 20px;float:left; width:110px;" />
+				style="margin:0px 20px;float:left; width:100px;" />
 		</div>
 		<div>
-			<p:toolbar
-				style="background:#a50d12; border-radius:0px;height:35px; padding-top:10px; margin:0;">
+			<p:toolbar id="toolbarhd" >
 				<p:toolbarGroup align="left">
-					<h2>
+					<div style="float: left;">
+				<h2>
 						<ui:insert name="bar">JOB POSITIONS</ui:insert>
 					</h2>
+					</div>
+					</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<div style="float: right;">
+						<h:form style="display:inline-block;">
+							<p:commandButton value="Populate!" action="#{populator.populate}"
+								ajax="false" />
+							<p:commandLink value="Login"
+								action="/Login.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Home"
+								action="/Home.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Regist"
+								action="/NewCandidate.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Logout"
+								actionListener="#{loginBean.logout}" ajax="false" style="color:white;text-shadow: none;"
+								rendered="#{systemUser.logIn}" />
+						</h:form>
+					</div>
+				
 				</p:toolbarGroup>
 			</p:toolbar>
 		</div>
-		<div style="clear: both"></div>
 	</div>
+	<div style="clear: both"></div>
+	<!-- </div> -->
 
 	<div id="content">
 		<ui:insert name="body" />
@@ -68,12 +74,12 @@
 
 	<div id="footer">
 		<p:separator style="margin-top: 20px" />
-		<div id="footerleft" style="float:left">
+		<div id="footerleft" style="float: left; padding:10px;" >
 			© 1998 - 2015 CRITICAL Software All Rights Reserved. - <a
 				href="http://www.criticalsoftware.com/pt/homepage" target="_blank">
 				Contactos / Termos e Política de Privacidade</a>
 		</div>
-		<div id="footerright" style="float:right">
+		<div id="footerright" style="float: right">
 			<a href="https://www.facebook.com/criticalsoftware" target="_blank">
 				<p:graphicImage styleClass="social-img" library="images"
 					name="facebook.png" />

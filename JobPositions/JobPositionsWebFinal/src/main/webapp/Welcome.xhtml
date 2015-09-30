@@ -1,21 +1,65 @@
-<ui:composition template="/WEB-INF/template/CommonLayout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="title">Current Positions</ui:define>
-	<ui:define name="bar">Current Positions</ui:define>
-	<ui:define name="body">
-	
-	<h:head>
+<h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="title">Job Positions</ui:insert></title>
 	<h:outputStylesheet library="css" name="welcomepg.css" />
-</h:head>
+	<h:outputStylesheet library="css" name="system.css" />
 	
-	<h1>Acreditamos no que fazemos</h1>
-	</ui:define>
+</h:head>
 
-</ui:composition>
+<h:body>
+
+
+	<div id="header">
+		<div>
+			<h:graphicImage library="images" name="logo-critical.png"
+				style="margin:70px 20px;float:left; width:150px;" />
+		</div>
+		<div>
+			<p:toolbar id="toolbarhd">
+				<p:toolbarGroup align="left">
+					<div style="float: left;">
+
+					</div>
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<div style="float: right;">
+						<h:form style="display:inline-block;">
+							<p:commandButton value="Populate!" action="#{populator.populate}"
+								ajax="false" />
+							<p:commandLink value="Login"
+								action="/Login.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Search Jobs"
+								action="/Home.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Regist"
+								action="/NewCandidate.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
+								rendered="#{!systemUser.logIn}" />
+							<p:commandLink value="Logout"
+								actionListener="#{loginBean.logout}" ajax="false"
+								style="color:white;text-shadow: none;"
+								rendered="#{systemUser.logIn}" />
+						</h:form>
+					</div>
+
+				</p:toolbarGroup>
+			</p:toolbar>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<!-- </div> -->
+<h1 style="color:red">Acreditamos no que fazemos</h1>
+</h:body>
+
+</html>

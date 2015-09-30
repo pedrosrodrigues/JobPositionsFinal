@@ -17,20 +17,29 @@ html, body {
 }
 
 #header {
-	padding: 5px 0px;
-	height: 160px;
+	/* padding: 5px 0px; */
+/* 	height: 160px; */
 	background-color: #ffffff;
 	color: #fff;
+}
+
+.ui-toolbar {
+	background:#a50d12; 
+	border-radius:0px;
+	height:35px; 
+	padding-top:10px; 
+	margin:0;	
 }
 
 #content {
 	padding-bottom: 60px;
 	margin: 100 auto;
 	margin-right: 15px;
+	
 }
 
 #footer {
-	padding: 0px 8px;
+	padding: 10px;
 	color: #a59d95;
 	text-align: center;
 	font-size: 10px;
@@ -41,6 +50,7 @@ html, body {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+  display: inline-block;
 }
 
 h1 {
@@ -61,6 +71,7 @@ h2 {
 	color: white;
 	text-transform: uppercase;
 	margin-left: 15px;
+	text-shadow: none;
 }
 
 #login-dialog {
