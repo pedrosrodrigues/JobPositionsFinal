@@ -9,15 +9,14 @@ import interfaces.IInterview;
 
 @Stateless
 public class InterviewImp implements IInterview {
-	
+
 	@Inject
 	private InterviewDAO id;
 
 	@Override
-	public boolean saveInterview(InterviewEntity ent) {
+	public void saveInterview(InterviewEntity ent) {
 		id.saveInterview(ent);
-		return false;
-		
+
 	}
 
 }

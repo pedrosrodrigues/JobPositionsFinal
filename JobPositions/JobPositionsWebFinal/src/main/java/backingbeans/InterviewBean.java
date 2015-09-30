@@ -45,20 +45,23 @@ public class InterviewBean implements Serializable{
 	private ApplicationEntity application;	
 	private String scriptName;
 	private String interviewerEmail;
+	private Long idJob;
+	private Long idCand;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
 	
-	public void createInterview(int id) {
+	public void createInterview() {
 		System.out.println("createInterview");
 //		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new interview on database...");
 		application = ia.findById((long) id);
-		script = is.findByName(scriptName);
 		InterviewEntity ent = new InterviewEntity ();
 		ent.setInterviewDate(interviewDate);
+		System.out.println(interviewerEmail);
 		ent.setInterviewer(iu.searchUser(interviewerEmail));
-		ent.setScript(script);
+		System.out.println(scriptName);
+		ent.setScript(is.findByName(scriptName));
 		ii.saveInterview(ent);		
 	}
 
@@ -92,6 +95,22 @@ public class InterviewBean implements Serializable{
 
 	public void setApplication(ApplicationEntity application) {
 		this.application = application;
+	}
+
+	public Long getIdJob() {
+		return idJob;
+	}
+
+	public void setIdJob(Long idJob) {
+		this.idJob = idJob;
+	}
+
+	public Long getIdCand() {
+		return idCand;
+	}
+
+	public void setIdCand(Long idCand) {
+		this.idCand = idCand;
 	}
 
 	

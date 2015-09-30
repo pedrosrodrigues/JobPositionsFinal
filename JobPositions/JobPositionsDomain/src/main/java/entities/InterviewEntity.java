@@ -89,6 +89,8 @@ public class InterviewEntity implements Serializable {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
+	
+
 
 
 }

@@ -7,6 +7,6 @@ import entities.InterviewEntity;
 @Local
 public interface IInterview {
 	
-	public boolean saveInterview (InterviewEntity ent);
+	public void saveInterview (InterviewEntity ent);
 
 }
