@@ -29,7 +29,7 @@ import java.util.List;
 @NamedQueries({ @NamedQuery(name = "ApplicationEntity.findOne", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob and a.candidateEntity.id=:idCan"),
 	@NamedQuery(name = "ApplicationEntity.findCandApp", query = "SELECT a FROM ApplicationEntity a WHERE a.candidateEntity.id=:idCan"),
 	@NamedQuery(name = "ApplicationEntity.findJobCand", query = "SELECT a FROM ApplicationEntity a WHERE a.jobEntity.id=:idJob"),
-	@NamedQuery(name = "ApplicationEntity.findById", query = "SELECT a FROM ApplicationEntity a WHERE id=:id")})
+	@NamedQuery(name = "ApplicationEntity.findById", query = "SELECT a FROM ApplicationEntity a WHERE a.id=:id")})
 
 
 public class ApplicationEntity implements Serializable {
