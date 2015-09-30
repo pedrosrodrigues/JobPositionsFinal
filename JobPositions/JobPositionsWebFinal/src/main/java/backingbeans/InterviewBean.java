@@ -6,9 +6,14 @@ import interfaces.IScript;
 import interfaces.IUser;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,6 +30,9 @@ import entities.UserEntity;
 public class InterviewBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private SystemUser su;
 
 	@Inject
 	private IInterview ii;
@@ -45,25 +53,35 @@ public class InterviewBean implements Serializable {
 	private String scriptName;
 	private String interviewerEmail;
 	private Long idApplication;
+	private List<InterviewEntity> myInterviews = new ArrayList<InterviewEntity>();
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
 
+	@PostConstruct
+	public void start() {
+		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
+	}
+
 	public void createInterview() {
-		// FacesContext context = FacesContext.getCurrentInstance();
+		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new interview on database...");
 		InterviewEntity ient = new InterviewEntity();
 		ient.setApproved(false);
 		ient.setInterviewDate(interviewDate);
 		ient.setInterviewer(iu.searchUser(interviewerEmail));
-		log.info("Set interviewer check.");
-
-		System.out.println(scriptName);
 		ient.setScript(is.findByName(scriptName));
-		log.info("Set script check.");
 		ient.setApplication(ia.findById(idApplication));
-		log.info("Set app check.");
-		ii.saveInterview(ient);
+		try {
+			ii.saveInterview(ient);
+			log.info("Interview saved on database!");
+			context.addMessage(null, new FacesMessage(
+					"Interview saved on database!"));
+		} catch (Exception e) {
+			log.error("Problem creating a new interview!");
+			context.addMessage(null, new FacesMessage(
+					"There was a problem appointing the interview!"));
+		}
 	}
 
 	public Date getInterviewDate() {
@@ -120,6 +138,14 @@ public class InterviewBean implements Serializable {
 
 	public void setIdApplication(Long idApplication) {
 		this.idApplication = idApplication;
+	}
+
+	public List<InterviewEntity> getMyInterviews() {
+		return myInterviews;
+	}
+
+	public void setMyInterviews(List<InterviewEntity> myInterviews) {
+		this.myInterviews = myInterviews;
 	}
 
 }

@@ -1,22 +1,30 @@
 package services;
 
+import interfaces.IInterview;
+
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.InterviewDAO;
 import entities.InterviewEntity;
-import interfaces.IInterview;
 
 @Stateless
 public class InterviewImp implements IInterview {
 
 	@Inject
-	private InterviewDAO id;
+	private InterviewDAO idao;
 
 	@Override
 	public void saveInterview(InterviewEntity ent) {
-		id.saveInterview(ent);
+		idao.saveInterview(ent);
 
+	}
+
+	@Override
+	public List<InterviewEntity> findMyInterviews(Long id) {
+		return idao.findMyInterviews(id);
 	}
 
 }
