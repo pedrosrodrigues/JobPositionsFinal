@@ -37,4 +37,9 @@ public class InterviewImp implements IInterview {
 		return idao.findIntById(id);
 	}
 
+	@Override
+	public void updateInterview(InterviewEntity ient) {
+		idao.updateInterview(ient);
+	}
+
 }
