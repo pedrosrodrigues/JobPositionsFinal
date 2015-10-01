@@ -56,7 +56,7 @@
 				</p:column>
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
-					sortBy="#{position.jobStatus}">
+					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}" >
 					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
 				<p:column headerText="Edit" style="text-align: center; width:40px;">
@@ -85,7 +85,7 @@
 						<h:outputText value="Responsable" />
 						<h:outputText value="#{position.responsable}" />
 						
-						<h:outputText value="Channel" />
+						<h:outputText value="Channels" />
 						<h:outputText value="#{position.channels}" />
 						
 					</p:panelGrid>
