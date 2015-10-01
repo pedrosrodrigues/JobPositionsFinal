@@ -21,7 +21,7 @@
 			<p:column headerText="Date"
 				style="text-align: center; width:150px"
 				sortBy="#{interview.interviewDate}">
-				<h:outputText value="#{interview.interviewDate}" />
+				<h:outputText value="#{interview.interviewDate}" pattern="dd/MM/yyyy HH:mm" />
 			</p:column>
 			<p:column headerText="Candidate"
 				style="text-align: center; width:150px"

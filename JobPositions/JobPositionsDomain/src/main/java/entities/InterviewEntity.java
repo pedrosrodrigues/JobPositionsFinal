@@ -27,7 +27,7 @@ public class InterviewEntity implements Serializable {
 	@Column(nullable = false, unique = true)
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, length = 100)
 	private Date interviewDate;
 

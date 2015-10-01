@@ -179,6 +179,7 @@ public class JobPositionBean implements Serializable {
 		jent.setId(this.idJob);
 		try {
 			ij.updateJob(jent);
+			clear();
 			log.info("Position updated on database!");
 			context.addMessage(null, new FacesMessage(
 					"Position updated on database!"));
@@ -204,6 +205,7 @@ public class JobPositionBean implements Serializable {
 		jent.setId(this.idJob);
 		try {
 			ij.updateJobPosMan(jent);
+			clear();
 			log.info("Position updated on database Manager action!");
 			context.addMessage(null, new FacesMessage(
 					"Position updated on database!"));

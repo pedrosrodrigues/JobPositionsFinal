@@ -285,7 +285,7 @@
 							<p:outputLabel value="Date" for="intDate" />
 							<p:calendar id="intDate" required="true"
 								value="#{interviewBean.interviewDate}" style="width:10%;"
-								maxlength="10" size="10" pattern="dd/MM/yyyy"
+								maxlength="10" size="10" pattern="dd/MM/yyyy HH:mm"
 								mindate="#{jobPositionBean.actualDate}" />
 
 							<p:outputLabel value="Interviewer" for="interv" />
@@ -302,7 +302,7 @@
 								<f:selectItems value="#{scriptBean.scriptList}" var="spt"
 									itemValue="#{spt.scriptName}" itemLabel="#{spt}" />
 							</p:selectOneMenu>
-							<p:commandButton icon="ui-icon-disk" value="SAVE" action="#{interviewBean.createInterview}"/>
+							<p:commandButton icon="ui-icon-disk" value="SAVE" action="#{interviewBean.createInterview}" update="tab:interviewDialog:messageFormInt"/>
 
 
 						</h:panelGrid>
