@@ -27,10 +27,11 @@
 
 					<h:panelGrid columns="1" cellpadding="4px" cellspacing="4px">
 						<p:outputLabel value="SLA" for="sla" />
+							<p:outputLabel value="Vacancies" for="vacancies" />
+						
 						<p:inputText id="sla" required="true"
 							value="#{jobPositionBean.sla}" style="width:100%;" />
-						<p:outputLabel value="Vacancies" for="vacancies" />
-						<p:outputLabel value="Responsable" for="responsable"
+						<p:inputText id="vacancies" value="#{jobPositionBean.channels}" 
 							style="width:100%;" />
 
 
