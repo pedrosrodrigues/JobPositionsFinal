@@ -18,14 +18,16 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "InterviewEntity.findById", query = "SELECT i FROM InterviewEntity i WHERE i.interviewer.id=:id"),
-		@NamedQuery(name = "InterviewEntity.findAll", query = "SELECT i FROM InterviewEntity i") })
+		@NamedQuery(name = "InterviewEntity.findAll", query = "SELECT i FROM InterviewEntity i"),
+		@NamedQuery(name = "InterviewEntity.findByIdInt", query = "SELECT i FROM InterviewEntity i WHERE i.id=:id")})
 public class InterviewEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_BY_ID = "InterviewEntity.findById";
-
 	public static final String FIND_ALL = "InterviewEntity.findAll";
+	public static final String FIND_BY_ID_INT = "InterviewEntity.findByIdInt";
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

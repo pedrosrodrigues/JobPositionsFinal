@@ -4,32 +4,69 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:form id="frmInt">
-	<div id="loginfrmInt">
-		<p:messages id="submitanswerInt" closable="true" />
-		<p:dataTable value="#{interviewBean.myInterviews}" var="interview"
-			rows="8" emptyMessage="No records found." paginator="true"
-			paginatorPosition="bottom"
-			paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
+	<h:form id="frmInt">
+		<div id="loginfrmInt">
+			<p:messages id="submitanswerInt" closable="true" />
+			<p:dataTable value="#{interviewBean.myInterviews}" var="interview"
+				rows="8" emptyMessage="No records found." paginator="true"
+				paginatorPosition="bottom"
+				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			id="interviewstable" sortMode="single">
+				id="interviewstable" sortMode="single">
 
-			<p:column styleClass="jobs-table" headerText="Position"
-				style="text-align: center; width:200px" sortBy="#{interview.application.jobEntity.title}">
-				<h:outputText value="#{interview.application.jobEntity.title}" />
-			</p:column>
-			<p:column headerText="Date"
-				style="text-align: center; width:150px"
-				sortBy="#{interview.interviewDate}">
-				<h:outputText value="#{interview.interviewDate}" pattern="dd/MM/yyyy HH:mm" />
-			</p:column>
-			<p:column headerText="Candidate"
-				style="text-align: center; width:150px"
-				sortBy="#{interview.application.candidateEntity.firstname}">
-				<h:outputText value="#{interview.application.candidateEntity.firstname} #{interview.application.candidateEntity.lastname}" />
-			</p:column>
-			
-		</p:dataTable>
-	</div>
-</h:form>
+				<p:column styleClass="jobs-table" headerText="Position"
+					style="text-align: center; width:200px"
+					sortBy="#{interview.application.jobEntity.title}">
+					<h:outputText value="#{interview.application.jobEntity.title}" />
+				</p:column>
+				<p:column headerText="Date" style="text-align: center; width:150px"
+					sortBy="#{interview.interviewDate}">
+					<h:outputText value="#{interview.interviewDate}"
+						pattern="dd/MM/yyyy HH:mm" />
+				</p:column>
+				<p:column headerText="Candidate"
+					style="text-align: center; width:150px"
+					sortBy="#{interview.application.candidateEntity.firstname}">
+					<h:outputText
+						value="#{interview.application.candidateEntity.firstname} #{interview.application.candidateEntity.lastname}" />
+				</p:column>
+				<p:column headerText="Edit" style="text-align: center; width:40px;">
+					<p:commandButton icon="ui-icon-script" action="#{interviewBean.searchInterview(interview.id)}"
+						oncomplete="PF('dlgIntScript').show();" />
+				</p:column>
+
+			</p:dataTable>
+		</div>
+	</h:form>
+		<h:form id="intscriptfrm">
+		<p:dialog header="Interview Script" widgetVar="dlgIntScript" modal="true"
+			height="450" weight="300">
+			<p:messages id="messageFormInt" closable="true" />
+			<p:panel id="panelInt" style="border-width: 0px;">
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
+						cellspacing="4px">
+
+					<p:outputLabel value="Name" for="scriptName" />
+					<p:inputText id="scriptName" value="#{scriptBean.scriptName}" />
+					</h:panelGrid>
+
+					<p:outputLabel value="Question1" for="question1" />
+					<p:outputLabel value="Expected Answer" for="expquestion1" />
+
+					<p:inputText id="question1" value="#{scriptBean.question1}" />
+					<p:inputText id="expquestion1" value="#{scriptBean.expquestion1}" />
+
+					<p:outputLabel value="Question2" for="question2" />
+					<p:outputLabel value="Expected Answer" for="expquestion2" />
+
+					<p:inputText id="question2" value="#{scriptBean.question2}" />
+					<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
+
+				</h:panelGrid>
+			</p:panel>
+		
+		</p:dialog>
+	</h:form>
 </ui:composition>

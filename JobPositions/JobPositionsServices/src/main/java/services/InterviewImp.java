@@ -32,4 +32,9 @@ public class InterviewImp implements IInterview {
 		return idao.findAll();
 	}
 
+	@Override
+	public InterviewEntity findIntById(Long id) {
+		return idao.findIntById(id);
+	}
+
 }

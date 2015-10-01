@@ -26,9 +26,18 @@ public class InterviewDAO {
 		return q.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<InterviewEntity> findAll() {
 		Query q = em.createNamedQuery(InterviewEntity.FIND_ALL);
 		return q.getResultList();
 	}
+	
+	public InterviewEntity findIntById(Long id) {
+		Query q = em.createNamedQuery(InterviewEntity.FIND_BY_ID_INT);
+		q.setParameter("id", id);
+		return (InterviewEntity) q.getSingleResult();
+	}
+	
+	
 
 }

@@ -58,7 +58,7 @@ public class ScriptBean implements Serializable{
 	public void init() {
 		scriptList = is.findAll();
 	}
-	
+
 	public ScriptBean() {
 		types.add("Formação");
 		types.add("Motivação da Candidatura");
@@ -101,7 +101,7 @@ public class ScriptBean implements Serializable{
 			log.info("Guide saved on database!");
 			context.addMessage(null, new FacesMessage("Guide created!"));
 			this.scriptList.add(ent);
-		
+
 		} catch (Exception e) {
 			log.error("Problem saving guide!");
 			context.addMessage(null, new FacesMessage(
@@ -109,22 +109,27 @@ public class ScriptBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
-	
-public void clear(){
-	this.scriptName= null;
-	this.question1= null;
-	this.question2= null;
-	this.question3= null;
-	this.question4 = null;
-	this.question5 = null;
-	this.expquestion1 = null;
-	this.expquestion2 = null;
-	this.expquestion3 = null;
-	this.expquestion4 = null;
-	this.expquestion5 = null;
-}
 
+	public void clear(){
+		this.scriptName= null;
+		this.question1= null;
+		this.question2= null;
+		this.question3= null;
+		this.question4 = null;
+		this.question5 = null;
+		this.expquestion1 = null;
+		this.expquestion2 = null;
+		this.expquestion3 = null;
+		this.expquestion4 = null;
+		this.expquestion5 = null;
+	}
+
+	public void updateScript(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to update a guide on database...");
+		ScriptEntity ent = new ScriptEntity();	
+	}
+	
 	public String getScriptName() {
 		return scriptName;
 	}
@@ -252,7 +257,7 @@ public void clear(){
 		this.expquestion5 = expquestion5;
 	}
 
-	
+
 
 }
 
