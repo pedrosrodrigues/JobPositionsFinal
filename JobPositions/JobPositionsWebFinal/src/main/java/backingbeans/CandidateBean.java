@@ -48,7 +48,6 @@ public class CandidateBean implements Serializable {
 	private String value;
 	private String field;
 	private List<CandidateEntity> candidatesList = new ArrayList<CandidateEntity>();
-	private CandidateEntity candidate;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(CandidateBean.class);
@@ -78,12 +77,14 @@ public class CandidateBean implements Serializable {
 			page = "/Login.xhtml?faces-redirect=true";
 			this.address = "";
 			this.city = "";
-			this.country= "";
+			this.country = "";
 
 			log.info("Candidate saved!");
 		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(
-					"Problem saving candidate on database!Someone already has that email. Try another?"));
+			context.addMessage(
+					null,
+					new FacesMessage(
+							"Problem saving candidate on database!Someone already has that email. Try another?"));
 			log.error("Problem saving candidate!");
 			e.printStackTrace();
 		}

@@ -44,9 +44,9 @@ public class ApplicationDAO {
 	public void update(ApplicationEntity aent) {
 		Query q = em
 				.createQuery("UPDATE ApplicationEntity SET appStatus =:appStatus WHERE id =:idApplication");
-		q.setParameter("idApplication",aent.getId());
+		q.setParameter("idApplication", aent.getId());
 		q.setParameter("appStatus", aent.getAppStatus());
-		q.executeUpdate();	
+		q.executeUpdate();
 	}
 
 	public ApplicationEntity findById(Long id) {
@@ -55,6 +55,11 @@ public class ApplicationDAO {
 		return (ApplicationEntity) q.getSingleResult();
 	}
 
-
+	@SuppressWarnings("unchecked")
+	public List<ApplicationEntity> findGenAppCand() {
+		Query q = em.createNamedQuery(ApplicationEntity.FIND_GEN_APP_CAND);
+		q.setParameter("title", "General Application");
+		return q.getResultList();
+	}
 
 }

@@ -88,7 +88,7 @@ public class CandidateImp implements ICandidate {
 	}
 
 	@Override
-	public List<CandidateEntity>findByLastName(String lname) {
+	public List<CandidateEntity> findByLastName(String lname) {
 		return cd.findByLastName(lname);
 	}
 
@@ -131,4 +131,5 @@ public class CandidateImp implements ICandidate {
 	public List<CandidateEntity> findByEmailList(String email) {
 		return cd.findByEmailList(email);
 	}
+
 }

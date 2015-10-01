@@ -54,6 +54,7 @@ public class ApplicationBean implements Serializable {
 	private List<ApplicationEntity> listApp = new ArrayList<ApplicationEntity>();
 	private List<ApplicationEntity> listPosApp = new ArrayList<ApplicationEntity>();
 	private List<UserEntity> interviewerList = new ArrayList<UserEntity>();
+	private List<ApplicationEntity> candidatesGenAppList = new ArrayList<ApplicationEntity>();
 	private String interviewerEmail;
 
 	private static final Logger log = LoggerFactory
@@ -73,6 +74,7 @@ public class ApplicationBean implements Serializable {
 		if (ia.saveApplication(aent)) {
 			log.info("Application saved on database!");
 			context.addMessage(null, new FacesMessage("Application saved!"));
+			init();
 		} else {
 			log.error("Application already submited!");
 			context.addMessage(
@@ -114,6 +116,7 @@ public class ApplicationBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		interviewerList = iu.findAllInterviewers();
+		candidatesGenAppList = ia.findGenAppCand();
 	}
 
 	public void start() {
@@ -163,6 +166,15 @@ public class ApplicationBean implements Serializable {
 
 	public void setInterviewerEmail(String interviewerEmail) {
 		this.interviewerEmail = interviewerEmail;
+	}
+
+	public List<ApplicationEntity> getCandidatesGenAppList() {
+		return candidatesGenAppList;
+	}
+
+	public void setCandidatesGenAppList(
+			List<ApplicationEntity> candidatesGenAppList) {
+		this.candidatesGenAppList = candidatesGenAppList;
 	}
 
 }

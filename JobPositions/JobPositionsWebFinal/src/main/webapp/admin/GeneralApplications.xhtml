@@ -1,0 +1,31 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:form id="frmGenApp">
+		<div id="loginfrm">
+			<p:messages id="msgGenApp" closable="true" />
+			<p:panel id="panel" style="border-width: 0px;">
+
+				<p:dataTable id="genApp" value="#{applicationBean.candidatesGenAppList}"
+					var="genapplist" rows="10" emptyMessage="No records found."
+					paginator="true" paginatorPosition="bottom"
+					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+					<p:column styleClass="jobs-table" headerText="Name"
+						style="text-align: center; width:200px">
+						<h:outputText value="#{genapplist.candidateEntity.firstname}" />
+					</p:column>
+
+				
+					
+
+				</p:dataTable>
+			</p:panel>
+		</div>
+	</h:form>
+
+</ui:composition>

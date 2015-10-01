@@ -34,6 +34,9 @@ public class JobPositionBean implements Serializable {
 	@Inject
 	private IUser iu;
 
+	@Inject
+	private ApplicationBean ab;
+
 	private Date creationDate;
 	private Date finalDate;
 	private String jobDescription;
@@ -72,6 +75,7 @@ public class JobPositionBean implements Serializable {
 		jobpositionsfilter = jobpositions;
 		jobpositions = ij.findAll();
 		jobpositionsopen = ij.findAllOpen();
+		ab.init();
 	}
 
 	public void saveJobPosition() {

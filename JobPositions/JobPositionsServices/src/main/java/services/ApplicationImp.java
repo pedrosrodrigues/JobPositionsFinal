@@ -2,8 +2,6 @@ package services;
 
 import interfaces.IApplication;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import javax.inject.Inject;
 
 import dao.ApplicationDAO;
 import entities.ApplicationEntity;
-import entities.JobEntity;
 
 @Stateless
 public class ApplicationImp implements IApplication {
@@ -43,12 +40,17 @@ public class ApplicationImp implements IApplication {
 	}
 
 	@Override
+	public List<ApplicationEntity> findGenAppCand() {
+		return ap.findGenAppCand();
+	}
+
+	@Override
 	public List<ApplicationEntity> findByJobCand(Long id) {
 		return ap.findByJobCand(id);
 	}
 
 	@Override
-	public void updateApplication(ApplicationEntity aent) {			
+	public void updateApplication(ApplicationEntity aent) {
 		ap.update(aent);
 	}
 
@@ -58,6 +60,3 @@ public class ApplicationImp implements IApplication {
 	}
 
 }
-
-
-

@@ -19,4 +19,6 @@ public interface IApplication {
 
 	public void updateApplication(ApplicationEntity aent);
 
+	public List<ApplicationEntity> findGenAppCand();
+
 }

@@ -17,21 +17,21 @@ public interface ICandidate {
 
 	public List<CandidateEntity> findByFirstName(String firstname);
 
-	public List<CandidateEntity>  findByLastName(String lastname);
+	public List<CandidateEntity> findByLastName(String lastname);
 
-	public List<CandidateEntity>  findByAdress(String adress);
+	public List<CandidateEntity> findByAdress(String adress);
 
-	public List<CandidateEntity>  findByCiy(String city);
+	public List<CandidateEntity> findByCiy(String city);
 
-	public List<CandidateEntity>  findByPhone(String phone);
+	public List<CandidateEntity> findByPhone(String phone);
 
-	public List<CandidateEntity>  findByMobile(String mobile);
+	public List<CandidateEntity> findByMobile(String mobile);
 
-	public List<CandidateEntity>  findByCountry(String country);
+	public List<CandidateEntity> findByCountry(String country);
 
-	public List<CandidateEntity>  findByCourse(String course);
+	public List<CandidateEntity> findByCourse(String course);
 
-	public List<CandidateEntity>  findBySchool(String school);
+	public List<CandidateEntity> findBySchool(String school);
 
 	public List<CandidateEntity> findByEmailList(String email);
 
