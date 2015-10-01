@@ -5,11 +5,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<div id="loginfrm">
-		<h:form id="frmMan">
+		<h:form id="frmM">
 
 			<p:dataTable value="#{jobPositionBean.responsableJobList}"
 				var="position" rows="8" emptyMessage="No records found."
-				paginator="true" paginatorPosition="bottom" widgetVar="tableJobs"
+				paginator="true" paginatorPosition="bottom" widgetVar="tableJobsM"
 				filteredValue="#{jobPositionBean.jobpositionsfilter}"
 				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -17,8 +17,9 @@
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Search all fields: " />
-						<p:inputText id="globalFilterM" onkeyup="PF('tableJobs').filter()"
-							style="width:150px" placeholder="Enter keyword" />
+						<p:inputText id="globalFilterM"
+							onkeyup="PF('tableJobsM').filter()" style="width:150px"
+							placeholder="Enter keyword" />
 					</p:outputPanel>
 				</f:facet>
 
@@ -57,26 +58,20 @@
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
 					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}">
-					<p:selectOneMenu id="status" value="#{jobPositionBean.status}"
-						required="true">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItem itemLabel="Open" itemValue="OPEN" />
-						<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD" />
-						<f:selectItem itemLabel="Closed" itemValue="CLOSED" />
-					</p:selectOneMenu>
+				<h:outputText value="#{position.jobStatus}" />
 				</p:column>
-				<p:column>
-				<p:commandButton value="SAVE"
-					action="#{jobPositionBean.updateJobPosMan}"
-					update="tabM:frmMan:jobstableM"
-					oncomplete="PF('tableJobs').clearFilters()" />
-					</p:column>
-				<p:column headerText=""
-					style="text-align: center; width:40px;">
+
+				<p:column headerText="Edit" style="text-align: center; width:40px;">
+					<p:commandButton icon="ui-icon-pencil"
+						action="#{jobPositionBean.jobInfo(position.id)}"
+						update="tabM:editpositiofrmM:panelM" oncomplete="PF('dlg3M').show();" />
+
+				</p:column>
+				<p:column headerText="" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-person"
 						action="#{applicationBean.searchCandidates(position.id)}"
 						update="tabM:candidatesformM:candidatesforpositionM"
-						oncomplete="PF('dlg2').show();" />
+						oncomplete="PF('dlg2M').show();" />
 				</p:column>
 
 				<p:column style="width:16px">
@@ -106,7 +101,7 @@
 		</h:form>
 
 		<h:form id="candidatesformM">
-			<p:dialog header="Candidates" widgetVar="dlg2" modal="true"
+			<p:dialog header="Candidates" widgetVar="dlg2M" modal="true"
 				height="300" weight="100">
 				<p:dataTable id="candidatesforpositionM"
 					value="#{applicationBean.listPosApp}" var="candlist" rows="10"
@@ -130,11 +125,11 @@
 						sortBy="#{candlist.candidateEntity.email}">
 						<h:outputText value="#{candlist.candidateEntity.email}" />
 					</p:column>
-					
+
 					<p:rowExpansion id="rowselection" style="width:500px; height:500px">
 						<div class="out">
 							<div class="in">
-								<p:panelGrid columns="2" style="width:300px; height:500px">
+								<p:panelGrid columns="2" style="width:500px; height:500px">
 
 									<f:facet name="header">
 										<h:outputText value="Candidate profile" />
@@ -161,23 +156,41 @@
 									<h:outputText value="School" />
 									<h:outputText value="#{candlist.candidateEntity.course}" />
 								</p:panelGrid>
-								<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}"
-									target="_blank"> <p:graphicImage
-										title="Open motivation letter" styleClass="social-img"
-										library="images" name="ml_icon.png" />
-								</a> <a href="#{systemUser.cvPath(candlist.candidateEntity.email)}"
-									target="_blank"> <p:graphicImage title="Open CV"
-										styleClass="social-img" library="images"
-										name="cv_icon_red.png" />
-								</a>
-
 							</div>
 						</div>
 					</p:rowExpansion>
 				</p:dataTable>
 			</p:dialog>
 		</h:form>
+		<h:form id="editpositiofrmM">
+			<p:dialog header="Edit Job Position" widgetVar="dlg3M" modal="true"
+				height="450" weight="300">
+				<p:messages id="messageForm2M" closable="true" />
+				<p:panel id="panelM" style="border-width: 0px;">
+					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+						cellspacing="4px">
+			
+						<p:outputLabel value="Status" for="status" />
+
+						<p:selectOneMenu id="status" value="#{jobPositionBean.status}"
+							required="true">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Open" itemValue="OPEN" />
+							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD" />
+							<f:selectItem itemLabel="Closed" itemValue="CLOSED" />
+						</p:selectOneMenu>
+		
+					</h:panelGrid>
+				</p:panel>
+				<h:panelGrid columns="1">
+					<p:commandButton value="SAVE"
+						action="#{jobPositionBean.updateJobPosMan}"
+						update="tabM:frmM:jobstableM messageForm2M"
+						oncomplete="PF('tableJobsM').clearFilters()" />
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
 
 
-		</div>
+	</div>
 </ui:composition>

@@ -84,6 +84,8 @@ public class JobPositionBean implements Serializable {
 
 	public void startList(){
 		responsableJobList = ij.findResponsable(su.getUserlogado().getEmail());
+		start();
+		init();
 	}
 
 	public void saveJobPosition() {

@@ -50,7 +50,7 @@ public class JobPositionImp implements IJobPosition {
 
 	@Override
 	public void updateJobPosMan(JobEntity ent) {
-		job.update(ent);
+		job.updateJobPosMan(ent);
 		
 	}
 }
