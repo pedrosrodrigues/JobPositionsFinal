@@ -84,6 +84,30 @@ public class ApplicationBean implements Serializable {
 		}
 	}
 
+	public void saveAdminApp(Long idPosition, String email) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to save an application on database...");
+		Date dateobj = new Date();
+		cent = ic.findByEmail(email);
+		jent = ijp.findById(idPosition);
+		ApplicationEntity aent = new ApplicationEntity();
+		aent.setCandidateEntity(cent);
+		aent.setJobEntity(jent);
+		aent.setAppStatus(ApplicationStatus.SUBMITTED);
+		aent.setAplicationDate(dateobj);
+		if (ia.saveApplication(aent)) {
+			log.info("Application saved on database!");
+			context.addMessage(null, new FacesMessage("Application saved!"));
+			init();
+		} else {
+			log.error("Application already submited!");
+			context.addMessage(
+					null,
+					new FacesMessage(
+							"User has already submitted an application for this job position!"));
+		}
+	}
+
 	public void updateApp(Long idApplication) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to update an application on database...");

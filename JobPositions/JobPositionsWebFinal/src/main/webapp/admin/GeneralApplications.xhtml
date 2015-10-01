@@ -10,19 +10,42 @@
 			<p:messages id="msgGenApp" closable="true" />
 			<p:panel id="panel" style="border-width: 0px;">
 
-				<p:dataTable id="genApp" value="#{applicationBean.candidatesGenAppList}"
-					var="genapplist" rows="10" emptyMessage="No records found."
-					paginator="true" paginatorPosition="bottom"
+				<p:dataTable id="genApp"
+					value="#{applicationBean.candidatesGenAppList}" var="genapplist"
+					rows="10" emptyMessage="No records found." paginator="true"
+					paginatorPosition="bottom"
 					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 					<p:column styleClass="jobs-table" headerText="Name"
 						style="text-align: center; width:200px">
-						<h:outputText value="#{genapplist.candidateEntity.firstname}" />
+						<h:outputText
+							value="#{genapplist.candidateEntity.firstname} #{genapplist.candidateEntity.lastname}" />
 					</p:column>
-
-				
-					
-
+					<p:column styleClass="jobs-table" headerText="Email"
+						style="text-align: center; width:200px">
+						<h:outputText value="#{genapplist.candidateEntity.email}" />
+					</p:column>
+					<p:column style="width:16px">
+						<p:rowToggler />
+					</p:column>
+					<p:rowExpansion id="rowselection">
+						<p:dataTable id="listAllPos"
+							value="#{jobPositionBean.jobpositionsopen}" var="allposlist"
+							rows="10" emptyMessage="No records found." paginator="true"
+							paginatorPosition="bottom"
+							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+							<p:column styleClass="jobs-table" headerText="Title"
+								style="text-align: center; width:50px">
+								<h:outputText value="#{allposlist.title}" />
+							</p:column>
+							<p:column styleClass="jobs-table" headerText="Associate"
+								style="text-align: center; width:200px">
+								<p:commandButton icon="ui-icon-disk"
+									action="#{applicationBean.saveAdminApp(allposlist.id, genapplist.candidateEntity.email)}" 
+									update="tab:frmGenApp:msgGenApp"/>
+							</p:column>
+						</p:dataTable>
+					</p:rowExpansion>
 				</p:dataTable>
 			</p:panel>
 		</div>
