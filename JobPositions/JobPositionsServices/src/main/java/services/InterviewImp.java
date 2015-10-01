@@ -27,4 +27,9 @@ public class InterviewImp implements IInterview {
 		return idao.findMyInterviews(id);
 	}
 
+	@Override
+	public List<InterviewEntity> findAll() {
+		return idao.findAll();
+	}
+
 }

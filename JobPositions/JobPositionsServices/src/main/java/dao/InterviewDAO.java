@@ -26,4 +26,9 @@ public class InterviewDAO {
 		return q.getResultList();
 	}
 
+	public List<InterviewEntity> findAll() {
+		Query q = em.createNamedQuery(InterviewEntity.FIND_ALL);
+		return q.getResultList();
+	}
+
 }

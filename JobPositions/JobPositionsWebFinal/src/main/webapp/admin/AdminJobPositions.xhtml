@@ -56,7 +56,7 @@
 				</p:column>
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
-					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}" >
+					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}">
 					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
 				<p:column headerText="Edit" style="text-align: center; width:40px;">
@@ -84,10 +84,10 @@
 
 						<h:outputText value="Responsable" />
 						<h:outputText value="#{position.responsable}" />
-						
+
 						<h:outputText value="Channels" />
 						<h:outputText value="#{position.channels}" />
-						
+
 					</p:panelGrid>
 
 					<p:panelGrid columns="1" style="width:100%;">
@@ -149,6 +149,11 @@
 								itemValue="REJECTED" />
 							<f:selectItem id="item5" itemLabel="Hired" itemValue="HIRED" />
 						</p:selectOneMenu>
+						<p:commandButton icon="ui-icon-folder-open"
+							rendered="#{interviewBean.checkInterview(candlist.id)}"
+							action="interviewBean.searchInterviewResults(candlist.id)"
+							oncomplete="PF('dlg4').show();" >
+						</p:commandButton>
 					</p:column>
 					<p:column styleClass="jobs-table" headerText="Save"
 						style="text-align: center; width:200px">
@@ -219,12 +224,12 @@
 						</h:panelGrid>
 						<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 							<p:outputLabel value="SLA" for="sla" />
-							<p:outputLabel value="Vacancies" for="vacancies"/>
+							<p:outputLabel value="Vacancies" for="vacancies" />
 
 							<p:inputText id="sla" value="#{jobPositionBean.sla}"
 								style="width:100%;" />
-								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-								
+							<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
+
 						</h:panelGrid>
 
 						<p:outputLabel value="Title" for="title" />
@@ -302,11 +307,31 @@
 								<f:selectItems value="#{scriptBean.scriptList}" var="spt"
 									itemValue="#{spt.scriptName}" itemLabel="#{spt}" />
 							</p:selectOneMenu>
-							<p:commandButton icon="ui-icon-disk" value="SAVE" action="#{interviewBean.createInterview}" update="tab:interviewDialog:messageFormInt"/>
+							<p:commandButton icon="ui-icon-disk" value="SAVE"
+								action="#{interviewBean.createInterview}"
+								update="tab:interviewDialog:messageFormInt" />
 
 
 						</h:panelGrid>
 					</p:panel>
+				</div>
+			</p:dialog>
+
+		</h:form>
+		<h:form id="intervResult">
+			<p:dialog header="Interview Result" widgetVar="dlg4" modal="true"
+				height="300" weight="100">
+				<div id="loginfrm">
+					<h:panelGrid id="intresultpanel" styleClass="inputTable"
+						columns="3" cellpadding="4px" cellspacing="4px">
+						<p:outputLabel value="Question" />
+						<p:outputLabel value="Expected Answer" />
+						<p:outputLabel value="Answer" />
+						
+						<p:outputLabel value="#{interviewBean.currentInt.script.question1}" />
+						<p:outputLabel value="Expected Answer" />
+						<p:outputLabel value="Answer" />
+					</h:panelGrid>
 				</div>
 			</p:dialog>
 

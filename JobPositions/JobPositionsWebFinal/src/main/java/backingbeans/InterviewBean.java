@@ -46,6 +46,8 @@ public class InterviewBean implements Serializable {
 	@Inject
 	private IApplication ia;
 
+	private InterviewEntity currentInt;
+	private ApplicationEntity currentApp;
 	private Date interviewDate;
 	private ScriptEntity script;
 	private UserEntity interviewer;
@@ -54,6 +56,7 @@ public class InterviewBean implements Serializable {
 	private String interviewerEmail;
 	private Long idApplication;
 	private List<InterviewEntity> myInterviews = new ArrayList<InterviewEntity>();
+	private List<InterviewEntity> allInterviews = new ArrayList<InterviewEntity>();
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
@@ -82,6 +85,25 @@ public class InterviewBean implements Serializable {
 			context.addMessage(null, new FacesMessage(
 					"There was a problem appointing the interview!"));
 		}
+	}
+
+	public void searchInterviewResults(Long idApp) {
+		this.currentApp = ia.findById(idApp);
+		for (InterviewEntity inter : allInterviews) {
+			if (inter.getApplication().getId() == idApp && inter.isApproved()) {
+				this.currentInt = inter;
+			}
+		}
+	}
+
+	public boolean checkInterview(Long idApp) {
+		allInterviews = ii.findAll();
+		for (InterviewEntity inter : allInterviews) {
+			if (inter.getApplication().getId() == idApp && inter.isApproved()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Date getInterviewDate() {
@@ -146,6 +168,30 @@ public class InterviewBean implements Serializable {
 
 	public void setMyInterviews(List<InterviewEntity> myInterviews) {
 		this.myInterviews = myInterviews;
+	}
+
+	public List<InterviewEntity> getAllInterviews() {
+		return allInterviews;
+	}
+
+	public void setAllInterviews(List<InterviewEntity> allInterviews) {
+		this.allInterviews = allInterviews;
+	}
+
+	public ApplicationEntity getCurrentApp() {
+		return currentApp;
+	}
+
+	public void setCurrentApp(ApplicationEntity currentApp) {
+		this.currentApp = currentApp;
+	}
+
+	public InterviewEntity getCurrentInt() {
+		return currentInt;
+	}
+
+	public void setCurrentInt(InterviewEntity currentInt) {
+		this.currentInt = currentInt;
 	}
 
 }

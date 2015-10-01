@@ -68,7 +68,6 @@ public class SystemUser implements Serializable {
 						+ iu.searchUser(email).getId()
 						+ iu.searchUser(email).getName() + "CV"
 						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
-		System.out.println(exists);
 		return exists;
 	}
 
@@ -78,7 +77,6 @@ public class SystemUser implements Serializable {
 						+ iu.searchUser(email).getId()
 						+ iu.searchUser(email).getName() + "ML"
 						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
-		System.out.println(exists);
 		return exists;
 	}
 
