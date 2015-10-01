@@ -40,10 +40,15 @@ public class ScriptBean implements Serializable{
 	private List<String> types = new ArrayList<>();
 	private List<String> questions = new ArrayList<>();
 	private String question1;
+	private String expquestion1;
 	private String question2;
+	private String expquestion2;
 	private String question3;
+	private String expquestion3;
 	private String question4;
+	private String expquestion4;
 	private String question5;
+	private String expquestion5;
 	private List<ScriptEntity> scriptList = new ArrayList<ScriptEntity>();
 
 	private static final Logger log = LoggerFactory
@@ -85,18 +90,18 @@ public class ScriptBean implements Serializable{
 		ent.setQuestion3(question3);
 		ent.setQuestion4(question4);
 		ent.setQuestion5(question5);
-		System.out.println("Trying to create a new guide on database...");
+		ent.setExpquestion1(expquestion1);
+		ent.setExpquestion2(expquestion2);
+		ent.setExpquestion3(expquestion3);
+		ent.setExpquestion4(expquestion4);
+		ent.setExpquestion5(expquestion5);
 		try {
 			is.saveScript(ent);
+			clear();
 			log.info("Guide saved on database!");
 			context.addMessage(null, new FacesMessage("Guide created!"));
 			this.scriptList.add(ent);
-			this.scriptName= null;
-			this.question1= null;
-			this.question2= null;
-			this.question3= null;
-			this.question4 = null;
-			this.question5 = null;
+		
 		} catch (Exception e) {
 			log.error("Problem saving guide!");
 			context.addMessage(null, new FacesMessage(
@@ -104,12 +109,21 @@ public class ScriptBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
-//	
-//	public void loadsriptlist(){
-//		System.out.println("a tentar imprimir script list");
-//		scriptList = is.findAll();
-//		System.out.println(this.scriptList);
-//	}
+	
+	
+public void clear(){
+	this.scriptName= null;
+	this.question1= null;
+	this.question2= null;
+	this.question3= null;
+	this.question4 = null;
+	this.question5 = null;
+	this.expquestion1 = null;
+	this.expquestion2 = null;
+	this.expquestion3 = null;
+	this.expquestion4 = null;
+	this.expquestion5 = null;
+}
 
 	public String getScriptName() {
 		return scriptName;
@@ -198,6 +212,47 @@ public class ScriptBean implements Serializable{
 		this.questions = questions;
 	}
 
+	public String getExpquestion1() {
+		return expquestion1;
+	}
+
+	public void setExpquestion1(String expquestion1) {
+		this.expquestion1 = expquestion1;
+	}
+
+	public String getExpquestion2() {
+		return expquestion2;
+	}
+
+	public void setExpquestion2(String expquestion2) {
+		this.expquestion2 = expquestion2;
+	}
+
+	public String getExpquestion3() {
+		return expquestion3;
+	}
+
+	public void setExpquestion3(String expquestion3) {
+		this.expquestion3 = expquestion3;
+	}
+
+	public String getExpquestion4() {
+		return expquestion4;
+	}
+
+	public void setExpquestion4(String expquestion4) {
+		this.expquestion4 = expquestion4;
+	}
+
+	public String getExpquestion5() {
+		return expquestion5;
+	}
+
+	public void setExpquestion5(String expquestion5) {
+		this.expquestion5 = expquestion5;
+	}
+
+	
 
 }
 

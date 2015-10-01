@@ -34,7 +34,7 @@ public class ScriptEntity implements Serializable {
 	@OneToMany(mappedBy = "script", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<InterviewEntity> intList = new ArrayList<>();
 
-	@Column(nullable = true, unique = true)
+	@Column(nullable = false, unique = true)
 	private String scriptName;
 
 	@Column(nullable = true, length = 100)
@@ -51,6 +51,21 @@ public class ScriptEntity implements Serializable {
 
 	@Column(nullable = true, length = 100)
 	private String question5;
+	
+	@Column(nullable = true, length = 100)
+	private String expquestion1;
+
+	@Column(nullable = true, length = 100)
+	private String expquestion2;
+
+	@Column(nullable = true, length = 100)
+	private String expquestion3;
+
+	@Column(nullable = true, length = 100)
+	private String expquestion4;
+
+	@Column(nullable = true, length = 100)
+	private String expquestion5;
 
 	public Long getId() {
 		return id;
@@ -106,6 +121,46 @@ public class ScriptEntity implements Serializable {
 
 	public void setQuestion5(String question5) {
 		this.question5 = question5;
+	}
+
+	public String getExpquestion1() {
+		return expquestion1;
+	}
+
+	public void setExpquestion1(String expquestion1) {
+		this.expquestion1 = expquestion1;
+	}
+
+	public String getExpquestion2() {
+		return expquestion2;
+	}
+
+	public void setExpquestion2(String expquestion2) {
+		this.expquestion2 = expquestion2;
+	}
+
+	public String getExpquestion3() {
+		return expquestion3;
+	}
+
+	public void setExpquestion3(String expquestion3) {
+		this.expquestion3 = expquestion3;
+	}
+
+	public String getExpquestion4() {
+		return expquestion4;
+	}
+
+	public void setExpquestion4(String expquestion4) {
+		this.expquestion4 = expquestion4;
+	}
+
+	public String getExpquestion5() {
+		return expquestion5;
+	}
+
+	public void setExpquestion5(String expquestion5) {
+		this.expquestion5 = expquestion5;
 	}
 
 	@Override

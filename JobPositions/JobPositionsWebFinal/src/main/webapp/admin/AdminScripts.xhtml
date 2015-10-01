@@ -8,76 +8,160 @@
 		<div id="loginfrm">
 			<p:messages id="msgGuide" closable="true" />
 			<p:panel id="panelGuide" style="border-width: 0px;">
-				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
-					cellspacing="4px">
-
-					<p:outputLabel value="Name" for="name" />
-					<p:inputText id="name" value="#{scriptBean.scriptName}" />
-
-					<p:outputLabel value="Question A" for="questionA" />
-					<p:selectOneMenu id="questionA" value="#{scriptBean.question1}">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="Question 1" itemValue="Question 1" />
-						<f:selectItem itemLabel="Question 2" itemValue="Question 2" />
-						<f:selectItem itemLabel="Question 3" itemValue="Question 3" />
-					</p:selectOneMenu>
-
-					<p:outputLabel value="Question B" for="questionB" />
-					<p:selectOneMenu id="questionB" value="#{scriptBean.question2}">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="Question 4" itemValue="Question 4" />
-						<f:selectItem itemLabel="Question 5" itemValue="Question 5" />
-						<f:selectItem itemLabel="Question 6" itemValue="Question 6" />
-					</p:selectOneMenu>
-
-					<p:outputLabel value="Question C" for="questionC" />
-					<p:selectOneMenu id="questionC" value="#{scriptBean.question3}">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="Question 7" itemValue="Question 7" />
-						<f:selectItem itemLabel="Question 8" itemValue="Question 8" />
-						<f:selectItem itemLabel="Question 9" itemValue="Question 9" />
-					</p:selectOneMenu>
-
-					<p:outputLabel value="Question D" for="questionD" />
-					<p:selectOneMenu id="questionD" value="#{scriptBean.question4}">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="Question 10" itemValue="Question A" />
-						<f:selectItem itemLabel="Question 11" itemValue="Question A" />
-						<f:selectItem itemLabel="Question 12" itemValue="Question A" />
-					</p:selectOneMenu>
-
-					<p:outputLabel value="Question E" for="questionE" />
-					<p:inputTextarea id="questionE" value="#{scriptBean.question5}" />
-
-				</h:panelGrid>
 				<div class="out">
 					<div class="in">
-						<h:panelGrid columns="1">
-							<p:commandButton value="SAVE" action="#{scriptBean.createScript}"
-								update="tab:frmGuide:msgGuide panelGuide"
-								listener="scriptBean.loadsriptlist" />
+						<h:panelGrid styleClass="inputTableI" columns="4"
+							cellpadding="4px" cellspacing="4px">
+
+							<p:outputLabel value="Name" for="name" />
+							<p:inputText id="name" value="#{scriptBean.scriptName}" />
+
+							<p:outputLabel value="" />
+							<p:outputLabel value="" />
+
+							<p:outputLabel value="Formation" for="questionA" />
+							<p:selectOneMenu id="questionA" value="#{scriptBean.question1}"
+								style="width:100%;">
+								<f:selectItem itemLabel="Select One" />
+								<f:selectItem itemLabel="Pretende continuar a estudar?"
+									itemValue="Pretende continuar a estudar?" />
+								<f:selectItem
+									itemLabel="De que modo pretende continuar a estudar?"
+									itemValue="De que modo pretende continuar a estudar?" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Expect Answer" for="expquestionA" />
+							<p:inputText id="expquestionA" value="#{scriptBean.expquestion1}"
+								style="width:100%;" />
+
+
+							<p:outputLabel value="Motivation" for="questionB" />
+							<p:selectOneMenu id="questionB" value="#{scriptBean.question2}"
+								style="width:100%;">
+								<f:selectItem itemLabel="Select One" />
+								<f:selectItem
+									itemLabel="O que o motiva para se candidatar a esta funcao?"
+									itemValue="O que o motiva para se candidatar a esta funcao?" />
+								<f:selectItem itemLabel="Porque a nossa empresa?"
+									itemValue="Porque a nossa empresa?" />
+								<f:selectItem
+									itemLabel="Pensando na sua carreira profissional o que gostaria de estar a fazer daqui a 3 anos?"
+									itemValue="Pensando na sua carreira profissional o que gostaria de estar a fazer daqui a 3 anos?" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Expect Answer" for="expquestionB" />
+							<p:inputText id="expquestionB" value="#{scriptBean.expquestion2}"
+								style="width:100%;" />
+
+
+							<p:outputLabel value="Expectation" for="questionC" />
+							<p:selectOneMenu id="questionC" value="#{scriptBean.question3}"
+								style="width:100%;">
+								<f:selectItem itemLabel="Select One" />
+								<f:selectItem
+									itemLabel="Qual a sua expectativa de salario para a funcao que se esta a candidatar?"
+									itemValue="Qual a sua expectativa de salario para a funcao que se esta a candidatar?" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Expect Answer" for="expquestionC" />
+							<p:inputText id="expquestionC" value="#{scriptBean.expquestion3}"
+								style="width:100%;" />
+
+							<p:outputLabel value="Personal Skills" for="questionD" />
+							<p:selectOneMenu id="questionD" value="#{scriptBean.question4}"
+								style="width:100%;">
+								<f:selectItem itemLabel="Select One" />
+								<f:selectItem
+									itemLabel="Como pensa que e visto pelos seus amigos?"
+									itemValue="Como pensa que e visto pelos seus amigos?" />
+								<f:selectItem
+									itemLabel="Como pensa que e visto pelos seus colegas de trabalho?"
+									itemValue="Como pensa que e visto pelos seus colegas de trabalho?" />
+							</p:selectOneMenu>
+							<p:outputLabel value="Expect Answer" for="expquestionD" />
+							<p:inputText id="expquestionD" value="#{scriptBean.expquestion4}"
+								style="width:100%;" />
+
+
+							<p:outputLabel value="Expectation" for="questionE" />
+							<p:inputTextarea id="questionE"
+								value="#{scriptBean.question5}" style="width:100%;" />
+							<p:outputLabel value="Expect Answer" for="expquestionE" />
+							<p:inputText id="expquestionE" value="#{scriptBean.expquestion5}"
+								style="width:100%;" />
 						</h:panelGrid>
-					</div>
-				</div>
+						<div class="out">
+							<div class="in">
+								<h:panelGrid columns="1">
+									<p:commandButton value="SAVE"
+										action="#{scriptBean.createScript}"
+										update="tab:frmGuide:msgGuide panelGuide"
+										listener="scriptBean.loadsriptlist" />
+								</h:panelGrid>
+							</div>
+						</div>
+						<p:dataTable id="tbl" var="script"
+							value="#{scriptBean.scriptList}" rows="10"
+							emptyMessage="No records found." paginator="true"
+							paginatorPosition="bottom"
+							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							style="width:100%;">
 
-				<p:dataTable id="tbl" var="script" value="#{scriptBean.scriptList}"
-					rows="10" emptyMessage="No records found." paginator="true"
-					paginatorPosition="bottom"
-					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+							<p:column styleClass="jobs-table" headerText="Name"
+								style="text-align: center;">
+								<h:outputText value="#{script.scriptName}" />
+							</p:column>
 
-					<p:column styleClass="jobs-table" headerText="Name"
-						style="text-align: center; width:200px">
-						<h:outputText value="#{script.scriptName}" />
-					</p:column>
+							<p:column headerText="Edit"
+								style="text-align: center; width:40px;">
+								<p:commandButton icon="ui-icon-pencil"
+									oncomplete="PF('dlgEditScript').show();" />
+							</p:column>
 
-				</p:dataTable>
-<!-- 		<h:commandLink id="excel">
+							<p:column headerText=" " style="text-align: center; width:40px;">
+								<p:commandButton icon="ui-icon-trash" />
+							</p:column>
+
+						</p:dataTable>
+						<!-- 		<h:commandLink id="excel">
 					<p:graphicImage styleClass="social-img" value="../resources/images/excel.png" />
 					<p:dataExporter type="xls" target="tbl" fileName="sript" />
 				</h:commandLink>  -->
-
+					</div>
+				</div>
 			</p:panel>
-
 		</div>
+
+	</h:form>
+	<h:form id="editscriptfrm">
+		<p:dialog header="Edit Script" widgetVar="dlgEditScript" modal="true"
+			height="450" weight="300">
+			<p:messages id="messageFormScript" closable="true" />
+			<p:panel id="panelS" style="border-width: 0px;">
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
+						cellspacing="4px">
+
+						<p:outputLabel value="Name" for="scriptName" />
+					<p:inputText id="scriptName" value="#{scriptBean.scriptName}" />
+					</h:panelGrid>
+
+					<p:outputLabel value="Question1" for="question1" />
+					<p:outputLabel value="Expected Answer" for="expquestion1" />
+
+					<p:inputText id="question1" value="#{scriptBean.question1}" />
+					<p:inputText id="expquestion1" value="#{scriptBean.expquestion1}" />
+
+					<p:outputLabel value="Question2" for="question2" />
+					<p:outputLabel value="Expected Answer" for="expquestion2" />
+
+					<p:inputText id="question2" value="#{scriptBean.question2}" />
+					<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
+
+				</h:panelGrid>
+			</p:panel>
+		
+		</p:dialog>
 	</h:form>
 </ui:composition>
