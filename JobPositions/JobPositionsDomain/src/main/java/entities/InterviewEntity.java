@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
 		@NamedQuery(name = "InterviewEntity.findById", query = "SELECT i FROM InterviewEntity i WHERE i.interviewer.id=:id"),
 		@NamedQuery(name = "InterviewEntity.findAll", query = "SELECT i FROM InterviewEntity i"),
-		@NamedQuery(name = "InterviewEntity.findByIdInt", query = "SELECT i FROM InterviewEntity i WHERE i.id=:id")})
+		@NamedQuery(name = "InterviewEntity.findByIdInt", query = "SELECT i FROM InterviewEntity i WHERE i.id=:id") })
 public class InterviewEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,6 @@ public class InterviewEntity implements Serializable {
 	public static final String FIND_BY_ID = "InterviewEntity.findById";
 	public static final String FIND_ALL = "InterviewEntity.findAll";
 	public static final String FIND_BY_ID_INT = "InterviewEntity.findByIdInt";
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,7 +50,25 @@ public class InterviewEntity implements Serializable {
 	private ScriptEntity script;
 
 	@Column(nullable = false, length = 100)
-	private boolean approved;
+	private boolean submitted;
+
+	@Column(nullable = true, length = 100)
+	private String answer1;
+
+	@Column(nullable = true, length = 100)
+	private String answer2;
+
+	@Column(nullable = true, length = 100)
+	private String answer3;
+
+	@Column(nullable = true, length = 100)
+	private String answer4;
+
+	@Column(nullable = true, length = 100)
+	private String answer5;
+
+	@Column(nullable = true, length = 100)
+	private String feedback;
 
 	public Long getId() {
 		return id;
@@ -94,12 +111,60 @@ public class InterviewEntity implements Serializable {
 		this.script = script;
 	}
 
-	public boolean isApproved() {
-		return approved;
+	public boolean isSubmitted() {
+		return submitted;
 	}
 
-	public void setApproved(boolean approved) {
-		this.approved = approved;
+	public void setSubmitted(boolean submitted) {
+		this.submitted = submitted;
+	}
+
+	public String getAnswer1() {
+		return answer1;
+	}
+
+	public void setAnswer1(String answer1) {
+		this.answer1 = answer1;
+	}
+
+	public String getAnswer2() {
+		return answer2;
+	}
+
+	public void setAnswer2(String answer2) {
+		this.answer2 = answer2;
+	}
+
+	public String getAnswer3() {
+		return answer3;
+	}
+
+	public void setAnswer3(String answer3) {
+		this.answer3 = answer3;
+	}
+
+	public String getAnswer4() {
+		return answer4;
+	}
+
+	public void setAnswer4(String answer4) {
+		this.answer4 = answer4;
+	}
+
+	public String getAnswer5() {
+		return answer5;
+	}
+
+	public void setAnswer5(String answer5) {
+		this.answer5 = answer5;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 }

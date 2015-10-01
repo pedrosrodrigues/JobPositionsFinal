@@ -70,7 +70,7 @@ public class InterviewBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to save a new interview on database...");
 		InterviewEntity ient = new InterviewEntity();
-		ient.setApproved(false);
+		ient.setSubmitted(false);
 		ient.setInterviewDate(interviewDate);
 		ient.setInterviewer(iu.searchUser(interviewerEmail));
 		ient.setScript(is.findByName(scriptName));
@@ -89,17 +89,25 @@ public class InterviewBean implements Serializable {
 
 	public void searchInterviewResults(Long idApp) {
 		this.currentApp = ia.findById(idApp);
+		allInterviews = ii.findAll();
 		for (InterviewEntity inter : allInterviews) {
-			if (inter.getApplication().getId() == idApp && inter.isApproved()) {
+			if (inter.getApplication().getId() == idApp && inter.isSubmitted()) {
+				System.out.println("Nome:"
+						+ inter.getApplication().getCandidateEntity()
+								.getFirstname());
 				this.currentInt = inter;
 			}
 		}
 	}
 
+	public void searchInterview(Long idInt) {
+		this.currentInt = ii.findIntById(idInt);
+	}
+
 	public boolean checkInterview(Long idApp) {
 		allInterviews = ii.findAll();
 		for (InterviewEntity inter : allInterviews) {
-			if (inter.getApplication().getId() == idApp && inter.isApproved()) {
+			if (inter.getApplication().getId() == idApp && inter.isSubmitted()) {
 				return true;
 			}
 		}

@@ -151,8 +151,8 @@
 						</p:selectOneMenu>
 						<p:commandButton icon="ui-icon-folder-open"
 							rendered="#{interviewBean.checkInterview(candlist.id)}"
-							action="interviewBean.searchInterviewResults(candlist.id)"
-							oncomplete="PF('dlg4').show();" >
+							action="#{interviewBean.searchInterviewResults(candlist.id)}"
+							oncomplete="PF('dlg4').show();">
 						</p:commandButton>
 					</p:column>
 					<p:column styleClass="jobs-table" headerText="Save"
@@ -327,11 +327,9 @@
 						<p:outputLabel value="Question" />
 						<p:outputLabel value="Expected Answer" />
 						<p:outputLabel value="Answer" />
-						
-						<p:outputLabel value="#{interviewBean.currentInt.script.question1}" />
-						<p:outputLabel value="Expected Answer" />
-						<p:outputLabel value="Answer" />
+
 					</h:panelGrid>
+
 				</div>
 			</p:dialog>
 
