@@ -22,7 +22,7 @@ public class JobDAO {
 
 	public void update(JobEntity ent) {
 		Query q = em
-				.createQuery("UPDATE JobEntity SET finalDate =:finalDate, sla =:sla, title =:title, location =:location, company =:company, vacancies =:vacancies, responsable =:responsable, technicalArea =:technicalArea, jobDescription =:jobDescription, jobStatus =:jobStatus WHERE id =:id");
+				.createQuery("UPDATE JobEntity SET finalDate =:finalDate, sla =:sla, title =:title, location =:location, company =:company, vacancies =:vacancies, responsable =:responsable, technicalArea =:technicalArea, jobDescription =:jobDescription, channels =:channels, jobStatus =:jobStatus WHERE id =:id");
 		q.setParameter("finalDate", ent.getFinalDate());
 		q.setParameter("sla", ent.getSla());
 		q.setParameter("title", ent.getTitle());
@@ -32,6 +32,7 @@ public class JobDAO {
 		q.setParameter("responsable", ent.getResponsable());
 		q.setParameter("technicalArea", ent.getTechnicalArea());
 		q.setParameter("jobDescription", ent.getJobDescription());
+		q.setParameter("channels", ent.getChannels());
 		q.setParameter("jobStatus", ent.getJobStatus());
 		q.setParameter("id", ent.getId());
 		q.executeUpdate();

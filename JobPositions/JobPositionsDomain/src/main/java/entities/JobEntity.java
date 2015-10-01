@@ -57,6 +57,9 @@ public class JobEntity implements Serializable {
 	private String company;
 
 	@Column(nullable = false, length = 100)
+	private String channels;
+
+	@Column(nullable = false, length = 100)
 	private String technicalArea;
 
 	@Column(nullable = false, length = 100)
@@ -195,6 +198,14 @@ public class JobEntity implements Serializable {
 
 	public void setApplications(List<ApplicationEntity> applications) {
 		this.applications = applications;
+	}
+
+	public String getChannels() {
+		return channels;
+	}
+
+	public void setChannels(String channels) {
+		this.channels = channels;
 	}
 
 	@Override

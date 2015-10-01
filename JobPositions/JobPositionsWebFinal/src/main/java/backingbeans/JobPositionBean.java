@@ -40,6 +40,7 @@ public class JobPositionBean implements Serializable {
 	private String company;
 	private String technicalArea;
 	private String sla;
+	private String channels;
 	private String location;
 	private String title;
 	private String positionCode;
@@ -67,7 +68,6 @@ public class JobPositionBean implements Serializable {
 	}
 
 	public void start() {
-		System.out.println("Starting app...");
 		responsableList = iu.findAllManagers();
 		jobpositionsfilter = jobpositions;
 		jobpositions = ij.findAll();
@@ -81,6 +81,7 @@ public class JobPositionBean implements Serializable {
 		ent.setCompany(company);
 		ent.setCreationDate(creationDate);
 		ent.setFinalDate(finalDate);
+		ent.setChannels(channels);
 		ent.setJobDescription(jobDescription);
 		ent.setJobStatus(JobStatus.OPEN);
 		ent.setLocation(location);
@@ -98,6 +99,7 @@ public class JobPositionBean implements Serializable {
 			this.sla = "";
 			this.jobDescription = "";
 			this.location = "";
+			this.channels = "";
 			this.creationDate = null;
 			this.finalDate = null;
 			this.jobStatus = null;
@@ -120,6 +122,7 @@ public class JobPositionBean implements Serializable {
 		this.sla = "";
 		this.jobDescription = "";
 		this.location = "";
+		this.channels = "";
 		this.creationDate = null;
 		this.finalDate = null;
 		this.responsable = null;
@@ -137,6 +140,7 @@ public class JobPositionBean implements Serializable {
 		setLocation(jent.getLocation());
 		setCompany(jent.getCompany());
 		setSla(jent.getSla());
+		setChannels(jent.getChannels());
 		setCreationDate(jent.getCreationDate());
 		setFinalDate(jent.getFinalDate());
 		setResponsable(jent.getResponsable());
@@ -157,6 +161,7 @@ public class JobPositionBean implements Serializable {
 		jent.setFinalDate(this.finalDate);
 		jent.setSla(this.sla);
 		jent.setTitle(this.title);
+		jent.setChannels(this.channels);
 		jent.setLocation(this.location);
 		jent.setCompany(this.company);
 		if (this.status.equals("OPEN")) {
@@ -354,6 +359,14 @@ public class JobPositionBean implements Serializable {
 
 	public void setJobpositionsopen(List<JobEntity> jobpositionsopen) {
 		this.jobpositionsopen = jobpositionsopen;
+	}
+
+	public String getChannels() {
+		return channels;
+	}
+
+	public void setChannels(String channels) {
+		this.channels = channels;
 	}
 
 }
