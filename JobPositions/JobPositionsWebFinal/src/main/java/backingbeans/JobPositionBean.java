@@ -37,6 +37,9 @@ public class JobPositionBean implements Serializable {
 	@Inject
 	private ApplicationBean ab;
 
+	@Inject
+	private SystemUser su;
+
 	private Date creationDate;
 	private Date finalDate;
 	private String jobDescription;
@@ -57,6 +60,7 @@ public class JobPositionBean implements Serializable {
 	private List<JobEntity> jobpositionsopen = new ArrayList<JobEntity>();
 	private List<JobEntity> jobpositionsfilter = new ArrayList<JobEntity>();
 	private List<UserEntity> responsableList = new ArrayList<UserEntity>();
+	private List<JobEntity> responsableJobList = new ArrayList<JobEntity>();
 	private Long idJob;
 
 	private static final Logger log = LoggerFactory
@@ -76,6 +80,10 @@ public class JobPositionBean implements Serializable {
 		jobpositions = ij.findAll();
 		jobpositionsopen = ij.findAllOpen();
 		ab.init();
+	}
+
+	public void startList(){
+		responsableJobList = ij.findResponsable(su.getUserlogado().getEmail());
 	}
 
 	public void saveJobPosition() {
@@ -174,6 +182,31 @@ public class JobPositionBean implements Serializable {
 					"Position updated on database!"));
 		} catch (Exception e) {
 			log.error("Problem updating position!");
+			context.addMessage(null, new FacesMessage(
+					"Problem updating position!"));
+			e.printStackTrace();
+		}
+	}
+
+	public void updateJobPosMan() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to update a position on database Manager ...");
+		JobEntity jent = new JobEntity();
+		if (this.status.equals("OPEN")) {
+			jent.setJobStatus(JobStatus.OPEN);
+		} else if (this.status.equals("ON_HOLD")) {
+			jent.setJobStatus(JobStatus.ON_HOLD);
+		} else if (this.status.equals("CLOSED")) {
+			jent.setJobStatus(JobStatus.CLOSED);
+		}
+		jent.setId(this.idJob);
+		try {
+			ij.updateJobPosMan(jent);
+			log.info("Position updated on database Manager action!");
+			context.addMessage(null, new FacesMessage(
+					"Position updated on database!"));
+		} catch (Exception e) {
+			log.error("Problem updating position Manager action!");
 			context.addMessage(null, new FacesMessage(
 					"Problem updating position!"));
 			e.printStackTrace();
@@ -358,6 +391,14 @@ public class JobPositionBean implements Serializable {
 
 	public void setChannels(String channels) {
 		this.channels = channels;
+	}
+
+	public List<JobEntity> getResponsableJobList() {
+		return responsableJobList;
+	}
+
+	public void setResponsableJobList(List<JobEntity> responsableJobList) {
+		this.responsableJobList = responsableJobList;
 	}
 
 }

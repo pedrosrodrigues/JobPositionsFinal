@@ -28,7 +28,8 @@ import enumeration.JobStatus;
 @NamedQueries({
 		@NamedQuery(name = "JobEntity.findAll", query = "SELECT j FROM JobEntity j"),
 		@NamedQuery(name = "JobEntity.findId", query = "SELECT j FROM JobEntity j WHERE j.id  =:id"),
-		@NamedQuery(name = "JobEntity.findAllOpen", query = "SELECT j FROM JobEntity j WHERE j.jobStatus  =:jobStatus"), })
+		@NamedQuery(name = "JobEntity.findAllOpen", query = "SELECT j FROM JobEntity j WHERE j.jobStatus  =:jobStatus"), 
+		@NamedQuery(name = "JobEntity.findResponsable", query = "SELECT j FROM JobEntity j WHERE j.responsable.email  =:email")})
 public class JobEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +37,8 @@ public class JobEntity implements Serializable {
 	public static final String FIND_ALL = "JobEntity.findAll";
 	public static final String FIND_BY_ID = "JobEntity.findId";
 	public static final String FIND_ALL_OPEN = "JobEntity.findAllOpen";
+	public static final String FIND_RESPONSABLE = "JobEntity.findResponsable";
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -37,6 +37,14 @@ public class JobDAO {
 		q.setParameter("id", ent.getId());
 		q.executeUpdate();
 	}
+	
+	public void updateJobPosMan(JobEntity ent) {
+		Query q = em
+				.createQuery("UPDATE JobEntity SET jobStatus =:jobStatus WHERE id =:id");
+		q.setParameter("jobStatus", ent.getJobStatus());
+		q.setParameter("id", ent.getId());
+		q.executeUpdate();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<JobEntity> findAll() {
@@ -55,6 +63,13 @@ public class JobDAO {
 	public List<JobEntity> findAllOpen() {
 		Query q = em.createNamedQuery(JobEntity.FIND_ALL_OPEN);
 		q.setParameter("jobStatus", JobStatus.OPEN);
+		return q.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<JobEntity> findResponsable(String email) {
+		Query q = em.createNamedQuery(JobEntity.FIND_RESPONSABLE);
+		q.setParameter("email", email);
 		return q.getResultList();
 	}
 

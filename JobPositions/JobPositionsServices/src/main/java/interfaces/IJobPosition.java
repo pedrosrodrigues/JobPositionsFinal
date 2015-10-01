@@ -12,11 +12,15 @@ public interface IJobPosition {
 	public void saveJob(JobEntity ent);
 
 	public void updateJob(JobEntity ent);
+	
+	public void updateJobPosMan (JobEntity ent);
 
 	public List<JobEntity> findAll();
 
 	public JobEntity findById(Long id);
 
 	public List<JobEntity> findAllOpen();
+	
+	public List<JobEntity> findResponsable (String email);
 
 }

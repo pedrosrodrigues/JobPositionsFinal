@@ -32,6 +32,7 @@ public class JobPositionImp implements IJobPosition {
 	public void updateJob(JobEntity ent) {
 		job.update(ent);
 	}
+	
 
 	@Override
 	public JobEntity findById(Long id) {
@@ -43,4 +44,13 @@ public class JobPositionImp implements IJobPosition {
 		return job.findAllOpen();
 	}
 
+	public List<JobEntity> findResponsable(String email) {
+		return job.findResponsable(email);
+	}
+
+	@Override
+	public void updateJobPosMan(JobEntity ent) {
+		job.update(ent);
+		
+	}
 }
