@@ -58,7 +58,7 @@
 			<version>2.1</version>
 		</dependency>
 
-<!-- 		<dependency>
+	<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.5-FINAL</version>
@@ -79,7 +79,7 @@
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
-		</dependency> -->
+		</dependency> 
 
 	</dependencies>
 

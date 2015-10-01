@@ -29,6 +29,11 @@
 						<p:outputLabel value="SLA" for="sla" />
 						<p:inputText id="sla" required="true"
 							value="#{jobPositionBean.sla}" style="width:100%;" />
+						<p:outputLabel value="Vacancies" for="vacancies" />
+						<p:outputLabel value="Responsable" for="responsable"
+							style="width:100%;" />
+
+
 					</h:panelGrid>
 
 					<p:outputLabel value="Title" for="title" />
@@ -39,13 +44,12 @@
 					<p:inputText id="location" required="true"
 						value="#{jobPositionBean.location}" />
 
-					<p:outputLabel value="Vacancies" for="vacancies" />
+					<p:outputLabel value="Channel" for="channel" />
 					<p:outputLabel value="Responsable" for="responsable" />
 
-					<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
-
+					<p:inputText id="channel" value="#{jobPositionBean.channels}" />
 					<p:selectOneMenu id="responsable"
-						value="#{jobPositionBean.responsableEmail}" required="true">
+						value="#{jobPositionBean.responsableEmail}" required="true" style="width:100%;">
 						<f:selectItem itemLabel="Select One" itemValue="" />
 						<f:selectItems value="#{jobPositionBean.responsableList}"
 							var="resp" itemValue="#{resp.email}" itemLabel="#{resp}" />

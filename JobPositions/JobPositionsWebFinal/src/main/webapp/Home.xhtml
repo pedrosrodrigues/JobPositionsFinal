@@ -9,9 +9,8 @@
 	<ui:define name="bar">Current Positions</ui:define>
 	<ui:define name="body">
 		<f:metadata>
-		<f:viewParam name="PositionCode" />
-			<f:event listener="#{jobPositionBean.start}"
-				type="preRenderView" />
+			<f:viewParam name="PositionCode" />
+			<f:event listener="#{jobPositionBean.start}" type="preRenderView" />
 		</f:metadata>
 
 		<h:form id="frm">
@@ -34,7 +33,8 @@
 					<h:outputText value="#{position.location}" />
 				</p:column>
 
-				<p:column headerText="Date" style="text-align: center; width:150px" sortBy="#{position.finalDate}" >
+				<p:column headerText="Date" style="text-align: center; width:150px"
+					sortBy="#{position.finalDate}">
 					<h:outputText value="#{position.finalDate}" />
 				</p:column>
 				<p:column style="width:16px">
@@ -54,10 +54,14 @@
 						<h:outputText value="# of openings:" />
 						<h:outputText value="#{position.vacancies}" />
 
+						<h:outputText value="Channel" />
+						<h:outputText value="#{position.channels}" />
+
 					</p:panelGrid>
 
 					<p:panelGrid columns="1" style="width:100%;">
-						<h:outputText rows="10" cols="100" style="width:95%" value="#{position.jobDescription}" />
+						<h:outputText rows="10" cols="100" style="width:95%"
+							value="#{position.jobDescription}" />
 						<p:commandButton value="Submit" id="ajax">
 							<p:confirm header="Job Position"
 								message="To apply,LOGIN or CREATE A NEW ACCOUNT" />
