@@ -219,9 +219,12 @@
 						</h:panelGrid>
 						<h:panelGrid columns="2" cellpadding="4px" cellspacing="4px">
 							<p:outputLabel value="SLA" for="sla" />
+							<p:outputLabel value="Vacancies" for="vacancies"/>
 
 							<p:inputText id="sla" value="#{jobPositionBean.sla}"
 								style="width:100%;" />
+								<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
+								
 						</h:panelGrid>
 
 						<p:outputLabel value="Title" for="title" />
@@ -230,10 +233,10 @@
 						<p:inputText id="title" value="#{jobPositionBean.title}" />
 						<p:inputText id="location" value="#{jobPositionBean.location}" />
 
-						<p:outputLabel value="Vacancies" for="vacancies" />
+						<p:outputLabel value="Channels" for="channel" />
 						<p:outputLabel value="Responsable" for="responsable" />
 
-						<p:inputText id="vacancies" value="#{jobPositionBean.vacancies}" />
+						<p:inputText id="channel" value="#{jobPositionBean.channels}" />
 						<p:selectOneMenu id="responsable"
 							value="#{jobPositionBean.responsableEmail}" required="true">
 							<f:selectItem itemLabel="Select One" itemValue="" />
@@ -250,7 +253,6 @@
 							<f:selectItem itemLabel="Open" itemValue="OPEN" />
 							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD" />
 							<f:selectItem itemLabel="Closed" itemValue="CLOSED" />
-
 						</p:selectOneMenu>
 						<p:inputText id="tarea" value="#{jobPositionBean.technicalArea}" />
 
