@@ -39,8 +39,8 @@ public class RecoverPassBean implements Serializable {
 
 	public void generatePassword() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		user = iu.searchUser(email);
-		if (user.getPassword() != "") {
+		try {
+			user = iu.searchUser(email);
 			user.setPassword("user");
 			iu.updatePass(user);
 
@@ -55,11 +55,10 @@ public class RecoverPassBean implements Serializable {
 									+ ",\n\nServe o presente e-mail para o informar que a sua nova password é: user "
 									+ "\n\nPode fazer o login normalmente na nossa plataforma.\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
 			log.info("Email sent to email.");
-		} else {
+		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(
 					"That email is not on database!"));
 			log.info("Email not on database!");
-
 		}
 
 	}
