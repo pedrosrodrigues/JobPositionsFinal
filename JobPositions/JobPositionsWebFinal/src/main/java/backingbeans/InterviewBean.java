@@ -115,6 +115,7 @@ public class InterviewBean implements Serializable {
 		ient.setAnswer4(this.answer4);
 		ient.setAnswer5(this.answer5);
 		ient.setFeedback(this.feedback);
+		ient.setSubmitted(true);
 		ii.updateInterview(ient);
 	}
 

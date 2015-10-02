@@ -40,7 +40,7 @@ public class InterviewDAO {
 
 	public void updateInterview(InterviewEntity ient) {
 		Query q = em
-				.createQuery("UPDATE InterviewEntity SET answer1 =:answer1, answer2 =:answer2, answer3 =:answer3, answer4 =:answer4, answer5 =:answer5, feedback =:feedback WHERE id =:idInt");
+				.createQuery("UPDATE InterviewEntity SET answer1 =:answer1, answer2 =:answer2, answer3 =:answer3, answer4 =:answer4, answer5 =:answer5, feedback =:feedback, submitted =:submitted WHERE id =:idInt");
 		q.setParameter("idInt", ient.getId());
 		q.setParameter("answer1", ient.getAnswer1());
 		q.setParameter("answer2", ient.getAnswer2());
@@ -48,6 +48,7 @@ public class InterviewDAO {
 		q.setParameter("answer4", ient.getAnswer4());
 		q.setParameter("answer5", ient.getAnswer5());
 		q.setParameter("feedback", ient.getFeedback());
+		q.setParameter("submitted", ient.isSubmitted());
 		q.executeUpdate();
 	}
 
