@@ -53,4 +53,10 @@ public class UserImp implements IUser {
 		return ud.findAllInterviewers();
 	}
 
+	@Override
+	public void updatePass(UserEntity user) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -2,6 +2,8 @@ package backingbeans;
 
 import interfaces.IUser;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -15,10 +17,12 @@ import entities.UserEntity;
 
 @SessionScoped
 @Named
-public class RecoverPassBean {
+public class RecoverPassBean implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String email;
 	private boolean recover = false;
+	private String newpass;
 	UserEntity user = new UserEntity();
 
 	@Inject
@@ -36,6 +40,7 @@ public class RecoverPassBean {
 		user = iu.searchUser(email);
 		if (user.getPassword() != "") {
 			user.setPassword("user");
+			// iu.updatePass(user);
 			context.addMessage(null, new FacesMessage("New password saved!"));
 
 		} else {
