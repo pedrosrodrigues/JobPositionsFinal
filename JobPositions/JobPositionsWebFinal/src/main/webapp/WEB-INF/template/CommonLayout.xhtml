@@ -10,6 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="title">Job Positions</ui:insert></title>
 	<h:outputStylesheet library="css" name="system.css" />
+	<h:outputStylesheet library="css" name="#{color.color}" />
 </h:head>
 
 <h:body>
@@ -29,37 +30,49 @@
 
 		<div>
 			<h:graphicImage library="images" name="logo-critical.png"
-				style="margin:0px 20px;float:left; width:100px;" />
+				style="margin:0px 20px;float:left; width:100px; border" />
 		</div>
+
 		<div>
-			<p:toolbar id="toolbarhd" >
+			<p:toolbar id="toolbarhd">
 				<p:toolbarGroup align="left">
 					<div style="float: left;">
-				<h2>
-						<ui:insert name="bar">JOB POSITIONS</ui:insert>
-					</h2>
+						<h2>
+							<ui:insert name="bar">JOB POSITIONS</ui:insert>
+						</h2>
 					</div>
-					</p:toolbarGroup>
+				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
 					<div style="float: right;">
 						<h:form style="display:inline-block;">
 							<p:commandButton value="Populate!" action="#{populator.populate}"
 								ajax="false" />
 							<p:commandLink value="Login"
-								action="/Login.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								action="/Login.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
 								rendered="#{!systemUser.logIn}" />
 							<p:commandLink value="Home"
-								action="/Home.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								action="/Home.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
 								rendered="#{!systemUser.logIn}" />
 							<p:commandLink value="Regist"
-								action="/NewCandidate.xhtml?faces-redirect=true" style="color:white;text-shadow: none;"
+								action="/NewCandidate.xhtml?faces-redirect=true"
+								style="color:white;text-shadow: none;"
 								rendered="#{!systemUser.logIn}" />
 							<p:commandLink value="Logout"
-								actionListener="#{loginBean.logout}" ajax="false" style="color:white;text-shadow: none;"
+								actionListener="#{loginBean.logout}" ajax="false"
+								style="color:white;text-shadow: none;"
 								rendered="#{systemUser.logIn}" />
+							<p:commandButton icon="ui-icon-gear"
+								action="#{color.setColor('system_grey.css')}" value=""
+								ajax="false" />
+
+							<p:commandButton action="#{color.setColor('system_pink.css')}"
+								value="" ajax="false" />
+
 						</h:form>
 					</div>
-				
+
 				</p:toolbarGroup>
 			</p:toolbar>
 		</div>
@@ -74,7 +87,7 @@
 
 	<div id="footer">
 		<p:separator style="margin-top: 20px" />
-		<div id="footerleft" style="float: left; padding:10px;" >
+		<div id="footerleft" style="float: left; padding: 10px;">
 			© 1998 - 2015 CRITICAL Software All Rights Reserved. - <a
 				href="http://www.criticalsoftware.com/pt/homepage" target="_blank">
 				Contactos / Termos e Política de Privacidade</a>
@@ -97,7 +110,6 @@
 			</a>
 		</div>
 	</div>
-
 </h:body>
 
 </html>
