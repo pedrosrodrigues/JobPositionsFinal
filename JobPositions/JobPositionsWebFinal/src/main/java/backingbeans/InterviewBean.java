@@ -57,6 +57,12 @@ public class InterviewBean implements Serializable {
 	private Long idApplication;
 	private List<InterviewEntity> myInterviews = new ArrayList<InterviewEntity>();
 	private List<InterviewEntity> allInterviews = new ArrayList<InterviewEntity>();
+	private String answer1;
+	private String answer2;
+	private String answer3;
+	private String answer4;
+	private String answer5;
+	private String feedback;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
@@ -98,6 +104,19 @@ public class InterviewBean implements Serializable {
 				this.currentInt = inter;
 			}
 		}
+	}
+
+	public void updateInterview(Long idInt) {
+		InterviewEntity ient = new InterviewEntity();
+		ient.setId(idInt);
+		ient.setAnswer1(this.answer1);
+		ient.setAnswer2(this.answer2);
+		ient.setAnswer3(this.answer3);
+		ient.setAnswer4(this.answer4);
+		ient.setAnswer5(this.answer5);
+		ient.setFeedback(this.feedback);
+		ient.setSubmitted(true);
+		ii.updateInterview(ient);
 	}
 
 	public void searchInterview(Long idInt) {
@@ -200,6 +219,54 @@ public class InterviewBean implements Serializable {
 
 	public void setCurrentInt(InterviewEntity currentInt) {
 		this.currentInt = currentInt;
+	}
+
+	public String getAnswer1() {
+		return answer1;
+	}
+
+	public void setAnswer1(String answer1) {
+		this.answer1 = answer1;
+	}
+
+	public String getAnswer2() {
+		return answer2;
+	}
+
+	public void setAnswer2(String answer2) {
+		this.answer2 = answer2;
+	}
+
+	public String getAnswer3() {
+		return answer3;
+	}
+
+	public void setAnswer3(String answer3) {
+		this.answer3 = answer3;
+	}
+
+	public String getAnswer4() {
+		return answer4;
+	}
+
+	public void setAnswer4(String answer4) {
+		this.answer4 = answer4;
+	}
+
+	public String getAnswer5() {
+		return answer5;
+	}
+
+	public void setAnswer5(String answer5) {
+		this.answer5 = answer5;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 }

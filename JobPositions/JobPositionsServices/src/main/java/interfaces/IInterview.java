@@ -14,7 +14,9 @@ public interface IInterview {
 	public List<InterviewEntity> findMyInterviews(Long id);
 
 	public List<InterviewEntity> findAll();
-	
+
 	public InterviewEntity findIntById(Long id);
+
+	public void updateInterview(InterviewEntity ient);
 
 }
