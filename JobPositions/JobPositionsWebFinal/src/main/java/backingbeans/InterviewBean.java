@@ -131,7 +131,7 @@ public class InterviewBean implements Serializable {
 		}
 	}
 
-	private void clear() {
+	private void clear(){
 		setAnswer1("");
 		setAnswer2("");
 		setAnswer3("");
