@@ -68,12 +68,6 @@ public class InterviewBean implements Serializable {
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
 
-
-	public void start() {
-		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
-
-	}
-
 	@PostConstruct
 	public void init() {
 		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
@@ -107,7 +101,7 @@ public class InterviewBean implements Serializable {
 			if (inter.getApplication().getId() == idApp && inter.isSubmitted()) {
 				System.out.println("Nome:"
 						+ inter.getApplication().getCandidateEntity()
-						.getFirstname());
+								.getFirstname());
 				this.currentInt = inter;
 			}
 		}
@@ -125,8 +119,9 @@ public class InterviewBean implements Serializable {
 		ient.setAnswer5(this.answer5);
 		ient.setFeedback(this.feedback);
 		ient.setSubmitted(true);
-		try{
+		try {
 			ii.updateInterview(ient);
+			clear();
 			log.info("Interview saved on database!");
 			context.addMessage(null, new FacesMessage(
 					"Interview saved on database!"));
@@ -137,9 +132,23 @@ public class InterviewBean implements Serializable {
 		}
 	}
 
+	private void clear() {
+		setAnswer1("");
+		setAnswer2("");
+		setAnswer3("");
+		setAnswer4("");
+		setAnswer5("");
+		setFeedback("");
+	}
+
 	public void searchInterview(Long idInt) {
 		this.currentInt = ii.findIntById(idInt);
 		this.IntId = idInt;
+	}
+
+	public void start() {
+		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
+
 	}
 
 	public boolean checkInterview(Long idApp) {
