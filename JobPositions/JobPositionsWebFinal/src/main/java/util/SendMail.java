@@ -2,6 +2,8 @@ package util;
 
 import java.util.Properties;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -15,15 +17,18 @@ import org.slf4j.LoggerFactory;
 
 import backingbeans.ApplicationBean;
 
+@Named
+@RequestScoped
 public class SendMail {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(ApplicationBean.class);
 
-	public void sendEmail(String to, String subject, String textbody) {
+	public void sendEmail(String subject, String textbody) {
 		log.info("Trying to send an email...");
 
 		String from = "jobsatcritical@gmail.com";
+		String to = "pedrorodrigues.idl@gmail.com, filipapedrosa@gmail.com";
 
 		final String username = "jobsatcritical@gmail.com";
 		final String password = "filipapedro";
