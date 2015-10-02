@@ -10,31 +10,53 @@
 	<ui:define name="body">
 		<div id="loginfrm">
 			<h:form id="frm">
-					<p:messages id="message" autoUpdate="true" closable="true" />
+				<p:messages id="message" autoUpdate="true" closable="true" />
 				<p:panel style="border-width: 0px;">
 
 					<h:panelGrid columns="2" header="Login">
 						<p:outputLabel value="Email" for="email" />
 						<p:inputText id="email" required="true"
-							requiredMessage="Enter your email" value="#{loginBean.email}" validatorMessage=""/>
-							
+							requiredMessage="Enter your email" value="#{loginBean.email}"
+							validatorMessage="" />
+
 						<p:outputLabel value="Password" for="senha" />
 						<p:password id="senha" required="true"
 							value="#{loginBean.password}"
-							requiredMessage="Enter your password" >
-					<!-- 		<f:validateLength minimum="6"/> -->
-							</p:password>
+							requiredMessage="Enter your password">
+							<!-- 	<f:validateLength minimum="6" /> -->
+						</p:password>
 					</h:panelGrid>
 					<h:panelGrid columns="1" style="text-align:right; width:100%;">
 
-						<p:link style="text-align: center;" value="Forgot your password?" />
+						<p:commandLink style="text-align: center;" value="Forgot your password?"
+							onclick="PF('dlgPass').show();" />
 						<p:outputLabel value="" />
 						<p:commandButton value="Login" action="#{loginBean.login}"
-							style="margin-top: 10px; width:180px" update="message"/>
+							style="margin-top: 10px; width:180px" update="message" />
 						<p:outputLabel value="" />
 					</h:panelGrid>
 				</p:panel>
 			</h:form>
+			<h:form id="passwordfrm">
+				<p:dialog header="Recover password" widgetVar="dlgPass" modal="true"
+					height="480" weight="450">
+					<div id="loginfrm">
+						<p:messages id="messageFormP" closable="true" />
+						<p:panel id="panel" style="border-width: 0px;">
+							<h:panelGrid styleClass="inputTable" columns="2"
+								cellpadding="4px" cellspacing="4px">
+								<h:panelGrid styleClass="inputTable" columns="2"
+									cellpadding="4px" cellspacing="4px">
+									<p:outputLabel value="Please insert your email" for="email" />
+									<p:inputText id="email" />
+
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:panel>
+					</div>
+				</p:dialog>
+			</h:form>
+
 		</div>
 	</ui:define>
 </ui:composition>
