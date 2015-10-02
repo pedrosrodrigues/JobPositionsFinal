@@ -39,7 +39,7 @@ html, body {
 }
 
 #footer {
-	padding: 10px;
+	padding: 0px;
 	color: #a59d95;
 	text-align: center;
 	font-size: 10px;
@@ -168,6 +168,12 @@ a:link {
 
 .ui-layout-pane {
 	border: 0;
+}
+
+.ui-tabs {
+    position: absolute;
+    padding: .2em;
+    zoom: 1;
 }
 
 .system-menu {

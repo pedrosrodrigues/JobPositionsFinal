@@ -1,0 +1,41 @@
+<ui:composition xmln="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div id="loginfrm">
+		<h:form id="frmEditUser">
+			<p:messages id="msgEditUser" closable="true" />
+			<p:panel id="panelUser" style="border-width: 0px;">
+				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
+					cellspacing="4px">
+
+					<p:outputLabel value="Role" for="role" />
+					<p:inputText id="role" value="#{userBean.role}" readonly="true" />
+
+					<p:outputLabel value="Name" for="name" />
+					<p:inputText id="name" value="#{userBean.name}" />
+
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" value="#{userBean.email}" readonly="true" />
+
+					<p:outputLabel value="Password" for="password" />
+					<p:password id="password" required="true" match="confpassword"
+						feedback="true" value="#{userBean.password}" />
+
+					<p:outputLabel value="Confirm Password" for="confpassword" />
+					<p:password id="confpassword" required="true" />
+				</h:panelGrid>
+				<div class="out">
+					<div class="in">
+						<h:panelGrid columns="1">
+							<p:commandButton value="SAVE" action="#{userBean.updateUser}" update="msgEditUser" />
+						</h:panelGrid>
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+	</div>
+
+</ui:composition>

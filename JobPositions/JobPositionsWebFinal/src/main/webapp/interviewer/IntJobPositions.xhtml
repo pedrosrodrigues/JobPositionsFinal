@@ -31,7 +31,7 @@
 				<p:column headerText="Edit" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-script"
 						action="#{interviewBean.searchInterview(interview.id)}"
-						oncomplete="PF('dlgIntScript').show();" rendered="#{!interview.submitted}" update="tabInt:intscriptfrm"/>
+						oncomplete="PF('dlgIntScript').show();" update="tabInt:intscriptfrm"/>
 				</p:column>
 			</p:dataTable>
 		</div>
@@ -113,7 +113,7 @@
 							<div class="in">
 								<p:commandButton value="SAVE"
 									action="#{interviewBean.updateInterview}" icon="ui-icon-disk"
-									update=":tabInt:intscriptfrm:messageFormInt tabInt:frmInt" />
+									update=":tabInt:intscriptfrm:messageFormInt tabInt:frmInt"  rendered="#{!interviewBean.currentInt.submitted}"/>
 							</div>
 						</div>
 					</h:panelGrid>

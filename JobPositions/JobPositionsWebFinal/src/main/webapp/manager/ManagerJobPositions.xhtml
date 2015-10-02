@@ -6,7 +6,6 @@
 
 	<div id="loginfrm">
 		<h:form id="frmM">
-
 			<p:dataTable value="#{jobPositionBean.responsableJobList}"
 				var="position" rows="8" emptyMessage="No records found."
 				paginator="true" paginatorPosition="bottom" widgetVar="tableJobsM"
@@ -17,9 +16,8 @@
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Search all fields: " />
-						<p:inputText id="globalFilter"
-							onkeyup="PF('tableJobsM').filter()" style="width:150px"
-							placeholder="Enter keyword" />
+						<p:inputText id="globalFilter" onkeyup="PF('tableJobsM').filter()"
+							style="width:150px" placeholder="Enter keyword" />
 					</p:outputPanel>
 				</f:facet>
 
@@ -58,15 +56,9 @@
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
 					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}">
-				<h:outputText value="#{position.jobStatus}" />
+					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
 
-				<p:column headerText="Edit" style="text-align: center; width:40px;">
-					<p:commandButton icon="ui-icon-pencil"
-						action="#{jobPositionBean.jobInfo(position.id)}"
-						update="tabM:editpositiofrmM:panelM" oncomplete="PF('dlg3M').show();" />
-
-				</p:column>
 				<p:column headerText="" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-person"
 						action="#{applicationBean.searchCandidates(position.id)}"
@@ -83,13 +75,8 @@
 
 						<h:outputText value="# of openings" />
 						<h:outputText value="#{position.vacancies}" />
-
-						<h:outputText value="Responsable" />
-						<h:outputText value="#{position.responsable}" />
-
 						<h:outputText value="Channels" />
 						<h:outputText value="#{position.channels}" />
-
 					</p:panelGrid>
 
 					<p:panelGrid columns="1" style="width:100%;">
@@ -114,10 +101,8 @@
 					<p:column styleClass="jobs-table" headerText="Name"
 						style="text-align: center; width:200px"
 						sortBy="#{candlist.candidateEntity.firstname}">
-
 						<h:outputText
 							value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
-
 					</p:column>
 
 					<p:column styleClass="jobs-table" headerText="Email"
@@ -162,35 +147,5 @@
 				</p:dataTable>
 			</p:dialog>
 		</h:form>
-		<h:form id="editpositiofrmM">
-			<p:dialog header="Edit Job Position" widgetVar="dlg3M" modal="true"
-				height="450" weight="300">
-				<p:messages id="messageForm2M" closable="true" />
-				<p:panel id="panelM" style="border-width: 0px;">
-					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
-						cellspacing="4px">
-			
-						<p:outputLabel value="Status" for="status" />
-
-						<p:selectOneMenu id="status" value="#{jobPositionBean.status}"
-							required="true">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="Open" itemValue="OPEN" />
-							<f:selectItem itemLabel="On Hold" itemValue="ON_HOLD" />
-							<f:selectItem itemLabel="Closed" itemValue="CLOSED" />
-						</p:selectOneMenu>
-		
-					</h:panelGrid>
-				</p:panel>
-				<h:panelGrid columns="1">
-					<p:commandButton value="SAVE"
-						action="#{jobPositionBean.updateJobPosMan}"
-						update="tabM:frmM:jobstableM messageForm2M"
-						oncomplete="PF('tableJobsM').clearFilters()" />
-				</h:panelGrid>
-			</p:dialog>
-		</h:form>
-
-
 	</div>
 </ui:composition>
