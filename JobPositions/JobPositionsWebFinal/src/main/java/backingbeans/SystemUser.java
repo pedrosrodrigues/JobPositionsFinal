@@ -1,5 +1,6 @@
 package backingbeans;
 
+import interfaces.ICandidate;
 import interfaces.IUser;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,6 +31,8 @@ public class SystemUser implements Serializable {
 
 	@EJB
 	private IUser iu;
+	@Inject
+	private ICandidate ic;
 
 	public void searchUser(String email) {
 		log.info("Finding user on database...");
@@ -42,8 +46,10 @@ public class SystemUser implements Serializable {
 				.getCurrentInstance().getExternalContext().getRequest();
 		return request.getScheme() + "://" + request.getServerName() + ":"
 				+ request.getServerPort() + "/userCV/"
-				+ iu.searchUser(email).getId() + iu.searchUser(email).getName()
-				+ "CV" + UploadFile.DOCUMENT_EXTENSION_PDF;
+				+ iu.searchUser(email).getId()
+				+ ic.findByEmail(email).getFirstname()
+				+ ic.findByEmail(email).getLastname() + "CV"
+				+ UploadFile.DOCUMENT_EXTENSION_PDF;
 		// https://localhost:443/userCV/1.pdf
 	}
 
@@ -53,8 +59,10 @@ public class SystemUser implements Serializable {
 				.getCurrentInstance().getExternalContext().getRequest();
 		return request.getScheme() + "://" + request.getServerName() + ":"
 				+ request.getServerPort() + "/userCV/"
-				+ iu.searchUser(email).getId() + iu.searchUser(email).getName()
-				+ "ML" + UploadFile.DOCUMENT_EXTENSION_PDF;
+				+ iu.searchUser(email).getId()
+				+ ic.findByEmail(email).getFirstname()
+				+ ic.findByEmail(email).getLastname() + "ML"
+				+ UploadFile.DOCUMENT_EXTENSION_PDF;
 	}
 
 	public boolean cvFileExists(String email) {
@@ -66,7 +74,8 @@ public class SystemUser implements Serializable {
 		boolean exists = new File(
 				"c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
 						+ iu.searchUser(email).getId()
-						+ iu.searchUser(email).getName() + "CV"
+						+ ic.findByEmail(email).getFirstname()
+						+ ic.findByEmail(email).getLastname() + "CV"
 						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
 		return exists;
 	}
@@ -75,7 +84,8 @@ public class SystemUser implements Serializable {
 		boolean exists = new File(
 				"c://Users/peter/wildfly-8.0.0.Final/bin/userCV/"
 						+ iu.searchUser(email).getId()
-						+ iu.searchUser(email).getName() + "ML"
+						+ ic.findByEmail(email).getFirstname()
+						+ ic.findByEmail(email).getLastname() + "ML"
 						+ UploadFile.DOCUMENT_EXTENSION_PDF).exists();
 		return exists;
 	}

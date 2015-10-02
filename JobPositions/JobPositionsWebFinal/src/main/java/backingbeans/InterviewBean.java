@@ -20,6 +20,7 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import util.SendMail;
 import entities.ApplicationEntity;
 import entities.InterviewEntity;
 import entities.ScriptEntity;
@@ -45,6 +46,9 @@ public class InterviewBean implements Serializable {
 
 	@Inject
 	private IApplication ia;
+
+	@Inject
+	private SendMail mailSender;
 
 	private InterviewEntity currentInt;
 	private ApplicationEntity currentApp;
@@ -84,6 +88,37 @@ public class InterviewBean implements Serializable {
 		ient.setApplication(ia.findById(idApplication));
 		try {
 			ii.saveInterview(ient);
+			mailSender
+					.sendEmail(
+							"Marcação de entrevista",
+							"Muito boa tarde Sr(a) "
+									+ ient.getInterviewer().getName()
+									+ ",\n\nServe o presente e-mail para o informar que tem uma entrevista marcada na data "
+									+ ient.getInterviewDate()
+									+ " com o candidato(a) "
+									+ ient.getApplication()
+											.getCandidateEntity()
+											.getFirstname()
+									+ " "
+									+ ient.getApplication()
+											.getCandidateEntity().getLastname()
+									+ " para a posição de "
+									+ ient.getApplication().getJobEntity()
+											.getTitle()
+									+ ".\nPara mais informaçoes consulte a nossa plataforma em http://localhost:8080/JobPositionsWebFinal/Login.xhtml"
+									+ "\nSe desejar consultar o currículo do candidato em questão siga este link: http://localhost:8080/userCV/"
+									+ iu.searchUser(
+											ient.getApplication()
+													.getCandidateEntity()
+													.getEmail()).getId()
+									+ ient.getApplication()
+											.getCandidateEntity()
+											.getFirstname()
+									+ ient.getApplication()
+											.getCandidateEntity().getLastname()
+									+ "CV.pdf"
+									+ ".\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
+
 			log.info("Interview saved on database!");
 			context.addMessage(null, new FacesMessage(
 					"Interview saved on database!"));
@@ -131,7 +166,7 @@ public class InterviewBean implements Serializable {
 		}
 	}
 
-	private void clear(){
+	private void clear() {
 		setAnswer1("");
 		setAnswer2("");
 		setAnswer3("");

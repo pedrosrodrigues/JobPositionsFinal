@@ -21,6 +21,7 @@ import org.primefaces.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import util.SendMail;
 import entities.ApplicationEntity;
 import entities.CandidateEntity;
 import entities.JobEntity;
@@ -45,6 +46,8 @@ public class ApplicationBean implements Serializable {
 	private IUser iu;
 	@Inject
 	private InterviewBean ib;
+	@Inject
+	private SendMail mailSender;
 
 	private CandidateEntity cent;
 	private JobEntity jent;
@@ -72,6 +75,19 @@ public class ApplicationBean implements Serializable {
 		aent.setAppStatus(ApplicationStatus.SUBMITTED);
 		aent.setAplicationDate(dateobj);
 		if (ia.saveApplication(aent)) {
+			mailSender
+					.sendEmail(
+							"Associação de candidatura à posição: "
+									+ jent.getTitle(),
+							"Muito boa tarde Sr(a) "
+									+ jent.getResponsable().getName()
+									+ ",\n\nServe o presente e-mail para o informar que o candidato(a) "
+									+ cent.getFirstname()
+									+ " "
+									+ cent.getLastname()
+									+ " submeteu uma candidatura à posição de "
+									+ jent.getTitle()
+									+ ".\nPara mais informaçoes consulte a nossa plataforma.\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
 			log.info("Application saved on database!");
 			context.addMessage(null, new FacesMessage("Application saved!"));
 			init();
@@ -96,6 +112,20 @@ public class ApplicationBean implements Serializable {
 		aent.setAppStatus(ApplicationStatus.SUBMITTED);
 		aent.setAplicationDate(dateobj);
 		if (ia.saveApplication(aent)) {
+			mailSender
+					.sendEmail(
+							"Associação de candidatura à posição: "
+									+ jent.getTitle(),
+							"Muito boa tarde Sr(a) "
+									+ jent.getResponsable().getName()
+									+ ",\n\nServe o presente e-mail para o informar que o administrador de sistema associou o candidato(a) "
+									+ cent.getFirstname()
+									+ " "
+									+ cent.getLastname()
+									+ " à posição de "
+									+ jent.getTitle()
+									+ ".\nPara mais informaçoes consulte a nossa plataforma.\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
+
 			log.info("Application saved on database!");
 			context.addMessage(null, new FacesMessage("Application saved!"));
 			init();

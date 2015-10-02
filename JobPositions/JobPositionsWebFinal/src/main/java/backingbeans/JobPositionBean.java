@@ -18,6 +18,7 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import util.SendMail;
 import entities.JobEntity;
 import entities.UserEntity;
 import enumeration.JobStatus;
@@ -39,6 +40,9 @@ public class JobPositionBean implements Serializable {
 
 	@Inject
 	private SystemUser su;
+
+	@Inject
+	private SendMail mailSender;
 
 	private Date creationDate;
 	private Date finalDate;
@@ -82,7 +86,7 @@ public class JobPositionBean implements Serializable {
 		ab.init();
 	}
 
-	public void startList(){
+	public void startList() {
 		responsableJobList = ij.findResponsable(su.getUserlogado().getEmail());
 		start();
 		init();
@@ -106,6 +110,14 @@ public class JobPositionBean implements Serializable {
 		ent.setResponsable(iu.searchUser(responsableEmail));
 		try {
 			ij.saveJob(ent);
+			mailSender
+					.sendEmail(
+							"Manager de posição: " + title,
+							"Muito boa tarde Sr(a) "
+									+ ent.getResponsable().getName()
+									+ ",\n\nServe o presente e-mail para o informar que você foi escolhido como manager da posição "
+									+ title
+									+ ".\nPara mais informaçoes consulte a nossa plataforma.\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
 			log.info("Position saved on database!");
 			context.addMessage(null, new FacesMessage("Position created!"));
 			this.jobpositions.add(ent);
