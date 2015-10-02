@@ -30,7 +30,7 @@
 									itemValue="De que modo pretende continuar a estudar?" />
 							</p:selectOneMenu>
 
-							<p:outputLabel value="Expect Answer" for="expquestionA" />
+							<p:outputLabel value="Expected Answer" for="expquestionA" />
 							<p:inputText id="expquestionA" value="#{scriptBean.expquestion1}"
 								style="width:100%;" />
 
@@ -49,7 +49,7 @@
 									itemValue="Pensando na sua carreira profissional o que gostaria de estar a fazer daqui a 3 anos?" />
 							</p:selectOneMenu>
 
-							<p:outputLabel value="Expect Answer" for="expquestionB" />
+							<p:outputLabel value="Expected Answer" for="expquestionB" />
 							<p:inputText id="expquestionB" value="#{scriptBean.expquestion2}"
 								style="width:100%;" />
 
@@ -63,7 +63,7 @@
 									itemValue="Qual a sua expectativa de salario para a funcao que se esta a candidatar?" />
 							</p:selectOneMenu>
 
-							<p:outputLabel value="Expect Answer" for="expquestionC" />
+							<p:outputLabel value="Expected Answer" for="expquestionC" />
 							<p:inputText id="expquestionC" value="#{scriptBean.expquestion3}"
 								style="width:100%;" />
 
@@ -78,7 +78,7 @@
 									itemLabel="Como pensa que e visto pelos seus colegas de trabalho?"
 									itemValue="Como pensa que e visto pelos seus colegas de trabalho?" />
 							</p:selectOneMenu>
-							<p:outputLabel value="Expect Answer" for="expquestionD" />
+							<p:outputLabel value="Expected Answer" for="expquestionD" />
 							<p:inputText id="expquestionD" value="#{scriptBean.expquestion4}"
 								style="width:100%;" />
 
@@ -86,7 +86,7 @@
 							<p:outputLabel value="Expectation" for="questionE" />
 							<p:inputTextarea id="questionE" value="#{scriptBean.question5}"
 								style="width:100%;" />
-							<p:outputLabel value="Expect Answer" for="expquestionE" />
+							<p:outputLabel value="Expected Answer" for="expquestionE" />
 							<p:inputText id="expquestionE" value="#{scriptBean.expquestion5}"
 								style="width:100%;" />
 						</h:panelGrid>
@@ -135,37 +135,58 @@
 
 	</h:form>
 	<h:form id="editscriptfrm">
+
 		<p:dialog header="Edit Script" widgetVar="dlgEditScript" modal="true"
 			height="450" weight="300">
-			<p:messages id="messageFormScript" closable="true" />
-			<p:panel id="panelS" style="border-width: 0px;">
-				<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
-					cellspacing="4px">
-					<h:panelGrid styleClass="inputTable2" columns="2" cellpadding="4px"
+			<div id="loginfrm">
+				<p:messages id="messageFormScript" closable="true" />
+				<p:panel id="panelS" style="border-width: 0px;">
+					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
 						cellspacing="4px">
 
 						<p:outputLabel value="Name" for="scriptName" />
+						<p:outputLabel value="" />
+
 						<p:inputText id="scriptName" value="#{scriptBean.scriptName}" />
+						<p:outputLabel value="" />
+
+						<p:outputLabel value="Question1" for="question1" />
+						<p:outputLabel value="Expected Answer" for="expquestion1" />
+
+						<p:inputText id="question1" value="#{scriptBean.question1}" />
+						<p:inputText id="expquestion1" value="#{scriptBean.expquestion1}" />
+
+						<p:outputLabel value="Question2" for="question2" />
+						<p:outputLabel value="Expected Answer" for="expquestion2" />
+
+						<p:inputText id="question2" value="#{scriptBean.question2}" />
+						<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
+
+						<p:outputLabel value="Question3" for="question3" />
+						<p:outputLabel value="Expected Answer" for="expquestion3" />
+
+						<p:inputText id="question3" value="#{scriptBean.question3}" />
+						<p:inputText id="expquestion3" value="#{scriptBean.expquestion3}" />
+
+						<p:outputLabel value="Question4" for="question4" />
+						<p:outputLabel value="Expected Answer" for="expquestion4" />
+
+						<p:inputText id="question4" value="#{scriptBean.question4}" />
+						<p:inputText id="expquestion4" value="#{scriptBean.expquestion4}" />
+
+						<p:outputLabel value="Question5" for="question5" />
+						<p:outputLabel value="Expected Answer" for="expquestion5" />
+
+						<p:inputText id="question5" value="#{scriptBean.question5}" />
+						<p:inputText id="expquestion5" value="#{scriptBean.expquestion5}" />
+
+						<p:commandButton value="Save" action="#{scriptBean.updateScript}"
+							update="tab:frmGuide:panelGuide messageFormScript" />
+
 					</h:panelGrid>
-
-					<p:outputLabel value="Question1" for="question1" />
-					<p:outputLabel value="Expected Answer" for="expquestion1" />
-
-					<p:inputText id="question1" value="#{scriptBean.question1}" />
-					<p:inputText id="expquestion1" value="#{scriptBean.expquestion1}" />
-
-					<p:outputLabel value="Question2" for="question2" />
-					<p:outputLabel value="Expected Answer" for="expquestion2" />
-
-					<p:inputText id="question2" value="#{scriptBean.question2}" />
-					<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
-
-					<p:commandButton value="Save" action="#{scriptBean.updateScript}"
-						update="tab:frmGuide:panelGuide" />
-
-				</h:panelGrid>
-			</p:panel>
-
+				</p:panel>
+			</div>
 		</p:dialog>
+
 	</h:form>
 </ui:composition>

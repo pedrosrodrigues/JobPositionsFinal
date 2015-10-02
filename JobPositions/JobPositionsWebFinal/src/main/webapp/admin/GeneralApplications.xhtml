@@ -33,13 +33,14 @@
 							value="#{jobPositionBean.jobpositionsopen}" var="allposlist"
 							rows="10" emptyMessage="No records found." paginator="true"
 							paginatorPosition="bottom"
+							style="text-align: center; width:50%"
 							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 							<p:column styleClass="jobs-table" headerText="Title"
-								style="text-align: center; width:50px">
+								style="text-align: center; width:70%">
 								<h:outputText value="#{allposlist.title}" />
 							</p:column>
 							<p:column styleClass="jobs-table" headerText="Associate"
-								style="text-align: center; width:200px">
+								style="text-align: center; width:30%">
 								<p:commandButton icon="ui-icon-disk"
 									action="#{applicationBean.saveAdminApp(allposlist.id, genapplist.candidateEntity.email)}" 
 									update="tab:frmGenApp:msgGenApp"/>
