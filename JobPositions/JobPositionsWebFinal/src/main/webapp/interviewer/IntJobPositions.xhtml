@@ -6,7 +6,6 @@
 
 	<h:form id="frmInt">
 		<div id="loginfrm">
-			<p:messages id="submitanswerInt" closable="true" />
 			<p:dataTable value="#{interviewBean.myInterviews}" var="interview"
 				rows="8" emptyMessage="No records found." paginator="true"
 				paginatorPosition="bottom"
@@ -32,7 +31,7 @@
 				<p:column headerText="Edit" style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-script"
 						action="#{interviewBean.searchInterview(interview.id)}"
-						oncomplete="PF('dlgIntScript').show();" />
+						oncomplete="PF('dlgIntScript').show();" rendered="#{!interview.submitted}" update="tabInt:intscriptfrm"/>
 				</p:column>
 			</p:dataTable>
 		</div>
@@ -114,7 +113,7 @@
 							<div class="in">
 								<p:commandButton value="SAVE"
 									action="#{interviewBean.updateInterview}" icon="ui-icon-disk"
-									update=":tabInt:intscriptfrm:messageFormInt" />
+									update=":tabInt:intscriptfrm:messageFormInt tabInt:frmInt" />
 							</div>
 						</div>
 					</h:panelGrid>
