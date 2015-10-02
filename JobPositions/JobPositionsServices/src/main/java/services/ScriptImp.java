@@ -30,5 +30,13 @@ public class ScriptImp implements IScript {
 		return sd.findByName(scriptName);
 	}
 
+	@Override
+	public void deleteScript(ScriptEntity ent) {
+		sd.delete(ent);	
+		
+	}
+	
+	
+
 
 }

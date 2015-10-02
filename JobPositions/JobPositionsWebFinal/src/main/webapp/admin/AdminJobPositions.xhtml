@@ -20,7 +20,7 @@
 							style="width:150px" placeholder="Enter keyword" />
 					</p:outputPanel>
 				</f:facet>
-				
+
 				<p:column styleClass="jobs-table" headerText="Job Title"
 					style="text-align: center; width:170px" sortBy="#{position.title}"
 					filterBy="#{position.title}">
@@ -63,8 +63,7 @@
 						action="#{jobPositionBean.jobInfo(position.id)}"
 						update="tab:editpositiofrm:panel" oncomplete="PF('dlg3').show();" />
 				</p:column>
-				<p:column headerText=" "
-					style="text-align: center; width:40px;">
+				<p:column headerText=" " style="text-align: center; width:40px;">
 					<p:commandButton icon="ui-icon-person"
 						action="#{applicationBean.searchCandidates(position.id)}"
 						update="tab:candidatesform:candidatesforposition"
@@ -254,25 +253,30 @@
 							columns="2" cellpadding="4px" cellspacing="4px">
 							<p:outputLabel value="Date" for="intDate" />
 							<p:calendar id="intDate" required="true"
-								value="#{interviewBean.interviewDate}" style="width:10%;"
+								value="#{interviewBean.interviewDate}" style="width:100px;"
 								maxlength="10" size="10" pattern="dd/MM/yyyy HH:mm"
 								mindate="#{jobPositionBean.actualDate}" />
 							<p:outputLabel value="Interviewer" for="interv" />
 							<p:selectOneMenu id="interv"
-								value="#{interviewBean.interviewerEmail}">
+								value="#{interviewBean.interviewerEmail}" style="width:200px;">
 								<f:selectItem itemLabel="Select One" itemValue="" />
 								<f:selectItems value="#{applicationBean.interviewerList}"
 									var="int" itemValue="#{int.email}" itemLabel="#{int}" />
 							</p:selectOneMenu>
 							<p:outputLabel value="Script" for="script" />
-							<p:selectOneMenu id="script" value="#{interviewBean.scriptName}">
+							<p:selectOneMenu id="script" value="#{interviewBean.scriptName}"
+								style="width:200px;">
 								<f:selectItem itemLabel="Select One" itemValue="" />
 								<f:selectItems value="#{scriptBean.scriptList}" var="spt"
 									itemValue="#{spt.scriptName}" itemLabel="#{spt}" />
 							</p:selectOneMenu>
-							<p:commandButton icon="ui-icon-disk" value="SAVE"
-								action="#{interviewBean.createInterview}"
-								update="tab:interviewDialog:messageFormInt" />
+							<div id="out">
+								<div id="in">
+									<p:commandButton icon="ui-icon-disk" value="SAVE"
+										action="#{interviewBean.createInterview}"
+										update="tab:interviewDialog:messageFormInt" />
+								</div>
+							</div>
 						</h:panelGrid>
 					</p:panel>
 				</div>

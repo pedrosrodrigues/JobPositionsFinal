@@ -31,4 +31,8 @@ public class ScriptDAO {
 		return (ScriptEntity) q.getSingleResult();
 	}
 
+	public void delete(ScriptEntity ent) {
+		em.remove(ent);		
+	}
+
 }

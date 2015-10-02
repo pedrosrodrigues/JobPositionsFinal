@@ -95,7 +95,7 @@
 								<h:panelGrid columns="1">
 									<p:commandButton value="SAVE"
 										action="#{scriptBean.createScript}"
-										update="tab:frmGuide:msgGuide panelGuide"
+										update="tab:frmGuide:msgGuide panelGuide :tab:interviewDialog:interviewpanel"
 										listener="scriptBean.loadsriptlist" />
 								</h:panelGrid>
 							</div>
@@ -119,7 +119,7 @@
 							</p:column>
 
 							<p:column headerText=" " style="text-align: center; width:40px;">
-								<p:commandButton icon="ui-icon-trash" />
+								<p:commandButton icon="ui-icon-trash" action="#{scriptBean.deleteScript(id)}"/>
 							</p:column>
 
 						</p:dataTable>

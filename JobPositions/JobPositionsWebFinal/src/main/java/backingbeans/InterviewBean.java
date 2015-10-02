@@ -68,8 +68,14 @@ public class InterviewBean implements Serializable {
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
 
-	@PostConstruct
+
 	public void start() {
+		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
+
+	}
+
+	@PostConstruct
+	public void init() {
 		myInterviews = ii.findMyInterviews(su.getUserlogado().getId());
 	}
 
@@ -101,13 +107,15 @@ public class InterviewBean implements Serializable {
 			if (inter.getApplication().getId() == idApp && inter.isSubmitted()) {
 				System.out.println("Nome:"
 						+ inter.getApplication().getCandidateEntity()
-								.getFirstname());
+						.getFirstname());
 				this.currentInt = inter;
 			}
 		}
 	}
 
 	public void updateInterview() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to update a interview on database...");
 		InterviewEntity ient = new InterviewEntity();
 		ient.setId(this.IntId);
 		ient.setAnswer1(this.answer1);
@@ -117,7 +125,16 @@ public class InterviewBean implements Serializable {
 		ient.setAnswer5(this.answer5);
 		ient.setFeedback(this.feedback);
 		ient.setSubmitted(true);
-		ii.updateInterview(ient);
+		try{
+			ii.updateInterview(ient);
+			log.info("Interview saved on database!");
+			context.addMessage(null, new FacesMessage(
+					"Interview saved on database!"));
+		} catch (Exception e) {
+			log.error("Problem creating a new interview!");
+			context.addMessage(null, new FacesMessage(
+					"There was a problem appointing the interview!"));
+		}
 	}
 
 	public void searchInterview(Long idInt) {

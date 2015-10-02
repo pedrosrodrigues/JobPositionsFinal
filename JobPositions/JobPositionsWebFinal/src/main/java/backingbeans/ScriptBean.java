@@ -80,7 +80,7 @@ public class ScriptBean implements Serializable{
 
 	public void createScript(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		log.info("Trying to create a new guide on database...");
+		log.info("Trying to create a new script on database...");
 		ScriptEntity ent = new ScriptEntity();		
 		ent.setScriptName(scriptName);
 		ent.setQuestion1(question1);
@@ -96,8 +96,8 @@ public class ScriptBean implements Serializable{
 		try {
 			is.saveScript(ent);
 			clear();
-			log.info("Guide saved on database!");
-			context.addMessage(null, new FacesMessage("Guide created!"));
+			log.info("Script saved on database!");
+			context.addMessage(null, new FacesMessage("Script created!"));
 			this.scriptList.add(ent);
 
 		} catch (Exception e) {
@@ -124,10 +124,28 @@ public class ScriptBean implements Serializable{
 
 	public void updateScript(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		log.info("Trying to update a guide on database...");
+		log.info("Trying to update a script on database...");
 		ScriptEntity ent = new ScriptEntity();	
 	}
-	
+
+	public void deleteScript(Long id){
+		System.out.println("a entrar no metodo deleteScript");
+		FacesContext context = FacesContext.getCurrentInstance();
+		log.info("Trying to delete a script...");
+		ScriptEntity ent = new ScriptEntity();	
+		try{
+			is.deleteScript(ent);
+			log.info("Script deleted on database!");
+			context.addMessage(null, new FacesMessage("Script deleted!"));
+		} catch (Exception e) {
+			log.error("Problem deleting script!");
+			context.addMessage(null, new FacesMessage(
+					"Operation failed!"));
+			e.printStackTrace();
+		}
+
+	}
+
 	public String getScriptName() {
 		return scriptName;
 	}

@@ -14,4 +14,6 @@ public interface IScript {
 	public List<ScriptEntity> findAll();
 	
 	public ScriptEntity findByName (String scriptName);
+
+	public void deleteScript(ScriptEntity ent);
 }

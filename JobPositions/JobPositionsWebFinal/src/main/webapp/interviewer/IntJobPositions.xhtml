@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form id="frmInt">
-		<div id="loginfrmInt">
+		<div id="loginfrm">
 			<p:messages id="submitanswerInt" closable="true" />
 			<p:dataTable value="#{interviewBean.myInterviews}" var="interview"
 				rows="8" emptyMessage="No records found." paginator="true"
@@ -38,67 +38,89 @@
 		</div>
 	</h:form>
 	<h:form id="intscriptfrm">
-		<p:dialog header="Interview Script" widgetVar="dlgIntScript"
-			modal="true" height="450" weight="300">
-			<p:messages id="messageFormInt" closable="true" />
-			<p:panel id="panelInt" style="border-width: 0px;">
-				<h:panelGrid styleClass="inputTable" columns="1" cellpadding="4px"
-					cellspacing="4px">
-					<p:outputLabel id="scriptName"
-						value="#{interviewBean.currentInt.script.scriptName}"
-						style="fontweight:bold" />
-					<h:panelGrid styleClass="inputTable" columns="3" cellpadding="4px"
+		<p:dialog header="Interview Script" widgetVar="dlgIntScript">
+			<div id="loginfrm">
+				<p:messages id="messageFormInt" closable="true" />
+				<p:panel id="panelInt" style="border-width: 0px;">
+					<h:panelGrid styleClass="inputTable" columns="1" cellpadding="4px"
 						cellspacing="4px">
-						<p:outputLabel>
-							<b>Question</b>
-						</p:outputLabel>
-						<p:outputLabel>
-							<b>Expected Answer</b>
-						</p:outputLabel>
-						<p:outputLabel>
-							<b>Answer</b>
-						</p:outputLabel>
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.question1}"
-							style="textstyle:bold" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.expquestion1}"
-							style="textstyle:bold" />
-						<p:inputText id="answer1" value="#{interviewBean.answer1}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.question2}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.expquestion2}" />
-						<p:inputText id="answer2" value="#{interviewBean.answer2}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.question3}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.expquestion3}" />
-						<p:inputText id="answer3" value="#{interviewBean.answer3}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.question4}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.expquestion4}" />
-						<p:inputText id="answer4" value="#{interviewBean.answer4}" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.question5}"
-							style="textstyle:bold" />
-						<p:outputLabel
-							value="#{interviewBean.currentInt.script.expquestion5}"
-							style="textstyle:bold" />
-						<p:inputText id="answer5" value="#{interviewBean.answer5}" />
-						<p:inputTextarea id="feedback" value="#{interviewBean.feedback}" />
+						<p:outputLabel id="scriptName"
+							value="#{interviewBean.currentInt.script.scriptName}"
+							style=" font-weight: bold;" />
+						<h:panelGrid styleClass="inputTable" columns="3" cellpadding="4px"
+							cellspacing="4px">
+							<p:outputLabel>
+								<b>Question</b>
+							</p:outputLabel>
+							<p:outputLabel>
+								<b>Expected Answer</b>
+							</p:outputLabel>
+							<p:outputLabel>
+								<b>Answer</b>
+							</p:outputLabel>
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.question1}"
+								style="textstyle:bold" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.expquestion1}"
+								style="text-align:center;" />
+							<p:inputText id="answer1"
+								value="#{interviewBean.currentInt.answer1}"
+								style="width: 100px; text-align:center;" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.question2}" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.expquestion2}"
+								style="text-align:center;" />
+							<p:inputText id="answer2"
+								value="#{interviewBean.currentInt.answer2}"
+								style="width: 100px; text-align:center;" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.question3}" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.expquestion3}"
+								style="text-align:center;" />
+							<p:inputText id="answer3"
+								value="#{interviewBean.currentInt.answer3}"
+								style="width: 100px; text-align:center;" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.question4}" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.expquestion4}"
+								style="text-align:center;" />
+							<p:inputText id="answer4"
+								value="#{interviewBean.currentInt.answer4}"
+								style="width: 100px; text-align:center;" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.question5}"
+								style="textstyle:bold" />
+							<p:outputLabel
+								value="#{interviewBean.currentInt.script.expquestion5}"
+								style="text-align:center;" />
+							<p:inputText id="answer5"
+								value="#{interviewBean.currentInt.answer5}"
+								style="width: 100px; text-align:center;" />
+							<h:panelGrid columns="1">
+
+								<p:outputLabel>
+									<b>Feedback</b>
+								</p:outputLabel>
+								<p:inputTextarea id="feedback"
+									value="#{interviewBean.currentInt.feedback}"
+									style="width: 427%; height:100px;" />
+							</h:panelGrid>
+						</h:panelGrid>
 						<div class="out">
 							<div class="in">
-								<h:panelGrid columns="1">
-									<p:commandButton value="SAVE"
-										action="#{interviewBean.updateInterview}" icon="ui-icon-disk" />
-								</h:panelGrid>
+								<p:commandButton value="SAVE"
+									action="#{interviewBean.updateInterview}" icon="ui-icon-disk"
+									update=":tabInt:intscriptfrm:messageFormInt" />
 							</div>
 						</div>
 					</h:panelGrid>
-				</h:panelGrid>
-			</p:panel>
+				</p:panel>
+			</div>
 		</p:dialog>
+
 	</h:form>
 </ui:composition>
