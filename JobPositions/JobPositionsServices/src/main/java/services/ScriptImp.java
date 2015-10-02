@@ -31,9 +31,18 @@ public class ScriptImp implements IScript {
 	}
 
 	@Override
-	public void deleteScript(ScriptEntity ent) {
-		sd.delete(ent);	
-		
+	public void remove(ScriptEntity ent) {
+		sd.remove(ent);	
+	}
+	
+	@Override
+	public ScriptEntity findById (Long id) {
+		return sd.findById(id);
+	}
+
+	@Override
+	public void updateScript(ScriptEntity ent) {
+		sd.update(ent);	
 	}
 	
 	

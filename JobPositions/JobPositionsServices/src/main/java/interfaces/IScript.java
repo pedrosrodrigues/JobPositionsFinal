@@ -15,5 +15,11 @@ public interface IScript {
 	
 	public ScriptEntity findByName (String scriptName);
 
-	public void deleteScript(ScriptEntity ent);
+	public void remove(ScriptEntity ent);
+	
+	public ScriptEntity findById (Long Id);
+
+	public void updateScript(ScriptEntity ent);
+	
+	
 }

@@ -18,13 +18,15 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "ScriptEntity.findAll", query = "SELECT s FROM ScriptEntity s"),
-		@NamedQuery(name = "ScriptEntity.findByName", query = "SELECT s FROM ScriptEntity s WHERE s.scriptName like :scriptName") })
+		@NamedQuery(name = "ScriptEntity.findByName", query = "SELECT s FROM ScriptEntity s WHERE s.scriptName like :scriptName"),
+		@NamedQuery(name = "ScriptEntity.findById", query = "SELECT s FROM ScriptEntity s WHERE s.id =:id")})
 public class ScriptEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String FIND_ALL = "ScriptEntity.findAll";
 	public static final String FIND_BY_NAME = "ScriptEntity.findByName";
+	public static final String FIND_BY_ID = "ScriptEntity.findById";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

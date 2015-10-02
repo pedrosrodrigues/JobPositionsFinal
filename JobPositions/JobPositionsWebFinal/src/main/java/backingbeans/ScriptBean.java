@@ -47,6 +47,7 @@ public class ScriptBean implements Serializable{
 	private String expquestion4;
 	private String question5;
 	private String expquestion5;
+	private Long idS;
 	private List<ScriptEntity> scriptList = new ArrayList<ScriptEntity>();
 
 	private static final Logger log = LoggerFactory
@@ -76,7 +77,6 @@ public class ScriptBean implements Serializable{
 			questions.add("F");			
 		}
 	}
-
 
 	public void createScript(){
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -109,32 +109,75 @@ public class ScriptBean implements Serializable{
 	}
 
 	public void clear(){
-		this.scriptName= null;
-		this.question1= null;
-		this.question2= null;
-		this.question3= null;
-		this.question4 = null;
-		this.question5 = null;
-		this.expquestion1 = null;
-		this.expquestion2 = null;
-		this.expquestion3 = null;
-		this.expquestion4 = null;
-		this.expquestion5 = null;
+		this.scriptName= "";
+		this.question1= " ";
+		this.question2= " ";
+		this.question3= " ";
+		this.question4 = " ";
+		this.question5 = " ";
+		this.expquestion1 = "";
+		this.expquestion2 = "";
+		this.expquestion3 = "";
+		this.expquestion4 = "";
+		this.expquestion5 = "";
 	}
 
+	public void infoScript(Long id){
+		ScriptEntity ent = new ScriptEntity();	
+		this.idS = id;
+		ent = is.findById(id);
+		setScriptName(ent.getScriptName());
+		setQuestion1(ent.getQuestion1());
+		setQuestion2(ent.getQuestion2());
+		setQuestion3(ent.getQuestion3());
+		setQuestion4(ent.getQuestion4());
+		setQuestion5(ent.getQuestion5());
+		setExpquestion1(ent.getExpquestion1());
+		setExpquestion2(ent.getExpquestion2());
+		setExpquestion3(ent.getExpquestion3());
+		setExpquestion4(ent.getExpquestion4());
+		setExpquestion5(ent.getExpquestion5());	
+	}
+	
 	public void updateScript(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to update a script on database...");
-		ScriptEntity ent = new ScriptEntity();	
+		ScriptEntity ent = new ScriptEntity();
+		ent.setScriptName(this.scriptName);
+		ent.setQuestion1(this.question1);
+		ent.setQuestion2(this.question2);
+		ent.setQuestion3(this.question3);
+		ent.setQuestion4(this.question4);
+		ent.setQuestion5(this.question5);
+		ent.setExpquestion1(this.expquestion1);
+		ent.setExpquestion2(this.expquestion2);
+		ent.setExpquestion3(this.expquestion3);
+		ent.setExpquestion4(this.expquestion4);
+		ent.setExpquestion5(this.expquestion5);
+		ent.setId(this.idS);
+		try{
+			is.updateScript(ent);
+			clear();
+			log.info("Script updated on database!");
+			context.addMessage(null, new FacesMessage(
+					"Script updated on database!"));
+		} catch (Exception e) {
+			log.error("Problem updating script!");
+			context.addMessage(null, new FacesMessage(
+					"Problem updating script!"));
+			e.printStackTrace();
+		}	
 	}
+	
 
 	public void deleteScript(Long id){
 		System.out.println("a entrar no metodo deleteScript");
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to delete a script...");
 		ScriptEntity ent = new ScriptEntity();	
+		ent = is.findById(id);		
 		try{
-			is.deleteScript(ent);
+			is.remove(ent);
 			log.info("Script deleted on database!");
 			context.addMessage(null, new FacesMessage("Script deleted!"));
 		} catch (Exception e) {
@@ -143,7 +186,6 @@ public class ScriptBean implements Serializable{
 					"Operation failed!"));
 			e.printStackTrace();
 		}
-
 	}
 
 	public String getScriptName() {
@@ -273,6 +315,15 @@ public class ScriptBean implements Serializable{
 		this.expquestion5 = expquestion5;
 	}
 
+	public Long getIdS() {
+		return idS;
+	}
+
+	public void setIdS(Long idS) {
+		this.idS = idS;
+	}
+
+	
 
 
 }

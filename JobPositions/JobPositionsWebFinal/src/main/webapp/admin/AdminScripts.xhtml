@@ -84,8 +84,8 @@
 
 
 							<p:outputLabel value="Expectation" for="questionE" />
-							<p:inputTextarea id="questionE"
-								value="#{scriptBean.question5}" style="width:100%;" />
+							<p:inputTextarea id="questionE" value="#{scriptBean.question5}"
+								style="width:100%;" />
 							<p:outputLabel value="Expect Answer" for="expquestionE" />
 							<p:inputText id="expquestionE" value="#{scriptBean.expquestion5}"
 								style="width:100%;" />
@@ -115,18 +115,19 @@
 							<p:column headerText="Edit"
 								style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-pencil"
-									oncomplete="PF('dlgEditScript').show();" />
+									action="#{scriptBean.infoScript(script.id)}"
+									oncomplete="PF('dlgEditScript').show();"
+									update="tab:editscriptfrm:panelS" />
 							</p:column>
 
 							<p:column headerText=" " style="text-align: center; width:40px;">
-								<p:commandButton icon="ui-icon-trash" action="#{scriptBean.deleteScript(id)}"/>
+								<p:commandButton icon="ui-icon-trash"
+									action="#{scriptBean.deleteScript(script.id)}"
+									update="tab:editscriptfrm:panelS" />
 							</p:column>
 
 						</p:dataTable>
-						<!-- 		<h:commandLink id="excel">
-					<p:graphicImage styleClass="social-img" value="../resources/images/excel.png" />
-					<p:dataExporter type="xls" target="tbl" fileName="sript" />
-				</h:commandLink>  -->
+
 					</div>
 				</div>
 			</p:panel>
@@ -144,7 +145,7 @@
 						cellspacing="4px">
 
 						<p:outputLabel value="Name" for="scriptName" />
-					<p:inputText id="scriptName" value="#{scriptBean.scriptName}" />
+						<p:inputText id="scriptName" value="#{scriptBean.scriptName}" />
 					</h:panelGrid>
 
 					<p:outputLabel value="Question1" for="question1" />
@@ -159,9 +160,11 @@
 					<p:inputText id="question2" value="#{scriptBean.question2}" />
 					<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
 
+					<p:commandButton value="Save" action="#{scriptBean.updateScript}" />
+
 				</h:panelGrid>
 			</p:panel>
-		
+
 		</p:dialog>
 	</h:form>
 </ui:composition>
