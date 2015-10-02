@@ -63,6 +63,7 @@ public class InterviewBean implements Serializable {
 	private String answer4;
 	private String answer5;
 	private String feedback;
+	private Long IntId;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(InterviewBean.class);
@@ -106,9 +107,9 @@ public class InterviewBean implements Serializable {
 		}
 	}
 
-	public void updateInterview(Long idInt) {
+	public void updateInterview() {
 		InterviewEntity ient = new InterviewEntity();
-		ient.setId(idInt);
+		ient.setId(this.IntId);
 		ient.setAnswer1(this.answer1);
 		ient.setAnswer2(this.answer2);
 		ient.setAnswer3(this.answer3);
@@ -121,6 +122,7 @@ public class InterviewBean implements Serializable {
 
 	public void searchInterview(Long idInt) {
 		this.currentInt = ii.findIntById(idInt);
+		this.IntId = idInt;
 	}
 
 	public boolean checkInterview(Long idApp) {
@@ -267,6 +269,14 @@ public class InterviewBean implements Serializable {
 
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
+	}
+
+	public Long getIntId() {
+		return IntId;
+	}
+
+	public void setIntId(Long intId) {
+		IntId = intId;
 	}
 
 }
