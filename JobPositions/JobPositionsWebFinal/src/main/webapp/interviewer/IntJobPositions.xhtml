@@ -13,7 +13,6 @@
 				paginatorTemplate=" {FirstPageLink} {PreviousPageLink}
 						 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				id="interviewstable" sortMode="single">
-
 				<p:column styleClass="jobs-table" headerText="Position"
 					style="text-align: center; width:200px"
 					sortBy="#{interview.application.jobEntity.title}">
@@ -35,7 +34,6 @@
 						action="#{interviewBean.searchInterview(interview.id)}"
 						oncomplete="PF('dlgIntScript').show();" />
 				</p:column>
-
 			</p:dataTable>
 		</div>
 	</h:form>
@@ -46,15 +44,11 @@
 			<p:panel id="panelInt" style="border-width: 0px;">
 				<h:panelGrid styleClass="inputTable" columns="1" cellpadding="4px"
 					cellspacing="4px">
-
-
-					<!-- 	<p:outputLabel value="Name" for="scriptName" /> -->
 					<p:outputLabel id="scriptName"
 						value="#{interviewBean.currentInt.script.scriptName}"
 						style="fontweight:bold" />
 					<h:panelGrid styleClass="inputTable" columns="3" cellpadding="4px"
 						cellspacing="4px">
-
 						<p:outputLabel>
 							<b>Question</b>
 						</p:outputLabel>
@@ -64,65 +58,47 @@
 						<p:outputLabel>
 							<b>Answer</b>
 						</p:outputLabel>
-
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.question1}"
 							style="textstyle:bold" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.expquestion1}"
 							style="textstyle:bold" />
-						<p:inputText id="answer1"
-							value="#{interviewBean.currentInt.answer1}" />
-
-
+						<p:inputText id="answer1" value="#{interviewBean.answer1}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.question2}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.expquestion2}" />
-						<p:inputText id="answer2"
-							value="#{interviewBean.currentInt.answer2}" />
-
+						<p:inputText id="answer2" value="#{interviewBean.answer2}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.question3}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.expquestion3}" />
-						<p:inputText id="answer3"
-							value="#{interviewBean.currentInt.answer3}" />
-
+						<p:inputText id="answer3" value="#{interviewBean.answer3}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.question4}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.expquestion4}" />
-						<p:inputText id="answer4"
-							value="#{interviewBean.currentInt.answer4}" />
-
+						<p:inputText id="answer4" value="#{interviewBean.answer4}" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.question5}"
 							style="textstyle:bold" />
 						<p:outputLabel
 							value="#{interviewBean.currentInt.script.expquestion5}"
 							style="textstyle:bold" />
-						<p:inputText id="answer5"
-							value="#{interviewBean.currentInt.answer5}" />
-
-						<p:inputTextarea id="feedback"
-							value="#{interviewBean.currentInt.feedback}" />
-					</h:panelGrid>
-					<div class="out">
-						<div class="in">
-							<h:panelGrid columns="1">
-								<p:commandButton value="SAVE"
-									action="#{interviewBean.updateInterview}" icon="ui-icon-disk" />
-
-							</h:panelGrid>
+						<p:inputText id="answer5" value="#{interviewBean.answer5}" />
+						<p:inputTextarea id="feedback" value="#{interviewBean.feedback}" />
+						<div class="out">
+							<div class="in">
+								<h:panelGrid columns="1">
+									<p:commandButton value="SAVE"
+										action="#{interviewBean.updateInterview}" icon="ui-icon-disk" />
+								</h:panelGrid>
+							</div>
 						</div>
-					</div>
-
-
-
+					</h:panelGrid>
 				</h:panelGrid>
 			</p:panel>
-
 		</p:dialog>
 	</h:form>
 </ui:composition>
