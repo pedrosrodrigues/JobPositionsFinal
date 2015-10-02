@@ -13,6 +13,7 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import util.SendMail;
 import entities.UserEntity;
 
 @SessionScoped
@@ -22,11 +23,12 @@ public class RecoverPassBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private boolean recover = false;
-	private String newpass;
 	UserEntity user = new UserEntity();
 
 	@Inject
 	private IUser iu;
+	@Inject
+	private SendMail emailSender;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(RecoverPassBean.class);
@@ -40,13 +42,23 @@ public class RecoverPassBean implements Serializable {
 		user = iu.searchUser(email);
 		if (user.getPassword() != "") {
 			user.setPassword("user");
-			// iu.updatePass(user);
-			context.addMessage(null, new FacesMessage("New password saved!"));
+			iu.updatePass(user);
 
+			context.addMessage(null, new FacesMessage("New password saved!"));
+			log.info("New password generated.");
+
+			emailSender
+					.sendEmail(
+							"Pedido de recuperação de password. ",
+							"Muito boa tarde Sr(a) "
+									+ user.getName()
+									+ ",\n\nServe o presente e-mail para o informar que a sua nova password é: user "
+									+ "\n\nPode fazer o login normalmente na nossa plataforma.\n\nOs nossos melhores cumprimentos,\njobsatcritical@gmail.com");
+			log.info("Email sent to email.");
 		} else {
 			context.addMessage(null, new FacesMessage(
 					"That email is not on database!"));
-			log.info("Email not on database...");
+			log.info("Email not on database!");
 
 		}
 

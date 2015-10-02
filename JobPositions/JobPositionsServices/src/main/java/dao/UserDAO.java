@@ -48,4 +48,13 @@ public class UserDAO {
 		q.setParameter("role", RoleEntity.INTERVIEWER);
 		return q.getResultList();
 	}
+
+	public void updatePass(UserEntity user) {
+		Query q = em
+				.createQuery("UPDATE UserEntity SET password =:password WHERE email =:email");
+		q.setParameter("password", user.getPassword());
+		q.setParameter("email", user.getEmail());
+		q.executeUpdate();
+
+	}
 }

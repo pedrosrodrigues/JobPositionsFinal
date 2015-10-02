@@ -55,8 +55,16 @@ public class UserImp implements IUser {
 
 	@Override
 	public void updatePass(UserEntity user) {
-		// TODO Auto-generated method stub
+		try {
+			user.setPassword(CandidateImp.passEncript(user.getPassword()));
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ud.updatePass(user);
 
 	}
-
 }
