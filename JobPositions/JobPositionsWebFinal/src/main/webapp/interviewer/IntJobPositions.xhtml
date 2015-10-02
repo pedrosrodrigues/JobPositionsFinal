@@ -107,17 +107,19 @@
 
 						<p:inputTextarea id="feedback"
 							value="#{interviewBean.currentInt.feedback}" />
-						<div class="out">
-							<div class="in">
-								<h:panelGrid columns="1">
-									<p:commandButton value="SAVE" action="#{interviewBean.updateInterview}" icon="ui-icon-disk" />
-						
-								</h:panelGrid>
-							</div>
-						</div>
-
-
 					</h:panelGrid>
+					<div class="out">
+						<div class="in">
+							<h:panelGrid columns="1">
+								<p:commandButton value="SAVE"
+									action="#{interviewBean.updateInterview}" icon="ui-icon-disk" />
+
+							</h:panelGrid>
+						</div>
+					</div>
+
+
+
 				</h:panelGrid>
 			</p:panel>
 
