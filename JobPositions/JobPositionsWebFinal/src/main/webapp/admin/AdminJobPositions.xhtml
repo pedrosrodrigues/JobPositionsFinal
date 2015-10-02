@@ -24,52 +24,74 @@
 				<p:column styleClass="jobs-table" headerText="Job Title"
 					style="text-align: center; width:170px" sortBy="#{position.title}"
 					filterBy="#{position.title}">
+					<f:facet name="header">
+						<h:outputText value="Job title" />
+					</f:facet>
 					<h:outputText value="#{position.title}" />
 				</p:column>
 				<p:column styleClass="jobs-table" headerText="Company"
 					style="text-align: center; width:170px"
 					filterBy="#{position.company}" sortBy="#{position.company}">
+					<f:facet name="header">
+						<h:outputText value="Company" />
+					</f:facet>
 					<h:outputText value="#{position.company}" />
 				</p:column>
 				<p:column headerText="Technical Area"
 					style="text-align: center; width:140px"
 					sortBy="#{position.technicalArea}"
 					filterBy="#{position.technicalArea}">
+					<f:facet name="header">
+						<h:outputText value="Technical Area" />
+					</f:facet>
 					<h:outputText value="#{position.technicalArea}" />
 				</p:column>
 				<p:column headerText="Job Code"
 					style="text-align: center; width:60px" sortBy="#{position.id}">
+					<f:facet name="header">
+						<h:outputText value="Job Code" />
+					</f:facet>
 					<h:outputText value="JP-#{position.id}" />
 				</p:column>
 				<p:column headerText="Location"
 					style="text-align: center; width:140px"
 					sortBy="#{position.location}" filterBy="#{position.location}">
 					<h:outputText value="#{position.location}" />
+					<f:facet name="header">
+						<h:outputText value="Location" />
+					</f:facet>
 				</p:column>
 				<p:column headerText="Final date"
 					style="text-align: center; width:120px"
 					sortBy="#{position.finalDate}">
+					<f:facet name="header">
+						<h:outputText value="Final date" />
+					</f:facet>
 					<h:outputText value="#{position.finalDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Job Status"
 					style="text-align: center; width:120px"
-					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}">
+					sortBy="#{position.jobStatus}" filterBy="#{position.jobStatus}"
+					exportable="false">
 					<h:outputText value="#{position.jobStatus}" />
 				</p:column>
-				<p:column headerText="Edit" style="text-align: center; width:40px;">
+				<p:column headerText="Edit" style="text-align: center; width:40px;"
+					exportable="false">
 					<p:commandButton icon="ui-icon-pencil"
 						action="#{jobPositionBean.jobInfo(position.id)}"
 						update="tab:editpositiofrm:panel" oncomplete="PF('dlg3').show();" />
 				</p:column>
-				<p:column headerText=" " style="text-align: center; width:40px;">
+				<p:column headerText=" " style="text-align: center; width:40px;"
+					exportable="false">
+
 					<p:commandButton icon="ui-icon-person"
 						action="#{applicationBean.searchCandidates(position.id)}"
 						update="tab:candidatesform:candidatesforposition"
 						oncomplete="PF('dlg2').show();" />
 				</p:column>
-				<p:column style="width:16px">
+				<p:column style="width:16px" exportable="false">
 					<p:rowToggler />
 				</p:column>
 				<p:rowExpansion id="rowselection">
@@ -87,6 +109,18 @@
 					</p:panelGrid>
 				</p:rowExpansion>
 			</p:dataTable>
+			<h:panelGroup>
+				<h:commandLink>
+					<p:graphicImage library="images" name="excel.png" width="24" />
+					<p:dataExporter type="xls" target="jobstable"
+						fileName="xlspositions" />
+				</h:commandLink>
+				<h:commandLink>
+					<p:graphicImage library="images" name="pdf.png" width="24" />
+					<p:dataExporter type="pdf" target="jobstable"
+						fileName="pdfpositions" />
+				</h:commandLink>
+			</h:panelGroup>
 		</h:form>
 		<h:form id="candidatesform">
 			<p:dialog header="Candidates" widgetVar="dlg2" modal="true"
@@ -97,12 +131,19 @@
 						emptyMessage="No applications for this job position yet."
 						paginator="true" paginatorPosition="bottom"
 						paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-						<p:column headerText="" style="text-align: center; width:40px;">
+						<p:column headerText="" style="text-align: center; width:40px;"
+							exportable="false">
+							<f:facet name="header">
+								<h:outputText value="Status" />
+							</f:facet>
 							<p:rowToggler />
 						</p:column>
 						<p:column styleClass="jobs-table" headerText="Name"
 							style="text-align: center; width:200px"
 							sortBy="#{candlist.candidateEntity.firstname}">
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
 							<h:outputText
 								value="#{candlist.candidateEntity.firstname} #{candlist.candidateEntity.lastname}" />
 							<a href="#{systemUser.mlPath(candlist.candidateEntity.email)}"
@@ -122,9 +163,12 @@
 							sortBy="#{candlist.candidateEntity.email}">
 							<h:outputText value="#{candlist.candidateEntity.email}" />
 						</p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
 						<p:column headerText="Application Status"
 							style="text-align: center; width:140px"
-							sortBy="#{candlist.appStatus}">
+							sortBy="#{candlist.appStatus}" exportable="false">
 							<p:selectOneMenu id="appstatus" value="#{candlist.appStatus}"
 								required="true">
 								<f:selectItem id="item1" itemLabel="Submitted"
@@ -144,11 +188,11 @@
 							</p:commandButton>
 						</p:column>
 						<p:column styleClass="jobs-table" headerText="Save"
-							style="text-align: center; width:200px">
+							style="text-align: center; width:200px" exportable="false">
 							<p:commandButton icon="ui-icon-disk"
 								action="#{applicationBean.updateApp(candlist.id)}" />
 						</p:column>
-						<p:rowExpansion id="rowselection">
+						<p:rowExpansion id="rowselection" exportable="false">
 							<p:panelGrid columns="2" columnClasses="label, field"
 								style="width:70%;">
 								<f:facet name="header" style="height:50%;">
@@ -171,6 +215,18 @@
 							</p:panelGrid>
 						</p:rowExpansion>
 					</p:dataTable>
+					<h:panelGroup>
+						<h:commandLink>
+							<p:graphicImage library="images" name="excel.png" width="24" />
+							<p:dataExporter type="xls" target="candidatesforposition"
+								fileName="xlscandidates" />
+						</h:commandLink>
+						<h:commandLink>
+							<p:graphicImage library="images" name="pdf.png" width="24" />
+							<p:dataExporter type="pdf" target="candidatesforposition"
+								fileName="pdfcandidates" />
+						</h:commandLink>
+					</h:panelGroup>
 				</div>
 			</p:dialog>
 		</h:form>
