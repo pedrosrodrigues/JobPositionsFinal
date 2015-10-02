@@ -139,7 +139,7 @@
 						<p:commandButton icon="ui-icon-folder-open"
 							rendered="#{interviewBean.checkInterview(candlist.id)}"
 							action="#{interviewBean.searchInterviewResults(candlist.id)}"
-							oncomplete="PF('dlg4').show();">
+							oncomplete="PF('dlg4').show();"  update="tab:intervResult">
 						</p:commandButton>
 					</p:column>
 					<p:column styleClass="jobs-table" headerText="Save"

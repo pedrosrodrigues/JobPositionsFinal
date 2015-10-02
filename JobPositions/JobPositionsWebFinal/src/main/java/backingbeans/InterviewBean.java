@@ -121,7 +121,6 @@ public class InterviewBean implements Serializable {
 		ient.setSubmitted(true);
 		try {
 			ii.updateInterview(ient);
-			clear();
 			log.info("Interview saved on database!");
 			context.addMessage(null, new FacesMessage(
 					"Interview saved on database!"));
