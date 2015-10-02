@@ -1,6 +1,5 @@
 package backingbeans;
 
-import interfaces.ICandidate;
 import interfaces.IScript;
 import interfaces.IUser;
 
@@ -22,11 +21,11 @@ import entities.ScriptEntity;
 
 @SessionScoped
 @Named
-public class ScriptBean implements Serializable{
+public class ScriptBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject 
+	@Inject
 	private IScript is;
 
 	@Inject
@@ -50,8 +49,7 @@ public class ScriptBean implements Serializable{
 	private Long idS;
 	private List<ScriptEntity> scriptList = new ArrayList<ScriptEntity>();
 
-	private static final Logger log = LoggerFactory
-			.getLogger(ScriptBean.class);
+	private static final Logger log = LoggerFactory.getLogger(ScriptBean.class);
 
 	@PostConstruct
 	public void init() {
@@ -64,24 +62,24 @@ public class ScriptBean implements Serializable{
 		types.add("Percurso Profissional");
 	}
 
-	public void addQuestion(){
+	public void addQuestion() {
 		questions.clear();
-		if ("Formação".equals(type)){
+		if ("Formação".equals(type)) {
 			questions.add("A");
-			questions.add("B");		
-		} else if ("Motivação da Candidatura".equals(type)){
+			questions.add("B");
+		} else if ("Motivação da Candidatura".equals(type)) {
 			questions.add("C");
-			questions.add("D");		
-		}else if ("Percurso Profissional".equals(type)){
+			questions.add("D");
+		} else if ("Percurso Profissional".equals(type)) {
 			questions.add("E");
-			questions.add("F");			
+			questions.add("F");
 		}
 	}
 
-	public void createScript(){
+	public void createScript() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to create a new script on database...");
-		ScriptEntity ent = new ScriptEntity();		
+		ScriptEntity ent = new ScriptEntity();
 		ent.setScriptName(scriptName);
 		ent.setQuestion1(question1);
 		ent.setQuestion2(question2);
@@ -102,17 +100,19 @@ public class ScriptBean implements Serializable{
 
 		} catch (Exception e) {
 			log.error("Problem saving guide!");
-			context.addMessage(null, new FacesMessage(
-					"Script creation failed!There´s already a script with this name."));
+			context.addMessage(
+					null,
+					new FacesMessage(
+							"Script creation failed!There´s already a script with this name."));
 			e.printStackTrace();
 		}
 	}
 
-	public void clear(){
-		this.scriptName= "";
-		this.question1= " ";
-		this.question2= " ";
-		this.question3= " ";
+	public void clear() {
+		this.scriptName = "";
+		this.question1 = " ";
+		this.question2 = " ";
+		this.question3 = " ";
 		this.question4 = " ";
 		this.question5 = " ";
 		this.expquestion1 = "";
@@ -122,8 +122,8 @@ public class ScriptBean implements Serializable{
 		this.expquestion5 = "";
 	}
 
-	public void infoScript(Long id){
-		ScriptEntity ent = new ScriptEntity();	
+	public void infoScript(Long id) {
+		ScriptEntity ent = new ScriptEntity();
 		this.idS = id;
 		ent = is.findById(id);
 		setScriptName(ent.getScriptName());
@@ -136,10 +136,10 @@ public class ScriptBean implements Serializable{
 		setExpquestion2(ent.getExpquestion2());
 		setExpquestion3(ent.getExpquestion3());
 		setExpquestion4(ent.getExpquestion4());
-		setExpquestion5(ent.getExpquestion5());	
+		setExpquestion5(ent.getExpquestion5());
 	}
-	
-	public void updateScript(){
+
+	public void updateScript() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to update a script on database...");
 		ScriptEntity ent = new ScriptEntity();
@@ -155,9 +155,10 @@ public class ScriptBean implements Serializable{
 		ent.setExpquestion4(this.expquestion4);
 		ent.setExpquestion5(this.expquestion5);
 		ent.setId(this.idS);
-		try{
+		try {
 			is.updateScript(ent);
 			clear();
+			init();
 			log.info("Script updated on database!");
 			context.addMessage(null, new FacesMessage(
 					"Script updated on database!"));
@@ -166,24 +167,23 @@ public class ScriptBean implements Serializable{
 			context.addMessage(null, new FacesMessage(
 					"Problem updating script!"));
 			e.printStackTrace();
-		}	
+		}
 	}
-	
 
-	public void deleteScript(Long id){
+	public void deleteScript(Long id) {
 		System.out.println("a entrar no metodo deleteScript");
 		FacesContext context = FacesContext.getCurrentInstance();
 		log.info("Trying to delete a script...");
-		ScriptEntity ent = new ScriptEntity();	
-		ent = is.findById(id);		
-		try{
+		ScriptEntity ent = new ScriptEntity();
+		ent = is.findById(id);
+		try {
 			is.remove(ent);
+			this.scriptList.remove(ent);
 			log.info("Script deleted on database!");
 			context.addMessage(null, new FacesMessage("Script deleted!"));
 		} catch (Exception e) {
 			log.error("Problem deleting script!");
-			context.addMessage(null, new FacesMessage(
-					"Operation failed!"));
+			context.addMessage(null, new FacesMessage("Operation failed!"));
 			e.printStackTrace();
 		}
 	}
@@ -199,30 +199,39 @@ public class ScriptBean implements Serializable{
 	public String getQuestion1() {
 		return question1;
 	}
+
 	public void setQuestion1(String question1) {
 		this.question1 = question1;
 	}
+
 	public String getQuestion2() {
 		return question2;
 	}
+
 	public void setQuestion2(String question2) {
 		this.question2 = question2;
 	}
+
 	public String getQuestion3() {
 		return question3;
 	}
+
 	public void setQuestion3(String question3) {
 		this.question3 = question3;
 	}
+
 	public String getQuestion4() {
 		return question4;
 	}
+
 	public void setQuestion4(String question4) {
 		this.question4 = question4;
 	}
+
 	public String getQuestion5() {
 		return question5;
 	}
+
 	public void setQuestion5(String question5) {
 		this.question5 = question5;
 	}
@@ -235,41 +244,33 @@ public class ScriptBean implements Serializable{
 		this.scriptList = scriptList;
 	}
 
-
 	public String getType() {
 		return type;
 	}
-
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
-
 	public String getQuestion() {
 		return question;
 	}
-
 
 	public void setQuestion(String question) {
 		this.question = question;
 	}
 
-
 	public List<String> getTypes() {
 		return types;
 	}
-
 
 	public void setTypes(List<String> types) {
 		this.types = types;
 	}
 
-
 	public List<String> getQuestions() {
 		return questions;
 	}
-
 
 	public void setQuestions(List<String> questions) {
 		this.questions = questions;
@@ -323,8 +324,4 @@ public class ScriptBean implements Serializable{
 		this.idS = idS;
 	}
 
-	
-
-
 }
-

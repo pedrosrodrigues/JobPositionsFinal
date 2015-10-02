@@ -123,7 +123,7 @@
 							<p:column headerText=" " style="text-align: center; width:40px;">
 								<p:commandButton icon="ui-icon-trash"
 									action="#{scriptBean.deleteScript(script.id)}"
-									update="tab:editscriptfrm:panelS" />
+									update="tab:frmGuide:panelGuide" />
 							</p:column>
 
 						</p:dataTable>
@@ -160,7 +160,8 @@
 					<p:inputText id="question2" value="#{scriptBean.question2}" />
 					<p:inputText id="expquestion2" value="#{scriptBean.expquestion2}" />
 
-					<p:commandButton value="Save" action="#{scriptBean.updateScript}" />
+					<p:commandButton value="Save" action="#{scriptBean.updateScript}"
+						update="tab:frmGuide:panelGuide" />
 
 				</h:panelGrid>
 			</p:panel>
