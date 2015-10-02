@@ -31,7 +31,19 @@
 			<version>5.2</version>
 			<scope>compile</scope>
 		</dependency>
+			<!-- Criação de xls -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.13-beta1</version>
+        </dependency>
 
+        <!-- Criação de pdf -->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
 
 	</dependencies>
 

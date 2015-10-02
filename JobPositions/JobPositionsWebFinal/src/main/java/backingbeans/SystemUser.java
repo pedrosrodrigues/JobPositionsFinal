@@ -41,7 +41,6 @@ public class SystemUser implements Serializable {
 	}
 
 	public String cvPath(String email) {
-		// (.pdf)
 		HttpServletRequest request = (HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest();
 		return request.getScheme() + "://" + request.getServerName() + ":"
@@ -50,7 +49,6 @@ public class SystemUser implements Serializable {
 				+ ic.findByEmail(email).getFirstname()
 				+ ic.findByEmail(email).getLastname() + "CV"
 				+ UploadFile.DOCUMENT_EXTENSION_PDF;
-		// https://localhost:443/userCV/1.pdf
 	}
 
 	public String mlPath(String email) {
