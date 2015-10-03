@@ -5,3 +5,7 @@ html, body {
 .ui-toolbar {
 	background:black; 	
 }
+
+.ui-panelgrid .ui-panelgrid-cell {
+	background-color: #FFCCFF;
+}

@@ -10,7 +10,7 @@
 	<ui:define name="body">
 		<div id="loginfrm">
 			<h:form id="frm">
-				<p:messages id="message" autoUpdate="true" closable="true" />
+				<p:messages id="message" closable="true" />
 				<p:panel style="border-width: 0px;">
 
 					<h:panelGrid columns="2" header="Login">
@@ -28,8 +28,8 @@
 					</h:panelGrid>
 					<h:panelGrid columns="1" style="text-align:right; width:100%;">
 
-						<p:commandLink style="text-align: center;" value="Forgot your password?"
-							onclick="PF('dlgPass').show();" />
+						<p:commandLink style="text-align: center;"
+							value="Forgot your password?" onclick="PF('dlgPass').show();" />
 						<p:outputLabel value="" />
 						<p:commandButton value="Login" action="#{loginBean.login}"
 							style="margin-top: 10px; width:180px" update="message" />
@@ -37,26 +37,34 @@
 					</h:panelGrid>
 				</p:panel>
 			</h:form>
-			<h:form id="passwordfrm">
-				<p:dialog header="Recover password" widgetVar="dlgPass" modal="true"
-					height="480" weight="450">
-					<div id="loginfrm">
-						<p:messages id="messageFormP" closable="true" />
-						<p:panel id="panel" style="border-width: 0px;">
-							<h:panelGrid styleClass="inputTable" columns="2"
-								cellpadding="4px" cellspacing="4px">
-								<h:panelGrid styleClass="inputTable" columns="2"
-									cellpadding="4px" cellspacing="4px">
-									<p:outputLabel value="Please insert your email" for="email" />
-									<p:inputText id="email" />
-
-								</h:panelGrid>
-							</h:panelGrid>
-						</p:panel>
-					</div>
-				</p:dialog>
-			</h:form>
 
 		</div>
+		<h:form id="passwordfrm">
+			<p:dialog header="Recover password" widgetVar="dlgPass" modal="true"
+				height="480" weight="450">
+
+				<div id="loginfrm">
+					<p:messages id="messageFormP" closable="true" />
+					<p:panel id="panel" style="border-width: 0px;">
+						<h:panelGrid styleClass="inputTableI" columns="2" cellpadding="4px"
+							cellspacing="4px">
+							<h:panelGrid styleClass="inputTable" columns="2"
+								cellpadding="4px" cellspacing="4px">
+								<p:outputLabel value="Please insert your email" for="email" />
+								<p:inputText id="email" />
+
+							</h:panelGrid>
+						</h:panelGrid>
+						<h:panelGrid columns="1" style="text-align:right; width:100%;">
+						<p:commandButton value="Send" action="#{recoverPassBean.generatePassword()}"
+							style="margin-top: 10px; width:180px" update="messageFormP" />
+						<p:outputLabel value="" />
+					</h:panelGrid>
+					</p:panel>
+				</div>
+			</p:dialog>
+		</h:form>
+
+
 	</ui:define>
 </ui:composition>
