@@ -43,7 +43,7 @@ public class Populator implements Serializable {
 		UserEntity uent3 = new UserEntity();
 		uent3.setEmail("interviewer@gmail.com");
 		uent3.setPassword(CandidateImp.passEncript("123"));
-		uent3.setName("Interviewer");
+		uent3.setName("Application Interviewer");
 		uent3.setRole(RoleEntity.INTERVIEWER);
 		iu.saveUser(uent3);
 		UserEntity uent4 = new UserEntity();
@@ -52,6 +52,12 @@ public class Populator implements Serializable {
 		uent4.setName("João Manager");
 		uent4.setRole(RoleEntity.MANAGER);
 		iu.saveUser(uent4);
+		UserEntity uent5 = new UserEntity();
+		uent3.setEmail("sergiointerviewer@gmail.com");
+		uent3.setPassword(CandidateImp.passEncript("123"));
+		uent3.setName("Sergio Interviewer");
+		uent3.setRole(RoleEntity.INTERVIEWER);
+		iu.saveUser(uent5);
 
 	}
 }
