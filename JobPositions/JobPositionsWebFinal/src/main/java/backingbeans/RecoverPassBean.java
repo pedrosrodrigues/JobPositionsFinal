@@ -23,7 +23,6 @@ public class RecoverPassBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private boolean recover = false;
-	UserEntity user = new UserEntity();
 
 	@Inject
 	private IUser iu;
@@ -40,13 +39,11 @@ public class RecoverPassBean implements Serializable {
 	public void generatePassword() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			user = iu.searchUser(email);
+			UserEntity user = iu.searchUser(email);
 			user.setPassword("user");
 			iu.updatePass(user);
-
 			context.addMessage(null, new FacesMessage("New password saved!"));
 			log.info("New password generated.");
-
 			emailSender
 					.sendEmail(
 							"Pedido de recuperação de password. ",
