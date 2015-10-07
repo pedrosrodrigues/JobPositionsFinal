@@ -11,16 +11,20 @@
 		<div id="loginfrm">
 			<h:form id="frmEdit">
 				<p:panel id="panel" style="border-width: 0px;">
-					<p:messages id="newregistmsg" />
+					<p:messages id="newregistmsg" closable="true"/>
 					<h:panelGrid styleClass="inputTable" columns="2" cellpadding="4px"
 						cellspacing="4px">
 						<p:outputLabel value="First Name" for="fname" />
 						<p:outputLabel value="Last Name" for="lname" />
 
 						<p:inputText id="fname" required="true"
-							value="#{candidateBean.firstname}" />
+							value="#{candidateBean.firstname}">
+							<f:validateLength minimum="2" maximum="12" />
+						</p:inputText>
 						<p:inputText id="lname" required="true"
-							value="#{candidateBean.lastname}" />
+							value="#{candidateBean.lastname}">
+							<f:validateLength minimum="2" maximum="12" />
+						</p:inputText>
 
 						<p:outputLabel value="E-mail" for="email" />
 						<p:outputLabel value="Adress" for="adress" />
@@ -28,38 +32,57 @@
 						<p:inputText id="email" required="true"
 							value="#{candidateBean.email}" size="60" maxlength="80"
 							requiredMessage="PLease email"
-							validatorMessage="E-mail not valid" />
+							validatorMessage="E-mail not valid">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</p:inputText>
 
 						<p:inputText id="adress" required="true"
-							value="#{candidateBean.address}" />
+							value="#{candidateBean.address}">
+							<f:validateLength minimum="2" maximum="12" />
+						</p:inputText>
 
 						<p:outputLabel value="City" for="city" />
 						<p:outputLabel value="Country" for="country" />
 
 						<p:inputText id="city" required="true"
-							value="#{candidateBean.city}" />
+							value="#{candidateBean.city}">
+							<f:validateLength minimum="2" maximum="12" />
+						</p:inputText>
 						<p:inputText id="country" required="true"
-							value="#{candidateBean.country}" />
+							value="#{candidateBean.country}">
+							<f:validateLength minimum="2" maximum="12" />
+						</p:inputText>
 
 						<p:outputLabel value="Phone" for="phone" />
 						<p:outputLabel value="Mobile" for="mobile" />
 
-						<p:inputText id="phone" value="#{candidateBean.phone}" />
-						<p:inputText id="mobile" value="#{candidateBean.mobile}" />
+						<p:inputText id="phone" value="#{candidateBean.phone}">
+							<f:validateLength minimum="9" maximum="12" />
+						</p:inputText>
+						<p:inputText id="mobile" value="#{candidateBean.mobile}">
+							<f:validateLength minimum="9" maximum="12" />
+						</p:inputText>
 
 						<p:outputLabel value="Main Course" for="mcourse" />
 						<p:outputLabel value="School" for="school" />
 
 						<p:inputText id="mcourse" required="true"
-							value="#{candidateBean.course}" />
+							value="#{candidateBean.course}">
+							<f:validateLength minimum="3" maximum="12" />
+						</p:inputText>
 						<p:inputText id="school" required="true"
-							value="#{candidateBean.school}" />
+							value="#{candidateBean.school}">
+							<f:validateLength minimum="3" maximum="12" />
+						</p:inputText>
 
 						<p:outputLabel value="Password" for="password" />
 						<p:outputLabel value="Confirm Password" for="confpassword" />
 
 						<p:password id="password" required="true" match="confpassword"
-							feedback="true" value="#{candidateBean.password}" />
+							feedback="true" value="#{candidateBean.password}">
+							<f:validateLength minimum="6" maximum="12" />
+						</p:password>
 						<p:password id="confpassword" required="true" />
 
 					</h:panelGrid>
@@ -72,7 +95,8 @@
 								<p:outputLabel value="" />
 
 								<p:commandButton value="SAVE"
-									action="#{candidateBean.saveCandidate}" update="frmEdit newregistmsg" />
+									action="#{candidateBean.saveCandidate}"
+									update="frmEdit newregistmsg" />
 							</h:panelGrid>
 						</div>
 					</div>

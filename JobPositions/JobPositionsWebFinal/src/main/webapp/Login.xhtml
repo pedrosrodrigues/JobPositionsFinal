@@ -17,13 +17,15 @@
 						<p:outputLabel value="Email" for="email" />
 						<p:inputText id="email" required="true"
 							requiredMessage="Enter your email" value="#{loginBean.email}"
-							validatorMessage="" />
+							validatorMessage="" >
+							
+							</p:inputText>
 
 						<p:outputLabel value="Password" for="senha" />
 						<p:password id="senha" required="true"
 							value="#{loginBean.password}"
 							requiredMessage="Enter your password">
-							<!-- 	<f:validateLength minimum="6" /> -->
+							<f:validateLength minimum="6" maximum="12"/> 
 						</p:password>
 					</h:panelGrid>
 					<h:panelGrid columns="1" style="text-align:right; width:100%;">
@@ -41,7 +43,7 @@
 		</div>
 		<h:form id="passwordfrm">
 			<p:dialog header="Recover password" widgetVar="dlgPass" modal="true"
-				height="480" weight="450">
+				height="250" weight="250">
 
 				<div id="loginfrm">
 					<p:messages id="messageFormP" closable="true" />
@@ -51,7 +53,7 @@
 							<h:panelGrid styleClass="inputTable" columns="2"
 								cellpadding="4px" cellspacing="4px">
 								<p:outputLabel value="Please insert your email" for="email" />
-								<p:inputText id="email" />
+								<p:inputText id="email" value="#{recoverPassBean.email}"/>
 
 							</h:panelGrid>
 						</h:panelGrid>

@@ -33,47 +33,53 @@
 		</div>
 
 		<div>
-			<p:toolbar id="toolbarhd">
-				<p:toolbarGroup align="left">
-					<div style="float: left;">
+			<h:form>
+				<p:toolbar id="toolbarhd">
+					<p:toolbarGroup align="left">
+
 						<h2>
 							<ui:insert name="bar">JOB POSITIONS</ui:insert>
 						</h2>
-					</div>
-				</p:toolbarGroup>
-				<p:toolbarGroup align="right">
-					<div style="float: right;">
-						<h:form style="display:inline-block;">
-							<p:commandButton value="Populate!" action="#{populator.populate}"
-								ajax="false" />
-							<p:commandLink value="Login"
-								action="/Login.xhtml?faces-redirect=true"
-								style="color:white;text-shadow: none;"
-								rendered="#{!systemUser.logIn}" />
-							<p:commandLink value="Home"
-								action="/Home.xhtml?faces-redirect=true"
-								style="color:white;text-shadow: none;"
-								rendered="#{!systemUser.logIn}" />
-							<p:commandLink value="Regist"
-								action="/NewCandidate.xhtml?faces-redirect=true"
-								style="color:white;text-shadow: none;"
-								rendered="#{!systemUser.logIn}" />
-							<p:commandLink value="Logout"
-								actionListener="#{loginBean.logout}" ajax="false"
-								style="color:white;text-shadow: none;"
-								rendered="#{systemUser.logIn}" />
-							<p:commandButton icon="ui-icon-gear"
-								action="#{color.setColor('system_grey.css')}" value=""
-								ajax="false" />
 
-							<p:commandButton action="#{color.setColor('system_pink.css')}"
-								value="" ajax="false" />
+					</p:toolbarGroup>
 
-						</h:form>
-					</div>
+					<p:toolbarGroup align="right">
 
-				</p:toolbarGroup>
-			</p:toolbar>
+						<p:commandButton value="Populate!" action="#{populator.populate}"
+							ajax="false" />
+						<p:commandLink value="Login as Candidate"
+							action="/Login.xhtml?faces-redirect=true"
+							style="color:white;text-shadow: none;"
+							rendered="#{!systemUser.logIn}" />
+						<p:commandLink value="Login as User"
+							action="/Login.xhtml?faces-redirect=true"
+							style="color:white;text-shadow: none;"
+							rendered="#{!systemUser.logIn}" />
+						<p:commandLink value="Home"
+							action="/Home.xhtml?faces-redirect=true"
+							style="color:white;text-shadow: none;"
+							rendered="#{!systemUser.logIn}" />
+						<p:commandLink value="Regist"
+							action="/NewCandidate.xhtml?faces-redirect=true"
+							style="color:white;text-shadow: none;"
+							rendered="#{!systemUser.logIn}" />
+						<p:commandLink value="Logout" actionListener="#{loginBean.logout}"
+							ajax="false" style="color:white;text-shadow: none;"
+							rendered="#{systemUser.logIn}" />
+						<p:menuButton value="Settings" autoDisplay="false"
+							styleClass="captionLoggedUser" style="width:10%;">
+
+							<p:menuitem value="Regular layout"
+								action="#{color.setColor('system_grey.css')}" ajax="false" />
+
+							<p:menuitem value="Grey layout"
+								action="#{color.setColor('system_pink.css')}" ajax="false" />
+
+						</p:menuButton>
+					</p:toolbarGroup>
+
+				</p:toolbar>
+			</h:form>
 		</div>
 	</div>
 	<div style="clear: both"></div>
